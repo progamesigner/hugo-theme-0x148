@@ -1,0 +1,3 @@
+{{- $style := resources.Get "main.css" | minify | fingerprint "sha512" -}}
+
+<link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}" crossorigin="anonymous">
