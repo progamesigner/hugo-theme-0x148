@@ -1,0 +1,12 @@
+name = "0x148"
+license = "MIT"
+licenselink = "https://github.com/0x148/hugo-theme-0x148/blob/master/LICENSE"
+description = ""
+homepage = "https://github.com/0x148/hugo-theme-0x148"
+tags = []
+features = []
+min_version = "0.41"
+
+[author]
+  name = "Yang Sheng Han"
+  homepage = "https://progamesigner.com"
