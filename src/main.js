@@ -5,8 +5,6 @@ import open from './scripts/open'
 import progress from './scripts/progress'
 import top from './scripts/top'
 
-import './main.scss'
-
 const bootstrap = () => {
     document.querySelectorAll('.chroma > table').forEach(highlight)
     document.querySelectorAll('.navbar.is-fixed-top').forEach(collapse)

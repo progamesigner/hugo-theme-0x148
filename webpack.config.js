@@ -6,7 +6,10 @@ module.exports = (env, options) => {
     const isProd = options.mode === 'production'
 
     return {
-        entry: './src/main.js',
+        entry: {
+            'main': ['./src/main.js', './src/main.scss'],
+            'amp': ['./src/amp.scss']
+        },
         output: {
             path: path.join(__dirname, 'assets'),
             filename: '[name].js'
