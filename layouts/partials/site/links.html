@@ -1,0 +1,19 @@
+{{ with .Site.Params.Meta.Manifest }}
+    <link rel="manifest" href="{{ . | absURL }}">
+{{ end }}
+
+{{ range $size, $icon := .Site.Params.Meta.AppleFavicons }}
+    <link rel="apple-touch-icon" sizes="{{ $size }}x{{ $size }}" href="{{ $icon | absURL }}">
+{{ end }}
+
+{{ range $size, $icon := .Site.Params.Meta.Favicons }}
+    <link rel="icon" sizes="{{ $size }}x{{ $size }}" href="{{ $icon | absURL }}">
+{{ end }}
+
+{{ range .AlternativeOutputFormats }}
+    <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}">
+{{ end }}
+
+{{ range .Translations }}
+    <link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink | safeURL }}">
+{{ end}}

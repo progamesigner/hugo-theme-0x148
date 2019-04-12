@@ -1,0 +1,15 @@
+{{- $description := .Description | default .Summary | default "" -}}
+
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+{{ hugo.Generator }}
+
+<meta name="description" content="{{ $description | plainify }}">
+
+{{ with .Site.Params.Meta.BrowserConfig }}
+    <meta name="msapplication-config" content="{{ . | absURL }}">
+{{ end }}
+
+{{ with .Site.Params.Meta.ThemeColor }}
+    <meta name="theme-color" content="{{ . | safeHTML }}">
+{{ end }}
