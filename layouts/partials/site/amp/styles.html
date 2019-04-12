@@ -1,0 +1,5 @@
+{{- $style := resources.Get "amp.css" | minify -}}
+
+<style amp-custom>
+    {{ $style.Content | safeCSS }}
+</style>

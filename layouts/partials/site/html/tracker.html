@@ -1,0 +1,23 @@
+{{ if not .Site.Config.Privacy.GoogleAnalytics.Disable }}
+	{{ if .Site.Config.Services.GoogleAnalytics.ID }}
+		<script>
+			{{ if .Site.Config.Privacy.GoogleAnalytics.RespectDoNotTrack }}
+				var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack)
+				window['ga-disable-{{ .Site.Config.Services.GoogleAnalytics.ID }}'] = (dnt === '1' || dnt === 'yes')
+			{{ else }}
+				window['ga-disable-{{ .Site.Config.Services.GoogleAnalytics.ID }}'] = false
+			{{ end }}
+
+			window.dataLayer = window.dataLayer || []
+
+			window.gtag = function () {
+				dataLayer.push(arguments)
+			}
+
+			gtag('js', new Date())
+			gtag('config', '{{ .Site.Config.Services.GoogleAnalytics.ID }}', {
+				'anonymize_ip': {{ .Site.Config.Privacy.GoogleAnalytics.AnonymizeIP }}
+			})
+		</script>
+	{{ end }}
+{{ end }}

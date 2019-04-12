@@ -1,0 +1,18 @@
+{{ if not .Site.Config.Privacy.GoogleAnalytics.Disable }}
+    {{ if .Site.Config.Services.GoogleAnalytics.ID }}
+        <amp-analytics type="gtag" data-credentials="include">
+            <script type="application/json">
+                {
+                    "vars": {
+                        "gtag_id": "{{ .Site.Config.Services.GoogleAnalytics.ID }}",
+                        "config": {
+                            "{{ .Site.Config.Services.GoogleAnalytics.ID }}": {
+                                "groups": "default"
+                            }
+                        }
+                    }
+                }
+            </script>
+        </amp-analytics>
+    {{ end }}
+{{ end }}

@@ -1,0 +1,21 @@
+{{- $script := resources.Get "main.js" | minify | fingerprint "sha512" -}}
+
+{{ if not .Site.Config.Privacy.GoogleAnalytics.Disable }}
+{{ if .Site.Config.Services.GoogleAnalytics.ID }}
+    <script src="//www.googletagmanager.com/gtag/js?id={{ .Site.Config.Services.GoogleAnalytics.ID }}" async></script>
+{{ end }}
+{{ end }}
+
+{{ if not .Site.Config.Privacy.Disqus.Disable }}
+{{ if .Site.Config.Services.Disqus.Shortname }}
+    {{ if .Params.comments }}
+        <script src="//{{ .Site.Config.Services.Disqus.Shortname }}.disqus.com/embed.js" async></script>
+    {{ end }}
+{{ end }}
+{{ end }}
+
+{{ if .Params.mathjax }}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+{{ end }}
+
+<script src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}" crossorigin="anonymous"></script>

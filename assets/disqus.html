@@ -1,0 +1,33 @@
+<div id="disqus_thread"></div>
+
+<script>
+    window.disqus_config = function () {
+        this.page.url = window.location
+        this.page.identifier = window.location.hash
+    }
+
+    window.addEventListener('message', function (event) {
+        if (event.data) {
+            var message;
+
+            try {
+                message = JSON.parse(event.data);
+            } catch (error) {
+            }
+
+            if (!!message && (message.name === 'resize' || message.name === 'rendered')) {
+                window.parent.postMessage({
+                    sentinel: 'amp',
+                    type: 'embed-size',
+                    height: message.data.height
+                }, '*')
+            }
+        }
+    }, false)
+</script>
+
+{{ if not .Site.Config.Privacy.Disqus.Disable }}
+    {{ if .Site.Config.Services.Disqus.Shortname }}
+        <script src="//{{ .Site.Config.Services.Disqus.Shortname }}.disqus.com/embed.js" async></script>
+    {{ end }}
+{{ end }}

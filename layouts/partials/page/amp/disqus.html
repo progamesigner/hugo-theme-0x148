@@ -1,0 +1,16 @@
+{{- $disqus := resources.Get "disqus.html" | minify | fingerprint "sha512" -}}
+
+{{ if not .Site.Config.Privacy.Disqus.Disable }}
+    {{ if .Site.Config.Services.Disqus.Shortname }}
+        {{ if .Params.comments }}
+            <amp-iframe
+                width=600
+                height=140
+                layout="responsive"
+                sandbox="allow-scripts allow-same-origin allow-modals allow-popups allow-forms"
+                resizable
+                src="{{ $disqus.Permalink }}#{{ .Params.disqus_identifier }}">
+            </amp-iframe>
+        {{ end }}
+    {{ end }}
+{{end}}

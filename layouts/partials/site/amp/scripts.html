@@ -1,0 +1,13 @@
+<script async src="https://cdn.ampproject.org/v0.js"></script>
+
+{{ if not .Site.Config.Privacy.GoogleAnalytics.Disable }}
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+{{ end }}
+
+{{ if not .Site.Config.Privacy.Disqus.Disable }}
+    {{ if .Site.Config.Services.Disqus.Shortname }}
+        {{ if .Params.comments }}
+            <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+        {{ end }}
+    {{ end }}
+{{ end }}

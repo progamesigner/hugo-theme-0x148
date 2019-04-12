@@ -1,3 +1,0 @@
-{{- $script := resources.Get "main.js" | minify | fingerprint "sha512" -}}
-
-<script type="text/javascript" src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}" crossorigin="anonymous"></script>
