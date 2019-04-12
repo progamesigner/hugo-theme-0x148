@@ -11,5 +11,5 @@
 {{ end }}
 
 {{ with .Site.Params.Meta.ThemeColor }}
-    <meta name="theme-color" content="{{ . | safeHTML }}">
+    <meta name="theme-color" content="{{ . | safeHTMLAttr }}">
 {{ end }}
