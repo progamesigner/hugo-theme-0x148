@@ -1,7 +1,14 @@
+$icon-brand-dimension: 1.5rem !default;
 $icon-search-dimension: 1rem !default;
 $icon-top-dimension: 2rem !default;
 
 @import '~bulma/sass/elements/icon';
+
+.icon {
+    svg {
+        transition: fill $speed $easing;
+    }
+}
 
 .icon-search {
     @include icon('images/search.svg', $icon-search-dimension);
@@ -9,4 +16,54 @@ $icon-top-dimension: 2rem !default;
 
 .icon-top {
     @include icon('images/top.svg', $icon-top-dimension);
+}
+
+.icon-github {
+    @include svg-icon($icon-brand-dimension);
+
+    &:hover {
+        svg {
+            fill: #4078c0;
+        }
+    }
+}
+
+.icon-twitter {
+    @include svg-icon($icon-brand-dimension);
+
+    &:hover {
+        svg {
+            fill: #1da1f2;
+        }
+    }
+}
+
+.icon-facebook {
+    @include svg-icon($icon-brand-dimension);
+
+    &:hover {
+        svg {
+            fill: #3b5998;
+        }
+    }
+}
+
+.icon-linkedin {
+    @include svg-icon($icon-brand-dimension);
+
+    &:hover {
+        svg {
+            fill: #0077b5;
+        }
+    }
+}
+
+.icon-rss {
+    @include svg-icon($icon-brand-dimension);
+
+    &:hover {
+        svg {
+            fill: #f26522;
+        }
+    }
 }
