@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html amp lang="{{ .Site.LanguageCode | default "en-us" }}">
+<head>
+    <meta charset="utf-8">
+    <title>{{ block "title" . }}{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} &middot; {{ .Site.Title }}{{ end }}{{ end }}</title>
+
+    {{ partial "site/meta" . }}
+    {{ partial "site/opengraph" . }}
+    {{ partial "site/links" . }}
+    {{ partial "site/amp/preloaders" . }}
+    {{ partial "site/amp/scripts" . }}
+    {{ partial "site/amp/styles" . }}
+    {{ partial "site/fonts" . }}
+    {{ partial "site/amp/boilerplate" . }}
+    {{ partial "site/schema" . }}
+</head>
+
+<body>
+    {{ partial "site/amp/tracker" . }}
+
+    <main class="main">
+        <div class="container">
+            {{ block "main" . }}{{ end }}
+        </div>
+    </main>
+</body>
+</html>

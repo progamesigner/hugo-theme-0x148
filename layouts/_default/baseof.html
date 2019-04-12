@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode | default "en-us" }}">
+<head>
+    <meta charset="utf-8">
+    <title>{{ block "title" . }}{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} &middot; {{ .Site.Title }}{{ end }}{{ end }}</title>
+
+    {{ partial "site/meta" . }}
+    {{ partial "site/opengraph" . }}
+    {{ partial "site/links" . }}
+    {{ partial "site/fonts" . }}
+    {{ partial "site/html/styles" . }}
+    {{ partial "site/schema" . }}
+    {{ partial "site/html/tracker" . }}
+    {{ partial "site/html/disqus" . }}
+
+    {{ block "styles" . }}{{ end }}
+</head>
+
+<body class="has-navbar-fixed-top">
+    {{ block "header" . }}{{ partial "site/html/header" . }}{{ end }}
+
+    <main class="main" role="main">
+        <div class="container">
+            {{ block "main" . }}{{ end }}
+        </div>
+    </main>
+
+    <div class="back-to-top"></div>
+
+    {{ block "footer" . }}{{ partial "site/html/footer" . }}{{ end }}
+
+    {{ partial "site/html/scripts" . }}
+
+    {{ block "scripts" . }}{{ end }}
+</body>
+</html>
