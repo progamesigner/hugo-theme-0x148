@@ -27,7 +27,6 @@
 @import 'styles/elements/button';
 @import 'styles/elements/container';
 @import 'styles/elements/content';
-@import 'styles/elements/footer';
 @import 'styles/elements/form';
 @import 'styles/elements/icon';
 @import 'styles/elements/image';
@@ -37,12 +36,22 @@
 @import 'styles/elements/tag';
 @import 'styles/elements/title';
 @import 'styles/elements/top';
+@import 'styles/elements/table';
 
 // =============================================================================
 // * Components
 // =============================================================================
 @import 'styles/components/navbar';
 @import 'styles/components/pagination';
+
+// =============================================================================
+// * Layouts
+// =============================================================================
+@import 'styles/footer/footer';
+
+// =============================================================================
+// * Content
+// =============================================================================
 
 @import 'styles/header/header';
 @import 'styles/header/icon';
