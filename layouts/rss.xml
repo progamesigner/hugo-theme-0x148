@@ -31,7 +31,7 @@
         {{ end }}
 
         {{ with .OutputFormats.Get "RSS" }}
-            {{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}
+            {{ printf "<atom:link rel=%q type=%q href=%q />" "self" .MediaType .Permalink | safeHTML }}
         {{ end }}
 
         {{ range $pages }}

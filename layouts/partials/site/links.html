@@ -11,9 +11,9 @@
 {{ end }}
 
 {{ range .OutputFormats }}
-    <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}">
+    {{ printf "<link rel=%q type=%q href=%q>" .Rel .MediaType .Permalink | safeHTML }}
 {{ end }}
 
 {{ range .Translations }}
-    <link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink | safeURL }}">
+    <link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink }}">
 {{ end}}
