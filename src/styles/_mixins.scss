@@ -16,6 +16,42 @@ $post-hover-shadow: 0 2px 35px rgba($black, 0.1), 0 0 0 1px rgba($black, 0.1) !d
     }
 }
 
+@mixin hoverable-icon($image, $hover, $dimension, $color: $black) {
+    position: relative;
+
+    &::before,
+    &::after {
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: $dimension $dimension;
+        content: '';
+        display: block;
+        height: $dimension;
+        position: absolute;
+        width: $dimension;
+    }
+
+    &::before {
+        background-image: svg-load($image, fill=$color);
+        opacity: 1;
+    }
+
+    &::after {
+        background-image: svg-load($image, fill=$hover);
+        opacity: 0;
+    }
+
+    &:hover {
+        &::before {
+            opacity: 0;
+        }
+
+        &::after {
+            opacity: 1;
+        }
+    }
+}
+
 @mixin svg-icon($dimension, $color: $black) {
     svg {
         fill: $color;
