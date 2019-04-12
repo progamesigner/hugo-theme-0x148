@@ -16,7 +16,7 @@
     {{ block "styles" . }}{{ end }}
 </head>
 
-<body class="has-navbar-fixed-top">
+<body>
     {{ block "header" . }}{{ partial "site/html/header" . }}{{ end }}
 
     <main class="main" role="main">
@@ -25,7 +25,9 @@
         </div>
     </main>
 
-    <div class="back-to-top"></div>
+    <div class="back-to-top">
+        <span class="icon icon-top"></span>
+    </div>
 
     {{ block "footer" . }}{{ partial "site/html/footer" . }}{{ end }}
 
