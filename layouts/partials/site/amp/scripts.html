@@ -1,13 +1,25 @@
-<script async src="https://cdn.ampproject.org/v0.js"></script>
+{{- $modules := index .Site.Data "amp-modules" -}}
+
+<script async src="{{ index $modules "amp-core" }}"></script>
+
+{{ range .Site.Params.AMP.Modules }}
+    <script async custom-element="{{ . }}" src="{{ index $modules . }}"></script>
+{{ end }}
+
+{{ range .Params.AMP.Modules }}
+    {{ if not in $.Site.Params.AMP.Modules . }}
+        <script async custom-element="{{ . }}" src="{{ index $modules . }}"></script>
+    {{ end }}
+{{ end }}
 
 {{ if not .Site.Config.Privacy.GoogleAnalytics.Disable }}
-    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <script async custom-element="amp-analytics" src="{{ index $modules "amp-analytics" }}"></script>
 {{ end }}
 
 {{ if not .Site.Config.Privacy.Disqus.Disable }}
     {{ if .Site.Config.Services.Disqus.Shortname }}
         {{ if .Params.comments }}
-            <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+            <script async custom-element="amp-iframe" src="{{ index $modules "amp-iframe" }}"></script>
         {{ end }}
     {{ end }}
 {{ end }}
