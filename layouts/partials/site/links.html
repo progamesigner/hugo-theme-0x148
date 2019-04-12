@@ -10,7 +10,7 @@
     <link rel="icon" sizes="{{ $size }}x{{ $size }}" href="{{ $icon | absURL }}">
 {{ end }}
 
-{{ range .AlternativeOutputFormats }}
+{{ range .OutputFormats }}
     <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}">
 {{ end }}
 
