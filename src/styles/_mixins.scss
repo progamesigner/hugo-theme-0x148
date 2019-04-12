@@ -1,6 +1,21 @@
 $post-shadow: 0 2px 3px rgba($black, 0.1), 0 0 0 1px rgba($black, 0.1) !default;
 $post-hover-shadow: 0 2px 35px rgba($black, 0.1), 0 0 0 1px rgba($black, 0.1) !default;
 
+@import '~bulma/sass/utilities/mixins';
+
+@mixin icon($image, $dimension) {
+    &::before {
+        background-image: svg-load($image, fill=$black);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: $dimension $dimension;
+        content: '';
+        display: block;
+        width: $dimension;
+        height: $dimension;
+    }
+}
+
 @mixin post-shadow {
     box-shadow: $post-shadow;
 }

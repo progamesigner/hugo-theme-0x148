@@ -1,0 +1,12 @@
+$icon-search-dimension: 1rem !default;
+$icon-top-dimension: 2rem !default;
+
+@import '~bulma/sass/elements/icon';
+
+.icon-search {
+    @include icon('images/search.svg', $icon-search-dimension);
+}
+
+.icon-top {
+    @include icon('images/top.svg', $icon-top-dimension);
+}

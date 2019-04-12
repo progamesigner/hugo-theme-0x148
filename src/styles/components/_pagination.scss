@@ -1,5 +1,7 @@
 $pagination-background-color: $white !default;
 
+@import '~bulma/sass/components/pagination';
+
 .pagination-ellipsis,
 .pagination-link,
 .pagination-next,
