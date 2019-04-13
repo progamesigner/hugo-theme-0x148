@@ -12,7 +12,7 @@ const bootstrap = () => {
     document.querySelectorAll('.navbar-burger').forEach(burger)
     document.querySelectorAll('.progress').forEach(progress)
     document.querySelectorAll('.back-to-top').forEach(top)
-    document.querySelectorAll(`a:not([href^="${location.protocol}//${location.hostname}"]):not([href^="#"]):not([href^="/"]):not(:disabled):not(.disabled):not([disabled])`).forEach(open)
+    document.querySelectorAll(`a[rel~="external"], a[href^="http"]`).forEach(open)
 }
 
 if (document.readyState === 'loading') {
