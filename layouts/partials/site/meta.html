@@ -13,3 +13,7 @@
 {{ with .Site.Params.Meta.ThemeColor }}
     <meta name="theme-color" content="{{ . | safeHTMLAttr }}">
 {{ end }}
+
+{{ with .GitInfo }}
+    <meta name="git-version" content="{{ .AbbreviatedHash | safeHTMLAttr }}">
+{{ end }}
