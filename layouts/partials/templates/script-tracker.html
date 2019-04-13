@@ -1,0 +1,5 @@
+{{ if not .Site.Config.Privacy.GoogleAnalytics.Disable }}
+    {{ if .Site.Config.Services.GoogleAnalytics.ID }}
+        <script src="//www.googletagmanager.com/gtag/js?id={{ .Site.Config.Services.GoogleAnalytics.ID }}" async></script>
+    {{ end }}
+{{ end }}

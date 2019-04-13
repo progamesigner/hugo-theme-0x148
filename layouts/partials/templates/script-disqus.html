@@ -1,0 +1,7 @@
+{{ if not .Site.Config.Privacy.Disqus.Disable }}
+    {{ if .Site.Config.Services.Disqus.Shortname }}
+        {{ if and .Params.Comments .Site.Params.Comments }}
+            <script src="//{{ .Site.Config.Services.Disqus.Shortname }}.disqus.com/embed.js" async></script>
+        {{ end }}
+    {{ end }}
+{{ end }}

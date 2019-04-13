@@ -11,15 +11,3 @@
         <script async custom-element="{{ . }}" src="{{ index $modules . }}"></script>
     {{ end }}
 {{ end }}
-
-{{ if not .Site.Config.Privacy.GoogleAnalytics.Disable }}
-    <script async custom-element="amp-analytics" src="{{ index $modules "amp-analytics" }}"></script>
-{{ end }}
-
-{{ if not .Site.Config.Privacy.Disqus.Disable }}
-    {{ if .Site.Config.Services.Disqus.Shortname }}
-        {{ if .Params.comments }}
-            <script async custom-element="amp-iframe" src="{{ index $modules "amp-iframe" }}"></script>
-        {{ end }}
-    {{ end }}
-{{ end }}

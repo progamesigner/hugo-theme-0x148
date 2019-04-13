@@ -1,0 +1,8 @@
+[params]
+    comments = true
+
+[params.amp]
+    modules = ["amp-analytics", "amp-iframe"]
+
+[params.options]
+    navbarMenuName = "main"

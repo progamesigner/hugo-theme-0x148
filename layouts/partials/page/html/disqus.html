@@ -1,6 +1,6 @@
 {{ if not .Site.Config.Privacy.Disqus.Disable }}
     {{ if .Site.Config.Services.Disqus.Shortname }}
-        {{ if .Params.comments }}
+        {{ if and .Params.Comments .Site.Params.Comments }}
             <div id="disqus_thread">
                 <noscript><p class="has-text-centered">Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus.</a></p></noscript>
                 <div class="dsq-brlink has-text-centered">
