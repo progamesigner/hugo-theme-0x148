@@ -18,10 +18,14 @@
 <body>
     {{ partial "site/amp/tracker" . }}
 
+    {{ partial "site/amp/header" . }}
+
     <main class="main">
         <div class="container">
             {{ block "main" . }}{{ end }}
         </div>
     </main>
+
+    {{ partial "site/amp/footer" . }}
 </body>
 </html>
