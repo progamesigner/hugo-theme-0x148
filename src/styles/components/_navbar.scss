@@ -1,1 +1,19 @@
 @import '~bulma/sass/components/navbar';
+
+.navbar-brand {
+    .navbar-item {
+        font-family: $family-brand;
+    }
+}
+
+.navbar-item {
+    &.has-items {
+        align-items: center;
+        display: flex;
+        justify-content: left;
+    }
+
+    &.is-current {
+        color: lighten($text, 15%);
+    }
+}

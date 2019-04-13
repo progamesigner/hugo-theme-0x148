@@ -21,22 +21,15 @@ $header-navbar-shadow: 0 2px 3px rgba($black, 0.1), 0 0 0 1px rgba($black, 0.1) 
             padding-top: 0;
         }
 
-        .navbar-item {
-            &.is-social-media {
-                align-items: center;
-                display: flex;
-                justify-content: left;
-            }
-
-            &.is-current {
-                color: lighten($text, 15%);
-            }
+        .navbar-dropdown {
+            background-color: $grey-lighter;
+            transition: background-color $speed $easing;
         }
-    }
 
-    .navbar-brand {
-        .navbar-item {
-            font-family: $family-brand;
+        &.is-collapsed {
+            .navbar-dropdown {
+                background-color: $white;
+            }
         }
     }
 }
