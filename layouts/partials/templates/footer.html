@@ -1,0 +1,5 @@
+<p class="has-text-centered">
+    {{ with .Site.Author }}
+        &#169; {{ now.Format "2006" }} <a href="{{ .url }}">{{ .name }}</a>. All rights reserved.
+    {{ end }}
+</p>
