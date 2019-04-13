@@ -2,6 +2,10 @@
     <link rel="manifest" href="{{ . | absURL }}">
 {{ end }}
 
+{{ with .Site.Params.Meta.License }}
+    <link rel="license" href="{{ . | safeURL }}">
+{{ end }}
+
 {{ range $size, $icon := .Site.Params.Meta.AppleFavicons }}
     <link rel="apple-touch-icon" sizes="{{ $size }}x{{ $size }}" href="{{ $icon | absURL }}">
 {{ end }}
