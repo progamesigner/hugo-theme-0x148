@@ -1,0 +1,6 @@
+{{ partial "site/schemas/website" . }}
+{{ partial "site/schemas/organization" . }}
+
+{{ if .IsPage }}
+    {{ partial "site/schemas/article" . }}
+{{ end }}

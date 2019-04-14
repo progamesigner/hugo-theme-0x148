@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <title>{{ block "title" . }}{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} &middot; {{ .Site.Title }}{{ end }}{{ end }}</title>
 
-    {{ partial "site/head/meta" . }}
-    {{ partial "site/head/opengraph" . }}
-    {{ partial "site/head/links" . }}
-    {{ partial "site/head/fonts" . }}
+    {{ partial "site/meta" . }}
+    {{ partial "site/opengraph" . }}
+    {{ partial "site/links" . }}
+    {{ partial "site/fonts" . }}
     {{ partial "site/html/styles" . }}
-    {{ partial "site/head/schema" . }}
+    {{ partial "site/schema" . }}
     {{ partial "site/html/modules" . }}
 </head>
 

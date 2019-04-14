@@ -1,0 +1,9 @@
+<script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Website",
+        "name": "{{ .Site.Title }}",
+        "description": "{{ with .Description }}{{ . }}{{ else }}{{ if .IsPage }}{{ .Summary }}{{ else }}{{ with .Site.Params.Description }}{{ . }}{{ end }}{{ end }}{{ end }}",
+        "url": "{{ .Site.BaseURL }}"
+    }
+</script>
