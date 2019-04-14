@@ -1,10 +1,8 @@
 [params]
     comments = false
     math = false
-    modules = ["google-analytics", "disqus", "mathjax"]
 
-[params.amp]
-    modules = ["amp-analytics", "amp-iframe"]
-
-[params.options]
     navbarMenuName = "main"
+
+    modules = ["google-analytics", "disqus", "mathjax"]
+    ampComponents = ["amp-analytics", "amp-iframe"]

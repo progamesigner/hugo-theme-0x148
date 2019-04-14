@@ -8,12 +8,12 @@
 
 <script src="{{ index $modules "amp-core" }}" async></script>
 
-{{ range .Site.Params.AMP.Modules }}
+{{ range .Site.Params.AMPComponents }}
     <script custom-element="{{ . }}" src="{{ index $modules . }}" async></script>
 {{ end }}
 
-{{ range .Params.AMP.Modules }}
-    {{ if not in $.Site.Params.AMP.Modules . }}
+{{ range .Params.AMPComponents }}
+    {{ if not in $.Site.Params.AMPComponents . }}
         <script custom-element="{{ . }}" src="{{ index $modules . }}" async></script>
     {{ end }}
 {{ end }}
