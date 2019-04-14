@@ -1,6 +1,7 @@
 [params]
     comments = false
     math = false
+    modules = ["google-analytics", "disqus", "mathjax"]
 
 [params.amp]
     modules = ["amp-analytics", "amp-iframe"]

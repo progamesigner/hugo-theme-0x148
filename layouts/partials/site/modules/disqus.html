@@ -1,6 +1,6 @@
 {{ if not .Site.Config.Privacy.Disqus.Disable }}
     {{ if .Site.Config.Services.Disqus.Shortname }}
-        {{ if and .Params.Comments .Site.Params.Comments }}
+        {{ if or .Params.Comments .Site.Params.Comments | and .IsPage }}
             <script>
                 window.disqus_config = function () {
                     {{ with .Params.disqus_identifier }}

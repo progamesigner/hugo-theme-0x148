@@ -1,1 +1,7 @@
+{{- $context := . -}}
+
+{{ range .Site.Params.Modules }}
+    {{ partial (printf "site/modules/%s" .) $context }}
+{{ end }}
+
 {{ partial "templates/modules" . }}

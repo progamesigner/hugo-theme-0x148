@@ -1,3 +1,3 @@
-{{ if or .Site.Params.Math .Params.Math | and .Site.Params.Options.EnableMathJax }}
+{{ if or .Site.Params.Math .Params.Math }}
     <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_HTMLorMML" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous" async></script>
 {{ end }}
