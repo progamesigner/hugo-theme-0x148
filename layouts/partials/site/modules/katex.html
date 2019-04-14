@@ -1,0 +1,18 @@
+{{ if or .Site.Params.Math .Params.Math | and .Site.Params.Options.EnableKaTeX }}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js" integrity="sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij" crossorigin="anonymous" defer></script>
+
+    {{ if or .Site.Params.Math .Params.Math | and .Site.Params.Options.EnableKaTeXCopyTex }}
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/copy-tex.min.css" integrity="sha256-v5/0E3/sOPYlVBnhQtCIPJxSCQiF10b4Du4SsnPZs+A=" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/copy-tex.min.js" integrity="sha256-KrIjcykCG8RDmGyDJ/bmE1f7aKVOXSM9IkAjcYwCIH0=" crossorigin="anonymous" defer></script>
+    {{ end }}
+
+    {{ if or .Site.Params.Math .Params.Math | and .Site.Params.Options.EnableKaTeXAutoRender }}
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" defer></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                renderMathInElement(document.body)
+            })
+        </script>
+    {{ end }}
+{{ end }}
