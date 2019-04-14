@@ -3,4 +3,5 @@
 <style amp-custom>
     {{ $style.Content | safeCSS }}
     {{ partial "templates/amp-styles" . }}
+    {{ block "styles" . }}{{ end }}
 </style>

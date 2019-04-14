@@ -1,13 +1,21 @@
 {{- $modules := index .Site.Data "amp-modules" -}}
 
-<script async src="{{ index $modules "amp-core" }}"></script>
+<link rel="preload" as="script" href="https://cdn.ampproject.org/v0.js">
+<link rel="preload" as="script" href="https://cdn.ampproject.org/v0/amp-custom-css-0.1.js">
+<link rel="preload" as="script" href="https://cdn.ampproject.org/v0/amp-experiment-0.1.js">
+<link rel="preload" as="script" href="https://cdn.ampproject.org/v0/story-1.0.js">
+<link rel="preconnect dns-prefetch" href="https://fonts.gstatic.com/" crossorigin>
+
+<script src="{{ index $modules "amp-core" }}" async></script>
 
 {{ range .Site.Params.AMP.Modules }}
-    <script async custom-element="{{ . }}" src="{{ index $modules . }}"></script>
+    <script custom-element="{{ . }}" src="{{ index $modules . }}" async></script>
 {{ end }}
 
 {{ range .Params.AMP.Modules }}
     {{ if not in $.Site.Params.AMP.Modules . }}
-        <script async custom-element="{{ . }}" src="{{ index $modules . }}"></script>
+        <script custom-element="{{ . }}" src="{{ index $modules . }}" async></script>
     {{ end }}
 {{ end }}
+
+{{ block "scripts" . }}{{ end }}

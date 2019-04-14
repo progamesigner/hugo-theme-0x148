@@ -1,9 +1,7 @@
 {{- $script := resources.Get "main.js" | minify | fingerprint "sha512" -}}
 
-{{ partial "templates/script-tracker" . }}
-{{ partial "templates/script-disqus" . }}
-{{ partial "templates/script-math" . }}
-
 <script src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}" crossorigin="anonymous"></script>
 
 {{ partial "templates/scripts" . }}
+
+{{ block "scripts" . }}{{ end }}

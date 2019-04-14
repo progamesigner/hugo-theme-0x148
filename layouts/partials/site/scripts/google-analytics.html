@@ -18,6 +18,7 @@
 			gtag('config', '{{ .Site.Config.Services.GoogleAnalytics.ID }}', {
 				'anonymize_ip': {{ .Site.Config.Privacy.GoogleAnalytics.AnonymizeIP }}
 			})
-		</script>
+        </script>
+        <script src="//www.googletagmanager.com/gtag/js?id={{ .Site.Config.Services.GoogleAnalytics.ID }}" async></script>
 	{{ end }}
 {{ end }}
