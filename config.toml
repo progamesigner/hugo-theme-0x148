@@ -1,5 +1,6 @@
 [params]
-    comments = true
+    comments = false
+    math = false
 
 [params.amp]
     modules = ["amp-analytics", "amp-iframe"]
