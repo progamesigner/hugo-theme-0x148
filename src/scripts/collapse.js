@@ -1,6 +1,6 @@
 import { bind } from './scrollspy'
 
-export default (element, threshold = 60) => {
+export default (element, threshold = 0) => {
     bind((x, y) => {
         if (y > threshold) {
             element.classList.add('is-collapsed')

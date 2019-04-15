@@ -2,11 +2,10 @@ $header-progress-height: 2px !default;
 
 .header {
     .progress {
-        appearance: none;
         background-color: transparent;
         border: none;
+        border-radius: 0;
         bottom: -1px;
-        color: $primary;
         height: $header-progress-height;
         left: 0;
         position: absolute;
