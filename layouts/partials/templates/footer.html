@@ -1,8 +1,8 @@
 <p class="has-text-centered">
     {{ with .Site.Author }}
-        &#169; {{ now.Format "2006" }} <a href="{{ .url }}">{{ .name }}</a>. All rights reserved.
+        {{ i18n "footer_copyright_line" (dict "year" (now.Format "2006") "author" .) | safeHTML }}
     {{ end }}
 </p>
 <p class="has-text-centered">
-    Made with <a href="https://bulma.io" title="Made with Bulma">Bulma</a>. Built with <a href="https://gohugo.io" title="Built with Hugo">Hugo</a>. Themed by <a href="https://progamesigner.com">progamesigner</a>.
+    {{ i18n "footer_power_line" | safeHTML }}
 </p>
