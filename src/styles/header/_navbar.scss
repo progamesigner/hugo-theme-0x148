@@ -21,14 +21,16 @@ $header-navbar-shadow: 0 2px 3px rgba($black, 0.1), 0 0 0 1px rgba($black, 0.1) 
             padding-top: 0;
         }
 
-        .navbar-dropdown {
-            background-color: $grey-lighter;
-            transition: background-color $speed $easing;
-        }
+        .navbar-link {
+            &::after {
+                border-color: $text;
+                transition: border-color $speed $easing;
+            }
 
-        &.is-collapsed {
-            .navbar-dropdown {
-                background-color: $white;
+            &:hover {
+                &::after {
+                    border-color: $link;
+                }
             }
         }
     }
