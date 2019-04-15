@@ -1,0 +1,75 @@
+$hero-featured-caption-background-color: rgba($grey-darker, 0.3) !default;
+$hero-featured-caption-padding: $size-7 $size-5 !default;
+$hero-featured-caption-radius: $radius-large 0 0 $radius-large !default;
+$hero-featured-caption-z-index: 10 !default;
+
+@import '~bulma/sass/layout/hero';
+
+.hero {
+    &.has-featured-media {
+        .hero-body {
+            padding: 0;
+        }
+    }
+
+    .hero-media {
+        padding-top: calc(1 / 12 * 100%);
+        position: relative;
+
+        &.is-blank {
+            display: none;
+        }
+
+        &.is-banner {
+            padding-top: calc(1 / 6 * 100%);
+        }
+
+        &.is-cover {
+            padding-top: calc(1 / 3 * 100%);
+        }
+
+        &.is-video {
+            padding-top: calc(9 / 16 * 100%);
+        }
+
+        .image {
+            @include overlay;
+
+            overflow: hidden;
+
+            img {
+                left: 50%;
+                max-width: unset;
+                position: relative;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                transition: transform $speed $easing;
+            }
+
+            figcaption {
+                background-color: $hero-featured-caption-background-color;
+                border-radius: $hero-featured-caption-radius;
+                bottom: 0.5rem;
+                color: findColorInvert($hero-featured-caption-background-color);
+                font-size: $size-small;
+                left: 100%;
+                padding: $hero-featured-caption-padding;
+                position: absolute;
+                transform: translateX(-1.25rem);
+                transition: transform $speed $easing;
+                z-index: $hero-featured-caption-z-index;
+
+                &:hover {
+                    transform: translateX(-100%);
+                }
+            }
+        }
+
+        iframe {
+            @include overlay;
+
+            height: 100%;
+            width: 100%;
+        }
+    }
+}
