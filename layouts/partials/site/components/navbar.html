@@ -5,7 +5,7 @@
                 {{ partial "templates/brand" . }}
             </a>
 
-            <a role="button" class="navbar-burger" href="#" aria-label="menu" aria-expanded="false">
+            <a class="navbar-burger" href="#" role="button" aria-label="menu" aria-expanded="false">
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
@@ -52,6 +52,20 @@
                         </div>
                     {{ end }}
                 </div>
+                {{ with .Site.Home.OutputFormats.Get "JSON" }}
+                    <div class="navbar-item">
+                        <div class="field has-addons">
+                            <p class="control">
+                                <input class="input" type="text" placeholder="Search">
+                            </p>
+                            <p class="control">
+                                <button class="button">
+                                    <span class="icon icon-search"></span>
+                                </button>
+                            </p>
+                        </div>
+                    </div>
+                {{ end }}
             </div>
         </div>
     </div>
