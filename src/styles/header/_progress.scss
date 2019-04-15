@@ -1,11 +1,12 @@
-$header-progress-height: 2px !default;
+$header-progress-background-color: rgba($grey-lighter, 0.7) !default;
+$header-progress-bottom: -1px !default;
+$header-progress-height: 4px !default;
 
 .header {
     .progress {
-        background-color: transparent;
+        background-color: $header-progress-background-color;
         border: none;
-        border-radius: 0;
-        bottom: -1px;
+        bottom: $header-progress-bottom;
         height: $header-progress-height;
         left: 0;
         position: absolute;

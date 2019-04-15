@@ -3,6 +3,7 @@ $header-hero-background-color: $body-background-color !default;
 $header-hero-blank-media-height: calc(#{($navbar-height + 0.75rem)* 2} + 4px);
 $header-hero-featured-caption-hover-background-color: rgba($grey-darker, 0.5) !default;
 $header-hero-featured-caption-radius: $radius-large $radius-large 0 0 !default;
+$header-hero-featured-caption-right: 1.75rem !default;
 $header-hero-height: 320px !default;
 $header-maximum-hero-width: 1920px !default;
 
@@ -55,10 +56,10 @@ $header-maximum-hero-width: 1920px !default;
 
             figcaption {
                 border-radius: $header-hero-featured-caption-radius;
-                right: 1.75rem;
-                top: 100%;
-                left: unset;
                 bottom: unset;
+                left: unset;
+                right: $header-hero-featured-caption-right;
+                top: 100%;
                 transform: translateY(-100%);
                 transition: backgorund-color $speed $easing, color $speed $easing;
 

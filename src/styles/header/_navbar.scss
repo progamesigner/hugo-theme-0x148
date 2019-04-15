@@ -1,10 +1,12 @@
+$header-navbar-backdrop-filter: blur(0.25rem) !default;
+$header-navbar-background-color: rgba($grey-lighter, 0.75) !default;
 $header-navbar-padding: 0.75rem !default;
 $header-navbar-shadow: 0 2px 3px rgba($black, 0.1), 0 0 0 1px rgba($black, 0.1) !default;
 
 .header {
     .navbar {
-        backdrop-filter: blur(0.25rem);
-        background-color: rgba($grey-lighter, 0.75);
+        backdrop-filter: $header-navbar-backdrop-filter;
+        background-color: $header-navbar-background-color;
         box-shadow: $header-navbar-shadow;
         padding-bottom: $header-navbar-padding;
         padding-top: $header-navbar-padding;
