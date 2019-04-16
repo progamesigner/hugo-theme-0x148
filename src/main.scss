@@ -5,18 +5,14 @@
 // =============================================================================
 @import '~bulma/sass/utilities/initial-variables';
 @import '~bulma/sass/utilities/functions';
-
 @import 'styles/functions';
 @import 'styles/variables';
 @import 'styles/mixins';
-
 @import '~bulma/sass/utilities/derived-variables';
 @import '~bulma/sass/utilities/animations';
 @import '~bulma/sass/utilities/controls';
-
 @import '~bulma/sass/base/minireset';
 @import '~bulma/sass/base/generic';
-
 @import '~bulma/sass/grid/columns';
 @import '~bulma/sass/grid/tiles';
 
@@ -39,6 +35,7 @@
 @import 'styles/elements/tag';
 @import 'styles/elements/title';
 @import 'styles/elements/top';
+@import 'styles/elements/typography';
 
 // =============================================================================
 // * Components
