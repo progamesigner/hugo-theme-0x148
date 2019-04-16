@@ -8,3 +8,15 @@ $pagination-background-color: $white !default;
 .pagination-previous {
     background-color: $pagination-background-color;
 }
+
+.pagination-previous,
+.pagination-next,
+.pagination-link {
+    &[data-disabled] {
+        background-color: $pagination-disabled-background-color;
+        border-color: $pagination-disabled-border-color;
+        box-shadow: none;
+        color: $pagination-disabled-color;
+        opacity: 0.5;
+    }
+}

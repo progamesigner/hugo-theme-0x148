@@ -1,11 +1,15 @@
 {{ if gt $.Paginator.TotalPages 1 }}
-    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+    <nav class="pagination is-right" role="navigation" aria-label="pagination">
         {{ if $.Paginator.HasPrev }}
-            <a class="pagination-previous" href="{{ .Paginator.Prev.URL }}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+            <a class="pagination-previous" href="{{ .Paginator.Prev.URL }}" aria-label="Previous">Previous</a>
+        {{ else }}
+            <a class="pagination-previous" aria-label="Previous" data-disabled>Previous</a>
         {{ end }}
 
         {{ if $.Paginator.HasNext }}
-            <a class="pagination-next" href="{{ .Paginator.Next.URL }}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+            <a class="pagination-next" href="{{ .Paginator.Next.URL }}" aria-label="Next">Next</a>
+        {{ else }}
+            <a class="pagination-next" aria-label="Next" data-disabled>Next</a>
         {{ end }}
 
         <ul class="pagination-list">

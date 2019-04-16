@@ -1,0 +1,55 @@
+$navbar-background-color: $white !default;
+$navbar-height: 3.25rem !default;
+
+$navbar-z: 30 !default;
+$navbar-fixed-z: 30 !default;
+
+$navbar-item-color: $grey-dark !default;
+
+html,
+body {
+    &.has-navbar-fixed-top {
+        padding-top: $navbar-height;
+    }
+}
+
+.navbar {
+    background-color: $navbar-background-color;
+    min-height: $navbar-height;
+    position: relative;
+    z-index: $navbar-z;
+
+    &.is-fixed-top {
+        left: 0;
+        position: fixed;
+        right: 0;
+        top: 0;
+        z-index: $navbar-fixed-z;
+    }
+}
+
+.navbar-item {
+    color: $navbar-item-color;
+    display: flex;
+    line-height: 1.5;
+    padding: 0.5rem 0.75rem;
+    position: relative;
+
+    .icon {
+        &:only-child {
+            margin-left: -0.25rem;
+            margin-right: -0.25rem;
+        }
+    }
+}
+
+.navbar-brand {
+    align-items: center;
+    display: flex;
+    flex-shrink: 0;
+    min-height: $navbar-height;
+
+    .navbar-item {
+        font-family: $family-brand;
+    }
+}

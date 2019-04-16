@@ -7,6 +7,7 @@
 <link rel="preconnect dns-prefetch" href="https://fonts.gstatic.com/" crossorigin>
 
 <script src="{{ index $modules "amp-core" }}" async></script>
+<script custom-element="amp-sidebar" src="{{ index $modules "amp-sidebar" }}" async></script>
 
 {{ range .Site.Params.AMPComponents }}
     <script custom-element="{{ . }}" src="{{ index $modules . }}" async></script>

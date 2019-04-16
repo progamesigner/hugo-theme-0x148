@@ -14,19 +14,19 @@
     {{ partial "site/head/schema" . }}
 </head>
 
-<body>
+<body class="has-navbar-fixed-top">
     {{ partial "site/amp/prologue" . }}
 
     {{ block "header" . }}{{ partial "site/amp/header" . }}{{ end }}
 
-    <main class="main">
+    <main class="main" role="main">
         <div class="container">
             {{ block "main" . }}{{ end }}
         </div>
     </main>
 
     {{ block "footer" . }}{{ partial "site/amp/footer" . }}{{ end }}
-    ]
+
     {{ partial "site/amp/epilogue" . }}
 </body>
 </html>

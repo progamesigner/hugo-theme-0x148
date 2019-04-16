@@ -1,0 +1,13 @@
+$amp-burger-color: $grey-dark !default;
+$amp-burger-height: 3.25rem !default;
+
+.amp-burger {
+    @include hamburger($amp-burger-height);
+
+    color: $amp-burger-color;
+    margin-left: auto;
+
+    &:hover {
+        color: $link-hover;
+    }
+}
