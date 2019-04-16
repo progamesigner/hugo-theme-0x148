@@ -1,14 +1,8 @@
 $pagination-background-color: $white !default;
 
-$pagination-item-title-line-height: 1.125 !default;
-$pagination-item-title-negative-margin: -1.25rem !default;
-$pagination-item-title-size: $size-4 !default;
-$pagination-item-title-weight: $weight-semibold !default;
+$pagination-item-title-color: $grey-darker !default;
 
-$pagination-item-subtitle-line-height: 1.25 !default;
-$pagination-item-subtitle-size: $size-5 !default;
-$pagination-item-subtitle-weight: $weight-normal !default;
-$pagination-item-subtitle-opacity: 0.5 !default;
+$pagination-item-subtitle-color: $grey-dark !default;
 
 @import '~bulma/sass/components/pagination';
 
@@ -44,23 +38,28 @@ $pagination-item-subtitle-opacity: 0.5 !default;
     &.pagination-next {
         text-align: right;
     }
-}
 
-.pagination-item-title {
-    font-size: $pagination-item-title-size;
-    font-weight: $pagination-item-title-weight;
-    line-height: $pagination-item-title-line-height;
-}
-
-.pagination-item-subtitle {
-    font-size: $pagination-item-subtitle-size;
-    font-weight: $pagination-item-subtitle-weight;
-    line-height: $pagination-item-subtitle-line-height;
-    opacity: $pagination-item-subtitle-opacity;
-
-    &:not(.is-spaced) {
-        & + .title {
-            margin-top: $pagination-item-title-negative-margin;
+    &:hover {
+        .title,
+        .subtitle {
+            color: $pagination-hover-color;
         }
+    }
+
+    &[disabled],
+    &[data-disabled] {
+        .title,
+        .subtitle {
+            color: $pagination-disabled-color;
+            opacity: 0.5;
+        }
+    }
+
+    .title {
+        color: $pagination-item-title-color;
+    }
+
+    .subtitle {
+        color: $pagination-item-subtitle-color;
     }
 }
