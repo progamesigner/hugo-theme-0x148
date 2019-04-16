@@ -1,8 +1,14 @@
-[navbar_social_rss]
-    other = "RSS Feed"
-
 [footer_copyright_line]
-    other = "&#169; {{ .year }} <span class=\"has-text-danger\">&hearts;</span> <a href=\"{{ .author.url }}\">{{ .author.name }}</a>"
+    other = "&#169; {{ .year }} <span class=\"has-text-danger\">&hearts;</span> <a href=\"{{ .author.url }}\">{{ .author.name }}</a>."
 
 [footer_power_line]
     other = "<a href=\"https://bulma.io\" title=\"Made with Bulma\">Bulma</a> &middot; <a href=\"https://gohugo.io\" title=\"Built with Hugo\">Hugo</a> &middot; <a href=\"https://0x148.com\" title=\"Themed by 0x148\">0x148</a>"
+
+[navbar_social_rss]
+    other = "RSS Feed"
+
+[sidebar_language_label]
+    other = "Language"
+
+[sidebar_navigation_label]
+    other = "Navigation"
