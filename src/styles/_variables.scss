@@ -1,7 +1,7 @@
 // =============================================================================
 // * Bulma Initial Variables
 // =============================================================================
-$family-sans-serif: 'Noto Sans', 'Noto Sans TC', sans-serif;
+$family-sans-serif: 'Noto Sans', 'Noto Sans TC', 'Noto Sans SC', 'Noto Sans JP', 'Noto Sans KR', sans-serif;
 $family-monospace: 'Source Code Pro', monospace;
 
 $easing: ease-in-out;
@@ -14,10 +14,10 @@ $primary: #114488;
 $background: $white-ter;
 $link: $blue;
 $link-hover: $primary;
-$body-background-color: $white-ter !default;
+$body-background-color: $white-ter;
 
 // =============================================================================
 // * Defined Variables
 // =============================================================================
-$family-brand: 'Audiowide', cursive;
-$family-serif: 'Noto Serif', 'Noto Serif TC', serif;
+$family-brand: 'Audiowide', cursive !default;
+$family-serif: 'Noto Serif', 'Noto Serif TC', 'Noto Serif SC', 'Noto Serif JP', 'Noto Serif KR', serif !default;

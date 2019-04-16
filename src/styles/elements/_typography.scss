@@ -1,0 +1,61 @@
+$family-cjk-ja-sans-serif: 'Noto Sans', 'Noto Sans JP', 'Hiragino Sans', 'Hiragino Kaku Gothic Pro', 'Yu Gothic', YuGothic, Meiryo !default;
+$family-cjk-ko-sans-serif: 'Noto Sans', 'Noto Sans KR', 'Malgun Gothic' !default;
+$family-cjk-sc-sans-serif: 'Noto Sans', 'Noto Sans SC', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei' !default;
+$family-cjk-tc-sans-serif: 'Noto Sans', 'Noto Sans TC', 'PingFang TC', 'Hiragino Sans CNS', 'Microsoft JhengHei' !default;
+$family-cjk-zh-sans-serif: 'Noto Sans', 'Noto Sans SC', 'Noto Sans TC', 'PingFang SC', 'PingFang TC', 'Hiragino Sans GB', 'Hiragino Sans CNS', 'Microsoft YaHei', 'Microsoft JhengHei' !default;
+
+$family-cjk-ja-serif: 'Noto Serif', 'Noto Serif JP', $family-serif !default;
+$family-cjk-ko-serif: 'Noto Serif', 'Noto Serif KR', $family-serif !default;
+$family-cjk-sc-serif: 'Noto Serif', 'Noto Serif SC', $family-serif !default;
+$family-cjk-tc-serif: 'Noto Serif', 'Noto Serif TC', $family-serif !default;
+
+$typography-underline-width: 0.0625rem !default;
+$typography-cjk-margin-left: 0.125rem !default;
+
+body,
+button,
+input,
+select,
+textarea {
+    &:lang(ja) {
+        font-family: $family-cjk-ja-sans-serif, $family-sans-serif;
+    }
+
+    &:lang(ko) {
+        font-family: $family-cjk-ko-sans-serif, $family-sans-serif;
+    }
+
+    &:lang(zh) {
+        font-family: $family-cjk-zh-sans-serif, $family-sans-serif;
+    }
+
+    &:lang(zh-Hans) {
+        font-family: $family-cjk-sc-sans-serif, $family-sans-serif;
+    }
+
+    &:lang(zh-Hant) {
+        font-family: $family-cjk-tc-sans-serif, $family-sans-serif;
+    }
+}
+
+:lang(zh),
+:lang(ja) {
+    del,
+    s {
+        & + del,
+        & + s {
+            margin-left: 0.125rem;
+        }
+    }
+
+    ins,
+    u {
+        border-bottom: $typography-underline-width solid;
+        text-decoration: none;
+
+        & + ins,
+        & + u {
+            margin-left: $typography-cjk-margin-left;
+        }
+    }
+}
