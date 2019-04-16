@@ -19,6 +19,7 @@ const languageNameMappings = name => ({
 
 export default block => {
     const code = block.querySelector('code[data-lang]')
+
     if (code !== null) {
         block.setAttribute('data-lang', languageNameMappings(code.getAttribute('data-lang')))
     }

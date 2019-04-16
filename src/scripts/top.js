@@ -7,7 +7,7 @@ const easeInOutQuad = (t, b, c, d) => {
     return -c / 2 * (t * (t - 2) - 1) + b
 }
 
-const scroll = () => {
+const scroll = event => {
     const duration = 500
     const start = performance.now()
 
@@ -27,11 +27,11 @@ const scroll = () => {
         }
     })
 
-    return false
+    event.preventDefault()
 }
 
 export default element => {
-    bind((x, y) => {
+    bind((_, y) => {
         if (y > window.innerHeight / 4) {
             element.classList.add('is-active')
         } else {
