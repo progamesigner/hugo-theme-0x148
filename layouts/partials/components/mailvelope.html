@@ -1,0 +1,7 @@
+{{- $url := "https://keys.mailvelope.com/api/v1/key" -}}
+{{- $value := .KeyId | default .FingerPrint | default .Email -}}
+{{- $field := cond (not .KeyId) (cond (not .FingerPrint) "email" "fingerprint") "keyId" -}}
+
+{{- $data := printf "%s?%s=%s" $url $field $value | getJSON -}}
+
+{{ $data.publicKeyArmored | htmlUnescape | htmlUnescape | safeHTML }}

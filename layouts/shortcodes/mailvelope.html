@@ -1,0 +1,13 @@
+{{- $prefix := "https://keys.mailvelope.com/api/v1/key" -}}
+
+{{ if .Get "id" }}
+    {{- .Get "id" | dict "KeyId" | partial "components/mailvelope" -}}
+{{ else if .Get "fingerprint" }}
+    {{- .Get "fingerprint" | dict "FingerPrint" | partial "components/mailvelope" -}}
+{{ else if .Get "email" }}
+    {{- .Get "email" | dict "Email" | partial "components/mailvelope" -}}
+{{ else if .Site.Params.MailvelopeKeyId }}
+    {{- dict "KeyId" .Site.Params.MailvelopeKeyId | partial "components/mailvelope" -}}
+{{ else }}
+    {{ errorf "mailvelope requires either one of 'id', 'fingerprint', or 'email' or setting 'MailvelopeKeyId' in configuration" }}
+{{ end }}
