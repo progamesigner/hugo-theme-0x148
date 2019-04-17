@@ -1,0 +1,13 @@
+{{ if .Get 0 }}
+    <article class="message is-{{ .Get 0 }}">
+        <div class="message-body">
+            {{ .Inner }}
+        </div>
+    </article>
+{{ else }}
+    <article class="message">
+        <div class="message-body">
+            {{ .Inner }}
+        </div>
+    </article>
+{{ end }}
