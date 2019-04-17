@@ -31,6 +31,7 @@
 // =============================================================================
 @import 'styles/components/message';
 @import 'styles/components/pagination';
+@import 'styles/components/hero';
 
 @import 'styles/amp/navbar';
 @import 'styles/amp/sidebar';
@@ -38,6 +39,7 @@
 // =============================================================================
 // * Site
 // =============================================================================
+@import 'styles/site/header/header';
 @import 'styles/site/footer/footer';
 
 @import 'styles/amp/header';
