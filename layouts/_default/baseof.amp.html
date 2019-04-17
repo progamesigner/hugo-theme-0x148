@@ -5,12 +5,12 @@
     <title>{{ block "title" . }}{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} &middot; {{ .Site.Title }}{{ end }}{{ end }}</title>
 
     {{ partial "site/head/meta" . }}
-    {{ partial "site/head/opengraph" . }}
-    {{ partial "site/head/links" . }}
     {{ partial "site/amp/scripts" . }}
     {{ partial "site/amp/styles" . }}
     {{ partial "site/head/fonts" . }}
     {{ partial "site/amp/boilerplate" . }}
+    {{ partial "site/head/opengraph" . }}
+    {{ partial "site/head/links" . }}
     {{ partial "site/head/schema" . }}
 </head>
 

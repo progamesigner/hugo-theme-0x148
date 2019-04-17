@@ -21,3 +21,5 @@
 {{ range .Translations }}
     <link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink }}">
 {{ end}}
+
+{{ partial "templates/links" . }}
