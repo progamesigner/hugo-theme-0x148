@@ -14,7 +14,7 @@
     <link rel="icon" sizes="{{ $size }}x{{ $size }}" href="{{ $icon | absURL }}">
 {{ end }}
 
-{{ range .OutputFormats }}
+{{ range .AlternativeOutputFormats }}
     {{ printf "<link rel=%q type=%q href=%q>" .Rel .MediaType .Permalink | safeHTML }}
 {{ end }}
 
