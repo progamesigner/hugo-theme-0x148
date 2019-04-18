@@ -1,4 +1,4 @@
-@charset 'utf-8';
+$amp: true;
 
 // =============================================================================
 // * Base
@@ -9,17 +9,17 @@
 @import 'styles/variables';
 @import 'styles/mixins';
 @import '~bulma/sass/utilities/derived-variables';
+@import '~bulma/sass/utilities/animations';
 @import '~bulma/sass/utilities/controls';
 @import '~bulma/sass/base/minireset';
 @import '~bulma/sass/base/generic';
-@import 'styles/amp/helpers';
+@import 'styles/amp/bulma';
 
 // =============================================================================
 // * Elements
 // =============================================================================
 @import 'styles/elements/content';
 @import 'styles/elements/icon';
-@import 'styles/elements/link';
 @import 'styles/elements/section';
 @import 'styles/elements/title';
 @import 'styles/elements/typography';
@@ -32,8 +32,8 @@
 // =============================================================================
 @import 'styles/components/message';
 @import 'styles/components/pagination';
-@import 'styles/components/hero';
 
+@import 'styles/amp/hero';
 @import 'styles/amp/navbar';
 @import 'styles/amp/sidebar';
 
@@ -48,4 +48,5 @@
 // =============================================================================
 // * Helpers
 // =============================================================================
-@import 'styles/amp/helpers';
+@import 'styles/helpers/shape';
+@import 'styles/helpers/text';

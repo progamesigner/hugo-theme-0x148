@@ -6,39 +6,36 @@ $icon-top-dimension: 2rem !default;
 
 .icon {
     svg {
-        transition: fill $speed $easing;
-    }
-
-    &::before,
-    &::after {
-        transition: opacity $speed $easing;
+        transition: fill #{$speed * 10} $easing;
     }
 }
 
 .icon-search {
-    @include icon('images/search.svg', $icon-search-dimension);
+    height: $icon-search-dimension;
+    width: $icon-search-dimension;
 }
 
 .icon-top {
-    @include icon('images/top.svg', $icon-top-dimension);
+    height: $icon-top-dimension;
+    width: $icon-top-dimension;
 }
 
 .icon-github {
-    @include hoverable-icon('images/github.svg', #4078c0, $icon-brand-dimension);
+    @include svg-icon(#4078c0, $icon-brand-dimension);
 }
 
 .icon-twitter {
-    @include hoverable-icon('images/twitter.svg', #1da1f2, $icon-brand-dimension);
+    @include svg-icon(#1da1f2, $icon-brand-dimension);
 }
 
 .icon-facebook {
-    @include hoverable-icon('images/facebook.svg', #3b5998, $icon-brand-dimension);
+    @include svg-icon(#3b5998, $icon-brand-dimension);
 }
 
 .icon-linkedin {
-    @include hoverable-icon('images/linkedin.svg', #0077b5, $icon-brand-dimension);
+    @include svg-icon(#0077b5, $icon-brand-dimension);
 }
 
 .icon-rss {
-    @include hoverable-icon('images/rss.svg', #f26522, $icon-brand-dimension);
+    @include svg-icon(#f26522, $icon-brand-dimension);
 }

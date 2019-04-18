@@ -53,35 +53,37 @@ mark {
     padding: $typography-highlight-padding;
 }
 
-body,
-button,
-input,
-select,
-textarea {
-    &:lang(ja) {
-        font-family: $family-cjk-ja-sans-serif, $family-sans-serif;
-    }
+@if not $amp {
+    body,
+    button,
+    input,
+    select,
+    textarea {
+        &:lang(ja) {
+            font-family: $family-cjk-ja-sans-serif, $family-sans-serif;
+        }
 
-    &:lang(ko) {
-        font-family: $family-cjk-ko-sans-serif, $family-sans-serif;
-    }
+        &:lang(ko) {
+            font-family: $family-cjk-ko-sans-serif, $family-sans-serif;
+        }
 
-    &:lang(zh) {
-        font-family: $family-cjk-zh-sans-serif, $family-sans-serif;
-    }
+        &:lang(zh) {
+            font-family: $family-cjk-zh-sans-serif, $family-sans-serif;
+        }
 
-    &:lang(zh-Hans) {
-        font-family: $family-cjk-sc-sans-serif, $family-sans-serif;
-    }
+        &:lang(zh-Hans) {
+            font-family: $family-cjk-sc-sans-serif, $family-sans-serif;
+        }
 
-    &:lang(zh-Hant) {
-        font-family: $family-cjk-tc-sans-serif, $family-sans-serif;
+        &:lang(zh-Hant) {
+            font-family: $family-cjk-tc-sans-serif, $family-sans-serif;
+        }
     }
 }
 
 :lang(de) {
     & > q {
-        quotes: '„' '“' '‚' '‘';
+        quotes: '\201E' '\201C' '\201A' '\2019';
     }
 }
 
@@ -93,31 +95,31 @@ textarea {
 
 :lang(fr) {
     & > q {
-        quotes: '«' '»';
+        quotes: '\00AB' '\00BB';
     }
 }
 
 :lang(ja) {
     & > q {
-        quotes: '「' '」' '『' '』';
+        quotes: '\300C' '\300D' '\300E' '\300F';
     }
 }
 
 :lang(ko) {
     & > q {
-        quotes: '“' '”' '‘' '’';
+        quotes: '\201C' '\201D' '\2019' '\201A';
     }
 }
 
 :lang(zh-CN) {
     & > q {
-        quotes: '“' '”' '‘' '’';
+        quotes: '\201C' '\201D' '\2019' '\201A';
     }
 }
 
 :lang(zh-TW) {
     & > q {
-        quotes: '「' '」' '『' '』';
+        quotes: '\300C' '\300D' '\300E' '\300F';
     }
 }
 

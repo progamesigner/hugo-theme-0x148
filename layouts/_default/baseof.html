@@ -25,7 +25,9 @@
     </main>
 
     <div class="back-to-top">
-        <span class="icon icon-top"></span>
+        <span class="icon icon-top">
+            {{ partial "svg/chevron-up.svg" . }}
+        </span>
     </div>
 
     {{ block "footer" . }}{{ partial "site/html/footer" . }}{{ end }}

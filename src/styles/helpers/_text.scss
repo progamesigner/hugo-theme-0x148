@@ -1,0 +1,35 @@
+.has-text-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.has-text-clip {
+    overflow: hidden;
+    text-overflow: clip;
+    white-space: nowrap;
+}
+
+.has-text-break {
+    hyphens: auto;
+    word-break: break-word;
+    word-wrap: break-word;
+}
+
+@if $amp {
+    .is-family-serif {
+        font-family: $family-serif;
+    }
+
+    .is-family-brand {
+        font-family: $family-brand;
+    }
+} @else {
+    .is-family-serif {
+        font-family: $family-serif !important;
+    }
+
+    .is-family-brand {
+        font-family: $family-brand !important;
+    }
+}

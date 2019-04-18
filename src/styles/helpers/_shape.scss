@@ -1,0 +1,17 @@
+@if $amp {
+    .is-circle {
+        border-radius: 50%;
+    }
+
+    .is-rounded {
+        border-radius: $radius;
+    }
+} @else {
+    .is-circle {
+        border-radius: 50% !important;
+    }
+
+    .is-rounded {
+        border-radius: $radius !important;
+    }
+}

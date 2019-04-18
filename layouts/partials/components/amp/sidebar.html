@@ -8,21 +8,6 @@
         <span aria-hidden="true"></span>
     </div>
 
-    {{ with .Site.Home.OutputFormats.Get "JSON" }}
-        <div class="sidebar-item">
-            <div class="field has-addons">
-                <p class="control">
-                    <input class="input" type="text" placeholder="Search">
-                </p>
-                <p class="control">
-                    <button class="button">
-                        <span class="icon icon-search"></span>
-                    </button>
-                </p>
-            </div>
-        </div>
-    {{ end }}
-
     <p class="sidebar-label">{{ i18n "sidebar_navigation_label" }}</p>
     <nav class="sidebar-menu">
         {{ range index .Site.Menus $name }}
@@ -94,14 +79,18 @@
             {{ with .Site.Params.Socials }}
                 {{ range sort . "weight" }}
                     <div class="sidebar-item">
-                        <a class="icon icon-{{ .icon }}" href="{{ .url | safeURL }}" title="{{ .name | safeHTMLAttr }}" rel="external noopener"></a>
+                        <a class="icon is-{{ .icon }}" href="{{ .url | safeURL }}" title="{{ .name | safeHTMLAttr }}" rel="external noopener">
+                            {{ partial (printf "svg/%s.svg" .icon) . }}
+                        </a>
                     </div>
                 {{ end }}
             {{ end }}
 
             {{ with .Site.Home.OutputFormats.Get "RSS" }}
                 <div class="sidebar-item">
-                    <a class="icon icon-rss" href="{{ .RelPermalink }}" title="{{ i18n "navbar_social_rss" | default "RSS" }}"></a>
+                    <a class="icon icon-rss" href="{{ .RelPermalink }}" title="{{ i18n "navbar_social_rss" | default "RSS" }}">
+                        {{ partial "svg/rss.svg" . }}
+                    </a>
                 </div>
             {{ end }}
         </section>
