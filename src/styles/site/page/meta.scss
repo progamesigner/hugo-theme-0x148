@@ -1,0 +1,21 @@
+.page-meta {
+    @include block;
+
+    display: flex;
+}
+
+.page-meta-item {
+    display: flex;
+
+    &:last-child {
+        margin-left: auto;
+    }
+
+    &:not(:last-child) {
+        margin-right: 1.5rem;
+    }
+
+    & > .icon {
+        margin-right: 0.5rem;
+    }
+}

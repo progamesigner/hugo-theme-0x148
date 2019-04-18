@@ -1,0 +1,30 @@
+$page-background-color: $white !default;
+$page-padding: 1.5rem !default;
+
+.page {
+    @include block;
+    @include post-shadow;
+
+    background-color: $page-background-color;
+    padding: $page-padding;
+
+    .content {
+        .image {
+            &.is-full {
+                margin: 0 -1.5rem;
+            }
+        }
+    }
+}
+
+.page-head,
+.page-body,
+.page-foot {
+    @include block;
+
+    position: relative;
+}
+
+.page-category {
+    text-transform: uppercase;
+}
