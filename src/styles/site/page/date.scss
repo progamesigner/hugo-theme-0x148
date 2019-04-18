@@ -1,22 +1,27 @@
 $page-date-background-color: $white !default;
 $page-date-border-color: $grey-lighter !default;
 $page-date-border-width: 1px !default;
-$page-date-padding: 1.5rem !default;
-$page-date-digit-padding-vertical: 0.125rem !default;
 $page-date-digit-padding-horizontal: 0.375rem !default;
+$page-date-digit-padding-vertical: 0.125rem !default;
+$page-date-margin-offset: 1.5rem !default;
+$page-date-padding: 1.5rem !default;
+$page-date-size-large: $size-3 !default;
+$page-date-size-small: $size-6 !default;
 
 .page-date {
-    background-color: $page-date-background-color;
-    border-bottom: $page-date-border-width solid $page-date-border-color;
-    border-left: $page-date-border-width solid $page-date-border-color;
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-template-rows: auto auto;
-    padding: $page-date-padding;
-    position: absolute;
-    right: 0;
-    text-align: center;
-    top: 0;
+    time {
+        background-color: $page-date-background-color;
+        border-bottom: $page-date-border-width solid $page-date-border-color;
+        border-left: $page-date-border-width solid $page-date-border-color;
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-template-rows: auto auto;
+        padding: $page-date-padding;
+        position: absolute;
+        right: #{-1 * $page-date-margin-offset};
+        text-align: center;
+        top: #{-1 * $page-date-margin-offset};
+    }
 
     .date,
     .year {
@@ -25,21 +30,21 @@ $page-date-digit-padding-horizontal: 0.375rem !default;
 
     .month,
     .year {
-        font-size: $size-6;
+        font-size: $page-date-size-small;
         grid-column-end: 3;
         grid-column-start: 2;
-        line-height: $size-6;
+        line-height: $page-date-size-small;
         padding: $page-date-digit-padding-vertical #{$page-date-digit-padding-horizontal * 2};
     }
 
     .date {
-        border-right: 1px solid $page-date-border-color;
-        font-size: $size-3;
+        border-right: $page-date-border-width solid $page-date-border-color;
+        font-size: $page-date-size-large;
         grid-column-end: 2;
         grid-column-start: 1;
         grid-row-end: 3;
         grid-row-start: 1;
-        line-height: $size-3;
+        line-height: $page-date-size-large;
         padding: #{$page-date-digit-padding-vertical * 2} #{$page-date-digit-padding-horizontal * 2};
     }
 

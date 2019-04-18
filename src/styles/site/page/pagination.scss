@@ -1,8 +1,9 @@
 $page-pagination-item-background-color: $white !default;
 $page-pagination-item-gap: 1.5rem !default;
 $page-pagination-item-icon-color: $text !default;
-$page-pagination-item-icon-dimension: 3rem !default;
+$page-pagination-item-icon-dimension: 4rem !default;
 $page-pagination-item-icon-hover-color: $link-hover !default;
+$page-pagination-item-icon-hover-offset: 0.5rem !default;
 
 .page-pagination {
     @include block;
@@ -20,14 +21,14 @@ $page-pagination-item-icon-hover-color: $link-hover !default;
             .icon {
                 svg {
                     fill: $page-pagination-item-icon-hover-color;
-                    transform: translateX(-0.5rem);
+                    transform: translateX(#{-1 * $page-pagination-item-icon-hover-offset});
                 }
             }
 
             &.pagination-next {
                 .icon {
                     svg {
-                        transform: translateX(0.5rem);
+                        transform: translateX($page-pagination-item-icon-hover-offset);
                     }
                 }
             }

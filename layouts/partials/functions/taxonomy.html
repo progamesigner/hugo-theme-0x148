@@ -1,0 +1,12 @@
+{{- $name := .name -}}
+{{- $context := .context -}}
+
+<div class="tags">
+    {{ range $context.Param $name }}
+        {{ with $context.Site.GetPage (printf "/%s/%s" $name (. | urlize)) }}
+            <a class="tag" href="{{ .RelPermalink }}" title="{{ .Name }}">
+                {{ .Name }}
+            </a>
+        {{ end }}
+    {{ end }}
+</div>
