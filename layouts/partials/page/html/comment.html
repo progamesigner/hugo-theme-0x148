@@ -1,0 +1,5 @@
+{{ if .Param "comments" }}
+    <div class="page-comment">
+        {{ partial "components/html/disqus" . }}
+    </div>
+{{ end }}
