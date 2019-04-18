@@ -1,4 +1,4 @@
-$post-shadow: 0 2px 3px rgba($black, 0.1), 0 0 0 1px rgba($black, 0.1) !default;
+$block-shadow: 0 2px 3px rgba($black, 0.1), 0 0 0 1px rgba($black, 0.1) !default;
 $post-hover-shadow: 0 2px 35px rgba($black, 0.1), 0 0 0 1px rgba($black, 0.1) !default;
 
 @import '~bulma/sass/utilities/mixins';
@@ -18,8 +18,12 @@ $post-hover-shadow: 0 2px 35px rgba($black, 0.1), 0 0 0 1px rgba($black, 0.1) !d
     }
 }
 
+@mixin block-shadow {
+    box-shadow: $block-shadow;
+}
+
 @mixin post-shadow {
-    box-shadow: $post-shadow;
+    box-shadow: $block-shadow;
 }
 
 @mixin post-hover-shadow {

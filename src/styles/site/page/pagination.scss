@@ -1,0 +1,83 @@
+$page-pagination-item-background-color: $white !default;
+$page-pagination-item-gap: 1.5rem !default;
+$page-pagination-item-icon-color: $text !default;
+$page-pagination-item-icon-dimension: 3rem !default;
+$page-pagination-item-icon-hover-color: $link-hover !default;
+
+.page-pagination {
+    @include block;
+
+    .pagination-item {
+        @include block-shadow;
+
+        background-color: $page-pagination-item-background-color;
+        display: grid;
+        flex-basis: calc(50% - #{$page-pagination-item-gap * 2});
+        grid-template-columns: $page-pagination-item-icon-dimension 1fr;
+        grid-template-rows: auto auto;
+
+        &:hover {
+            .icon {
+                svg {
+                    fill: $page-pagination-item-icon-hover-color;
+                    transform: translateX(-0.5rem);
+                }
+            }
+
+            &.pagination-next {
+                .icon {
+                    svg {
+                        transform: translateX(0.5rem);
+                    }
+                }
+            }
+        }
+
+        &.pagination-next {
+            grid-template-columns: 1fr $page-pagination-item-icon-dimension;
+
+            .title {
+                grid-column-end: 2;
+                grid-column-start: 1;
+            }
+
+            .subtitle {
+                grid-column-end: 2;
+                grid-column-start: 1;
+            }
+
+            .icon {
+                grid-column-end: 2;
+                grid-column-start: 3;
+            }
+        }
+
+        .icon {
+            grid-column-end: 2;
+            grid-column-start: 1;
+            grid-row-end: 3;
+            grid-row-start: 1;
+            height: $page-pagination-item-icon-dimension;
+            width: $page-pagination-item-icon-dimension;
+
+            svg {
+                fill: $page-pagination-item-icon-color;
+                transition: color $speed $easing, transform $speed $easing;
+            }
+        }
+
+        .title {
+            grid-column-end: 3;
+            grid-column-start: 2;
+            grid-row-end: 3;
+            grid-row-start: 2;
+        }
+
+        .subtitle {
+            grid-column-end: 3;
+            grid-column-start: 2;
+            grid-row-end: 2;
+            grid-row-start: 1;
+        }
+    }
+}
