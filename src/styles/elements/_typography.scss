@@ -9,8 +9,49 @@ $family-cjk-ko-serif: 'Noto Serif', 'Noto Serif KR', $family-serif !default;
 $family-cjk-sc-serif: 'Noto Serif', 'Noto Serif SC', $family-serif !default;
 $family-cjk-tc-serif: 'Noto Serif', 'Noto Serif TC', $family-serif !default;
 
-$typography-underline-width: 0.0625rem !default;
-$typography-cjk-margin-left: 0.125rem !default;
+$typography-border-width: 0.0625rem !default;
+$typography-cjk-margin: 0 0.125rem !default;
+
+$typography-highlight-background-color: $yellow !default;
+$typography-highlight-color: $text !default;
+$typography-highlight-padding: 0.125rem 0.25rem 0 !default;
+$typography-kbd-background-color: $dark !default;
+$typography-kbd-color: $white !default;
+$typography-kbd-padding: 0.125rem 0.25rem 0 !default;
+
+a,
+ins,
+u {
+    text-decoration-skip-ink: auto;
+    text-decoration-skip: edges;
+}
+
+
+abbr {
+    &[title] {
+        border-bottom: $typography-border-width dotted;
+        cursor: help;
+        text-decoration: none;
+    }
+}
+
+kbd {
+    background-color: $typography-kbd-background-color;
+    border-bottom: $typography-border-width solid darken($typography-kbd-background-color, 15%);
+    border-radius: $radius;
+    color: $typography-kbd-color;
+    font-family: $code-family;
+    font-size: $code-size;
+    padding: $typography-kbd-padding;
+}
+
+mark {
+    background-color: $typography-highlight-background-color;
+    border-bottom: $typography-border-width solid darken($typography-highlight-background-color, 15%);
+    border-radius: $radius;
+    color: $typography-highlight-color;
+    padding: $typography-highlight-padding;
+}
 
 body,
 button,
@@ -38,24 +79,66 @@ textarea {
     }
 }
 
+:lang(de) {
+    & > q {
+        quotes: '„' '“' '‚' '‘';
+    }
+}
+
+:lang(en) {
+    & > q {
+        quotes: '\201C' '\201D' '\2018' '\2019';
+    }
+}
+
+:lang(fr) {
+    & > q {
+        quotes: '«' '»';
+    }
+}
+
+:lang(ja) {
+    & > q {
+        quotes: '「' '」' '『' '』';
+    }
+}
+
+:lang(ko) {
+    & > q {
+        quotes: '“' '”' '‘' '’';
+    }
+}
+
+:lang(zh-CN) {
+    & > q {
+        quotes: '“' '”' '‘' '’';
+    }
+}
+
+:lang(zh-TW) {
+    & > q {
+        quotes: '「' '」' '『' '』';
+    }
+}
+
 :lang(zh),
 :lang(ja) {
     del,
     s {
         & + del,
         & + s {
-            margin-left: 0.125rem;
+            margin: $typography-cjk-margin;
         }
     }
 
     ins,
     u {
-        border-bottom: $typography-underline-width solid;
+        border-bottom: $typography-border-width solid;
         text-decoration: none;
 
         & + ins,
         & + u {
-            margin-left: $typography-cjk-margin-left;
+            margin: $typography-cjk-margin;
         }
     }
 }
