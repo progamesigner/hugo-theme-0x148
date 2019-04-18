@@ -1,0 +1,30 @@
+$advertisement-background-color: $grey-lighter !default;
+
+.advertisement {
+    @include block;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.advertisement-body {
+    background-color: $advertisement-background-color;
+    display: flex;
+    position: relative;
+
+    &::after {
+        background-color: $advertisement-background-color;
+        bottom: 0;
+        content: 'Advert';
+        display: inline-block;
+        font-size: $size-small;
+        position: absolute;
+        right: 0;
+        text-align: center;
+        text-transform: uppercase;
+        top: 0;
+        transform: translateX(100%);
+        writing-mode: vertical-lr;
+    }
+}
