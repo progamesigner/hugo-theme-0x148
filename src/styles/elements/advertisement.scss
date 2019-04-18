@@ -1,4 +1,6 @@
 $advertisement-background-color: $grey-lighter !default;
+$advertisement-sideway-size: $size-small !default;
+$advertisement-sideway-text: 'Advert' !default;
 
 .advertisement {
     @include block;
@@ -16,9 +18,9 @@ $advertisement-background-color: $grey-lighter !default;
     &::after {
         background-color: $advertisement-background-color;
         bottom: 0;
-        content: 'Advert';
+        content: $advertisement-sideway-text;
         display: inline-block;
-        font-size: $size-small;
+        font-size: $advertisement-sideway-size;
         position: absolute;
         right: 0;
         text-align: center;

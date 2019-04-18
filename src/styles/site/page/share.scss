@@ -1,11 +1,11 @@
 $page-share-background-color: $white !default;
 $page-share-border-color: $grey-lighter !default;
+$page-share-border-width: 1px !default;
 $page-share-brand-background-color: $primary !default;
 $page-share-brand-color: $white !default;
+$page-share-item-fixed-dimension: 2.5rem !default;
+$page-share-item-fixed-padding: 0.25rem !default;
 $page-share-margin-offset: 1.5rem !default;
-$page-share-border-width: 1px !default;
-$post-share-item-fixed-dimension: 3rem !default;
-$post-share-item-fixed-padding: 0.25rem !default;
 
 .page-share {
     @include block;
@@ -26,15 +26,17 @@ $post-share-item-fixed-padding: 0.25rem !default;
             top: 5rem;
         }
 
-        .post-share-item {
-            height: $post-share-item-fixed-dimension;
-            padding: $post-share-item-fixed-padding;
-            width: $post-share-item-fixed-dimension;
+        .page-share-brand {
+            display: block;
+        }
+
+        .page-share-item {
+            padding: $page-share-item-fixed-padding;
         }
 
         .icon {
-            height: #{$post-share-item-fixed-dimension - 2 * $post-share-item-fixed-padding};
-            width: #{$post-share-item-fixed-dimension - 2 * $post-share-item-fixed-padding};
+            height: $page-share-item-fixed-dimension;
+            width: $page-share-item-fixed-dimension;
         }
     }
 
@@ -52,12 +54,19 @@ $post-share-item-fixed-padding: 0.25rem !default;
     justify-content: center;
 }
 
+.page-share-item {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
 .page-share-brand {
+    display: none;
     overflow: hidden;
     padding-top: 0;
     position: relative;
     transition: padding-top $speed $easing;
-    width: $post-share-item-fixed-dimension;
+    width: 100%;
 
     &::before {
         align-items: center;

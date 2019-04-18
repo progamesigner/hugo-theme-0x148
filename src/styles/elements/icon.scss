@@ -6,7 +6,7 @@ $icon-top-dimension: 2rem !default;
 
 .icon {
     svg {
-        transition: fill #{$speed * 10} $easing;
+        transition: fill $speed $easing;
     }
 }
 
