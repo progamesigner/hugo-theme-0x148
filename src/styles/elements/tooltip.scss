@@ -1,0 +1,107 @@
+$tooltip-background-color: rgba($grey-darker, 0.95) !default;
+$tooltip-color: findColorInvert($grey-darker) !default;
+$tooltip-easing: $easing !default;
+$tooltip-offset-begin: 0.5rem !default;
+$tooltip-offset-end: 0.25rem !default;
+$tooltip-padding: 0.5rem 0.75rem !default;
+$tooltip-radius: $radius !default;
+$tooltip-size: $size-small !default;
+$tooltip-speed: $speed !default;
+$tooltip-z: 20 !default;
+
+.tooltip {
+    position: relative;
+
+    &::after {
+        background: $tooltip-background-color;
+        border-radius: $tooltip-radius;
+        color: $tooltip-color;
+        content: attr(data-tooltip);
+        display: block;
+        font-size: $tooltip-size;
+        max-width: 100%;
+        opacity: 0;
+        overflow: hidden;
+        padding: $tooltip-padding;
+        pointer-events: none;
+        position: absolute;
+        text-overflow: ellipsis;
+        transition: opacity $tooltip-speed $tooltip-easing, transform $tooltip-speed $tooltip-easing;
+        white-space: pre;
+        z-index: $tooltip-z;
+    }
+
+    &:focus,
+    &:hover {
+        &::after {
+            opacity: 1;
+        }
+    }
+
+    &[disabled],
+    &.is-disabled {
+        pointer-events: auto;
+    }
+
+    &,
+    &.has-tooltip-top {
+        &::after {
+            bottom: 100%;
+            left: 50%;
+            transform: translate(-50%, $tooltip-offset-begin);
+        }
+
+        &:focus,
+        &:hover {
+            &::after {
+                transform: translate(-50%, #{-1 * $tooltip-offset-end});
+            }
+        }
+    }
+
+    &.has-tooltip-right {
+        &::after {
+            bottom: 50%;
+            left: 100%;
+            transform: translate(#{-1 * $tooltip-offset-begin}, 50%);
+        }
+
+        &:focus,
+        &:hover {
+            &::after {
+                transform: translate($tooltip-offset-end, 50%);
+            }
+        }
+    }
+
+    &.has-tooltip-bottom {
+        &::after {
+            bottom: auto;
+            top: 100%;
+            transform: translate(-50%, #{-1 * $tooltip-offset-begin});
+        }
+
+        &:focus,
+        &:hover {
+            &::after {
+                transform: translate(-50%, $tooltip-offset-end);
+            }
+        }
+    }
+
+    &.has-tooltip-left {
+        &::after {
+            bottom: 50%;
+            left: auto;
+            right: 100%;
+            transform: translate($tooltip-offset-begin, 50%);
+        }
+
+        &:focus,
+        &:hover {
+            &::after {
+                transform: translate(#{-1 * $tooltip-offset-end}, 50%);
+            }
+        }
+    }
+}
