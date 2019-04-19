@@ -1,6 +1,3 @@
-{{- $current := . -}}
-{{- $name := .Site.Params.NavbarMenuName | default "main" -}}
-
 <amp-sidebar id="site-sidebar" class="sidebar" layout="nodisplay" side="right">
     <div class="amp-burger is-active" on="tap:site-sidebar.close" role="button" aria-label="close sidebar" tabindex="0">
         <span aria-hidden="true"></span>
@@ -10,67 +7,13 @@
 
     <p class="sidebar-label">{{ i18n "sidebar_navigation_label" }}</p>
     <nav class="sidebar-menu">
-        {{ range index .Site.Menus $name }}
-            {{ if or ($current.IsMenuCurrent $name .) ($current.HasMenuCurrent $name .) }}
-                {{ if .HasChildren }}
-                    <section class="sitebar-item has-children is-current">
-                        <a class="sidebar-link"  href="{{ .URL }}" title="{{ .Name }}">
-                            {{ .Name }}
-                        </a>
-
-                        <div class="sidebar-children">
-                            {{ range .Children }}
-                                <a class="sidebar-item" href="{{ .URL }}" title="{{ .Name }}">
-                                    {{ .Name }}
-                                </a>
-                            {{ end }}
-                        </div>
-                    </section>
-                {{ else }}
-                    <a class="sidebar-item is-current"  href="{{ .URL }}" title="{{ .Name }}">
-                        {{ .Name }}
-                    </a>
-                {{ end }}
-            {{ else }}
-                {{ if .HasChildren }}
-                    <section class="sitebar-item has-children">
-                        <a class="sidebar-link"  href="{{ .URL }}" title="{{ .Name }}">
-                            {{ .Name }}
-                        </a>
-
-                        <div class="sidebar-children">
-                            {{ range .Children }}
-                                <a class="sidebar-item" href="{{ .URL }}" title="{{ .Name }}">
-                                    {{ .Name }}
-                                </a>
-                            {{ end }}
-                        </div>
-                    </section>
-                {{ else }}
-                    <a class="sidebar-item"  href="{{ .URL }}" title="{{ .Name }}">
-                        {{ .Name }}
-                    </a>
-                {{ end }}
-            {{ end }}
-        {{ end }}
+        {{ partial "components/common/sidebar-menu-items" . }}
     </nav>
 
     {{ if .IsTranslated }}
-        {{- $current := .Language.LanguageName -}}
-
         <p class="sidebar-label">{{ i18n "sidebar_language_label" }}</p>
         <nav class="sidebar-menu">
-            {{ range .Site.Home.AllTranslations.ByWeight }}
-                {{ if eq $current .Language.LanguageName }}
-                    <a class="sidebar-item is-active" href="{{ .RelPermalink }}" title="{{ .Title }}">
-                        {{ .Language.LanguageName }}
-                    </a>
-                {{ else }}
-                    <a class="sidebar-item" href="{{ .RelPermalink }}" title="{{ .Title }}">
-                        {{ .Language.LanguageName }}
-                    </a>
-                {{ end }}
-            {{ end }}
+            {{ partial "components/common/sidebar-language-items" . }}
         </nav>
     {{ end }}
 
