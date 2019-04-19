@@ -26,12 +26,13 @@ $page-share-margin-offset: 1.5rem !default;
             top: 5rem;
         }
 
-        .page-share-brand {
-            display: block;
-        }
-
         .page-share-item {
             padding: $page-share-item-fixed-padding;
+
+            &:first-child {
+                display: block;
+                padding: 0;
+            }
         }
 
         .icon {
@@ -41,8 +42,10 @@ $page-share-margin-offset: 1.5rem !default;
     }
 
     &.is-collapsed {
-        .page-share-brand {
-            padding-top: 100%;
+        .page-share-item {
+            &:first-child {
+                padding-top: #{$page-share-item-fixed-dimension + 2 * $page-share-item-fixed-padding};
+            }
         }
     }
 }
@@ -58,29 +61,31 @@ $page-share-margin-offset: 1.5rem !default;
     align-items: center;
     display: flex;
     justify-content: center;
+
+    &:first-child {
+        display: none;
+        overflow: hidden;
+        position: relative;
+        transition: padding-top $speed $easing;
+        width: 100%;
+    }
 }
 
 .page-share-brand {
-    display: none;
-    overflow: hidden;
-    padding-top: 0;
-    position: relative;
-    transition: padding-top $speed $easing;
-    width: 100%;
+    @include unselectable;
 
-    &::before {
-        align-items: center;
-        background-color: $page-share-brand-background-color;
-        bottom: 0;
-        color: $page-share-brand-color;
-        content: '\148';
-        display: flex;
-        font-family: $family-brand;
-        font-size: $size-large;
-        justify-content: center;
-        left: 0;
-        position: absolute;
-        right: 0;
-        top: 0;
-    }
+    align-items: center;
+    background-color: $page-share-brand-background-color;
+    bottom: 0;
+    color: $page-share-brand-color;
+    display: flex;
+    font-family: $family-brand;
+    font-size: $size-large;
+    height: #{$page-share-item-fixed-dimension + 2 * $page-share-item-fixed-padding};
+    justify-content: center;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: #{$page-share-item-fixed-dimension + 2 * $page-share-item-fixed-padding};
 }

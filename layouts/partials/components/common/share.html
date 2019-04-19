@@ -1,5 +1,9 @@
 <div class="page-share-items">
-    <span class="page-share-brand"></span>
+    <div class="page-share-item">
+        <span class="page-share-brand">
+            {{ partial "templates/icon" . | safeHTML }}
+        </span>
+    </div>
     <a class="page-share-item" href="https://www.facebook.com/dialog/share?href={{ .Permalink | safeHTMLAttr }}" title="Share with Facebook">
         <span class="icon icon-facebook has-color">
             {{ partial "images/facebook.svg" . }}
