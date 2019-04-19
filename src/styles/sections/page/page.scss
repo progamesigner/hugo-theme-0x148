@@ -13,6 +13,16 @@ $page-padding: 1.5rem !default;
     background-color: $page-background-color;
     padding: $page-padding;
 
+    &.has-hover-shadow {
+        @include block-hover-shadow;
+    }
+
+    .button {
+        &.is-permalink {
+            margin-left: auto;
+        }
+    }
+
     .content {
         blockquote {
             border-bottom: $page-blockquote-border-width solid $page-blockquote-border-color;
