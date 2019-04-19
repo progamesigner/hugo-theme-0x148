@@ -1,8 +1,8 @@
-{{ partial "page/schema/website" . }}
-{{ partial "page/schema/organization" . }}
+{{ partial "sections/schema/website" . }}
+{{ partial "sections/schema/organization" . }}
 
 {{ if .IsPage }}
-    {{ partial "page/schema/article" . }}
+    {{ partial "sections/schema/article" . }}
 {{ end }}
 
 {{ partial "templates/schema" . }}
