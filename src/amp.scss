@@ -21,9 +21,10 @@ $amp: true;
 @import 'styles/elements/content';
 @import 'styles/elements/icon';
 @import 'styles/elements/section';
+@import 'styles/elements/tag';
 @import 'styles/elements/title';
+@import 'styles/elements/table';
 @import 'styles/elements/typography';
-
 @import 'styles/amp/burger';
 @import 'styles/amp/container';
 
@@ -32,7 +33,6 @@ $amp: true;
 // =============================================================================
 @import 'styles/components/message';
 @import 'styles/components/pagination';
-
 @import 'styles/amp/hero';
 @import 'styles/amp/navbar';
 @import 'styles/amp/sidebar';
@@ -40,9 +40,7 @@ $amp: true;
 // =============================================================================
 // * Site
 // =============================================================================
-@import 'styles/site/header/header';
-@import 'styles/site/footer/footer';
-
+@import 'styles/sections/footer/footer';
 @import 'styles/amp/header';
 
 // =============================================================================

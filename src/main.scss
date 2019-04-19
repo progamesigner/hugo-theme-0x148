@@ -48,19 +48,19 @@ $amp: false;
 @import 'styles/components/pagination';
 
 // =============================================================================
-// * Site
+// * Sections
 // =============================================================================
-@import 'styles/site/footer/footer';
-@import 'styles/site/header/header';
-@import 'styles/site/header/navbar';
-@import 'styles/site/header/progress';
-@import 'styles/site/page/advertisement';
-@import 'styles/site/page/comment';
-@import 'styles/site/page/date';
-@import 'styles/site/page/meta';
-@import 'styles/site/page/page';
-@import 'styles/site/page/pagination';
-@import 'styles/site/page/share';
+@import 'styles/sections/footer/footer';
+@import 'styles/sections/header/header';
+@import 'styles/sections/header/navbar';
+@import 'styles/sections/header/progress';
+@import 'styles/sections/page/advertisement';
+@import 'styles/sections/page/comment';
+@import 'styles/sections/page/date';
+@import 'styles/sections/page/meta';
+@import 'styles/sections/page/page';
+@import 'styles/sections/page/pagination';
+@import 'styles/sections/page/share';
 
 // =============================================================================
 // * Helpers
