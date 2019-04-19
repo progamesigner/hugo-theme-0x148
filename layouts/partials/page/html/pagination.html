@@ -4,7 +4,7 @@
             {{ with .PrevInSection }}
                 <a class="pagination-item pagination-previous" href="{{ .RelPermalink }}">
                     <span class="icon">
-                        {{ partial "svg/chevron-left.svg" . }}
+                        {{ partial "images/chevron-left.svg" . }}
                     </span>
                     <p class="subtitle">{{ partial "components/date" .Date }}</p>
                     <p class="title">{{ .Title }}</p>
@@ -14,7 +14,7 @@
             {{ with .NextInSection }}
                 <a class="pagination-item pagination-next" href="{{ .RelPermalink }}">
                     <span class="icon">
-                        {{ partial "svg/chevron-right.svg" . }}
+                        {{ partial "images/chevron-right.svg" . }}
                     </span>
                     <p class="subtitle">{{ partial "components/date" .Date }}</p>
                     <p class="title">{{ .Title }}</p>

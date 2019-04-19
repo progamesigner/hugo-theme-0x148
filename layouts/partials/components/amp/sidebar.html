@@ -80,7 +80,7 @@
                 {{ range sort . "weight" }}
                     <div class="sidebar-item">
                         <a class="icon is-{{ .icon }}" href="{{ .url | safeURL }}" title="{{ .name | safeHTMLAttr }}" rel="external noopener">
-                            {{ partial (printf "svg/%s.svg" .icon) . }}
+                            {{ partial (printf "images/%s.svg" .icon) . }}
                         </a>
                     </div>
                 {{ end }}
@@ -89,7 +89,7 @@
             {{ with .Site.Home.OutputFormats.Get "RSS" }}
                 <div class="sidebar-item">
                     <a class="icon icon-rss" href="{{ .RelPermalink }}" title="{{ i18n "navbar_social_rss" | default "RSS" }}">
-                        {{ partial "svg/rss.svg" . }}
+                        {{ partial "images/rss.svg" . }}
                     </a>
                 </div>
             {{ end }}
