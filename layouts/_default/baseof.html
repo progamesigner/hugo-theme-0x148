@@ -4,19 +4,19 @@
     <meta charset="utf-8">
     <title>{{ block "title" . }}{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} &middot; {{ .Site.Title }}{{ end }}{{ end }}</title>
 
-    {{ partial "site/head/meta" . }}
-    {{ partial "site/head/opengraph" . }}
-    {{ partial "site/head/links" . }}
-    {{ partial "site/head/fonts" . }}
-    {{ partial "site/html/styles" . }}
-    {{ partial "site/head/schema" . }}
-    {{ partial "site/html/modules" . }}
+    {{ partial "segments/head/meta" . }}
+    {{ partial "segments/head/opengraph" . }}
+    {{ partial "segments/head/links" . }}
+    {{ partial "segments/head/fonts" . }}
+    {{ partial "segments/html/styles" . }}
+    {{ partial "segments/head/schema" . }}
+    {{ partial "segments/html/modules" . }}
 </head>
 
 <body class="has-navbar-fixed-top">
-    {{ partial "site/html/prologue" . }}
+    {{ partial "segments/html/prologue" . }}
 
-    {{ block "header" . }}{{ partial "site/html/header" . }}{{ end }}
+    {{ block "header" . }}{{ partial "segments/html/header" . }}{{ end }}
 
     <main class="main" role="main">
         <div class="container">
@@ -30,10 +30,10 @@
         </span>
     </div>
 
-    {{ block "footer" . }}{{ partial "site/html/footer" . }}{{ end }}
+    {{ block "footer" . }}{{ partial "segments/html/footer" . }}{{ end }}
 
-    {{ partial "site/html/scripts" . }}
+    {{ partial "segments/html/scripts" . }}
 
-    {{ partial "site/html/epilogue" . }}
+    {{ partial "segments/html/epilogue" . }}
 </body>
 </html>

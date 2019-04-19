@@ -4,20 +4,20 @@
     <meta charset="utf-8">
     <title>{{ block "title" . }}{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} &middot; {{ .Site.Title }}{{ end }}{{ end }}</title>
 
-    {{ partial "site/head/meta" . }}
-    {{ partial "site/amp/scripts" . }}
-    {{ partial "site/amp/styles" . }}
-    {{ partial "site/head/fonts" . }}
-    {{ partial "site/amp/boilerplate" . }}
-    {{ partial "site/head/opengraph" . }}
-    {{ partial "site/head/links" . }}
-    {{ partial "site/head/schema" . }}
+    {{ partial "segments/head/meta" . }}
+    {{ partial "segments/amp/scripts" . }}
+    {{ partial "segments/amp/styles" . }}
+    {{ partial "segments/head/fonts" . }}
+    {{ partial "segments/amp/boilerplate" . }}
+    {{ partial "segments/head/opengraph" . }}
+    {{ partial "segments/head/links" . }}
+    {{ partial "segments/head/schema" . }}
 </head>
 
 <body class="has-navbar-fixed-top">
-    {{ partial "site/amp/prologue" . }}
+    {{ partial "segments/amp/prologue" . }}
 
-    {{ block "header" . }}{{ partial "site/amp/header" . }}{{ end }}
+    {{ block "header" . }}{{ partial "segments/amp/header" . }}{{ end }}
 
     <main class="main" role="main">
         <div class="container">
@@ -25,8 +25,8 @@
         </div>
     </main>
 
-    {{ block "footer" . }}{{ partial "site/amp/footer" . }}{{ end }}
+    {{ block "footer" . }}{{ partial "segments/amp/footer" . }}{{ end }}
 
-    {{ partial "site/amp/epilogue" . }}
+    {{ partial "segments/amp/epilogue" . }}
 </body>
 </html>
