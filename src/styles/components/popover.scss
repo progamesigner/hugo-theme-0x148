@@ -1,0 +1,69 @@
+$popover-easing: $easing !default;
+$popover-padding: 0.5rem 0.75rem !default;
+$popover-speed: $speed !default;
+$popover-z: 20 !default;
+
+.popover {
+    display: inline-block;
+    position: relative;
+
+    .popover-container {
+        display: block;
+        opacity: 0;
+        padding: $popover-padding;
+        position: absolute;
+        transition: transform $popover-speed $popover-easing;
+        z-index: $popover-z;
+    }
+
+    &,
+    &.has-popover-top {
+        .popover-container {
+            left: 50%;
+            top: 0;
+            transform: translate(-50%, -50%) scale(0.3);
+        }
+
+        *:focus + .popover-container,
+        &:hover .popover-container {
+            opacity: 1;
+            transform: translate(-50%, -100%) scale(1);
+        }
+    }
+
+    &.has-popover-right {
+        .popover-container {
+            left: 100%;
+            top: 50%;
+        }
+
+        *:focus + .popover-container,
+        &:hover .popover-container {
+            transform: translate(0, -50%) scale(1);
+        }
+    }
+
+    &.has-popover-bottom {
+        .popover-container {
+            left: 50%;
+            top: 100%;
+        }
+
+        *:focus + .popover-container,
+        &:hover .popover-container {
+            transform: translate(-50%, 0) scale(1);
+        }
+    }
+
+    &.has-popover-left {
+        .popover-container {
+            left: 0;
+            top: 50%;
+        }
+
+        *:focus + .popover-container,
+        &:hover .popover-container {
+            transform: translate(-100%, -50%) scale(1);
+        }
+    }
+}
