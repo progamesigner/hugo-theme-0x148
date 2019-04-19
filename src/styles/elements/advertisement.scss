@@ -1,6 +1,4 @@
 $advertisement-background-color: $grey-lighter !default;
-$advertisement-sideway-size: $size-small !default;
-$advertisement-sideway-text: 'Advert' !default;
 
 .advertisement {
     @include block;
@@ -14,19 +12,4 @@ $advertisement-sideway-text: 'Advert' !default;
     background-color: $advertisement-background-color;
     display: flex;
     position: relative;
-
-    &::after {
-        background-color: $advertisement-background-color;
-        bottom: 0;
-        content: $advertisement-sideway-text;
-        display: inline-block;
-        font-size: $advertisement-sideway-size;
-        position: absolute;
-        right: 0;
-        text-align: center;
-        text-transform: uppercase;
-        top: 0;
-        transform: translateX(100%);
-        writing-mode: vertical-lr;
-    }
 }
