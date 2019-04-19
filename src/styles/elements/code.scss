@@ -1,0 +1,227 @@
+$code-color-base00: #2b303b !default; // Default Background
+$code-color-base01: #343d46 !default; // Lighter Background (Used for status bars)
+$code-color-base02: #4f5b66 !default; // Selection Background
+$code-color-base03: #65737e !default; // Comments, Invisibles, Line Highlighting
+$code-color-base04: #a7adba !default; // Dark Foreground (Used for status bars)
+$code-color-base05: #c0c5ce !default; // Default Foreground, Caret, Delimiters, Operators
+$code-color-base06: #dfe1e8 !default; // Light Foreground (Not often used)
+$code-color-base07: #eff1f5 !default; // Light Background (Not often used)
+$code-color-base08: #bf616a !default; // Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
+$code-color-base09: #d08770 !default; // Integers, Boolean, Constants, XML Attributes, Markup Link Url
+$code-color-base0a: #ebcb8b !default; // Classes, Markup Bold, Search Text Background
+$code-color-base0b: #a3be8c !default; // Strings, Inherited Class, Markup Code, Diff Inserted
+$code-color-base0c: #96b5b4 !default; // Support, Regular Expressions, Escape Characters, Markup Quotes
+$code-color-base0d: #8fa1b3 !default; // Functions, Methods, Attribute IDs, Headings
+$code-color-base0e: #b48ead !default; // Keywords, Storage, Selector, Markup Italic, Diff Changed
+$code-color-base0f: #ab7967 !default; // Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?>
+
+.highlight {
+    > .chroma {
+        border-top: 0.5rem solid $code-color-base01;
+        overflow-x: auto;
+
+        table {
+            position: relative;
+
+            &::after {
+                color: findColorInvert($code-color-base00);
+                content: 'Code';
+                font-family: $family-monospace;
+                font-size: $size-small;
+                font-weight: $weight-bold;
+                margin: 0 1.5rem;
+                padding: 0.25rem 0.75rem;
+                position: absolute;
+                right: 0;
+                text-transform: capitalize;
+                top: 0;
+            }
+        }
+
+        > table[data-lang] {
+            &::after {
+                content: attr(data-lang);
+            }
+        }
+
+        tr {
+            > td:first-child {
+                white-space: nowrap;
+            }
+        }
+    }
+}
+
+.chroma { /* Background */
+    color: $code-color-base05;
+    background-color:$code-color-base00;
+
+    .err { /* Error */
+        color: $code-color-base08;
+    }
+
+    .hl { /* LineHighlight */
+        background-color: $code-color-base0a;
+        display: block;
+        width: 100%;
+    }
+
+    .ln { /* LineNumbers */
+        margin-right: 0.5rem;
+        padding: 0 0.5rem 0 0.5rem;
+        color: $code-color-base03;
+    }
+
+    .lnt { /* LineNumbersTable */
+        margin-right: 0.5rem;
+        padding: 0 0.5rem 0 0.5rem;
+        color: $code-color-base03;
+    }
+
+    .lntable { /* LineTable */
+        border-spacing: 0;
+        border: 0;
+        display: block;
+        margin: 0;
+        overflow: auto;
+        padding: 0;
+        width: auto;
+    }
+
+    .lntd { /* LineTableTD */
+        border: 0;
+        margin: 0;
+        padding: 0;
+        vertical-align: top;
+    }
+
+    .k, /* Keyword */
+    .kc, /* KeywordConstant */
+    .kd, /* KeywordDeclaration */
+    .kn, /* KeywordNamespace */
+    .kp, /* KeywordPseudo */
+    .kr, /* KeywordReserved */
+    .kt { /* KeywordType */
+        color: $code-color-base0e;
+        font-weight: $weight-bold;
+    }
+
+    .na, /* NameAttribute */
+    .nc, /* NameClass */
+    .nf, /* NameFunction */
+    .nn, /* NameNamespace */
+    .nt, /* NameTag */
+    .nv { /* NameVariable */
+        color: $code-color-base08;
+    }
+
+    .nb { /* NameBuiltin */
+        color: $code-color-base0d;
+        font-weight: $weight-bold; //
+    }
+
+    .no, /* NameConstant */
+    .nd, /* NameDecorator */
+    .ne { /* NameException */
+        color: $code-color-base09;
+    }
+
+    .l,
+    .ld { /* LiteralDate */
+        color: $code-color-base09;
+        font-weight: $weight-bold;
+    }
+
+    .s, /* LiteralString */
+    .sa, /* LiteralStringAffix */
+    .sb, /* LiteralStringBacktick */
+    .sc, /* LiteralStringChar */
+    .dl, /* LiteralStringDelimiter */
+    .sd, /* LiteralStringDoc */
+    .s2, /* LiteralStringDouble */
+    .se, /* LiteralStringEscape */
+    .sh, /* LiteralStringHeredoc */
+    .si, /* LiteralStringInterpol */
+    .sx, /* LiteralStringOther */
+    .sr, /* LiteralStringRegex */
+    .s1, /* LiteralStringSingle */
+    .ss { /* LiteralStringSymbol */
+        color: $code-color-base0b;
+    }
+
+    .m, /* LiteralNumber */
+    .mb, /* LiteralNumberBin */
+    .mf, /* LiteralNumberFloat */
+    .mh, /* LiteralNumberHex */
+    .mi, /* LiteralNumberInteger */
+    .il, /* LiteralNumberIntegerLong */
+    .mo { /* LiteralNumberOct */
+        color: $code-color-base09;
+    }
+
+    .o,
+    .ow { /* OperatorWord */
+        color: $code-color-base0c;
+    }
+
+    .c, /* Comment */
+    .ch, /* CommentHashbang */
+    .cm, /* CommentMultiline */
+    .c1 /* CommentSingle */
+    {
+        color: $code-color-base03;
+    }
+
+    .cs { /* CommentSpecial */
+        color: $code-color-base0f;
+    }
+
+    .cf, /* CommentPreproc */
+    .cpf { /* CommentPreprocFile */
+        color: $code-color-base0b;
+    }
+
+    .gd, /* GenericDeleted */
+    .gr, /* GenericError */
+    .gt /* GenericTraceback */
+    {
+        color: $code-color-base08;
+    }
+
+    .ge { /* GenericEmph */
+        font-style: italic;
+    }
+
+    .gh, /* GenericHeading */
+    .gu /* GenericSubheading */
+    {
+        color: $code-color-base06;
+        font-weight: $weight-bold;
+    }
+
+    .gi { /* GenericInserted */
+        color: $code-color-base0b;
+        font-weight: $weight-bold;
+    }
+
+    .go { /* GenericOutput */
+        color: $code-color-base0d;
+    }
+
+    .gp { /* GenericPrompt */
+        color: $code-color-base0d;
+        font-weight: $weight-bold;
+    }
+
+    .gs { /* GenericStrong */
+        font-weight: bold;
+    }
+
+    .gl { /* GenericUnderline */
+        text-decoration: underline;
+    }
+
+    .w { /* TextWhitespace */
+        color: $code-color-base05;
+    }
+}

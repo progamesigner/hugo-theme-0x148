@@ -8,18 +8,12 @@ $page-padding: 1.5rem !default;
 
 .page {
     @include block;
-    @include post-shadow;
+    @include block-shadow;
 
     background-color: $page-background-color;
     padding: $page-padding;
 
     .content {
-        .image {
-            &.is-full {
-                margin: 0 #{-1 * $page-padding};
-            }
-        }
-
         blockquote {
             border-bottom: $page-blockquote-border-width solid $page-blockquote-border-color;
             border-left: 0;
@@ -53,6 +47,19 @@ $page-padding: 1.5rem !default;
                 top: $page-blockquote-quotation-vertical-offset;
                 transform: translateY(-50%);
             }
+        }
+
+        .image {
+            &.is-full {
+                margin-left: #{-1 * $page-padding};
+                margin-right: #{-1 * $page-padding};
+            }
+        }
+
+        .highlight {
+            margin-left: #{-1 * $page-padding};
+            margin-right: #{-1 * $page-padding};
+            max-width: unset;
         }
     }
 }
