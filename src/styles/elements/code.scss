@@ -45,9 +45,15 @@ $code-color-base0f: #ab7967 !default; // Deprecated, Opening/Closing Embedded La
         }
 
         tr {
-            > td:first-child {
-                white-space: nowrap;
+            > td {
+                &:first-child {
+                    white-space: nowrap;
+                }
             }
+        }
+
+        pre {
+            padding: 1.25rem 0.5rem;
         }
     }
 }
