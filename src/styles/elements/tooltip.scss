@@ -32,7 +32,9 @@ $tooltip-z: 20 !default;
     }
 
     &:focus,
-    &:hover {
+    &.is-focused,
+    &:hover,
+    &.is-hovered {
         &::after {
             opacity: 1;
         }
@@ -52,7 +54,9 @@ $tooltip-z: 20 !default;
         }
 
         &:focus,
-        &:hover {
+        &.is-focused,
+        &:hover,
+        &.is-hovered {
             &::after {
                 transform: translate(-50%, #{-1 * $tooltip-offset-end});
             }
@@ -67,7 +71,9 @@ $tooltip-z: 20 !default;
         }
 
         &:focus,
-        &:hover {
+        &.is-focused,
+        &:hover,
+        &.is-hovered {
             &::after {
                 transform: translate($tooltip-offset-end, 50%);
             }
@@ -82,7 +88,9 @@ $tooltip-z: 20 !default;
         }
 
         &:focus,
-        &:hover {
+        &.is-focused,
+        &:hover,
+        &.is-hovered {
             &::after {
                 transform: translate(-50%, $tooltip-offset-end);
             }
@@ -98,7 +106,9 @@ $tooltip-z: 20 !default;
         }
 
         &:focus,
-        &:hover {
+        &.is-focused,
+        &:hover,
+        &.is-hovered {
             &::after {
                 transform: translate(#{-1 * $tooltip-offset-end}, 50%);
             }
