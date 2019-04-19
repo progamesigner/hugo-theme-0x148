@@ -5,10 +5,12 @@ import open from './scripts/open'
 import progress from './scripts/progress'
 import top from './scripts/top'
 
+const getElementTop = elements => Math.min(...Array.prototype.slice.call(elements).map(element => element.getBoundingClientRect()).map(rect => rect.top))
+
 const bootstrap = () => {
     document.querySelectorAll('.chroma > table').forEach(highlight)
     document.querySelectorAll('.navbar.is-fixed-top').forEach(item => collapse(item, 60))
-    document.querySelectorAll('.page-share.is-fixed-left').forEach(item => collapse(item, 150))
+    document.querySelectorAll('.page-share.is-fixed-left').forEach(item => collapse(item, getElementTop(document.querySelectorAll('.page-body')) - 60))
     document.querySelectorAll('.navbar-burger').forEach(burger)
     document.querySelectorAll('.progress').forEach(item => progress(item, 0))
     document.querySelectorAll('.back-to-top').forEach(top)
