@@ -11,6 +11,7 @@ $post-hover-shadow: 0 2px 35px rgba($black, 0.1), 0 0 0 1px rgba($black, 0.1) !d
         fill: $color;
     }
 
+    &.has-color,
     &:hover {
         svg {
             fill: $hover;

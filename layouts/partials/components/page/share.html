@@ -1,37 +1,37 @@
 <div class="page-share-items">
     <span class="page-share-brand"></span>
     <a class="page-share-item" href="https://www.facebook.com/dialog/share?href={{ .Permalink | safeHTMLAttr }}" title="Share with Facebook">
-        <span class="icon icon-facebook">
+        <span class="icon icon-facebook has-color">
             {{ partial "svg/facebook.svg" . }}
         </span>
     </a>
     <a class="page-share-item" href="https://twitter.com/intent/tweet?url={{ .Permalink | safeHTMLAttr }}&text={{ .Title | safeHTMLAttr }}" title="Share with Twitter">
-        <span class="icon icon-twitter">
+        <span class="icon icon-twitter has-color">
             {{ partial "svg/twitter.svg" . }}
         </span>
     </a>
     <a class="page-share-item" href="https://lineit.line.me/share/ui?url={{ .Permalink | safeHTMLAttr }}&text={{ .Title | safeHTMLAttr }}" title="Share with LINE">
-        <span class="icon icon-line">
+        <span class="icon icon-line has-color">
             {{ partial "svg/line.svg" . }}
         </span>
     </a>
     <a class="page-share-item" href="https://www.linkedin.com/shareArticle?mini=true&url={{ .Permalink | safeHTMLAttr }}&title={{ .Title | safeHTMLAttr }}&summary={{ .Summary | safeHTMLAttr }}&source={{ .Site.BaseURL | safeHTMLAttr }}" title="Share with LinkedIn">
-        <span class="icon icon-linkedin">
+        <span class="icon icon-linkedin has-color">
             {{ partial "svg/linkedin.svg" . }}
         </span>
     </a>
     <a class="page-share-item" href="https://trello.com/add-card?source={{ .Site.BaseURL | safeHTMLAttr }}&url={{ .Permalink | safeHTMLAttr }}&name={{ .Title }}&desc={{ .Summary | safeHTMLAttr }}" title="Share with Trello">
-        <span class="icon  icon-trello">
+        <span class="icon  icon-trello has-color">
             {{ partial "svg/trello.svg" . }}
         </span>
     </a>
     <a class="page-share-item" href="https://getpocket.com/edit?url={{ .Permalink | safeHTMLAttr }}" title="Share with Pocket">
-        <span class="icon icon-pocket">
+        <span class="icon icon-pocket has-color">
             {{ partial "svg/pocket.svg" . }}
         </span>
     </a>
     <a class="page-share-item" href="mailto:?subject={{ .Title | safeHTMLAttr }}&body={{ .Permalink | safeHTMLAttr }}" title="Share with Email">
-        <span class="icon icon-email">
+        <span class="icon icon-email has-color">
             {{ partial "svg/email.svg" . }}
         </span>
     </a>
