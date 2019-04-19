@@ -1,0 +1,21 @@
+<article class="page is-single">
+    <div class="page-head">
+        <h1 class="title">{{ .Title }}</h1>
+
+        <div class="page-advertisement">
+            {{ partial "components/html/advertisement" . }}
+        </div>
+    </div>
+
+    <div class="page-body">
+        <div class="content page-content">
+            {{ .Content }}
+        </div>
+    </div>
+
+    <div class="page-foot">
+        <div class="page-advertisement">
+            {{ partial "components/html/advertisement" . }}
+        </div>
+    </div>
+</article>
