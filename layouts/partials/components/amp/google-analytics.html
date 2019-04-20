@@ -1,3 +1,5 @@
+{{- partial "functions/ensure-amp-module" (dict "context" . "module" "amp-analytics") -}}
+
 {{ if not .Site.Config.Privacy.GoogleAnalytics.Disable | and .Site.Config.Services.GoogleAnalytics.ID }}
     <amp-analytics type="gtag" data-credentials="include">
         <script type="application/json">

@@ -1,0 +1,4 @@
+{{- $context := .context -}}
+{{- $module := .module -}}
+
+{{ return in (partial "functions/get-amp-modules" $context) $module }}
