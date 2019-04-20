@@ -3,5 +3,6 @@
 {{- $field := cond (not .KeyId) (cond (not .FingerPrint) "email" "fingerprint") "keyId" -}}
 
 {{- $data := printf "%s?%s=%s" $url $field $value | getJSON -}}
+{{- $key := $data.publicKeyArmored | htmlUnescape | htmlUnescape | safeHTML | strings.TrimRight "\n\r" -}}
 
-{{ $data.publicKeyArmored | htmlUnescape | htmlUnescape | safeHTML }}
+{{- return $key -}}

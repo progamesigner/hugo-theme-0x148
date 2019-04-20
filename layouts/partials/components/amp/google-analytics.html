@@ -1,4 +1,4 @@
-{{- partial "functions/ensure-amp-module" (dict "context" . "module" "amp-analytics") -}}
+{{- dict "context" . "module" "amp-analytics" | partial "sentinels/amp-module" -}}
 
 {{ if not .Site.Config.Privacy.GoogleAnalytics.Disable | and .Site.Config.Services.GoogleAnalytics.ID }}
     <amp-analytics type="gtag" data-credentials="include">

@@ -1,5 +1,5 @@
-{{- $modules := index .Site.Data "amp-modules" -}}
-{{- $elements := partial "functions/get-amp-modules" . -}}
+{{- $modules := "amp-modules" | index .Site.Data -}}
+{{- $elements := . | partial "functions/get-amp-modules" -}}
 
 <link rel="preload" as="script" href="https://cdn.ampproject.org/v0.js">
 <link rel="preload" as="script" href="https://cdn.ampproject.org/v0/amp-custom-css-0.1.js">

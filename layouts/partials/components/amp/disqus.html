@@ -1,4 +1,4 @@
-{{- partial "functions/ensure-amp-module" (dict "context" . "module" "amp-iframe") -}}
+{{- dict "context" . "module" "amp-iframe" | partial "sentinels/amp-module" -}}
 
 {{- $disqus := resources.Get "disqus.html" | minify | fingerprint "sha512" -}}
 

@@ -6,7 +6,7 @@
                     <span class="icon">
                         {{ partial "images/chevron-left.svg" . }}
                     </span>
-                    <p class="subtitle">{{ partial "functions/date" .Date }}</p>
+                    <p class="subtitle">{{ partial "renderers/date" .Date }}</p>
                     <p class="title">{{ .Title }}</p>
                 </a>
             {{ end }}
@@ -16,7 +16,7 @@
                     <span class="icon">
                         {{ partial "images/chevron-right.svg" . }}
                     </span>
-                    <p class="subtitle">{{ partial "functions/date" .Date }}</p>
+                    <p class="subtitle">{{ partial "renderers/date" .Date }}</p>
                     <p class="title">{{ .Title }}</p>
                 </a>
             {{ end }}

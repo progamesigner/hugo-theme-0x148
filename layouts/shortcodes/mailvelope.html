@@ -1,13 +1,13 @@
 {{ if .Get "id" }}
-    {{- .Get "id" | dict "KeyId" | partial "functions/mailvelope" -}}
+    {{- .Get "id" | dict "KeyId" | partial "functions/get-pgpkey-from-mailvelope" -}}
 {{ else if .Get "fingerprint" }}
-    {{- .Get "fingerprint" | dict "FingerPrint" | partial "functions/mailvelope" -}}
+    {{- .Get "fingerprint" | dict "FingerPrint" | partial "functions/get-pgpkey-from-mailvelope" -}}
 {{ else if .Get "email" }}
-    {{- .Get "email" | dict "Email" | partial "functions/mailvelope" -}}
+    {{- .Get "email" | dict "Email" | partial "functions/get-pgpkey-from-mailvelope" -}}
 {{ else if .Site.Params.PGPKeyId }}
-    {{- .Site.Params.PGPKeyId | dict "KeyId" | partial "functions/mailvelope" -}}
+    {{- .Site.Params.PGPKeyId | dict "KeyId" | partial "functions/get-pgpkey-from-mailvelope" -}}
 {{ else if .Site.Params.PGPFingerPrint }}
-    {{- .Site.Params.PGPFingerPrint | dict "FingerPrint" | partial "functions/mailvelope" -}}
+    {{- .Site.Params.PGPFingerPrint | dict "FingerPrint" | partial "functions/get-pgpkey-from-mailvelope" -}}
 {{ else }}
-{{- "progamesigner@gmail.com" | dict "Email" | partial "functions/mailvelope" -}}
+    {{- "progamesigner@gmail.com" | dict "Email" | partial "functions/get-pgpkey-from-mailvelope" -}}
 {{ end }}
