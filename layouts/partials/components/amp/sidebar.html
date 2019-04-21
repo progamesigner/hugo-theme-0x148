@@ -1,4 +1,4 @@
-{{- dict "context" . "module" "amp-sidebar" | partial "sentinels/amp-module" -}}
+{{- slice . "amp-sidebar" | partial "sentinels/amp-module" -}}
 
 <amp-sidebar id="site-sidebar" class="sidebar" layout="nodisplay" side="right">
     <div class="amp-burger is-active" on="tap:site-sidebar.close" role="button" aria-label="close sidebar" tabindex="0">

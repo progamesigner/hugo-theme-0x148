@@ -1,6 +1,6 @@
 {{- $context := . -}}
 
-{{ range .Site.Params.Modules }}
+{{ range .Site.Params.HTMLModules }}
     {{ partial (printf "modules/%s" .) $context }}
 {{ end }}
 

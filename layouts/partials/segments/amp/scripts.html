@@ -1,5 +1,5 @@
-{{- $modules := "amp-modules" | index .Site.Data -}}
-{{- $elements := . | partial "functions/get-amp-modules" -}}
+{{- $mappings := "amp-modules" | index .Site.Data -}}
+{{- $modules := slice . | partial "functions/get-amp-modules" -}}
 
 <link rel="preload" as="script" href="https://cdn.ampproject.org/v0.js">
 <link rel="preload" as="script" href="https://cdn.ampproject.org/v0/amp-custom-css-0.1.js">
@@ -7,10 +7,10 @@
 <link rel="preload" as="script" href="https://cdn.ampproject.org/v0/story-1.0.js">
 <link rel="preconnect dns-prefetch" href="https://fonts.gstatic.com/" crossorigin>
 
-<script src="{{ index $modules "amp-core" }}" async></script>
+<script src="{{ index $mappings "amp-core" }}" async></script>
 
-{{ range $elements }}
-    <script custom-element="{{ . }}" src="{{ index $modules . }}" async></script>
+{{ range $modules }}
+    <script custom-element="{{ . }}" src="{{ index $mappings . }}" async></script>
 {{ end }}
 
 {{ block "scripts" . }}{{ end }}

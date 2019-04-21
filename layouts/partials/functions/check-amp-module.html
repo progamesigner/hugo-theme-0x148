@@ -1,7 +1,6 @@
-{{- $context := .context -}}
-{{- $module := .module -}}
+{{- $context := 0 | index . -}}
+{{- $module := 1 | index . -}}
 
-{{- $modules := $context | partial "functions/get-amp-modules" -}}
-{{- $exists := $module | in $modules -}}
+{{- $modules := slice $context | partial "functions/get-amp-modules" -}}
 
-{{- return $exists -}}
+{{- return in $modules $module -}}

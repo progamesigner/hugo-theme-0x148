@@ -51,8 +51,8 @@
                     </figure>
                 </div>
             {{ end }}
-        {{ else if .Site.Params.DefaultHeaderBanner }}
-            {{- $banner := resources.Get .Site.Params.DefaultHeaderBanner | fingerprint "sha512" -}}
+        {{ else if .Site.Params.DefaultHeroBanner }}
+            {{- $banner := resources.Get .Site.Params.DefaultHeroBanner | fingerprint "sha512" -}}
 
             <div class="hero-media is-banner">
                 <figure class="image">

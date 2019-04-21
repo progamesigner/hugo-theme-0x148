@@ -1,3 +1,6 @@
-{{ if . | partial "functions/check-amp-module" | not }}
-    {{ errorf "AMP custom component '%s' should be included in 'AMPCompoents'" .module }}
-{{ end }}
+{{- $context := 0 | index . -}}
+{{- $module := 1 | index . -}}
+
+{{- if slice $context $module | partial "functions/check-amp-module" | not -}}
+    {{- errorf "AMP custom component '%s' should be included in 'AMPCompoents'" $module -}}
+{{- end -}}

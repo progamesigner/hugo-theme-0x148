@@ -1,3 +1,8 @@
-{{- $modules := .Params.AMPComponents | default slice | append .Site.Params.AMPComponents | uniq -}}
+{{- $context := 0 | index . -}}
+
+{{- $pageModules := "AMPModules" | lower | index $context.Params | default slice -}}
+{{- $siteModules := "AMPModules" | lower | index $context.Site.Params | default slice -}}
+
+{{- $modules := $pageModules | append $siteModules | uniq -}}
 
 {{- return $modules -}}
