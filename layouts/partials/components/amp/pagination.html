@@ -13,17 +13,18 @@
         {{ end }}
 
         <ul class="pagination-list">
-            {{- $.Scratch.Set "__paginator.ellipsed" false -}}
+            {{- $payload := newScratch -}}
+            {{- $payload.Set "ellipsed" false -}}
 
             {{ range $.Paginator.Pagers }}
                 {{- $show := le .PageNumber 3 | or (eq 0 (sub .TotalPages .PageNumber)) | or (2 | sub $.Paginator.PageNumber | gt .PageNumber | and (2 | add $.Paginator.PageNumber | lt .PageNumber)) -}}
 
                 {{ if $show }}
-                    {{- $.Scratch.Set "__paginator.ellipsed" false -}}
-                    {{- $.Scratch.Set "__paginator.shouldEllipse" false -}}
+                    {{- $payload.Set "shouldEllipse" false -}}
+                    {{- $payload.Set "ellipsed" false -}}
                 {{ else }}
-                    {{- $.Scratch.Set "__paginator.shouldEllipse" (not ($.Scratch.Get "__paginator.ellipsed") ) -}}
-                    {{- $.Scratch.Set "__paginator.ellipsed" true -}}
+                    {{- $payload.Set "shouldEllipse" (not ($payload.Get "ellipsed") ) -}}
+                    {{- $payload.Set "ellipsed" true -}}
                 {{ end }}
 
                 <li>
