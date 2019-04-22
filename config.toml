@@ -2,6 +2,6 @@
     comments = false
     math = false
 
-    ampModules = ["amp-sidebar", "amp-analytics", "amp-iframe"]
+    ampModules = ["amp-analytics", "amp-sidebar", "amp-form","amp-iframe"]
     htmlModules = ["google-analytics", "disqus", "mathjax"]
     navbarMenuName = "main"

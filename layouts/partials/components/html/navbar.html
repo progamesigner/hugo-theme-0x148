@@ -43,6 +43,7 @@
                         </div>
                     </div>
                 {{ end }}
+
                 <div class="navbar-item has-items">
                     {{ with .Site.Params.Socials }}
                         {{ range sort . "weight" }}
@@ -70,22 +71,8 @@
                         </div>
                     {{ end }}
                 </div>
-                {{ with .Site.Home.OutputFormats.Get "JSON" }}
-                    <div class="navbar-item">
-                        <div class="field has-addons">
-                            <p class="control">
-                                <input class="input" type="text" placeholder="Search">
-                            </p>
-                            <p class="control">
-                                <button class="button">
-                                    <span class="icon icon-search">
-                                        {{ partial "images/magnify.svg" . }}
-                                    </span>
-                                </button>
-                            </p>
-                        </div>
-                    </div>
-                {{ end }}
+
+                {{ partial "wrappers/html-search" . }}
             </div>
         </div>
     </div>

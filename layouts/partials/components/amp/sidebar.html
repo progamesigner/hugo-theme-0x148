@@ -10,6 +10,8 @@
         <span aria-hidden="true"></span>
     </div>
 
+    {{ partial "wrappers/amp-search" . }}
+
     <p class="sidebar-label">{{ i18n "sidebar_navigation_label" }}</p>
     <nav class="sidebar-menu">
         {{ partial "components/common/sidebar-menu-items" . }}

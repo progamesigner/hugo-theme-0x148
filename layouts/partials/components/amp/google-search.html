@@ -1,0 +1,17 @@
+{{- slice . "amp-form" | partial "sentinels/amp-module" -}}
+
+<form action="https://www.google.com/search" method="GET" target="_blank">
+    <div class="field has-addons">
+        <input type="hidden" name="sitesearch" value="{{ .Site.BaseURL }}">
+        <p class="control">
+            <input class="input" type="text" name="q" maxlength="255" value="" placeholder="Search via Google">
+        </p>
+        <p class="control">
+            <button class="button" type="submit">
+                <span class="icon icon-search">
+                    {{ partial "images/magnify.svg" . }}
+                </span>
+            </button>
+        </p>
+    </div>
+</form>
