@@ -15,6 +15,7 @@
 {{- slice . | partial "functions/get-meta-description" | $schema.SetInMap "schema" "description" -}}
 {{- .WordCount | $schema.SetInMap "schema" "wordCount" -}}
 {{- .Permalink | $schema.SetInMap "schema" "mainEntityOfPage" -}}
+{{- "," | delimit $keywords | $schema.SetInMap "schema" "keywords" -}}
 
 {{- if not .PublishDate.IsZero -}}
     {{- .PublishDate.Format $ISO8601 | $schema.SetInMap "schema" "datePublished" -}}
@@ -53,8 +54,6 @@
 {{- with "publisher" | $schema.Get -}}
     {{- . | $schema.SetInMap "schema" "publisher" -}}
 {{- end -}}
-
-{{- "," | delimit $keywords | $schema.SetInMap "schema" "keywords" -}}
 
 <script type="application/ld+json">
     {{ "schema" | $schema.Get | jsonify | safeJS }}

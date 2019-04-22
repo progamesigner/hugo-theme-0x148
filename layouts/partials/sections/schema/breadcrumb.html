@@ -1,0 +1,26 @@
+{{- $schema := newScratch -}}
+
+{{- $items := slice -}}
+{{- $url := .Permalink | urls.Parse -}}
+
+{{- .Site.BaseURL | $schema.Add "path" -}}
+{{- $items = dict "@id" .Site.BaseURL "name" .Site.Title | dict "@type" "ListItem" "position" 1 "item" | slice | append $items -}}
+
+{{- range $position, $segment := split $url.Path "/" -}}
+    {{- if $segment -}}
+        {{- printf "%s/" $segment | $schema.Add "path" -}}
+
+        {{- $position := $items | len | add 1 -}}
+        {{- $url := $schema.Get "path" -}}
+
+        {{- $items = $segment | urlize | dict "@id" $url "name" | dict "@type" "ListItem" "position" $position "item" | slice | append $items -}}
+    {{- end -}}
+{{- end -}}
+
+{{- "http://schema.org" | $schema.SetInMap "schema" "@context" -}}
+{{- "BreadcrumbList" | $schema.SetInMap "schema" "@type" -}}
+{{- $items | $schema.SetInMap "schema" "itemListElement" -}}
+
+<script type="application/ld+json">
+    {{ "schema" | $schema.Get | jsonify | safeJS }}
+</script>

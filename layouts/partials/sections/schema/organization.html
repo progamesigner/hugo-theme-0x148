@@ -2,12 +2,13 @@
 
 {{- "http://schema.org" | $schema.SetInMap "schema" "@context" -}}
 {{- "Organization" | $schema.SetInMap "schema" "@type" -}}
+{{- .Site.BaseURL | $schema.SetInMap "schema" "url" -}}
+
 {{- range $key, $value := "schema-organization" | index .Site.Data | default dict -}}
     {{- if and $key $value -}}
         {{- $value | $schema.SetInMap "schema" $key -}}
     {{- end -}}
 {{- end -}}
-{{- .Site.BaseURL | $schema.SetInMap "schema" "url" -}}
 
 <script type="application/ld+json">
     {{ "schema" | $schema.Get | jsonify | safeJS }}
