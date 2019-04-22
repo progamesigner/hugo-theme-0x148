@@ -1,9 +1,15 @@
+{{- $schema := newScratch -}}
+
+{{- "http://schema.org" | $schema.SetInMap "schema" "@context" -}}
+{{- "Website" | $schema.SetInMap "schema" "@type" -}}
+{{- ".Site.Title" | $schema.SetInMap "schema" "name" -}}
+{{- range $key, $value := "schema-website" | index .Site.Data | default dict -}}
+    {{- if and $key $value -}}
+        {{- $value | $schema.SetInMap "schema" $key -}}
+    {{- end -}}
+{{- end -}}
+{{- .Site.BaseURL | $schema.SetInMap "schema" "url" -}}
+
 <script type="application/ld+json">
-    {
-        "@context": "http://schema.org",
-        "@type": "Website",
-        "name": "{{ .Site.Title }}",
-        "description": "{{ with .Description }}{{ . }}{{ else }}{{ if .IsPage }}{{ .Summary }}{{ else }}{{ with .Site.Params.Description }}{{ . }}{{ end }}{{ end }}{{ end }}",
-        "url": "{{ .Site.BaseURL }}"
-    }
+    {{ "schema" | $schema.Get | jsonify | safeJS }}
 </script>

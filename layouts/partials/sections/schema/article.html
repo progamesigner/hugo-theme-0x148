@@ -1,28 +1,61 @@
 {{- $ISO8601 := "2006-01-02T15:04:05-07:00" -}}
 
+{{- $schema := newScratch -}}
+
+{{- $keywords := slice -}}
+{{- range $plural, $terms := .Site.Taxonomies -}}
+    {{- range $term, $val := $terms -}}
+        {{- $keywords = slice $term | append $keywords -}}
+    {{- end -}}
+{{- end -}}
+
+{{- "http://schema.org" | $schema.SetInMap "schema" "@context" -}}
+{{- "Article" | $schema.SetInMap "schema" "@type" -}}
+{{- .Title | $schema.SetInMap "schema" "headline" -}}
+{{- slice . | partial "functions/get-meta-description" | $schema.SetInMap "schema" "description" -}}
+{{- .WordCount | $schema.SetInMap "schema" "wordCount" -}}
+{{- .Permalink | $schema.SetInMap "schema" "mainEntityOfPage" -}}
+
+{{- if not .PublishDate.IsZero -}}
+    {{- .PublishDate.Format $ISO8601 | $schema.SetInMap "schema" "datePublished" -}}
+{{- end -}}
+
+{{- if not .Lastmod.IsZero -}}
+    {{- .Lastmod.Format $ISO8601 | $schema.SetInMap "schema" "dateModified" -}}
+{{- end -}}
+
+{{- with "author" | .Param -}}
+    {{- .name | dict "name" | $schema.SetInMap "schema" "author" -}}
+{{- end -}}
+
+{{- with .Params.Images | default slice | first 1 -}}
+    {{- if reflect.IsMap . -}}
+        {{- range $key, $value := . | default dict -}}
+            {{- if and $key $value -}}
+                {{- "http://schema.org" | $schema.SetInMap "image" "@context" -}}
+                {{- "ImageObject" | $schema.SetInMap "image" "@type" -}}
+                {{- $value | $schema.SetInMap "image" $key -}}
+            {{- end -}}
+        {{- end -}}
+        {{- "image" | $schema.Get | $schema.SetInMap "schema" -}}
+    {{- else -}}
+        {{- . | absURL | $schema.SetInMap "schema" "image" -}}
+    {{- end -}}
+{{- end -}}
+
+{{- range $key, $value := "schema-publisher" | index .Site.Data | default dict -}}
+    {{- if and $key $value -}}
+        {{- "Organization" | $schema.SetInMap "publisher" "@type" -}}
+        {{- $value | $schema.SetInMap "publisher" $key -}}
+    {{- end -}}
+{{- end -}}
+
+{{- with "publisher" | $schema.Get -}}
+    {{- . | $schema.SetInMap "schema" "publisher" -}}
+{{- end -}}
+
+{{- "," | delimit $keywords | $schema.SetInMap "schema" "keywords" -}}
+
 <script type="application/ld+json">
-    {
-        "@context": "http://schema.org",
-        "@type": "Article",
-        "headline": "{{ .Title }}",
-        "description": "{{ with .Description }}{{ . }}{{ else }}{{ if .IsPage }}{{ .Summary }}{{ else }}{{ with .Site.Params.Description }}{{ . }}{{ end }}{{ end }}{{ end }}",
-        "wordCount": "{{ .WordCount }}",
-
-        {{ if not .PublishDate.IsZero }}
-            "datePublished" : "{{ .PublishDate.Format $ISO8601 | safeHTMLAttr }}",
-        {{ end }}
-
-        {{ if not .Lastmod.IsZero }}
-            "dateModified" : "{{ .Lastmod.Format $ISO8601 | safeHTMLAttr }}",
-        {{ end }}
-
-        {{ if .Params.Images }}
-            {{ with first 1 .Params.Images }}
-                "image": "{{ . | absURL }}",
-            {{ end }}
-        {{ end }}
-
-        "keywords": "{{ range $plural, $terms := .Site.Taxonomies }}{{ range $term, $val := $terms }}{{ $term }},{{ end }}{{ end }}",
-        "mainEntityOfPage": "{{ .Permalink }}"
-    }
+    {{ "schema" | $schema.Get | jsonify | safeJS }}
 </script>

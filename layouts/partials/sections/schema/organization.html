@@ -1,16 +1,14 @@
-{{ if .Site.Params.Meta.Organization }}
-    <script type="application/ld+json">
-        {
-            "@context": "http://schema.org",
-            "@type": "Organization",
-            "name": "{{ .Site.Params.Meta.Organization.Name }}",
-            {{ if .Site.Params.Meta.Organization.Logo }}
-                "logo": "{{ .Site.Params.Meta.Organization.Logo }}",
-            {{ end }}
-            {{ if .Site.Params.Meta.Organization.Address }}
-                "address": "{{ .Site.Params.Meta.Organization.Address }}",
-            {{ end }}
-            "url": "{{ .Site.BaseURL }}"
-        }
-    </script>
-{{ end }}
+{{- $schema := newScratch -}}
+
+{{- "http://schema.org" | $schema.SetInMap "schema" "@context" -}}
+{{- "Organization" | $schema.SetInMap "schema" "@type" -}}
+{{- range $key, $value := "schema-organization" | index .Site.Data | default dict -}}
+    {{- if and $key $value -}}
+        {{- $value | $schema.SetInMap "schema" $key -}}
+    {{- end -}}
+{{- end -}}
+{{- .Site.BaseURL | $schema.SetInMap "schema" "url" -}}
+
+<script type="application/ld+json">
+    {{ "schema" | $schema.Get | jsonify | safeJS }}
+</script>

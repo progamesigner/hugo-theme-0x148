@@ -1,4 +1,4 @@
-{{- $mappings := "amp-modules" | index .Site.Data -}}
+{{- $mappings := "amp-modules" | index .Site.Data | default dict -}}
 {{- $modules := slice . | partial "functions/get-amp-modules" -}}
 
 <link rel="preload" as="script" href="https://cdn.ampproject.org/v0.js">

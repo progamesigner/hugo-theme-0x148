@@ -1,0 +1,5 @@
+{{- $context := 0 | index . -}}
+
+{{- $description := $context.Site.Params.Description | default "" | cond $context.IsPage $context.Summary -}}
+
+{{- return default $description $context.Description -}}

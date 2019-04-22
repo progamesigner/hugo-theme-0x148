@@ -1,10 +1,8 @@
-{{- $default := .Site.Params.Description | cond .IsPage .Summary -}}
-
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 
 {{ hugo.Generator }}
 
-<meta name="description" content="{{ .Description | default $default | plainify }}">
+<meta name="description" content="{{ slice . | partial "functions/get-meta-description" | plainify }}">
 
 {{ with .Site.Params.Meta.BrowserConfig }}
     <meta name="msapplication-config" content="{{ . | absURL }}">
