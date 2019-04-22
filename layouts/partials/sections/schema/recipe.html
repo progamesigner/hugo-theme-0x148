@@ -1,19 +1,9 @@
 {{- $schema := newScratch -}}
 
-{{- $keywords := slice -}}
-{{- range $plural, $terms := .Site.Taxonomies -}}
-    {{- range $term, $val := $terms -}}
-        {{- $keywords = slice $term | append $keywords -}}
-    {{- end -}}
-{{- end -}}
-
 {{- "http://schema.org" | $schema.SetInMap "schema" "@context" -}}
-{{- "Article" | $schema.SetInMap "schema" "@type" -}}
-{{- .Title | $schema.SetInMap "schema" "headline" -}}
+{{- "Recipe" | $schema.SetInMap "schema" "@type" -}}
+{{- .Title | $schema.SetInMap "schema" "name" -}}
 {{- slice . | partial "functions/get-meta-description" | $schema.SetInMap "schema" "description" -}}
-{{- .WordCount | $schema.SetInMap "schema" "wordCount" -}}
-{{- .Permalink | $schema.SetInMap "schema" "mainEntityOfPage" -}}
-{{- "," | delimit $keywords | $schema.SetInMap "schema" "keywords" -}}
 
 {{- if not .PublishDate.IsZero -}}
     {{- slice .PublishDate | partial "functions/format-datetime" | $schema.SetInMap "schema" "datePublished" -}}
@@ -25,6 +15,29 @@
 
 {{- with "author" | .Param -}}
     {{- . | dict "name" | $schema.SetInMap "schema" "author" -}}
+{{- end -}}
+
+{{- range $key, $value := .Params.Recipe -}}
+    {{- $value | $schema.SetInMap "schema" $key -}}
+{{- end -}}
+
+{{- range $key, $value := .Params.RecipeNutrition -}}
+    {{- "NutritionInformation" | $schema.SetInMap "nutrition" "@type" -}}
+    {{- $value | $schema.SetInMap "nutrition" $key -}}
+{{- end -}}
+
+{{- with "nutrition" | $schema.Get -}}
+    {{- . | $schema.SetInMap "schema" "nutrition" -}}
+{{- end -}}
+
+{{- range $key, $value := .Params.RecipeRating -}}
+    {{- "http://schema.org" | $schema.SetInMap "rating" "@context" -}}
+    {{- "AggregateRating" | $schema.SetInMap "rating" "@type" -}}
+    {{- $value | $schema.SetInMap "rating" $key -}}
+{{- end -}}
+
+{{- with "rating" | $schema.Get -}}
+    {{- . | $schema.SetInMap "schema" "aggregateRating" -}}
 {{- end -}}
 
 {{- with .Params.Images | default slice | first 1 -}}
@@ -40,17 +53,6 @@
     {{- else -}}
         {{- . | absURL | $schema.SetInMap "schema" "image" -}}
     {{- end -}}
-{{- end -}}
-
-{{- range $key, $value := "schema-publisher" | index .Site.Data | default dict -}}
-    {{- if and $key $value -}}
-        {{- "Organization" | $schema.SetInMap "publisher" "@type" -}}
-        {{- $value | $schema.SetInMap "publisher" $key -}}
-    {{- end -}}
-{{- end -}}
-
-{{- with "publisher" | $schema.Get -}}
-    {{- . | $schema.SetInMap "schema" "publisher" -}}
 {{- end -}}
 
 <script type="application/ld+json">

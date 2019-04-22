@@ -3,7 +3,9 @@
 {{ partial "sections/schema/breadcrumb" . }}
 
 {{ if .IsPage }}
-    {{ partial "sections/schema/article" . }}
+    {{- $schema := "schema" | .Param | default "article" | lower | printf "sections/schema/%s" -}}
+
+    {{ partial $schema . }}
 {{ end }}
 
 {{ partial "templates/schema" . }}

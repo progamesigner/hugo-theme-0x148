@@ -1,7 +1,7 @@
-{{- $context := . -}}
-
 {{ range .Site.Params.HTMLModules }}
-    {{ partial (printf "modules/%s" .) $context }}
+    {{- $module := . | printf "modules/%s" -}}
+
+    {{ partial $module $ }}
 {{ end }}
 
 {{ partial "templates/html-modules" . }}
