@@ -1,42 +1,30 @@
+{{- $base := .Site.BaseURL | querify "" | strings.TrimPrefix "=" -}}
+{{- $description := slice . | partial "functions/get-meta-description" | plainify | querify "" | strings.TrimPrefix "=" -}}
+{{- $title := .Title | plainify | querify "" | strings.TrimPrefix "=" -}}
+{{- $url := .Permalink | querify "" | strings.TrimPrefix "=" -}}
+
 <div class="page-share-items">
     <div class="page-share-item">
         <span class="page-share-brand">
             {{ partial "templates/icon" . | safeHTML }}
         </span>
     </div>
-    <a class="page-share-item" href="https://www.facebook.com/dialog/share?href={{ .Permalink | safeHTMLAttr }}" title="Share with Facebook">
-        <span class="icon icon-facebook has-color">
-            {{ partial "images/facebook.svg" . }}
-        </span>
-    </a>
-    <a class="page-share-item" href="https://twitter.com/intent/tweet?url={{ .Permalink | safeHTMLAttr }}&text={{ .Title | safeHTMLAttr }}" title="Share with Twitter">
-        <span class="icon icon-twitter has-color">
-            {{ partial "images/twitter.svg" . }}
-        </span>
-    </a>
-    <a class="page-share-item" href="https://lineit.line.me/share/ui?url={{ .Permalink | safeHTMLAttr }}&text={{ .Title | safeHTMLAttr }}" title="Share with LINE">
-        <span class="icon icon-line has-color">
-            {{ partial "images/line.svg" . }}
-        </span>
-    </a>
-    <a class="page-share-item" href="https://www.linkedin.com/shareArticle?mini=true&url={{ .Permalink | safeHTMLAttr }}&title={{ .Title | safeHTMLAttr }}&summary={{ .Summary | safeHTMLAttr }}&source={{ .Site.BaseURL | safeHTMLAttr }}" title="Share with LinkedIn">
-        <span class="icon icon-linkedin has-color">
-            {{ partial "images/linkedin.svg" . }}
-        </span>
-    </a>
-    <a class="page-share-item" href="https://trello.com/add-card?source={{ .Site.BaseURL | safeHTMLAttr }}&url={{ .Permalink | safeHTMLAttr }}&name={{ .Title }}&desc={{ .Summary | safeHTMLAttr }}" title="Share with Trello">
-        <span class="icon icon-trello has-color">
-            {{ partial "images/trello.svg" . }}
-        </span>
-    </a>
-    <a class="page-share-item" href="https://getpocket.com/edit?url={{ .Permalink | safeHTMLAttr }}" title="Share with Pocket">
-        <span class="icon icon-pocket has-color">
-            {{ partial "images/pocket.svg" . }}
-        </span>
-    </a>
-    <a class="page-share-item" href="mailto:?subject={{ .Title | safeHTMLAttr }}&body={{ .Permalink | safeHTMLAttr }}" title="Share with Email">
-        <span class="icon icon-email has-color">
-            {{ partial "images/email.svg" . }}
-        </span>
-    </a>
+    {{ with .Site.Params.Shares }}
+        {{ range sort . "weight" }}
+            {{ if slice .enable | partial "functions/check-boolean-value" }}
+                {{- $defaultLinkTitle := dict "Name" .name | i18n "share_with_service" | default .name -}}
+
+                <a
+                    class="page-share-item"
+                    href="{{ .format | replaceRE "(?i):base:" $base | replaceRE "(?i):url:" $url | replaceRE "(?i):title:" $title | replaceRE "(?i):description:" $description | safeURL }}"
+                    title="{{ .name | lower | printf "share_with_%s" | i18n | default $defaultLinkTitle | safeHTMLAttr }}"
+                    rel="external noopener"
+                >
+                    <span class="icon icon-{{ .icon }} has-color">
+                        {{ partial (printf "images/%s.svg" .icon) . }}
+                    </span>
+                </a>
+            {{ end }}
+        {{ end }}
+    {{ end }}
 </div>

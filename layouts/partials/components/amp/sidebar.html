@@ -24,8 +24,15 @@
             {{ with .Site.Params.Socials }}
                 {{ range sort . "weight" }}
                     {{ if slice .enable | partial "functions/check-boolean-value" }}
+                        {{- $defaultLinkTitle := dict "Name" .name | i18n "navbar_social_service" | default .name -}}
+
                         <div class="sidebar-item">
-                            <a class="icon is-{{ .icon }}" href="{{ .url | safeURL }}" title="{{ .name | safeHTMLAttr }}" rel="external noopener">
+                            <a
+                                class="icon is-{{ .icon }}"
+                                href="{{ .url | safeURL }}"
+                                title="{{ .name | lower | printf "navbar_social_%s" | i18n | default $defaultLinkTitle | safeHTMLAttr }}"
+                                rel="external noopener"
+                            >
                                 {{ partial (printf "images/%s.svg" .icon) . }}
                             </a>
                         </div>
