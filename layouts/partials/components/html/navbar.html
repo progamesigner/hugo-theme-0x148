@@ -43,11 +43,13 @@
                 <div class="navbar-item has-items">
                     {{ with .Site.Params.Socials }}
                         {{ range sort . "weight" }}
-                            <div class="navbar-item">
-                                <a class="icon icon-{{ .icon }}" href="{{ .url | safeURL }}" title="{{ .name | safeHTMLAttr }}" rel="external noopener">
-                                    {{ partial (printf "images/%s.svg" .icon) . }}
-                                </a>
-                            </div>
+                            {{ if slice .enable | partial "functions/check-boolean-value" }}
+                                <div class="navbar-item">
+                                    <a class="icon icon-{{ .icon }}" href="{{ .url | safeURL }}" title="{{ .name | safeHTMLAttr }}" rel="external noopener">
+                                        {{ partial (printf "images/%s.svg" .icon) . }}
+                                    </a>
+                                </div>
+                            {{ end }}
                         {{ end }}
                     {{ end }}
                     {{ with .Site.Home.OutputFormats.Get "RSS" }}

@@ -5,9 +5,9 @@
 {{ else if .Get "email" }}
     {{- .Get "email" | slice "email" | partial "functions/get-pgpkey-from-mailvelope" -}}
 {{ else if .Site.Params.PGPKeyId }}
-    {{- .Site.Params.PGPKeyId | slice "keyId" | partial "functions/get-pgpkey-from-mailvelope" -}}
+    {{- slice "keyId" .Site.Params.PGPKeyId | partial "functions/get-pgpkey-from-mailvelope" -}}
 {{ else if .Site.Params.PGPFingerPrint }}
-    {{- .Site.Params.PGPFingerPrint | slice "fingerprint" | partial "functions/get-pgpkey-from-mailvelope" -}}
+    {{- slice "fingerprint" .Site.Params.PGPFingerPrint | partial "functions/get-pgpkey-from-mailvelope" -}}
 {{ else }}
-    {{- .Site.Params.PGPEmail | slice "email" | partial "functions/get-pgpkey-from-mailvelope" -}}
+    {{- slice "email" .Site.Params.PGPEmail | partial "functions/get-pgpkey-from-mailvelope" -}}
 {{ end }}
