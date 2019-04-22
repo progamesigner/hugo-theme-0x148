@@ -7,7 +7,7 @@
 		<sitemap>
 			<loc>{{ .SitemapAbsURL }}</loc>
 			{{ if not .LastChange.IsZero }}
-				<lastmod>{{ .LastChange.Format "2006-01-02T15:04:05-07:00" | safeHTML }}</lastmod>
+				<lastmod>{{ slice .LastChange | partial "functions/format-datetime" | safeHTML }}</lastmod>
 			{{ end }}
 		</sitemap>
 	{{ end }}
