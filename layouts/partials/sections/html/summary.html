@@ -1,0 +1,66 @@
+<article class="page is-summary">
+    <div class="page-hero">
+        {{ partial "wrappers/html-hero" . }}
+    </div>
+
+    <div class="page-head">
+        <div class="page-date">
+            {{ partial "components/common/date" .Date }}
+        </div>
+
+        <div class="page-category">
+            {{ partial "components/common/category" . }}
+        </div>
+
+        <h2 class="title">
+            <a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a>
+        </h2>
+
+        {{ with .Description }}
+            <h3 class="subtitle">{{ . }}</h3>
+        {{ end }}
+    </div>
+
+    <div class="page-body">
+        <div class="content page-content">
+            {{ .Summary }}
+        </div>
+    </div>
+
+    <div class="page-foot">
+        <div class="page-meta">
+            <div class="page-meta-item">
+                <span class="icon">
+                    {{ partial "images/clock-outline.svg" . }}
+                </span>
+                <span>{{ .ReadingTime | i18n "page_reading_time" }}</span>
+            </div>
+
+            {{ if ne (.Date.Format "2006-01-02") (.Lastmod.Format "2006-01-02") }}
+                <div class="page-meta-item">
+                    <span class="icon">
+                        {{ partial "images/calendar.svg" . }}
+                    </span>
+                    {{ partial "renderers/date" .Lastmod }}
+                </div>
+            {{ end }}
+
+            {{ if .Param "tags" }}
+                <div class="page-meta-item">
+                    <span class="icon">
+                        {{ partial "images/tag.svg" . }}
+                    </span>
+                    {{ dict "context" . "name" "tags" | partial "renderers/taxonomy" }}
+                </div>
+            {{ end }}
+
+            <div class="page-meta-item"></div>
+
+            {{ if .Truncated }}
+                <a class="button is-permalink" href="{{ .RelPermalink }}" title="{{ .Title }}">
+                    {{ i18n "page_read_more" | default "Read More ..." }}
+                </a>
+            {{ end }}
+        </div>
+    </div>
+</article>

@@ -18,15 +18,21 @@ $amp: true;
 // =============================================================================
 // * Elements
 // =============================================================================
+@import 'styles/elements/advertisement';
+@import 'styles/elements/code';
 @import 'styles/elements/content';
 @import 'styles/elements/icon';
 @import 'styles/elements/section';
+@import 'styles/elements/section';
+@import 'styles/elements/table';
 @import 'styles/elements/tag';
 @import 'styles/elements/title';
-@import 'styles/elements/table';
 @import 'styles/elements/typography';
 @import 'styles/amp/burger';
+@import 'styles/amp/button';
 @import 'styles/amp/container';
+@import 'styles/amp/form';
+@import 'styles/amp/image';
 
 // =============================================================================
 // * Components
@@ -41,6 +47,12 @@ $amp: true;
 // * Site
 // =============================================================================
 @import 'styles/sections/footer/footer';
+@import 'styles/sections/page/advertisement';
+@import 'styles/sections/page/comment';
+@import 'styles/sections/page/date';
+@import 'styles/sections/page/meta';
+@import 'styles/sections/page/page';
+@import 'styles/sections/page/pagination';
 @import 'styles/amp/header';
 
 // =============================================================================

@@ -1,0 +1,9 @@
+{{ define "main" }}
+    <section class="section">
+        {{ range .Paginator.Pages }}
+            {{ partial "sections/html/summary" . }}
+        {{ end }}
+
+        {{ partial "components/html/pagination" . }}
+    </section>
+{{ end }}
