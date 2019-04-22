@@ -1,5 +1,7 @@
 {{- slice . "amp-analytics" | partial "sentinels/amp-module" -}}
 
+{{- $triggers := "amp-analytics-triggers" | index .Site.Data | default dict -}}
+
 {{ if not .Site.Config.Privacy.GoogleAnalytics.Disable | and .Site.Config.Services.GoogleAnalytics.ID }}
     <amp-analytics type="gtag" data-credentials="include">
         <script type="application/json">
@@ -11,7 +13,8 @@
                             "groups": "default"
                         }
                     }
-                }
+                },
+                "triggers" : {{ $triggers }}
             }
         </script>
     </amp-analytics>
