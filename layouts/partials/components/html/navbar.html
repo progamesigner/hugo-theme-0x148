@@ -1,3 +1,6 @@
+{{- $enabled := .Params.EnabledSocials -}}
+{{- $disabled := .Params.DisabledSocials -}}
+
 <nav class="navbar is-transparent is-fixed-top">
     <div class="container">
         <div class="navbar-brand">
@@ -43,7 +46,7 @@
                 <div class="navbar-item has-items">
                     {{ with .Site.Params.Socials }}
                         {{ range sort . "weight" }}
-                            {{ if slice .enable | partial "functions/check-boolean-value" }}
+                            {{ if slice . $enabled $disabled | partial "functions/check-boolean-value" }}
                                 {{- $defaultLinkTitle := dict "Name" .name | i18n "navbar_social_service" | default .name -}}
 
                                 <div class="navbar-item">

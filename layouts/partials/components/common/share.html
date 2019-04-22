@@ -3,6 +3,9 @@
 {{- $title := .Title | plainify | querify "" | strings.TrimPrefix "=" -}}
 {{- $url := .Permalink | querify "" | strings.TrimPrefix "=" -}}
 
+{{- $enabled := .Params.EnabledShares -}}
+{{- $disabled := .Params.DisabledShares -}}
+
 <div class="page-share-items">
     <div class="page-share-item">
         <span class="page-share-brand">
@@ -11,7 +14,7 @@
     </div>
     {{ with .Site.Params.Shares }}
         {{ range sort . "weight" }}
-            {{ if slice .enable | partial "functions/check-boolean-value" }}
+            {{ if slice . $enabled $disabled | partial "functions/check-boolean-value" }}
                 {{- $defaultLinkTitle := dict "Name" .name | i18n "share_with_service" | default .name -}}
 
                 <a

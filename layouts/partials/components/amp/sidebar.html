@@ -1,5 +1,8 @@
 {{- slice . "amp-sidebar" | partial "sentinels/amp-module" -}}
 
+{{- $enabled := .Params.EnabledSocials -}}
+{{- $disabled := .Params.DisabledSocials -}}
+
 <amp-sidebar id="site-sidebar" class="sidebar" layout="nodisplay" side="right">
     <div class="amp-burger is-active" on="tap:site-sidebar.close" role="button" aria-label="close sidebar" tabindex="0">
         <span aria-hidden="true"></span>
@@ -23,7 +26,7 @@
         <section class="sidebar-item has-items">
             {{ with .Site.Params.Socials }}
                 {{ range sort . "weight" }}
-                    {{ if slice .enable | partial "functions/check-boolean-value" }}
+                    {{ if slice . $enabled $disabled | partial "functions/check-boolean-value" }}
                         {{- $defaultLinkTitle := dict "Name" .name | i18n "navbar_social_service" | default .name -}}
 
                         <div class="sidebar-item">
