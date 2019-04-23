@@ -5,7 +5,7 @@
     <div class="container">
         <div class="navbar-brand">
             <a class="navbar-item" href="{{ .Site.Home.RelPermalink }}">
-                {{ partial "templates/brand" . }}
+                {{ partial "templates/brand" . | safeHTML }}
             </a>
 
             <a class="navbar-burger" href="#" role="button" aria-label="menu" aria-expanded="false">
@@ -29,7 +29,7 @@
 
                         <div class="navbar-dropdown is-boxed">
                             {{- $current := .Language.LanguageName -}}
-                            {{ range .Site.Home.AllTranslations.ByWeight }}
+                            {{ range .AllTranslations.ByWeight }}
                                 {{ if eq $current .Language.LanguageName }}
                                     <a class="navbar-item is-active" href="{{ .RelPermalink }}" title="{{ .Title }}">
                                         {{ .Language.LanguageName }}

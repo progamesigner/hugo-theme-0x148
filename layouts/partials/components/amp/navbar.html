@@ -1,7 +1,7 @@
 <nav class="navbar is-fixed-top">
     <div class="navbar-brand">
         <a class="navbar-item" href="{{ .Site.Home.RelPermalink }}">
-            {{ partial "templates/brand" . }}
+            {{ partial "templates/brand" . | safeHTML }}
         </a>
 
         <div class="amp-burger" on="tap:site-sidebar.open" role="button" aria-label="open sidebar" tabindex="0">
