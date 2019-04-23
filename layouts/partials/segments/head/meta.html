@@ -4,14 +4,6 @@
 
 <meta name="description" content="{{ slice . | partial "functions/get-meta-description" | plainify }}">
 
-{{ with .Site.Params.Meta.BrowserConfig }}
-    <meta name="msapplication-config" content="{{ . | absURL }}">
-{{ end }}
-
-{{ with .Site.Params.Meta.ThemeColor }}
-    <meta name="theme-color" content="{{ . | safeHTMLAttr }}">
-{{ end }}
-
 {{ with .GitInfo }}
     <meta name="git-version" content="{{ .AbbreviatedHash | safeHTMLAttr }}">
 {{ end }}
