@@ -1,12 +1,3 @@
-<script type="application/ld+json">
-    {
-      "provider" : {
-        "@type": "Organization",
-        "name" : "{{ .Params.provider.name }}",
-        "sameAs" : "{{ .Params.provider.url }}"
-      }
-    }
-</script>
 {{- $schema := newScratch -}}
 
 {{- "http://schema.org" | $schema.SetInMap "schema" "@context" -}}
