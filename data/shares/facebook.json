@@ -1,0 +1,5 @@
+{
+    "name": "Facebook",
+    "icon": "facebook",
+    "format": "https://www.facebook.com/dialog/share?href=:url:"
+}

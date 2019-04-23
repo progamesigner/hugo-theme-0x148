@@ -1,4 +1,6 @@
-{{ range .Site.Params.HTMLModules }}
+{{- $modules := slice . "HTMLModules" | partial "functions/get-union-params" -}}
+
+{{ range $modules }}
     {{- $module := . | printf "modules/%s" -}}
 
     {{ partial $module $ }}

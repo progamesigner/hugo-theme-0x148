@@ -1,0 +1,5 @@
+{
+    "name": "Pocket",
+    "icon": "pocket",
+    "format": "https://getpocket.com/edit?url=:url:"
+}

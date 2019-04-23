@@ -1,0 +1,5 @@
+{
+    "name": "Trello",
+    "icon": "trello",
+    "format": "https://trello.com/add-card?source=:base:&url=:url:&name=:title:&desc=:description:"
+}

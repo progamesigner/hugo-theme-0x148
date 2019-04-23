@@ -3,8 +3,8 @@
 {{- $title := .Title | plainify | querify "" | strings.TrimPrefix "=" -}}
 {{- $url := .Permalink | querify "" | strings.TrimPrefix "=" -}}
 
-{{- $enabled := .Params.EnabledShares -}}
-{{- $disabled := .Params.DisabledShares -}}
+{{- $items := "shares" | index .Site.Data -}}
+{{- $shares := slice . "EnabledShareServices" "DisabledShareServices" | partial "functions/get-computed-params" | slice . "EnabledShareServices" "OrderedShareServices" | partial "functions/sort-by-params" -}}
 
 <div class="page-share-items">
     <div class="page-share-item">
@@ -12,22 +12,20 @@
             {{ partial "templates/icon" . | safeHTML }}
         </span>
     </div>
-    {{ with .Site.Params.Shares }}
-        {{ range sort . "weight" }}
-            {{ if slice . $enabled $disabled | partial "functions/check-boolean-value" }}
-                {{- $defaultLinkTitle := dict "Name" .name | i18n "share_with_service" | default .name -}}
+    {{ range $shares }}
+        {{ with . | index $items }}
+            {{- $defaultLinkTitle := dict "Name" .name | i18n "share_with_service" | default .name -}}
 
-                <a
-                    class="page-share-item"
-                    href="{{ .format | replaceRE "(?i):base:" $base | replaceRE "(?i):url:" $url | replaceRE "(?i):title:" $title | replaceRE "(?i):description:" $description | safeURL }}"
-                    title="{{ .name | lower | printf "share_with_%s" | i18n | default $defaultLinkTitle | safeHTMLAttr }}"
-                    rel="external noopener"
-                >
-                    <span class="icon icon-{{ .icon }} has-color">
-                        {{ partial (printf "images/%s.svg" .icon) . }}
-                    </span>
-                </a>
-            {{ end }}
+            <a
+                class="page-share-item"
+                href="{{ .format | replaceRE "(?i):base:" $base | replaceRE "(?i):url:" $url | replaceRE "(?i):title:" $title | replaceRE "(?i):description:" $description | safeURL }}"
+                title="{{ .name | lower | printf "share_with_%s" | i18n | default $defaultLinkTitle | safeHTMLAttr }}"
+                rel="external noopener"
+            >
+                <span class="icon icon-{{ .icon }} has-color">
+                    {{ partial (printf "images/%s.svg" .icon) . }}
+                </span>
+            </a>
         {{ end }}
     {{ end }}
 </div>

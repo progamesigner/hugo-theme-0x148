@@ -1,0 +1,5 @@
+{
+    "name": "Twitter",
+    "icon": "twitter",
+    "format": "https://twitter.com/intent/tweet?url=:url:&text=:title:"
+}

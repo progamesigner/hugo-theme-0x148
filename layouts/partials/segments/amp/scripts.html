@@ -1,5 +1,5 @@
 {{- $mappings := "amp-modules" | index .Site.Data | default dict -}}
-{{- $modules := slice . | partial "functions/get-amp-modules" -}}
+{{- $modules := slice . "AMPModules" | partial "functions/get-union-params" -}}
 
 <link rel="preload" as="script" href="https://cdn.ampproject.org/v0.js">
 <link rel="preload" as="script" href="https://cdn.ampproject.org/v0/amp-custom-css-0.1.js">

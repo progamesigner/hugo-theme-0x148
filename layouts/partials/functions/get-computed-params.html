@@ -1,0 +1,11 @@
+{{- $context := 0 | index . -}}
+{{- $enabledItemsKey := 1 | index . -}}
+{{- $disabledItemsKey := 2 | index . -}}
+
+{{- $pageEnabledItems := $enabledItemsKey | lower | index $context.Params | default slice -}}
+{{- $siteEnabledItems := $enabledItemsKey | lower | index $context.Site.Params | default slice -}}
+{{- $disabledItems := slice $context $disabledItemsKey | partial "functions/get-union-params" -}}
+
+{{- $items := $siteEnabledItems | complement $disabledItems | union $pageEnabledItems -}}
+
+{{- return $items -}}
