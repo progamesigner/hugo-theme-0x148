@@ -17,7 +17,7 @@
 
         <div class="navbar-menu">
             <div class="navbar-start">
-                {{ partial "components/common/navbar-start-items" . }}
+                {{ partial "components/common/navbar-menu-items" . }}
             </div>
 
             <div class="navbar-end">
@@ -45,24 +45,8 @@
                 {{ end }}
 
                 <div class="navbar-item has-items">
-                    {{ with .Site.Params.Socials }}
-                        {{ range sort . "weight" }}
-                            {{ if slice . $enabled $disabled | partial "functions/check-boolean-value" }}
-                                {{- $defaultLinkTitle := dict "Name" .name | i18n "navbar_social_service" | default .name -}}
+                    {{ partial "components/common/navbar-link-items" . }}
 
-                                <div class="navbar-item">
-                                    <a
-                                        class="icon icon-{{ .icon }}"
-                                        href="{{ .url | safeURL }}"
-                                        title="{{ .name | lower | printf "navbar_social_%s" | i18n | default $defaultLinkTitle | safeHTMLAttr }}"
-                                        rel="external noopener"
-                                    >
-                                        {{ partial (printf "images/%s.svg" .icon) . }}
-                                    </a>
-                                </div>
-                            {{ end }}
-                        {{ end }}
-                    {{ end }}
                     {{ with .Site.Home.OutputFormats.Get "RSS" }}
                         <div class="navbar-item">
                             <a class="icon icon-rss" href="{{ .RelPermalink }}" title="{{ i18n "navbar_social_rss" | default "RSS" }}">

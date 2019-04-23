@@ -4,7 +4,7 @@
 [footer_power_line]
     other = "<a href=\"https://bulma.io\" title=\"Made with Bulma\">Bulma</a> &middot; <a href=\"https://gohugo.io\" title=\"Built with Hugo\">Hugo</a> &middot; <a href=\"https://0x148.com\" title=\"Themed by 0x148\">0x148</a>"
 
-[navbar_social_rss]
+[navbar_link_rss]
     other = "RSS Feed"
 
 [share_with_service]

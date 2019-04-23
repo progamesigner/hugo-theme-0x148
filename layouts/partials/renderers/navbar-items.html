@@ -1,47 +1,49 @@
 {{- $name := .name -}}
-{{- $current := .context -}}
+{{- $context := .context -}}
 
-{{ with .context }}
-    {{ range index .Site.Menus $name }}
-        {{ if or ($current.IsMenuCurrent $name .) ($current.HasMenuCurrent $name .) }}
-            {{ if .HasChildren }}
-                <div class="navbar-item has-dropdown is-hoverable is-current">
-                    <a class="navbar-link" href="{{ .URL }}" title="{{ .Name }}">
+{{ with $context }}
+    {{ with $name | index .Site.Menus }}
+        {{ range sort . "Weight" }}
+            {{ if or ($context.IsMenuCurrent $name .) ($context.HasMenuCurrent $name .) }}
+                {{ if .HasChildren }}
+                    <div class="navbar-item has-dropdown is-hoverable is-current">
+                        <a class="navbar-link" href="{{ .URL }}" title="{{ .Name }}">
+                            {{ .Name }}
+                        </a>
+
+                        <div class="navbar-dropdown is-boxed">
+                            {{ range .Children }}
+                                <a class="navbar-item" href="{{ .URL }}" title="{{ .Name }}">
+                                    {{ .Name }}
+                                </a>
+                            {{ end }}
+                        </div>
+                    </div>
+                {{ else }}
+                    <a class="navbar-item is-current" href="{{ .URL }}" title="{{ .Name }}">
                         {{ .Name }}
                     </a>
-
-                    <div class="navbar-dropdown is-boxed">
-                        {{ range .Children }}
-                            <a class="navbar-item" href="{{ .URL }}" title="{{ .Name }}">
-                                {{ .Name }}
-                            </a>
-                        {{ end }}
-                    </div>
-                </div>
+                {{ end }}
             {{ else }}
-                <a class="navbar-item is-current" href="{{ .URL }}" title="{{ .Name }}">
-                    {{ .Name }}
-                </a>
-            {{ end }}
-        {{ else }}
-            {{ if .HasChildren }}
-                <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link" href="{{ .URL }}" title="{{ .Name }}">
+                {{ if .HasChildren }}
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link" href="{{ .URL }}" title="{{ .Name }}">
+                            {{ .Name }}
+                        </a>
+
+                        <div class="navbar-dropdown is-boxed">
+                            {{ range .Children }}
+                                <a class="navbar-item" href="{{ .URL }}" title="{{ .Name }}">
+                                    {{ .Name }}
+                                </a>
+                            {{ end }}
+                        </div>
+                    </div>
+                {{ else }}
+                    <a class="navbar-item" href="{{ .URL }}" title="{{ .Name }}">
                         {{ .Name }}
                     </a>
-
-                    <div class="navbar-dropdown is-boxed">
-                        {{ range .Children }}
-                            <a class="navbar-item" href="{{ .URL }}" title="{{ .Name }}">
-                                {{ .Name }}
-                            </a>
-                        {{ end }}
-                    </div>
-                </div>
-            {{ else }}
-                <a class="navbar-item" href="{{ .URL }}" title="{{ .Name }}">
-                    {{ .Name }}
-                </a>
+                {{ end }}
             {{ end }}
         {{ end }}
     {{ end }}

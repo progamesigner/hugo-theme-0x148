@@ -5,7 +5,7 @@
 [footer_power_line]
     other = "<a href=\"https://bulma.io\" title=\"使用 Bulma 製作\">Bulma</a> &middot; <a href=\"https://gohugo.io\" title=\"使用 Hugo 建置\">Hugo</a> &middot; <a href=\"https://0x148.com\" title=\"0x148主題\">0x148</a>"
 
-[navbar_social_rss]
+[navbar_link_rss]
     other = "RSS訂閱"
 
 [share_with_service]

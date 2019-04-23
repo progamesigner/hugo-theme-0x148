@@ -3,6 +3,9 @@
 {{- $enabled := .Params.EnabledSocials -}}
 {{- $disabled := .Params.DisabledSocials -}}
 
+{{- $items := "shares" | index .Site.Data -}}
+{{- $shares := slice . "EnabledShareServices" "DisabledShareServices" | partial "functions/get-computed-params" | slice . "EnabledShareServices" "OrderedShareServices" | partial "functions/sort-by-params" -}}
+
 <amp-sidebar id="site-sidebar" class="sidebar" layout="nodisplay" side="right">
     <div class="amp-burger is-active" on="tap:site-sidebar.close" role="button" aria-label="close sidebar" tabindex="0">
         <span aria-hidden="true"></span>
@@ -26,24 +29,8 @@
 
     <nav class="sidebar-menu is-pulled-bottom">
         <section class="sidebar-item has-items">
-            {{ with .Site.Params.Socials }}
-                {{ range sort . "weight" }}
-                    {{ if slice . $enabled $disabled | partial "functions/check-boolean-value" }}
-                        {{- $defaultLinkTitle := dict "Name" .name | i18n "navbar_social_service" | default .name -}}
+            {{ partial "components/common/sidebar-link-items" . }}
 
-                        <div class="sidebar-item">
-                            <a
-                                class="icon is-{{ .icon }}"
-                                href="{{ .url | safeURL }}"
-                                title="{{ .name | lower | printf "navbar_social_%s" | i18n | default $defaultLinkTitle | safeHTMLAttr }}"
-                                rel="external noopener"
-                            >
-                                {{ partial (printf "images/%s.svg" .icon) . }}
-                            </a>
-                        </div>
-                    {{ end }}
-                {{ end }}
-            {{ end }}
             {{ with .Site.Home.OutputFormats.Get "RSS" }}
                 <div class="sidebar-item">
                     <a class="icon icon-rss" href="{{ .RelPermalink }}" title="{{ i18n "navbar_social_rss" | default "RSS" }}">
