@@ -4,5 +4,6 @@
 
     ampModules = ["amp-analytics", "amp-sidebar", "amp-form","amp-iframe"]
     htmlModules = ["google-analytics", "disqus", "mathjax"]
-    navbarMenuName = "main"
     navbarLinkName = "link"
+    navbarMenuName = "main"
+    shareMenuName = "share"

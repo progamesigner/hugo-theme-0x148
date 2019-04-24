@@ -1,0 +1,48 @@
+{{- $name := .name -}}
+{{- $context := .context -}}
+{{- $disabledItemKey := .disabled -}}
+{{- $wrapperClass := .wrapper -}}
+{{- $extraClass := .extra | default false -}}
+
+{{ with $context }}
+    {{- $disabledItems := $disabledItemKey | lower | .Param | default slice -}}
+
+    {{- $base := $context.Site.BaseURL | querify "" | strings.TrimPrefix "=" -}}
+    {{- $url := .Permalink | querify "" | strings.TrimPrefix "=" -}}
+    {{- $title := .Title | plainify | querify "" | strings.TrimPrefix "=" -}}
+    {{- $description := slice . | partial "functions/get-meta-description" | plainify | querify "" | strings.TrimPrefix "=" -}}
+
+    {{ with $name | index .Site.Menus }}
+        {{ range sort . "Weight" }}
+            {{ if .Name | in $disabledItems | not }}
+                {{- $link := .URL -}}
+                {{- $icon := .Name | anchorize -}}
+
+                {{- $link = $link | replaceRE "(?i){base}" $base -}}
+                {{- $link = $link | replaceRE "(?i){url}" $url -}}
+                {{- $link = $link | replaceRE "(?i){title}" $title -}}
+                {{- $link = $link | replaceRE "(?i){description}" $description -}}
+                {{- $link = $link | replaceRE "(?i){icon}" $icon -}}
+
+                <div class="{{ $wrapperClass }}">
+                    <a
+                        {{ if $extraClass }}
+                            class="icon icon-{{ $icon }} {{ $extraClass }}"
+                        {{ else }}
+                            class="icon icon-{{ $icon }}"
+                        {{ end }}
+                        href="{{ $link }}"
+                        title="{{ .Title }}"
+                        {{ if "http" | hasPrefix $link }}
+                            rel="external noopener"
+                        {{ else }}
+                            rel="noopener"
+                        {{ end }}
+                    >
+                        {{ slice $context $icon | partial "functions/get-svg-icon" }}
+                    </a>
+                </div>
+            {{ end }}
+        {{ end }}
+    {{ end }}
+{{ end }}

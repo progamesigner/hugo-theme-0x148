@@ -4,9 +4,17 @@ $icon-top-dimension: 2rem !default;
 
 @import '~bulma/sass/elements/icon';
 
+@mixin brand-icon($brand, $hover, $dimension, $color: $black) {
+    .icon-#{$brand} {
+        @include svg-icon($hover, $icon-brand-dimension, $color);
+    }
+}
+
 .icon {
     svg {
-        transition: fill $speed $easing;
+        path {
+            transition: fill $speed $easing;
+        }
     }
 }
 
@@ -20,22 +28,8 @@ $icon-top-dimension: 2rem !default;
     width: $icon-top-dimension;
 }
 
-.icon-github {
-    @include svg-icon(#4078c0, $icon-brand-dimension);
-}
-
-.icon-twitter {
-    @include svg-icon(#1da1f2, $icon-brand-dimension);
-}
-
-.icon-facebook {
-    @include svg-icon(#3b5998, $icon-brand-dimension);
-}
-
-.icon-linkedin {
-    @include svg-icon(#0077b5, $icon-brand-dimension);
-}
-
-.icon-rss {
-    @include svg-icon(#f26522, $icon-brand-dimension);
+@each $name, $color in $icon-colors {
+    .icon-#{$name} {
+        @include svg-icon($color, $icon-brand-dimension);
+    }
 }

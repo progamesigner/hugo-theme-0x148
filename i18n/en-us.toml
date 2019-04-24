@@ -7,9 +7,6 @@
 [navbar_link_rss]
     other = "RSS Feed"
 
-[share_with_service]
-    other = "Share with {{ .Name }}"
-
 [sidebar_language_label]
     other = "Language"
 

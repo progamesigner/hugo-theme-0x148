@@ -31,7 +31,7 @@
             <div class="page-meta">
                 <div class="page-meta-item">
                     <span class="icon">
-                        {{ partial "images/clock-outline.svg" . }}
+                        {{ slice . "icon-reading-time" | partial "functions/get-svg-icon" }}
                     </span>
                     <span>{{ .ReadingTime | i18n "page_reading_time" }}</span>
                 </div>
@@ -39,7 +39,7 @@
                 {{ if ne (.Date.Format "2006-01-02") (.Lastmod.Format "2006-01-02") }}
                     <div class="page-meta-item">
                         <span class="icon">
-                            {{ partial "images/calendar.svg" . }}
+                            {{ slice . "icon-lastmod" | partial "functions/get-svg-icon" }}
                         </span>
                         {{ partial "renderers/date" .Lastmod }}
                     </div>
@@ -48,7 +48,7 @@
                 {{ if .Param "tags" }}
                     <div class="page-meta-item">
                         <span class="icon">
-                            {{ partial "images/tag.svg" . }}
+                            {{ slice . "icon-tag" | partial "functions/get-svg-icon" }}
                         </span>
                         {{ dict "context" . "name" "tags" | partial "renderers/taxonomy" }}
                     </div>

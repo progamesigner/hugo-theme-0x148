@@ -1,31 +1,9 @@
-{{- $base := .Site.BaseURL | querify "" | strings.TrimPrefix "=" -}}
-{{- $description := slice . | partial "functions/get-meta-description" | plainify | querify "" | strings.TrimPrefix "=" -}}
-{{- $title := .Title | plainify | querify "" | strings.TrimPrefix "=" -}}
-{{- $url := .Permalink | querify "" | strings.TrimPrefix "=" -}}
-
-{{- $items := "shares" | index .Site.Data -}}
-{{- $shares := slice . "EnabledShareServices" "DisabledShareServices" | partial "functions/get-computed-params" | slice . "EnabledShareServices" "OrderedShareServices" | partial "functions/sort-by-params" -}}
-
 <div class="page-share-items">
     <div class="page-share-item">
         <span class="page-share-brand">
             {{ partial "templates/icon" . | safeHTML }}
         </span>
     </div>
-    {{ range $shares }}
-        {{ with . | index $items }}
-            {{- $defaultLinkTitle := dict "Name" .name | i18n "share_with_service" | default .name -}}
 
-            <a
-                class="page-share-item"
-                href="{{ .format | replaceRE "(?i):base:" $base | replaceRE "(?i):url:" $url | replaceRE "(?i):title:" $title | replaceRE "(?i):description:" $description | safeURL }}"
-                title="{{ .name | lower | printf "share_with_%s" | i18n | default $defaultLinkTitle | safeHTMLAttr }}"
-                rel="external noopener"
-            >
-                <span class="icon icon-{{ .icon }} has-color">
-                    {{ partial (printf "images/%s.svg" .icon) . }}
-                </span>
-            </a>
-        {{ end }}
-    {{ end }}
+    {{ .Site.Params.ShareMenuName | default "share" | dict "context" . "wrapper" "page-share-item" "extra" "is-hovered" "disabled" "DisabledShareServices" "name" | partial "renderers/menu-icon-links" }}
 </div>

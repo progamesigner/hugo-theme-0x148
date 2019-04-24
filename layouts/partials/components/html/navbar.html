@@ -17,7 +17,7 @@
 
         <div class="navbar-menu">
             <div class="navbar-start">
-                {{ partial "components/common/navbar-menu-items" . }}
+                {{ .Site.Params.NavbarMenuName | default "main" | dict "context" . "name" | partial "renderers/navbar-items" }}
             </div>
 
             <div class="navbar-end">
@@ -45,12 +45,12 @@
                 {{ end }}
 
                 <div class="navbar-item has-items">
-                    {{ partial "components/common/navbar-link-items" . }}
+                    {{ .Site.Params.NavbarLinkName | default "link" | dict "context" . "wrapper" "navbar-item" "name" | partial "renderers/menu-icon-links" }}
 
                     {{ with .Site.Home.OutputFormats.Get "RSS" }}
                         <div class="navbar-item">
-                            <a class="icon icon-rss" href="{{ .RelPermalink }}" title="{{ i18n "navbar_social_rss" | default "RSS" }}">
-                                {{ partial "images/rss.svg" . }}
+                            <a class="icon icon-rss" href="{{ .RelPermalink }}" title="{{ i18n "navbar_link_rss" | default "RSS" }}">
+                                {{ slice $ "icon-rss" | partial "functions/get-svg-icon" }}
                             </a>
                         </div>
                     {{ end }}

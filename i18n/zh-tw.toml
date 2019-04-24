@@ -8,9 +8,6 @@
 [navbar_link_rss]
     other = "RSS訂閱"
 
-[share_with_service]
-    other = "分享到 {{ . }}"
-
 [sidebar_language_label]
     other = "語言"
 

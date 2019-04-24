@@ -1,5 +1,0 @@
-{
-    "name": "Email",
-    "icon": "email",
-    "format": "mailto:?subject=:title:&body=:url:"
-}

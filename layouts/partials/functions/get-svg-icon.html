@@ -1,0 +1,21 @@
+{{- $context := 0 | index . -}}
+{{- $name := 1 | index . -}}
+
+{{- $icons := $context.Param "icons" | default dict -}}
+{{- $key := $name | index $icons | default $name -}}
+
+{{- $svg := false -}}
+
+{{- if not $svg -}}
+    {{- $svg = slice $context $key | partial "functions/get-svg-from-partial" -}}
+{{- end -}}
+
+{{- if not $svg -}}
+    {{- $svg = slice $context $key | partial "functions/get-svg-from-iconify" -}}
+{{- end -}}
+
+{{- if not $svg -}}
+    {{- errorf "No local SVG image '%s' or alias found" $name -}}
+{{- end -}}
+
+{{- return default "" $svg -}}
