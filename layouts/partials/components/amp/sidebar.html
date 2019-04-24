@@ -12,13 +12,13 @@
 
     {{ partial "wrappers/amp-search" . }}
 
-    <p class="sidebar-label">{{ i18n "sidebar_navigation_label" }}</p>
+    <p class="sidebar-label">{{ i18n "sidebar_label_navigation" }}</p>
     <nav class="sidebar-menu">
         {{ .Site.Params.NavbarMenuName | default .Site.Params.SectionPagesMenu | default "main" | dict "context" . "name" | partial "renderers/sidebar-items" }}
     </nav>
 
     {{ if .IsTranslated }}
-        <p class="sidebar-label">{{ i18n "sidebar_language_label" }}</p>
+        <p class="sidebar-label">{{ i18n "sidebar_label_language" }}</p>
         <nav class="sidebar-menu">
             {{ partial "components/common/sidebar-language-items" . }}
         </nav>

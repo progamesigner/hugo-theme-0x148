@@ -17,8 +17,8 @@
 [page_reading_time]
     other = "大約 {{ .Count }} 分鐘閱讀時間"
 
-[sidebar_language_label]
+[sidebar_label_language]
     other = "語言"
 
-[sidebar_navigation_label]
+[sidebar_label_navigation]
     other = "網站導航"

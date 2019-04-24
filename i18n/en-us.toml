@@ -17,8 +17,8 @@
     one = "One minute read"
     other = "{{ .Count }} minutes read"
 
-[sidebar_language_label]
+[sidebar_label_language]
     other = "Language"
 
-[sidebar_navigation_label]
+[sidebar_label_navigation]
     other = "Navigation"
