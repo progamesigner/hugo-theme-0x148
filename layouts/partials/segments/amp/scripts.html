@@ -1,16 +1,16 @@
 {{- $mappings := "amp-modules" | index .Site.Data | default dict -}}
 {{- $modules := slice . "AMPModules" | partial "functions/get-union-params" -}}
 
-<link rel="preload" as="script" href="https://cdn.ampproject.org/v0.js">
-<link rel="preload" as="script" href="https://cdn.ampproject.org/v0/amp-custom-css-0.1.js">
-<link rel="preload" as="script" href="https://cdn.ampproject.org/v0/amp-experiment-0.1.js">
-<link rel="preload" as="script" href="https://cdn.ampproject.org/v0/story-1.0.js">
+<link rel="preload" as="script" href="{{ "amp-core" | index $mappings }}">
+<link rel="preload" as="script" href="{{ "amp-experiment" | index $mappings }}">
+<link rel="preload" as="script" href="{{ "amp-story" | index $mappings }}">
+
 <link rel="preconnect dns-prefetch" href="https://fonts.gstatic.com/" crossorigin>
 
-<script src="{{ index $mappings "amp-core" }}" async></script>
+<script src="{{ "amp-core" | index $mappings }}" async></script>
 
 {{ range $modules }}
-    <script custom-element="{{ . }}" src="{{ index $mappings . }}" async></script>
+    <script custom-element="{{ . }}" src="{{ . | index $mappings }}" async></script>
 {{ end }}
 
 {{ block "scripts" . }}{{ end }}
