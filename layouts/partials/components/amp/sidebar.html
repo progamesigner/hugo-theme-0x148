@@ -14,7 +14,7 @@
 
     <p class="sidebar-label">{{ i18n "sidebar_navigation_label" }}</p>
     <nav class="sidebar-menu">
-        {{ .Site.Params.NavbarMenuName | default "main" | dict "context" . "name" | partial "renderers/sidebar-items" }}
+        {{ .Site.Params.NavbarMenuName | default .Site.Params.SectionPagesMenu | default "main" | dict "context" . "name" | partial "renderers/sidebar-items" }}
     </nav>
 
     {{ if .IsTranslated }}

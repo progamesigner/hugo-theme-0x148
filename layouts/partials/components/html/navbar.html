@@ -17,7 +17,7 @@
 
         <div class="navbar-menu">
             <div class="navbar-start">
-                {{ .Site.Params.NavbarMenuName | default "main" | dict "context" . "name" | partial "renderers/navbar-items" }}
+                {{ .Site.Params.NavbarMenuName | default .Site.Params.SectionPagesMenu | default "main" | dict "context" . "name" | partial "renderers/navbar-items" }}
             </div>
 
             <div class="navbar-end">
