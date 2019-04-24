@@ -8,6 +8,15 @@
 [navbar_link_rss]
     other = "RSS訂閱"
 
+[page_read_continue]
+    other = "繼續閱讀"
+
+[page_read_more]
+    other = "繼續閱讀"
+
+[page_reading_time]
+    other = "大約 {{ .Count }} 分鐘閱讀時間"
+
 [sidebar_language_label]
     other = "語言"
 

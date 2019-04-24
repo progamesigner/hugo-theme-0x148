@@ -7,6 +7,16 @@
 [navbar_link_rss]
     other = "RSS Feed"
 
+[page_read_continue]
+    other = "Continue"
+
+[page_read_more]
+    other = "Read More ..."
+
+[page_reading_time]
+    one = "One minute read"
+    other = "{{ .Count }} minutes read"
+
 [sidebar_language_label]
     other = "Language"
 
