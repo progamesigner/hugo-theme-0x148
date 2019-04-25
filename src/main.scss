@@ -26,10 +26,10 @@ $amp: false;
 @import 'styles/elements/container';
 @import 'styles/elements/content';
 @import 'styles/elements/form';
+@import 'styles/elements/highlight';
 @import 'styles/elements/icon';
 @import 'styles/elements/image';
 @import 'styles/elements/link';
-@import 'styles/elements/miscellaneous';
 @import 'styles/elements/progress';
 @import 'styles/elements/section';
 @import 'styles/elements/table';
@@ -67,7 +67,5 @@ $amp: false;
 // * Helpers
 // =============================================================================
 @import 'styles/helpers/cursor';
-@import 'styles/helpers/display';
-@import 'styles/helpers/loader';
 @import 'styles/helpers/shape';
 @import 'styles/helpers/text';
