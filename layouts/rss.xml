@@ -1,7 +1,7 @@
 {{- $limit := .Data.Pages | len | cond (ge .Site.Config.Services.RSS.Limit 1) .Site.Config.Services.RSS.Limit -}}
 {{- $pages := .Data.Pages | first $limit -}}
 
-{{ "<?" | safeHTML }}xml version="1.0" encoding="utf-8" standalone="yes"{{ "?>" | safeHTML }}
+{{ "<?" | safeHTML }}xml version="1.0" encoding="UTF-8" standalone="yes"{{ "?>" | safeHTML }}
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>{{ if eq  .Title  .Site.Title }}{{ .Site.Title }}{{ else }}{{ with .Title }}{{.}} &middot; {{ end }}{{ .Site.Title }}{{ end }}</title>
