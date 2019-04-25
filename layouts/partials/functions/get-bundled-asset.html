@@ -1,0 +1,11 @@
+{{- $context := 0 | index . -}}
+{{- $name := 1 | index . -}}
+{{- $files := . | after 2 -}}
+{{- $assets := slice -}}
+
+{{- range $files -}}
+    {{- $asset := . | resources.Get | resources.ExecuteAsTemplate . $context -}}
+    {{- $assets = $assets | append $asset -}}
+{{- end -}}
+
+{{- return resources.Concat $name $assets -}}

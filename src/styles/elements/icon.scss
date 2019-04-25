@@ -1,14 +1,7 @@
-$icon-brand-dimension: 1.5rem !default;
 $icon-search-dimension: 1rem !default;
 $icon-top-dimension: 2rem !default;
 
 @import '~bulma/sass/elements/icon';
-
-@mixin brand-icon($brand, $hover, $dimension, $color: $black) {
-    .icon-#{$brand} {
-        @include svg-icon($hover, $icon-brand-dimension, $color);
-    }
-}
 
 .icon {
     svg {
@@ -26,10 +19,4 @@ $icon-top-dimension: 2rem !default;
 .icon-top {
     height: $icon-top-dimension;
     width: $icon-top-dimension;
-}
-
-@each $name, $color in $icon-colors {
-    .icon-#{$name} {
-        @include svg-icon($color, $icon-brand-dimension);
-    }
 }

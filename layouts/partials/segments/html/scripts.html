@@ -1,4 +1,4 @@
-{{- $script := resources.Get "main.js" | minify | fingerprint "sha512" -}}
+{{- $script := slice . "script.js" "main.js" "extension.js" | partial "functions/get-bundled-asset" | minify | fingerprint "sha512" -}}
 
 <script src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}" crossorigin="anonymous"></script>
 

@@ -1,4 +1,4 @@
-{{- $style := resources.Get "main.css" | minify | fingerprint "sha512" -}}
+{{- $style := slice . "style.css" "main.css" "extra.css" "main-extension.css" | partial "functions/get-bundled-asset" | minify | fingerprint "sha512" -}}
 
 <link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}" crossorigin="anonymous">
 

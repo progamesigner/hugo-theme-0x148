@@ -1,0 +1,10 @@
+{{ range $name, $color := .Site.Params.Colors }}
+    .icon-{{ $name }} svg path {
+        fill: #000000;
+    }
+
+    .icon-{{ $name }}:hover svg path,
+    .icon-{{ $name }}.is-hovered svg path {
+        fill: {{ $color }};
+    }
+{{ end }}
