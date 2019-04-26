@@ -1,3 +1,8 @@
+$code-border-width: 0.5rem !default;
+$code-lang-label-margin: 0 1.5rem !default;
+$code-lang-label-padding: 0.25rem 0.75rem !default;
+$code-line-number-padding: 0.5rem !default;
+
 $code-color-base00: #2b303b !default; // Default Background
 $code-color-base01: #343d46 !default; // Lighter Background (Used for status bars)
 $code-color-base02: #4f5b66 !default; // Selection Background
@@ -17,7 +22,7 @@ $code-color-base0f: #ab7967 !default; // Deprecated, Opening/Closing Embedded La
 
 .highlight {
     > .chroma {
-        border-top: 0.5rem solid $code-color-base01;
+        border-top: $code-border-width solid $code-color-base01;
         overflow-x: auto;
 
         table {
@@ -29,8 +34,8 @@ $code-color-base0f: #ab7967 !default; // Deprecated, Opening/Closing Embedded La
                 font-family: $family-monospace;
                 font-size: $size-small;
                 font-weight: $weight-bold;
-                margin: 0 1.5rem;
-                padding: 0.25rem 0.75rem;
+                margin: $code-lang-label-margin;
+                padding: $code-lang-label-padding;
                 position: absolute;
                 right: 0;
                 text-transform: capitalize;
@@ -51,10 +56,6 @@ $code-color-base0f: #ab7967 !default; // Deprecated, Opening/Closing Embedded La
                 }
             }
         }
-
-        pre {
-            padding: 1.25rem 0.5rem;
-        }
     }
 }
 
@@ -72,15 +73,9 @@ $code-color-base0f: #ab7967 !default; // Deprecated, Opening/Closing Embedded La
         width: 100%;
     }
 
-    .ln { /* LineNumbers */
-        margin-right: 0.5rem;
-        padding: 0 0.5rem 0 0.5rem;
-        color: $code-color-base03;
-    }
-
+    .ln, /* LineNumbers */
     .lnt { /* LineNumbersTable */
-        margin-right: 0.5rem;
-        padding: 0 0.5rem 0 0.5rem;
+        padding: 0 $code-line-number-padding;
         color: $code-color-base03;
     }
 
