@@ -63,7 +63,7 @@ $page-pagination-item-icon-hover-offset: 0.5rem !default;
 
             svg {
                 fill: $page-pagination-item-icon-color;
-                transition: color $speed $easing, transform $speed $easing;
+                transition: fill $speed $easing, transform $speed $easing;
             }
         }
 

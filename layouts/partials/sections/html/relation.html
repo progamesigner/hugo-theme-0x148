@@ -1,0 +1,29 @@
+<div class="page-relation">
+    {{ range . | .Site.RegularPages.Related | first 3 }}
+        <article class="page is-relation">
+            <div class="page-hero">
+                {{ partial "wrappers/html-hero" . }}
+
+                <div class="page-category">
+                    {{ partial "components/common/category" . }}
+                </div>
+            </div>
+
+            <div class="page-head">
+                <h2 class="title">{{ .Title }}</h2>
+
+                <h3 class="subtitle">
+                    {{ partial "renderers/date" .Date }}
+                </h3>
+
+                {{ if .Truncated }}
+                    <a class="button is-permalink" href="{{ .RelPermalink }}" title="{{ .Title }}">
+                        <span class="icon">
+                            {{ slice . "icon-card-link" | partial "functions/get-svg-icon" }}
+                        </span>
+                    </a>
+                {{ end }}
+            </div>
+        </article>
+    {{ end }}
+</div>
