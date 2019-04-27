@@ -1,0 +1,11 @@
+.page {
+    &.is-summary {
+        @include block-hover-shadow;
+
+        .button {
+            &.is-permalink {
+                margin-left: auto;
+            }
+        }
+    }
+}

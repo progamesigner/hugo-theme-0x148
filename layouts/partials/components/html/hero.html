@@ -1,7 +1,7 @@
 {{- $images := $.Resources.ByType "image" -}}
 {{- $image := $images.GetMatch "*cover*" | or ($images.GetMatch "*feature*") -}}
 
-<div class="hero has-featured-media">
+<div class="hero">
     <div class="hero-body">
         {{ if .Params.Videos }}
             {{- $video := index .Params.Videos 0 -}}
@@ -44,7 +44,7 @@
                 </figure>
             </div>
         {{ else }}
-            <div class="hero-media is-blank"></div>
+            <div class="hero-media"></div>
         {{ end }}
     </div>
 </div>

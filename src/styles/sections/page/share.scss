@@ -5,14 +5,13 @@ $page-share-brand-background-color: $primary !default;
 $page-share-brand-color: $white !default;
 $page-share-item-fixed-dimension: 2.5rem !default;
 $page-share-item-fixed-padding: 0.25rem !default;
-$page-share-margin-offset: 1.5rem !default;
 
 .page-share {
     @include block;
 
     &.is-fixed-left {
         bottom: 0;
-        left: #{-1 * $page-share-margin-offset};
+        left: 0;
         position: absolute;
         top: 0;
         transform: translateX(-100%);

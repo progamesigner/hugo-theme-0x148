@@ -17,6 +17,14 @@
 [page_reading_time]
     other = "大約 {{ .Count }} 分鐘閱讀時間"
 
+[page_series_link]
+    one = "前往系列介紹"
+    other = "看全部 {{ .Count }} 篇文章"
+
+[page_series_message]
+    one = "這是{{ .Title }}系列的第一篇文章"
+    other = "這是{{ .Title }}系列中 {{ .Count }} 篇文章的第 {{ .Order }} 篇"
+
 [sidebar_label_language]
     other = "語言"
 

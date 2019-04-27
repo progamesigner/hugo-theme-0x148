@@ -1,0 +1,64 @@
+$page-banner-hero-height: 100% * 9 / 21 !default;
+$page-banner-link-background-color: $primary !default;
+$page-banner-link-dimension: 4rem !default;
+$page-banner-link-hover-offset: 0.25rem !default;
+$page-banner-link-right: 1.5rem !default;
+$page-banner-category-padding: 0.5rem !default;
+
+.page {
+    &.is-banner {
+        .page-hero {
+            &::before {
+                padding-top: $page-banner-hero-height;
+            }
+        }
+
+        .page-category {
+            @include overlay;
+
+            padding: $page-banner-category-padding;
+
+            .tags {
+                justify-content: flex-end;
+            }
+        }
+
+        .button {
+            &.is-permalink {
+                @include block-shadow;
+                @include block-hover-shadow;
+
+                background-color: $page-banner-link-background-color;
+                border-radius: 50%;
+                border: 0;
+                height: $page-banner-link-dimension;
+                padding: 0;
+                position: absolute;
+                right: $page-banner-link-right;
+                top: 0;
+                transform: translateY(-50%);
+                width: $page-banner-link-dimension;
+
+                .icon {
+                    height: $page-banner-link-dimension;
+                    width: $page-banner-link-dimension;
+
+                    svg {
+                        transition: transform $speed $easing;
+                    }
+
+                    path {
+                        fill: findColorInvert($page-banner-link-background-color);
+                    }
+
+                    &:hover,
+                    &.is-hovered {
+                        svg {
+                            transform: translateX($page-banner-link-hover-offset);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

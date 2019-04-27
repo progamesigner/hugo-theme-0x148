@@ -1,4 +1,5 @@
-$page-meta-margin: 1.5rem !default;
+$page-meta-icon-margin: 0.5rem !default;
+$page-meta-item-margin: 1.5rem !default;
 
 .page-meta {
     @include block;
@@ -15,10 +16,10 @@ $page-meta-margin: 1.5rem !default;
     }
 
     &:not(:last-child) {
-        margin-right: $page-meta-margin;
+        margin-right: $page-meta-item-margin;
     }
 
     & > .icon {
-        margin-right: $page-meta-margin;
+        margin-right: $page-meta-icon-margin;
     }
 }

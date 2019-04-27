@@ -1,0 +1,55 @@
+$page-blockquote-border-color: $primary !default;
+$page-blockquote-border-width: 0.00625rem !default;
+$page-blockquote-quotation-dimension: 3rem !default;
+$page-blockquote-quotation-horizontal-offset: 0.5rem !default;
+$page-blockquote-quotation-vertical-offset: 0.125rem !default;
+
+.page-content {
+    blockquote {
+        border-bottom: $page-blockquote-border-width solid $page-blockquote-border-color;
+        border-left: 0;
+        border-top: $page-blockquote-border-width solid $page-blockquote-border-color;
+        margin-left: #{-1 * $page-padding};
+        margin-right: #{-1 * $page-padding};
+        position: relative;
+
+        &::after,
+        &::before {
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: $page-blockquote-quotation-dimension $page-blockquote-quotation-dimension;
+            content: '';
+            display: block;
+            height: $page-blockquote-quotation-dimension;
+            position: absolute;
+            width: $page-blockquote-quotation-dimension;
+        }
+
+        &::before {
+            background-image: svg-load('images/format-quote-open.svg', fill=$primary), linear-gradient($content-blockquote-background-color, $content-blockquote-background-color calc(50% + #{$page-blockquote-quotation-vertical-offset + $page-blockquote-border-width}), $page-background-color calc(50% + #{$page-blockquote-quotation-vertical-offset + $page-blockquote-border-width}), $page-background-color);
+            bottom: $page-blockquote-quotation-vertical-offset;
+            left: $page-blockquote-quotation-horizontal-offset;
+            transform: translateY(50%);
+        }
+
+        &::after {
+            background-image: svg-load('images/format-quote-close.svg', fill=$primary), linear-gradient($page-background-color, $page-background-color calc(50% - #{$page-blockquote-quotation-vertical-offset + $page-blockquote-border-width}), $content-blockquote-background-color calc(50% - #{$page-blockquote-quotation-vertical-offset + $page-blockquote-border-width}), $content-blockquote-background-color);
+            right: $page-blockquote-quotation-horizontal-offset;
+            top: $page-blockquote-quotation-vertical-offset;
+            transform: translateY(-50%);
+        }
+    }
+
+    .image {
+        &.is-full {
+            margin-left: #{-1 * $page-padding};
+            margin-right: #{-1 * $page-padding};
+        }
+    }
+
+    .highlight {
+        margin-left: #{-1 * $page-padding};
+        margin-right: #{-1 * $page-padding};
+        max-width: unset;
+    }
+}

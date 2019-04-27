@@ -1,0 +1,12 @@
+.page-series {
+    @include block;
+
+    p {
+        font-weight: $weight-bold;
+    }
+
+    ul {
+        list-style-type: disc;
+        list-style-position: inside;
+    }
+}

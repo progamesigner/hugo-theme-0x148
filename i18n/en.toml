@@ -17,6 +17,14 @@
     one = "One minute read"
     other = "{{ .Count }} minutes read"
 
+[page_series_link]
+    one = "To series introduction"
+    other = "See all {{ .Count }} posts"
+
+[page_series_message]
+    one = "This is first post in series \"{{ .Title }}\""
+    other = "This is #{{ .Order }} of {{ .Count }} posts in the series \"{{ .Title }}\""
+
 [sidebar_label_language]
     other = "Language"
 

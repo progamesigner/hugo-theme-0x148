@@ -1,0 +1,69 @@
+$page-card-hero-height: 100% * 15 / 21 !default;
+$page-card-hero-hover-height: 100% * 9 / 21 !default;
+
+.page {
+    &.is-card {
+        display: flex;
+        flex-direction: column;
+
+        &:hover,
+        &.is-hovered {
+            .page-hero {
+                &::before {
+                    padding-top: $page-card-hero-hover-height;
+                }
+            }
+
+            .page-body {
+                opacity: 1;
+                padding-bottom: #{$page-card-hero-height - $page-card-hero-hover-height};
+            }
+        }
+
+        .page-hero {
+            &::before {
+                padding-top: $page-card-hero-height;
+                transition: padding-top $speed $easing;
+            }
+        }
+
+        .page-body {
+            height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: opacity $speed $easing, padding-bottom $speed $easing;
+        }
+
+        .page-foot {
+            margin-top: auto;
+
+            &::before {
+                background-image: linear-gradient(0deg, $page-background-color 0%, transparent 100%);
+                content: '';
+                display: block;
+                height: $page-padding;
+                left: 0;
+                position: absolute;
+                right: 0;
+                top: 0;
+                transform: translateY(-100%);
+            }
+        }
+
+        .page-category {
+            @include overlay;
+
+            padding: $page-banner-category-padding;
+
+            .tags {
+                justify-content: flex-end;
+            }
+        }
+
+        .button {
+            &.is-permalink {
+                margin-left: auto;
+            }
+        }
+    }
+}

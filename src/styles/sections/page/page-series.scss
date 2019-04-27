@@ -1,0 +1,92 @@
+$page-series-hero-z: 0 !default;
+$page-series-link-border: 0.0125rem dotted rgba($white, 0.75) !default;
+$page-series-link-color: $white !default;
+$page-series-link-margin: 0 auto 0.5rem !default;
+$page-series-link-padding: 1.5rem 2rem !default;
+$page-series-overlay-backdrop-filter: blur(0.25rem) !default;
+$page-series-overlay-background-color: rgba($black, 0.125) !default;
+$page-series-overlay-background-image: linear-gradient(0deg, rgba($black, 0.25) 0%, rgba($primary, 0.25) 100%) !default;
+$page-series-overlay-hover-background-color: rgba($black, 0.25) !default;
+$page-series-overlay-z: 5 !default;
+$page-series-radius: $radius-large !default;
+$page-series-subtitle-color: $white-ter !default;
+$page-series-text-shadow: 0 0.125rem 0.5rem $black !default;
+$page-series-title-color: $white-bis !default;
+$page-series-z: 10 !default;
+
+.page {
+    &.is-series {
+        border-radius: $page-series-radius;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        text-shadow: $page-series-text-shadow;
+
+        &:hover,
+        &.is-hovered {
+            &::before {
+                background-color: $page-series-overlay-hover-background-color;
+            }
+        }
+
+        &::before {
+            @include overlay;
+
+            backdrop-filter: $page-series-overlay-backdrop-filter;
+            background-color: $page-series-overlay-background-color;
+            background-image: $page-series-overlay-background-image;
+            content: '';
+            display: block;
+            transition: background-color $speed $easing;
+            z-index: $page-series-overlay-z;
+        }
+
+        a {
+            color: $page-series-link-color;
+        }
+
+        .page-hero {
+            @include overlay;
+
+            z-index: $page-series-hero-z;
+        }
+
+        .title {
+            color: $page-series-title-color;
+        }
+
+        .subtitle {
+            color: $page-series-subtitle-color;
+        }
+
+        .page-head,
+        .page-body,
+        .page-foot {
+            z-index: $page-series-z;
+        }
+
+        .page-body {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: center;
+
+            a {
+                margin: $page-series-link-margin;
+                padding: $page-series-link-padding;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+
+                &:not(:last-child) {
+                    border-bottom: $page-series-link-border;
+                }
+            }
+        }
+
+        .page-foot {
+            margin-top: auto;
+        }
+    }
+}
