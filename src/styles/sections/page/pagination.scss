@@ -14,6 +14,7 @@ $page-pagination-item-icon-hover-offset: 0.5rem !default;
         background-color: $page-pagination-item-background-color;
         display: grid;
         flex-basis: calc(50% - #{$page-pagination-item-gap * 2});
+        grid-template-areas: 'icon subtitle' 'icon title';
         grid-template-columns: $page-pagination-item-icon-dimension 1fr;
         grid-template-rows: auto auto;
 
@@ -35,29 +36,12 @@ $page-pagination-item-icon-hover-offset: 0.5rem !default;
         }
 
         &.pagination-next {
+            grid-template-areas: 'subtitle icon' 'title icon';
             grid-template-columns: 1fr $page-pagination-item-icon-dimension;
-
-            .title {
-                grid-column-end: 2;
-                grid-column-start: 1;
-            }
-
-            .subtitle {
-                grid-column-end: 2;
-                grid-column-start: 1;
-            }
-
-            .icon {
-                grid-column-end: 2;
-                grid-column-start: 3;
-            }
         }
 
         .icon {
-            grid-column-end: 2;
-            grid-column-start: 1;
-            grid-row-end: 3;
-            grid-row-start: 1;
+            grid-area: icon;
             height: $page-pagination-item-icon-dimension;
             width: $page-pagination-item-icon-dimension;
 
@@ -68,17 +52,11 @@ $page-pagination-item-icon-hover-offset: 0.5rem !default;
         }
 
         .title {
-            grid-column-end: 3;
-            grid-column-start: 2;
-            grid-row-end: 3;
-            grid-row-start: 2;
+            grid-area: title;
         }
 
         .subtitle {
-            grid-column-end: 3;
-            grid-column-start: 2;
-            grid-row-end: 2;
-            grid-row-start: 1;
+            grid-area: subtitle;
         }
     }
 }
