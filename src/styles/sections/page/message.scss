@@ -1,0 +1,6 @@
+.page {
+    .message {
+        margin-left: #{-1 * $page-padding};
+        margin-right: #{-1 * $page-padding};
+    }
+}

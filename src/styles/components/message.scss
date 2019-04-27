@@ -1,1 +1,8 @@
+$message-radius: 0 !default;
+
+$message-header-radius: 0 !default;
+
+$message-body-border-width: 1px 0 !default;
+$message-body-radius: 0 !default;
+
 @import '~bulma/sass/components/message';

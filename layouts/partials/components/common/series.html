@@ -2,24 +2,24 @@
 
 {{ range "series" | .Param }}
     {{- $name := . | urlize -}}
-    {{- $term := $name | $taxonomy.Get -}}
-    {{- $position := slice $ $term.Pages | partial "functions/get-series-position" -}}
 
     {{ with $name | $taxonomy.Get }}
-        <div class="message is-info">
+        {{- $position := slice $ .Pages | partial "functions/get-series-position" -}}
+
+        <div class="message is-primary">
             <div class="message-body">
-                <p>{{ $name | $taxonomy.Count | dict "Title" .Page.Title "Order" $position "Count" | i18n "page_series_message" }}</p>
-                <ul>
+                <p class="head">{{ $name | $taxonomy.Count | dict "Title" .Page.Title "Order" $position "Count" | i18n "page_series_message" }}</p>
+                <ol class="list">
                     {{ range .Pages }}
                         <li>
                             {{ if .Permalink | eq $.Permalink }}
-                                {{ .Title }}
+                                <span class="is-active">{{ .Title }}</span>
                             {{ else }}
                                 <a href="{{ .RelPermalink }}" alt="{{ .Title }}">{{ .Title }}</a>
                             {{end}}
                         </li>
                     {{ end }}
-                </ul>
+                </ol>
             </div>
         </div>
     {{ end }}
