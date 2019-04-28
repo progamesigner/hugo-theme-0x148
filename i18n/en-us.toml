@@ -1,3 +1,9 @@
+[date_format]
+    other = "Jan 02, 2006"
+
+[datetime_format]
+    other = "2006-01-02T15:04:05-07:00"
+
 [footer_copyright_line]
     other = "&#169; {{ .Year }} <span class=\"has-text-danger\">&hearts;</span> <a href=\"{{ .Url }}\">{{ .Name }}</a>."
 

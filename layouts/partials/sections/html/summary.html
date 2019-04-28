@@ -36,7 +36,7 @@
                 <span>{{ .ReadingTime | i18n "page_reading_time" }}</span>
             </div>
 
-            {{ if ne (.Date.Format "2006-01-02") (.Lastmod.Format "2006-01-02") }}
+            {{ if slice .Lastmod .Date | partial "functions/compare-date" }}
                 <div class="page-meta-item">
                     <span class="icon">
                         {{ slice . "icon-lastmod" | partial "functions/get-svg-icon" }}
