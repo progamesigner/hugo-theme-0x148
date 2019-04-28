@@ -2,6 +2,14 @@
     <section class="section">
         {{ partial "components/layouts/amp-breadcrumb.html" . }}
 
+        {{ with .Content }}
+            <section class="section">
+                <div class="list-content content">
+                    {{ . }}
+                </div>
+            </section>
+        {{ end }}
+
         {{ range .Paginator.Pages }}
             {{ partial "components/sections/amp-summary.html" . }}
         {{ end }}
