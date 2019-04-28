@@ -1,6 +1,0 @@
-{{- $context := 0 | index . -}}
-{{- $module := 1 | index . -}}
-
-{{- $modules := slice $context "AMPModules" | partial "functions/get-union-params" -}}
-
-{{- return in $modules $module -}}

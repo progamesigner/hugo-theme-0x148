@@ -1,0 +1,11 @@
+{{ define "main" }}
+    {{- $paginator := .Site.Params.mainSections | where .Pages.ByDate.Reverse  "Type" "in" | .Paginate -}}
+
+    <section class="section">
+        {{ range $paginator.Pages }}
+            {{ partial "components/sections/html-summary.html" . }}
+        {{ end }}
+
+        {{ partial "components/sections/html-pagination.html" . }}
+    </section>
+{{ end }}

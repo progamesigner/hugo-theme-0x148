@@ -1,0 +1,67 @@
+{{- $enabled := .Params.EnabledSocials -}}
+{{- $disabled := .Params.DisabledSocials -}}
+
+<nav class="navbar is-transparent is-fixed-top">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="{{ .Site.Home.RelPermalink }}">
+                {{ partial "templates/brand.html" . | safeHTML }}
+            </a>
+
+            <a class="navbar-burger" href="#" role="button" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                {{ .Site.Params.NavbarMenuName | default .Site.Params.SectionPagesMenu | default "main" | dict "context" . "name" | partial "components/renderers/navbar-items.html" }}
+            </div>
+
+            <div class="navbar-end">
+                {{ if .IsTranslated }}
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link" href="{{ .RelPermalink }}" title="{{ .Title }}">
+                            {{ .Language.LanguageName }}
+                        </a>
+
+                        <div class="navbar-dropdown is-boxed">
+                            {{- $current := .Language.LanguageName -}}
+                            {{ range .AllTranslations.ByWeight }}
+                                {{ if eq $current .Language.LanguageName }}
+                                    <a class="navbar-item is-active" href="{{ .RelPermalink }}" title="{{ .Title }}">
+                                        {{ .Language.LanguageName }}
+                                    </a>
+                                {{ else }}
+                                    <a class="navbar-item" href="{{ .RelPermalink }}" title="{{ .Title }}">
+                                        {{ .Language.LanguageName }}
+                                    </a>
+                                {{ end }}
+                            {{ end }}
+                        </div>
+                    </div>
+                {{ end }}
+
+                <div class="navbar-item has-items">
+                    {{ .Site.Params.NavbarLinkName | default "link" | dict "context" . "wrapper" "navbar-item" "name" | partial "components/renderers/linked-icons.html" }}
+
+                    {{ with .Site.Home.OutputFormats.Get "RSS" }}
+                        <div class="navbar-item">
+                            <a class="icon icon-rss" href="{{ .RelPermalink }}" title="{{ i18n "navbar_link_rss" | default "RSS" }}">
+                                {{ slice $ "icon-rss" | partial "functions/get-icon.svg" }}
+                            </a>
+                        </div>
+                    {{ end }}
+                </div>
+
+                {{ partial "components/wrappers/html-search.html" . }}
+            </div>
+        </div>
+    </div>
+
+    {{ if .IsPage }}
+        <progress class="progress is-primary is-small" min="0" max="100" value="0"></progress>
+    {{ end }}
+</nav>

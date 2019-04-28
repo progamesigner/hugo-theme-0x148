@@ -8,11 +8,11 @@
 
                 {{with .Params.disqus_title }}
                     this.page.title = '{{ . }}'
-                {{end}}
+                {{ end }}
 
                 {{with .Params.disqus_url }}
                     this.page.url = '{{ . | html  }}'
-                {{end}}
+                {{ end }}
             }
         </script>
         <script src="//{{ .Site.Config.Services.Disqus.Shortname }}.disqus.com/embed.js" async></script>

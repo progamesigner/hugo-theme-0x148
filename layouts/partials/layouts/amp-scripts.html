@@ -1,0 +1,16 @@
+{{- $mappings := "amp-modules" | index .Site.Data | default dict -}}
+{{- $modules := slice . "AMPModules" | partial "functions/get-merged-params.slice" -}}
+
+<link rel="preload" as="script" href="{{ "amp-core" | index $mappings }}">
+<link rel="preload" as="script" href="{{ "amp-experiment" | index $mappings }}">
+<link rel="preload" as="script" href="{{ "amp-story" | index $mappings }}">
+
+<link rel="preconnect dns-prefetch" href="https://fonts.gstatic.com/" crossorigin>
+
+<script src="{{ "amp-core" | index $mappings }}" async></script>
+
+{{ range $modules }}
+    <script custom-element="{{ . }}" src="{{ . | index $mappings }}" async></script>
+{{ end }}
+
+{{ block "scripts" . }}{{ end }}

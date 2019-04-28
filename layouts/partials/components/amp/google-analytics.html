@@ -1,4 +1,4 @@
-{{- slice . "amp-analytics" | partial "sentinels/amp-module" -}}
+{{- slice . "amp-analytics" | partial "functions/check-amp-module.error" -}}
 
 {{- $triggers := "amp-analytics-triggers" | index .Site.Data | default dict -}}
 

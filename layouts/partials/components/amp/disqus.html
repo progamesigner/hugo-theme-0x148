@@ -1,4 +1,4 @@
-{{- slice . "amp-iframe" | partial "sentinels/amp-module" -}}
+{{- slice . "amp-iframe" | partial "functions/check-amp-module.error" -}}
 
 {{- $disqus := resources.Get "disqus.html" | minify | fingerprint "sha512" -}}
 

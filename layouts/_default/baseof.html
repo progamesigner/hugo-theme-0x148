@@ -4,19 +4,19 @@
     <meta charset="utf-8">
     <title>{{ block "title" . }}{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} &middot; {{ .Site.Title }}{{ end }}{{ end }}</title>
 
-    {{ partial "segments/head/meta" . }}
-    {{ partial "segments/head/opengraph" . }}
-    {{ partial "segments/head/links" . }}
-    {{ partial "segments/head/fonts" . }}
-    {{ partial "segments/html/styles" . }}
-    {{ partial "segments/head/schema" . }}
-    {{ partial "segments/html/modules" . }}
+    {{ partial "layouts/meta.html" . }}
+    {{ partial "layouts/opengraph.html" . }}
+    {{ partial "layouts/links.html" . }}
+    {{ partial "layouts/fonts.html" . }}
+    {{ partial "layouts/html-styles.html" . }}
+    {{ partial "layouts/schema.html" . }}
+    {{ partial "layouts/html-modules.html" . }}
 </head>
 
 <body class="has-navbar-fixed-top">
-    {{ partial "segments/html/prologue" . }}
+    {{ partial "layouts/html-prologue.html" . }}
 
-    {{ block "header" . }}{{ partial "segments/html/header" . }}{{ end }}
+    {{ block "header" . }}{{ partial "layouts/html-header.html" . }}{{ end }}
 
     <main class="main" role="main">
         <div class="container">
@@ -26,14 +26,14 @@
 
     <div class="back-to-top">
         <span class="icon icon-top">
-            {{ slice . "icon-back-to-top" | partial "functions/get-svg-icon" }}
+            {{ slice . "icon-back-to-top" | partial "functions/get-icon.svg" }}
         </span>
     </div>
 
-    {{ block "footer" . }}{{ partial "segments/html/footer" . }}{{ end }}
+    {{ block "footer" . }}{{ partial "layouts/html-footer.html" . }}{{ end }}
 
-    {{ partial "segments/html/scripts" . }}
+    {{ partial "layouts/html-scripts.html" . }}
 
-    {{ partial "segments/html/epilogue" . }}
+    {{ partial "layouts/html-epilogue.html" . }}
 </body>
 </html>

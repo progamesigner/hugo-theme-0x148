@@ -1,0 +1,25 @@
+{{ if .PrevInSection | or .NextInSection }}
+    <div class="page-pagination">
+        <nav class="pagination" role="navigation" aria-label="pagination">
+            {{ with .PrevInSection }}
+                <a class="pagination-item pagination-previous" href="{{ .RelPermalink }}">
+                    <span class="icon">
+                        {{ slice . "icon-pagination-previous" | partial "functions/get-icon.svg" }}
+                    </span>
+                    <p class="subtitle">{{ partial "components/renderers/date.html" .Date }}</p>
+                    <p class="title">{{ .Title }}</p>
+                </a>
+            {{ end }}
+
+            {{ with .NextInSection }}
+                <a class="pagination-item pagination-next" href="{{ .RelPermalink }}">
+                    <span class="icon">
+                        {{ slice . "icon-pagination-next" | partial "functions/get-icon.svg" }}
+                    </span>
+                    <p class="subtitle">{{ partial "components/renderers/date.html" .Date }}</p>
+                    <p class="title">{{ .Title }}</p>
+                </a>
+            {{ end }}
+        </nav>
+    </div>
+{{ end }}

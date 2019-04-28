@@ -1,11 +1,11 @@
 {{ define "main" }}
     <section class="section">
-        {{ partial "sections/html/post" . }}
+        {{ partial "components/sections/html-post.html" . }}
 
-        {{ partial "sections/html/pagination" . }}
+        {{ partial "components/sections/html-pagination.html" . }}
 
-        {{ partial "sections/html/relation" . }}
+        {{ partial "components/sections/html-relation.html" . }}
 
-        {{ partial "sections/html/comment" . }}
+        {{ partial "components/sections/html-comment.html" . }}
     </section>
 {{ end }}

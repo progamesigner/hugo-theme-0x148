@@ -1,0 +1,40 @@
+{{- slice . "amp-sidebar" | partial "functions/check-amp-module.error" -}}
+
+{{- $enabled := .Params.EnabledSocials -}}
+{{- $disabled := .Params.DisabledSocials -}}
+
+<amp-sidebar id="site-sidebar" class="sidebar" layout="nodisplay" side="right">
+    <div class="amp-burger is-active" on="tap:site-sidebar.close" role="button" aria-label="close sidebar" tabindex="0">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </div>
+
+    {{ partial "components/wrappers/amp-search.html" . }}
+
+    <p class="sidebar-label">{{ i18n "sidebar_label_navigation" }}</p>
+    <nav class="sidebar-menu">
+        {{ .Site.Params.NavbarMenuName | default .Site.Params.SectionPagesMenu | default "main" | dict "context" . "name" | partial "components/renderers/sidebar-items.html" }}
+    </nav>
+
+    {{ if .IsTranslated }}
+        <p class="sidebar-label">{{ i18n "sidebar_label_language" }}</p>
+        <nav class="sidebar-menu">
+            {{ dict "context" . | partial "components/renderers/sidebar-language-items.html" }}
+        </nav>
+    {{ end }}
+
+    <nav class="sidebar-menu is-pulled-bottom">
+        <section class="sidebar-item has-items">
+            {{ .Site.Params.NavbarLinkName | default "link" | dict "context" . "wrapper" "sidebar-item" "name" | partial "components/renderers/linked-icons.html" }}
+
+            {{ with .Site.Home.OutputFormats.Get "RSS" }}
+                <div class="sidebar-item">
+                    <a class="icon icon-rss" href="{{ .RelPermalink }}" title="{{ i18n "navbar_link_rss" | default "RSS" }}">
+                        {{ slice $ "icon-rss" | partial "functions/get-icon.svg" }}
+                    </a>
+                </div>
+            {{ end }}
+        </section>
+    </nav>
+</amp-sidebar>

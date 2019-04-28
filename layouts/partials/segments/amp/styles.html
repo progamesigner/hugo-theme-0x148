@@ -1,7 +1,0 @@
-{{- $style := slice . "amp.css" "amp.css" "extra.css" "amp-extension.css" | partial "functions/get-bundled-asset" | minify -}}
-
-<style amp-custom>
-    {{ $style.Content | safeCSS }}
-    {{ partial "templates/amp-styles" . }}
-    {{ block "styles" . }}{{ end }}
-</style>

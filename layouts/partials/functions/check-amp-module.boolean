@@ -1,0 +1,6 @@
+{{- $context := 0 | index . -}}
+{{- $module := 1 | index . -}}
+
+{{- $modules := slice $context "AMPModules" | partial "functions/get-merged-params.slice" -}}
+
+{{- return in $modules $module -}}

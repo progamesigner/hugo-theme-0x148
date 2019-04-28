@@ -4,20 +4,20 @@
     <meta charset="utf-8">
     <title>{{ block "title" . }}{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} &middot; {{ .Site.Title }}{{ end }}{{ end }}</title>
 
-    {{ partial "segments/head/meta" . }}
-    {{ partial "segments/amp/scripts" . }}
-    {{ partial "segments/amp/styles" . }}
-    {{ partial "segments/head/fonts" . }}
-    {{ partial "segments/amp/boilerplate" . }}
-    {{ partial "segments/head/opengraph" . }}
-    {{ partial "segments/head/links" . }}
-    {{ partial "segments/head/schema" . }}
+    {{ partial "layouts/meta.html" . }}
+    {{ partial "layouts/amp-scripts.html" . }}
+    {{ partial "layouts/amp-styles.html" . }}
+    {{ partial "layouts/fonts.html" . }}
+    {{ partial "layouts/amp-boilerplate.html" . }}
+    {{ partial "layouts/opengraph.html" . }}
+    {{ partial "layouts/links.html" . }}
+    {{ partial "layouts/schema.html" . }}
 </head>
 
 <body class="has-navbar-fixed-top">
-    {{ partial "segments/amp/prologue" . }}
+    {{ partial "layouts/amp-prologue.html" . }}
 
-    {{ block "header" . }}{{ partial "segments/amp/header" . }}{{ end }}
+    {{ block "header" . }}{{ partial "layouts/amp-header.html" . }}{{ end }}
 
     <main class="main" role="main">
         <div class="container">
@@ -25,8 +25,8 @@
         </div>
     </main>
 
-    {{ block "footer" . }}{{ partial "segments/amp/footer" . }}{{ end }}
+    {{ block "footer" . }}{{ partial "layouts/amp-footer.html" . }}{{ end }}
 
-    {{ partial "segments/amp/epilogue" . }}
+    {{ partial "layouts/amp-epilogue.html" . }}
 </body>
 </html>

@@ -1,0 +1,7 @@
+{{- $style := slice . "style.css" "main.css" "extra.css" "main-extension.css" | partial "functions/get-bundled-asset.asset" | minify | fingerprint "sha512" -}}
+
+<link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}" crossorigin="anonymous">
+
+{{ partial "templates/html-styles.html" . }}
+
+{{ block "styles" . }}{{ end }}

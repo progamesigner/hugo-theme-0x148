@@ -1,0 +1,15 @@
+{{- $context := .context -}}
+
+{{- $current := $context.Language.Lang -}}
+
+{{ range $context.AllTranslations.ByWeight }}
+    {{ if $current | eq .Language.Lang }}
+        <a class="sidebar-item is-active" href="{{ .RelPermalink }}" title="{{ .Title }}">
+            {{ .Language.Lang }}
+        </a>
+    {{ else }}
+        <a class="sidebar-item" href="{{ .RelPermalink }}" title="{{ .Title }}">
+            {{ .Language.Lang }}
+        </a>
+    {{ end }}
+{{ end }}

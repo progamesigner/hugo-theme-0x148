@@ -1,0 +1,58 @@
+{{- $schema := newScratch -}}
+
+{{- $keywords := slice -}}
+{{- range $plural, $terms := .Site.Taxonomies -}}
+    {{- range $term, $val := $terms -}}
+        {{- $keywords = slice $term | append $keywords -}}
+    {{- end -}}
+{{- end -}}
+
+{{- "http://schema.org" | $schema.SetInMap "schema" "@context" -}}
+{{- "Article" | $schema.SetInMap "schema" "@type" -}}
+{{- .Title | $schema.SetInMap "schema" "headline" -}}
+{{- slice . | partial "functions/get-meta-description.txt" | $schema.SetInMap "schema" "description" -}}
+{{- .WordCount | $schema.SetInMap "schema" "wordCount" -}}
+{{- .Permalink | $schema.SetInMap "schema" "mainEntityOfPage" -}}
+{{- "," | delimit $keywords | $schema.SetInMap "schema" "keywords" -}}
+
+{{- if not .PublishDate.IsZero -}}
+    {{- slice .PublishDate | partial "functions/format-datetime.txt" | $schema.SetInMap "schema" "datePublished" -}}
+{{- end -}}
+
+{{- if not .Lastmod.IsZero -}}
+    {{- slice .Lastmod | partial "functions/format-datetime.txt" | $schema.SetInMap "schema" "dateModified" -}}
+{{- end -}}
+
+{{- with "author" | .Param | slice . | partial "functions/get-author-data.dict" -}}
+    {{- .name | dict "name" | $schema.SetInMap "schema" "author" -}}
+{{- end -}}
+
+{{- with .Params.Images | default slice | first 1 -}}
+    {{- if reflect.IsMap . -}}
+        {{- range $key, $value := . | default dict -}}
+            {{- if and $key $value -}}
+                {{- "http://schema.org" | $schema.SetInMap "image" "@context" -}}
+                {{- "ImageObject" | $schema.SetInMap "image" "@type" -}}
+                {{- $value | $schema.SetInMap "image" $key -}}
+            {{- end -}}
+        {{- end -}}
+        {{- "image" | $schema.Get | $schema.SetInMap "schema" "image" -}}
+    {{- else -}}
+        {{- . | absURL | $schema.SetInMap "schema" "image" -}}
+    {{- end -}}
+{{- end -}}
+
+{{- range $key, $value := "schema-publisher" | index .Site.Data | default dict -}}
+    {{- if and $key $value -}}
+        {{- "Organization" | $schema.SetInMap "publisher" "@type" -}}
+        {{- $value | $schema.SetInMap "publisher" $key -}}
+    {{- end -}}
+{{- end -}}
+
+{{- with "publisher" | $schema.Get -}}
+    {{- . | $schema.SetInMap "schema" "publisher" -}}
+{{- end -}}
+
+<script type="application/ld+json">
+    {{ "schema" | $schema.Get | jsonify | safeJS }}
+</script>

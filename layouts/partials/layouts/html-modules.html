@@ -1,0 +1,9 @@
+{{- $modules := slice . "HTMLModules" | partial "functions/get-merged-params.slice" -}}
+
+{{ range $modules }}
+    {{- $module := . | printf "modules/%s.html" -}}
+
+    {{ partial $module $ }}
+{{ end }}
+
+{{ partial "templates/html-modules.html" . }}

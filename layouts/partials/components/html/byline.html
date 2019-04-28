@@ -1,6 +1,6 @@
 {{- $taxonomy := "AuthorTaxonomyName" | lower | index .Site.Params | default "authors" -}}
 
-{{ with "author" | .Param | slice . | partial "functions/get-author-data" }}
+{{ with "author" | .Param | slice . | partial "functions/get-author-data.dict" }}
     <div class="byline">
         {{ if .avatar }}
             <div class="byline-left">
@@ -47,7 +47,7 @@
                             rel="noopener"
                         {{ end }}
                     >
-                        {{ slice $ .name | partial "functions/get-svg-icon" }}
+                        {{ slice $ .name | partial "functions/get-icon.svg" }}
                     </a>
                 {{ end }}
             </div>
