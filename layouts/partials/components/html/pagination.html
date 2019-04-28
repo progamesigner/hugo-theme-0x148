@@ -1,48 +1,53 @@
-{{ if gt $.Paginator.TotalPages 1 }}
+{{ if .Paginator.TotalPages | lt 1 }}
     <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-        {{ with $.Paginator.First }}
+        {{ with .Paginator.First }}
             <a class="pagination-previous" href="{{ .URL }}" aria-label="First"><span aria-hidden="true">&laquo;&laquo;</span></a>
         {{ end }}
 
-        {{ if $.Paginator.HasPrev }}
+        {{ if .Paginator.HasPrev }}
             <a class="pagination-previous" href="{{ .Paginator.Prev.URL }}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
         {{ else }}
             <a class="pagination-previous" aria-label="Previous" disabled><span aria-hidden="true">&laquo;</span></a>
         {{ end }}
 
-        {{ if $.Paginator.HasNext }}
+        {{ if .Paginator.HasNext }}
             <a class="pagination-next" href="{{ .Paginator.Next.URL }}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
         {{ else }}
             <a class="pagination-next" aria-label="Next" disabled><span aria-hidden="true">&raquo;</span></a>
         {{ end }}
 
-        {{ with $.Paginator.Last }}
+        {{ with .Paginator.Last }}
             <a class="pagination-next" href="{{ .URL }}" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
         {{ end }}
 
         <ul class="pagination-list">
-            {{- $payload := newScratch -}}
-            {{- $payload.Set "ellipsed" false -}}
+            {{- $shouldShowEllipse := false -}}
+            {{- $ellipsed := false -}}
 
-            {{ range $.Paginator.Pagers }}
-                {{- $show := le .PageNumber 3 | or (eq 0 (sub .TotalPages .PageNumber)) | or (2 | sub $.Paginator.PageNumber | gt .PageNumber | and (2 | add $.Paginator.PageNumber | lt .PageNumber)) -}}
+            {{ range .Paginator.Pagers }}
+                {{- $nearLeftEnd := .PageNumber | ge 3 -}}
+                {{- $nearRightEnd := .PageNumber | sub .TotalPages | ge 3 -}}
+                {{- $withinWindowLeft := 2 | sub $.Paginator.PageNumber | ge .PageNumber -}}
+                {{- $withinWindowRight := 2 | add $.Paginator.PageNumber | le .PageNumber -}}
 
-                {{ if $show }}
-                    {{- $payload.Set "ellipsed" false -}}
-                    {{- $payload.Set "shouldEllipse" false -}}
-                {{ else }}
-                    {{- $payload.Set "shouldEllipse" (not ($payload.Get "ellipsed") ) -}}
-                    {{- $payload.Set "ellipsed" true -}}
-                {{ end }}
+                {{- $showPageNumber := and $withinWindowLeft $withinWindowRight | or $nearRightEnd | or $nearLeftEnd -}}
+
+                {{- if $showPageNumber -}}
+                    {{- $shouldShowEllipse := false -}}
+                    {{- $ellipsed := false -}}
+                {{- else -}}
+                    {{- $shouldShowEllipse := $ellipsed | not -}}
+                    {{- $ellipsed := true -}}
+                {{- end -}}
 
                 <li>
-                    {{ if $show }}
-                        {{ if eq . $.Paginator }}
+                    {{ if $showPageNumber }}
+                        {{ if . | eq $.Paginator }}
                             <a class="pagination-link is-current" href="{{ .URL }}" aria-label="Page {{ .PageNumber }}" aria-current="page">{{ .PageNumber }}</a>
                         {{ else }}
                             <a class="pagination-link" href="{{ .URL }}" aria-label="Goto page {{ .PageNumber }}">{{ .PageNumber }}</a>
                         {{ end }}
-                    {{ else }}
+                    {{ else if $shouldShowEllipse }}
                         <span class="pagination-ellipsis">&hellip;</span>
                     {{ end }}
                 </li>
