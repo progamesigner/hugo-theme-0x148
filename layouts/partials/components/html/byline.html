@@ -15,7 +15,7 @@
         {{ if $avatar }}
             <div class="byline-left">
                 <figure class="image is-square">
-                    <img src="{{ $avatar }}" alt="{{ $name }}">
+                    <img src="{{ $avatar | absURL }}" alt="{{ $name }}">
                 </figure>
             </div>
         {{ end }}
