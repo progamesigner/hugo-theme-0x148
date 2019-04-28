@@ -1,0 +1,71 @@
+{{- $authors := "authors" | index .Site.Data | default dict -}}
+{{- $taxonomy := "AuthorTaxonomyName" | lower | index .Site.Params | default "authors" -}}
+
+{{- $author := "author" | .Param | string | index $authors | default .Site.Author -}}
+{{- $data := .Site.Language.Lang | index $author | default dict -}}
+
+{{ with $author }}
+    {{- $avatar := "avatar" | index $data | default .avatar -}}
+    {{- $biography := "biography" | index $data | default .biography | default ("bio" | index $data | default .bio) -}}
+    {{- $links := "links" | index $data | default .links -}}
+    {{- $name := "name" | index $data | default .name -}}
+    {{- $url := "url" | index $data | default .url -}}
+
+    <div class="byline">
+        {{ if $avatar }}
+            <div class="byline-left">
+                <figure class="image is-square">
+                    <amp-img
+                        src="{{ $avatar }}"
+                        alt="{{ $name }}"
+                        width="96"
+                        height="96"
+                    ></amp-img>
+                </figure>
+            </div>
+        {{ end }}
+        <div class="byline-content">
+            <div class="byline-item is-vertical">
+                <p class="byline-heading">
+                    {{- $default := printf "About %s" $name -}}
+                    {{- $heading := $name | dict "Name" | i18n "byline_about" | default $default -}}
+
+                    {{ with .name | urlize | printf "%s/%s" $taxonomy | $.Site.GetPage }}
+                        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                    {{ else }}
+                        {{ if $url }}
+                            <a href="{{ $url }}" title="{{ $heading }}">{{ $name }}</a>
+                        {{ else }}
+                            {{ $heading }}
+                        {{ end }}
+                    {{ end }}
+                </p>
+                <p>{{ $biography | safeHTML }}</p>
+            </div>
+
+            {{ with "license" | $.Param }}
+                <div class="byline-item">
+                    <p class="byline-heading">{{ i18n "byline_license" | default "License" }}</p>
+                    <p>{{ . | safeHTML }}</p>
+                </div>
+            {{ end }}
+
+            <div class="byline-item">
+                {{ range sort $links "weight" }}
+                    <a
+                        class="icon icon-{{ .name }} is-hovered"
+                        href="{{ .url | safeURL }}"
+                        title="{{ .title }}"
+                        {{ if "http" | hasPrefix .url }}
+                            rel="external noopener"
+                        {{ else }}
+                            rel="noopener"
+                        {{ end }}
+                    >
+                        {{ slice $ .name | partial "functions/get-svg-icon" }}
+                    </a>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+{{ end }}

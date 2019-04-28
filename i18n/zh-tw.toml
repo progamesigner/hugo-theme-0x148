@@ -1,3 +1,9 @@
+[byline_about]
+    other = "關於 {{ .Name }}"
+
+[byline_license]
+    other = "授權"
+
 [date_format]
     other = "2006年1月2日"
 

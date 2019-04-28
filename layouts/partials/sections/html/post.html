@@ -38,6 +38,12 @@
             {{ partial "wrappers/html-advertisement" . }}
         </div>
 
+        {{ if "author" | .Param }}
+            <div class="page-byline">
+                {{ partial "wrappers/html-byline" . }}
+            </div>
+        {{ end }}
+
         <div class="page-meta">
             {{ if slice .Lastmod .Date | partial "functions/compare-date" }}
                 <div class="page-meta-item">
