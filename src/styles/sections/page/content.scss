@@ -6,11 +6,11 @@ $page-blockquote-quotation-vertical-offset: 0.125rem !default;
 
 .page-content {
     blockquote {
+        @include page-fullwidth-block;
+
         border-bottom: $page-blockquote-border-width solid $page-blockquote-border-color;
         border-left: 0;
         border-top: $page-blockquote-border-width solid $page-blockquote-border-color;
-        margin-left: #{-1 * $page-padding};
-        margin-right: #{-1 * $page-padding};
         position: relative;
 
         &::after,
@@ -38,18 +38,5 @@ $page-blockquote-quotation-vertical-offset: 0.125rem !default;
             top: $page-blockquote-quotation-vertical-offset;
             transform: translateY(-50%);
         }
-    }
-
-    .image {
-        &.is-full {
-            margin-left: #{-1 * $page-padding};
-            margin-right: #{-1 * $page-padding};
-        }
-    }
-
-    .highlight {
-        margin-left: #{-1 * $page-padding};
-        margin-right: #{-1 * $page-padding};
-        max-width: unset;
     }
 }
