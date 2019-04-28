@@ -1,20 +1,12 @@
 {{- $schema := newScratch -}}
 
 {{- $items := slice -}}
-{{- $url := .Permalink | urls.Parse -}}
+{{- range $index, $page := slice . | partial "functions/get-page-breadcrumb.slice" -}}
+    {{- $position := $index | add 1 -}}
+    {{- $name := $page.Title | default $.Site.Title -}}
+    {{- $item := dict "@id" $page.Permalink "name" $name | dict "@type" "ListItem" "position" $position "item" | slice -}}
 
-{{- .Site.BaseURL | $schema.Add "path" -}}
-{{- $items = dict "@id" .Site.BaseURL "name" .Site.Title | dict "@type" "ListItem" "position" 1 "item" | slice | append $items -}}
-
-{{- range $position, $segment := split $url.Path "/" -}}
-    {{- if $segment -}}
-        {{- printf "%s/" $segment | $schema.Add "path" -}}
-
-        {{- $position := $items | len | add 1 -}}
-        {{- $url := $schema.Get "path" -}}
-
-        {{- $items = $segment | urlize | dict "@id" $url "name" | dict "@type" "ListItem" "position" $position "item" | slice | append $items -}}
-    {{- end -}}
+    {{- $items = $items | append $item -}}
 {{- end -}}
 
 {{- "http://schema.org" | $schema.SetInMap "schema" "@context" -}}

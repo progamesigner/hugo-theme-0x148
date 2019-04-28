@@ -1,0 +1,15 @@
+{{- $context := 0 | index . -}}
+
+{{- $permalink := $context.Permalink | urls.Parse -}}
+
+{{- $path := "" -}}
+
+{{- $items := $context.Site.Home | slice -}}
+{{- range split $permalink.Path "/" -}}
+    {{- if . -}}
+        {{- $path = . | urlize | printf "%s/%s" $path -}}
+        {{- $items = $items | append ($context.Site.GetPage $path) -}}
+    {{- end -}}
+{{- end -}}
+
+{{- return $items -}}

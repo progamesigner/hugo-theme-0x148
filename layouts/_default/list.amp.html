@@ -1,5 +1,7 @@
 {{ define "main" }}
     <section class="section">
+        {{ partial "components/layouts/amp-breadcrumb.html" . }}
+
         {{ range .Paginator.Pages }}
             {{ partial "components/sections/amp-summary.html" . }}
         {{ end }}
