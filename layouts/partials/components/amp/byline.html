@@ -2,7 +2,7 @@
 {{- $taxonomy := "AuthorTaxonomyName" | lower | index .Site.Params | default "authors" -}}
 
 {{- $author := "author" | .Param | string | index $authors | default .Site.Author -}}
-{{- $data := .Site.Language.Lang | index $author | default dict -}}
+{{- $data := .Language.Lang | index $author | default dict -}}
 
 {{ with $author }}
     {{- $avatar := "avatar" | index $data | default .avatar -}}
