@@ -1,4 +1,3 @@
-{{- $authors := "authors" | index .Site.Data | default dict -}}
 {{- $limit := .Data.Pages | len | cond (ge .Site.Config.Services.RSS.Limit 1) .Site.Config.Services.RSS.Limit -}}
 {{- $pages := .Data.Pages | first $limit -}}
 
@@ -14,9 +13,9 @@
             <language>{{ . }}</language>
         {{ end }}
 
-        {{ with .Site.Author }}
-            <managingEditor>{{ .email }}{{ with .name }} ({{ . }}){{ end }}</managingEditor>
-            <webMaster>{{ .email }}{{ with .name }} ({{ . }}){{ end }}</webMaster>
+        {{ with "email" | index .Site.Author }}
+            <managingEditor>{{ . }}{{ with "name" | index $.Site.Author }} ({{ . }}){{ end }}</managingEditor>
+            <webMaster>{{ . }}{{ with "name" | index $.Site.Author }} ({{ . }}){{ end }}</webMaster>
         {{ end }}
 
         {{ with .Site.Copyright }}
@@ -32,15 +31,14 @@
         {{ end }}
 
         {{ range $pages }}
-            {{- $author := "author" | .Param | string | index $authors | default .Site.Author | default dict -}}
-            {{- $data := .Language.Lang | index $author | default dict -}}
-
             <item>
                 <title>{{ .Title }}</title>
                 <link>{{ .Permalink }}</link>
                 <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
-                {{ with $author }}
-                    <author>{{ "email" | index $data | default .email }}{{ with "name" | index $data | default .name }} ({{ . }}){{ end }}</author>
+                {{ if "author" | .Param }}
+                    {{ with "author" | .Param | slice . | partial "functions/get-author-data" }}
+                        <author>{{ .email }}{{ with .name }} ({{ . }}){{ end }}</author>
+                    {{ end }}
                 {{ end }}
                 <guid>{{ .Permalink }}</guid>
                 <description>{{ .Summary | plainify }}</description>

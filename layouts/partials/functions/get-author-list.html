@@ -1,0 +1,5 @@
+{{- $context := 0 | index . -}}
+
+{{- $authors := "authors" | index $context.Site.Data -}}
+
+{{- return default dict $authors -}}
