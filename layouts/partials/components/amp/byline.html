@@ -1,7 +1,7 @@
 {{- $authors := "authors" | index .Site.Data | default dict -}}
 {{- $taxonomy := "AuthorTaxonomyName" | lower | index .Site.Params | default "authors" -}}
 
-{{- $author := "author" | .Param | string | index $authors | default .Site.Author -}}
+{{- $author := "author" | .Param | string | index $authors | default .Site.Author | default dict -}}
 {{- $data := .Language.Lang | index $author | default dict -}}
 
 {{ with $author }}

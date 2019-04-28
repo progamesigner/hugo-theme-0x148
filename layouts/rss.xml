@@ -1,12 +1,13 @@
+{{- $authors := "authors" | index .Site.Data | default dict -}}
 {{- $limit := .Data.Pages | len | cond (ge .Site.Config.Services.RSS.Limit 1) .Site.Config.Services.RSS.Limit -}}
 {{- $pages := .Data.Pages | first $limit -}}
 
 {{ "<?" | safeHTML }}xml version="1.0" encoding="UTF-8" standalone="yes"{{ "?>" | safeHTML }}
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>{{ if eq  .Title  .Site.Title }}{{ .Site.Title }}{{ else }}{{ with .Title }}{{.}} &middot; {{ end }}{{ .Site.Title }}{{ end }}</title>
+        <title>{{ if .Site.Title | eq .Title }}{{ .Site.Title }}{{ else }}{{ with .Title }}{{.}} &middot; {{ end }}{{ .Site.Title }}{{ end }}</title>
         <link>{{ .Permalink }}</link>
-        <description>Recent content {{ if ne .Title .Site.Title }}{{ with .Title }}in {{.}} {{ end }}{{ end }}on {{ .Site.Title }}</description>
+        <description>Recent content {{ if .Site.Title | ne .Title }}{{ with .Title }}in {{.}} {{ end }}{{ end }}on {{ .Site.Title }}</description>
         <generator>Hugo -- gohugo.io</generator>
 
         {{ with .Site.LanguageCode }}
@@ -14,8 +15,8 @@
         {{ end }}
 
         {{ with .Site.Author }}
-            <managingEditor>{{ .email }}{{ with .name }} ({{ . }}){{end}}</managingEditor>
-            <webMaster>{{ .email }}{{ with .name }} ({{ . }}){{end}}</webMaster>
+            <managingEditor>{{ .email }}{{ with .name }} ({{ . }}){{ end }}</managingEditor>
+            <webMaster>{{ .email }}{{ with .name }} ({{ . }}){{ end }}</webMaster>
         {{ end }}
 
         {{ with .Site.Copyright }}
@@ -31,12 +32,15 @@
         {{ end }}
 
         {{ range $pages }}
+            {{- $author := "author" | .Param | string | index $authors | default .Site.Author | default dict -}}
+            {{- $data := .Language.Lang | index $author | default dict -}}
+
             <item>
                 <title>{{ .Title }}</title>
                 <link>{{ .Permalink }}</link>
                 <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
-                {{ with .Site.Author }}
-                    <author>{{ .email }}{{ with .name }} ({{ . }}){{end}}</author>
+                {{ with $author }}
+                    <author>{{ "email" | index $data | default .email }}{{ with "name" | index $data | default .name }} ({{ . }}){{ end }}</author>
                 {{ end }}
                 <guid>{{ .Permalink }}</guid>
                 <description>{{ .Summary | plainify }}</description>

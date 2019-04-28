@@ -1,3 +1,7 @@
+{{- $authors := "authors" | index .Site.Data | default dict -}}
+{{- $author := "author" | .Param | string | index $authors | default .Site.Author | default dict -}}
+{{- $data := .Language.Lang | index $author | default dict -}}
+
 {{- $schema := newScratch -}}
 
 {{- $keywords := slice -}}
@@ -23,7 +27,7 @@
     {{- slice .Lastmod | partial "functions/format-datetime" | $schema.SetInMap "schema" "dateModified" -}}
 {{- end -}}
 
-{{- with "author" | .Param -}}
+{{- with "name" | index $data | default $author.name -}}
     {{- . | dict "name" | $schema.SetInMap "schema" "author" -}}
 {{- end -}}
 
