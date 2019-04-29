@@ -1,3 +1,9 @@
+$navbar-icon-dimension: 2rem !default;
+$navbar-icon-margin: 0.5rem !default;
+$navbar-item-active-border: 0.125rem solid rgba($primary, 0.75) !default;
+$navbar-item-active-color: $primary !default;
+$navbar-item-border-offset: 0.5rem !default;
+
 @import '~bulma/sass/components/navbar';
 
 .navbar-brand {
@@ -6,14 +12,58 @@
     }
 }
 
+.navbar-start {
+    .navbar-item {
+        &::after {
+            content: '';
+            bottom: $navbar-item-border-offset;
+            position: absolute;
+            border-bottom: $navbar-item-active-border;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            transition: border-color $speed $easing, width $speed $easing;
+        }
+    }
+}
+
 .navbar-item {
-    &.has-items {
-        align-items: center;
-        display: flex;
-        justify-content: left;
+    &:hover,
+    &.is-hovered,
+    &.is-current {
+        &::after {
+            width: calc(100% - 1rem);
+        }
     }
 
     &.is-current {
-        color: lighten($text, 15%);
+        color: $navbar-item-active-color;
+
+        &::after {
+            border-color: $navbar-item-active-color;
+        }
+    }
+
+    &:hover,
+    &.is-hovered {
+        color: $navbar-item-hover-color;
+
+        &::after {
+            border-color: $navbar-item-hover-color;
+        }
+    }
+}
+
+.navbar-links {
+    display: flex;
+    justify-content: flex-start;
+
+    .icon {
+        height: $navbar-icon-dimension;
+        width: $navbar-icon-dimension;
+
+        &:not(:last-child) {
+            margin-right: $navbar-icon-margin;
+        }
     }
 }

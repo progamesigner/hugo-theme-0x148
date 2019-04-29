@@ -25,18 +25,18 @@
     {{ end }}
 
     <nav class="sidebar-menu is-pulled-bottom">
-        <section class="sidebar-item has-items">
-            {{ .Site.Params.NavbarLinkName | default "link" | dict "context" . "wrapper" "sidebar-item" "name" | partial "components/renderers/linked-icons.html" }}
+        <div class="sidebar-item">
+            <div class="sidebar-links">
+                {{ .Site.Params.NavbarLinkName | default "link" | dict "context" . "name" | partial "components/renderers/linked-icons.html" }}
 
-            {{ with .Site.Home.OutputFormats.Get "RSS" }}
-                {{ with $.OutputFormats.Get "RSS" | default .}}
-                    <div class="sidebar-item">
+                {{ with .Site.Home.OutputFormats.Get "RSS" }}
+                    {{ with $.OutputFormats.Get "RSS" | default .}}
                         <a class="icon icon-rss" href="{{ .RelPermalink }}" title="{{ i18n "navbar_link_rss" | default "RSS" }}">
                             {{ slice $ "icon-rss" | partial "functions/get-icon.svg" }}
                         </a>
-                    </div>
+                    {{ end }}
                 {{ end }}
-            {{ end }}
-        </section>
+            </div>
+        </div>
     </nav>
 </amp-sidebar>

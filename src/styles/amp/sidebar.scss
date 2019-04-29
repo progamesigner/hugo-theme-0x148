@@ -1,5 +1,5 @@
-$sidebar-width: 320px !default;
 $sidebar-background-color: $white !default;
+$sidebar-width: 320px !default;
 
 $sidebar-item-active-background-color: $link !default;
 $sidebar-item-active-color: $link-invert !default;
@@ -46,10 +46,9 @@ $sidebar-label-color: $text-light !default;
         background-color: $sidebar-item-active-background-color;
         color: $sidebar-item-active-color;
     }
+}
 
-    &.has-items {
-        align-items: center;
-        display: flex;
-        justify-content: space-between;
-    }
+.sidebar-links {
+    display: flex;
+    justify-content: space-around;
 }
