@@ -11,6 +11,13 @@ $page-padding: 1.5rem !default;
     @include block-shadow;
 
     background-color: $page-background-color;
+
+    .expandable {
+        @include page-fullwidth-block;
+
+        padding-left: $page-padding;
+        padding-right: $page-padding;
+    }
 }
 
 .page-hero {

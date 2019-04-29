@@ -1,0 +1,47 @@
+$expandable-color: $link !default;
+$expandable-background-color: $background !default;
+$expandable-hover-color: $link-hover !default;
+$expandable-hover-background-color: scale-color($background, $lightness: 5%) !default;
+$expandable-padding: 0.5rem 2rem !default;
+$expandable-height: 2.5rem !default;
+
+.expandable {
+    @include block;
+
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        @include overlay;
+
+        background-color: $expandable-background-color;
+        color: $expandable-color;
+        content: attr(data-expandable);
+        cursor: pointer;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        line-height: $expandable-height;
+        transition: background-color $speed $easing, color $speed $easing, opacity $speed $easing;
+    }
+
+    &:hover {
+        &::before {
+            color: $expandable-hover-color;
+            background-color: $expandable-hover-background-color;
+        }
+    }
+
+    &.is-active {
+        &::before {
+            opacity: 0;
+            pointer-events: none;
+        }
+    }
+
+    &:not(.is-active) {
+        .expandable-content {
+            height: $expandable-height;
+        }
+    }
+}

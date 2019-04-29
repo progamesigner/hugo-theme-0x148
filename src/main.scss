@@ -42,11 +42,12 @@ $amp: false;
 // =============================================================================
 // * Components
 // =============================================================================
+@import 'styles/components/breadcrumb';
+@import 'styles/components/expandable';
 @import 'styles/components/hero';
 @import 'styles/components/message';
 @import 'styles/components/navbar';
 @import 'styles/components/pagination';
-@import 'styles/components/breadcrumb';
 @import 'styles/components/popover';
 
 // =============================================================================
