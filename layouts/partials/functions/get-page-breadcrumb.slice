@@ -7,7 +7,7 @@
 {{- $items := $context.Site.Home | slice -}}
 {{- range split $permalink.Path "/" -}}
     {{- if . -}}
-        {{- $path = . | urlize | printf "%s/%s" $path -}}
+        {{- $path = . | urlize | printf "/%s/%s" $path -}}
         {{- $items = $items | append ($context.Site.GetPage $path) -}}
     {{- end -}}
 {{- end -}}

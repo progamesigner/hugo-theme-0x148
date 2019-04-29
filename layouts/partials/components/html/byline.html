@@ -15,7 +15,7 @@
                     {{- $default := printf "About %s" .name -}}
                     {{- $heading := .name | dict "Name" | i18n "byline_about" | default $default -}}
 
-                    {{ with .id | urlize | printf "%s/%s" $taxonomy | $.Site.GetPage }}
+                    {{ with .id | urlize | printf "/%s/%s" $taxonomy | $.Site.GetPage }}
                         <a href="{{ .RelPermalink }}">{{ .Title }}</a>
                     {{ else }}
                         {{ if .url }}

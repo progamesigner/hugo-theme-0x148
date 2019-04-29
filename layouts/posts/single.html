@@ -1,6 +1,94 @@
 {{ define "main" }}
     <section class="section">
-        {{ partial "components/sections/html-post.html" . }}
+        <article class="page is-post">
+            <div class="page-head">
+                <div class="page-date">
+                    {{ partial "components/elements/date.html" .Date }}
+                </div>
+
+                {{ if "categories" | .Param }}
+                    <div class="page-category">
+                        {{ partial "components/elements/category.html" . }}
+                    </div>
+                {{ end }}
+
+                <h1 class="title">{{ .Title }}</h1>
+
+                {{ with .Description }}
+                    <h2 class="subtitle">{{ . }}</h2>
+                {{ end }}
+
+                {{ if "advertisement" | .Param }}
+                    <div class="page-advertisement">
+                        {{ partial "components/wrappers/html-advertisement.html" . }}
+                    </div>
+                {{ end }}
+            </div>
+
+            <div class="page-body">
+                {{ if "share" | .Param }}
+                    <div class="page-share is-fixed-left">
+                        {{ partial "components/elements/share.html" . }}
+                    </div>
+                {{ end }}
+
+                {{ if "toc" | .Param }}
+                    <div class="page-menu is-fixed-right">
+                        {{ partial "components/elements/html-menu.html" . }}
+                    </div>
+                {{ end }}
+
+                {{ if "series" | .Param }}
+                    <div class="page-series">
+                        {{ partial "components/elements/series.html" . }}
+                    </div>
+                {{ end }}
+
+                <div class="page-content content">
+                    {{ .Content }}
+                </div>
+            </div>
+
+            <div class="page-foot">
+                {{ if "advertisement" | .Param }}
+                    <div class="page-advertisement">
+                        {{ partial "components/wrappers/html-advertisement.html" . }}
+                    </div>
+                {{ end }}
+
+                {{ if "author" | .Param }}
+                    <div class="page-byline">
+                        {{ partial "components/wrappers/html-byline.html" . }}
+                    </div>
+                {{ end }}
+
+                <div class="page-meta">
+                    {{ if slice .Lastmod .Date | partial "functions/is-date-later-than.boolean" }}
+                        <div class="page-meta-item">
+                            <span class="icon">
+                                {{ slice . "icon-lastmod" | partial "functions/get-icon.svg" }}
+                            </span>
+                            {{ partial "components/elements/tag.html" . }}
+                        </div>
+                    {{ end }}
+
+                    {{ if "tags" | .Param }}
+                        <div class="page-meta-item">
+                            <span class="icon">
+                                {{ slice . "icon-tag" | partial "functions/get-icon.svg" }}
+                            </span>
+                            {{ partial "components/elements/tag.html" . }}
+                        </div>
+                    {{ end }}
+
+                    <div class="page-meta-item">
+                        <div class="page-share">
+                            {{ partial "components/elements/share.html" . }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
 
         {{ partial "components/sections/html-pagination.html" . }}
 

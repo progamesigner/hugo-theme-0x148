@@ -1,0 +1,56 @@
+{{ define "main" }}
+    <section class="section">
+        <article class="page is-single">
+            <div class="page-head">
+                <div class="page-breadcrumb">
+                    {{ partial "components/layouts/amp-breadcrumb.html" . }}
+                </div>
+
+                <div class="page-headline">
+                    <h1 class="title">{{ .Title }}</h1>
+                </div>
+
+                {{ if "advertisement" | .Param }}
+                    <div class="page-advertisement">
+                        {{ partial "components/wrappers/amp-advertisement.html" . }}
+                    </div>
+                {{ end }}
+            </div>
+
+            <div class="page-body">
+                {{ with .Content }}
+                    <div class="page-content content">
+                        {{ . }}
+                    </div>
+                {{ end }}
+
+                <div class="term-content content">
+                    <ul>
+                        {{- $type := .Type -}}
+
+                        {{ range .Data.Terms.Alphabetical }}
+                            {{- $name := .Name -}}
+                            {{- $count := .Count -}}
+
+                            {{ with $.Site.GetPage (printf "/%s/%s" $type $name) }}
+                                <li>
+                                    ({{ $count }}) <a href="{{ .RelPermalink }}" title="{{ .Title }}">{{ .Title }}</a>
+                                </li>
+                            {{ end }}
+                        {{ end }}
+                    </ul>
+                </div>
+            </div>
+
+            <div class="page-foot">
+                {{ if "advertisement" | .Param }}
+                    <div class="page-advertisement">
+                        {{ partial "components/wrappers/amp-advertisement.html" . }}
+                    </div>
+                {{ end }}
+            </div>
+        </article>
+
+        {{ partial "components/layouts/amp-pagination.html" . }}
+    </section>
+{{ end }}

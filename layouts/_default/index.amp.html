@@ -1,5 +1,5 @@
 {{ define "main" }}
-    {{- $paginator := .Site.Params.mainSections | where .Pages.ByDate.Reverse  "Type" "in" | .Paginate -}}
+    {{- $paginator := .Site.Params.mainSections | where .Pages "Type" "in" | .Paginate -}}
 
     {{ with .Content }}
         <section class="section">
@@ -14,6 +14,6 @@
             {{ partial "components/sections/amp-summary.html" . }}
         {{ end }}
 
-        {{ partial "components/sections/amp-pagination.html" . }}
+        {{ partial "components/layouts/amp-pagination.html" . }}
     </section>
 {{ end }}

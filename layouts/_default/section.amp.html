@@ -1,13 +1,13 @@
 {{ define "main" }}
     <section class="section">
-        {{ partial "components/layouts/amp-breadcrumb.html" . }}
+        {{ with .Title }}
+            <h1 class="title">{{ . }}</h1>
+        {{ end }}
 
         {{ with .Content }}
-            <section class="section">
-                <div class="list-content content">
-                    {{ . }}
-                </div>
-            </section>
+            <div class="list-content content">
+                {{ . }}
+            </div>
         {{ end }}
 
         {{ range .Paginator.Pages }}

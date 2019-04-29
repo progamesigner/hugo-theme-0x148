@@ -2,6 +2,10 @@
     <section class="section">
         <article class="page is-single">
             <div class="page-head">
+                <div class="page-breadcrumb">
+                    {{ partial "components/layouts/amp-breadcrumb.html" . }}
+                </div>
+
                 <div class="page-headline">
                     <h1 class="title">{{ .Title }}</h1>
                 </div>
@@ -14,8 +18,20 @@
             </div>
 
             <div class="page-body">
-                <div class="page-content content">
-                    {{ .Content }}
+                {{ with .Content }}
+                    <div class="page-content content">
+                        {{ . }}
+                    </div>
+                {{ end }}
+
+                <div class="taxonomy-content content">
+                    <ul>
+                        {{ range .Pages }}
+                            <li>
+                                <a href="{{ .RelPermalink }}" title="{{ .Title }}">{{ .Title }}</a>
+                            </li>
+                        {{ end }}
+                    </ul>
                 </div>
             </div>
 
@@ -27,7 +43,5 @@
                 {{ end }}
             </div>
         </article>
-
-        {{ partial "components/sections/amp-comment.html" . }}
     </section>
 {{ end }}
