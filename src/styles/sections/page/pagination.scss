@@ -12,6 +12,7 @@ $page-pagination-item-icon-hover-offset: 0.5rem !default;
         @include block-shadow;
 
         background-color: $page-pagination-item-background-color;
+        border-radius: 0;
         display: grid;
         flex-basis: calc(50% - #{$page-pagination-item-gap * 2});
         grid-template-areas: 'icon subtitle' 'icon title';
