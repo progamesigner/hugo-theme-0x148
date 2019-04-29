@@ -48,11 +48,13 @@
                     {{ .Site.Params.NavbarLinkName | default "link" | dict "context" . "wrapper" "navbar-item" "name" | partial "components/renderers/linked-icons.html" }}
 
                     {{ with .Site.Home.OutputFormats.Get "RSS" }}
-                        <div class="navbar-item">
-                            <a class="icon icon-rss" href="{{ .RelPermalink }}" title="{{ i18n "navbar_link_rss" | default "RSS" }}">
-                                {{ slice $ "icon-rss" | partial "functions/get-icon.svg" }}
-                            </a>
-                        </div>
+                        {{ with $.OutputFormats.Get "RSS" | default .}}
+                            <div class="navbar-item">
+                                <a class="icon icon-rss" href="{{ .RelPermalink }}" title="{{ i18n "navbar_link_rss" | default "RSS" }}">
+                                    {{ slice $ "icon-rss" | partial "functions/get-icon.svg" }}
+                                </a>
+                            </div>
+                        {{ end }}
                     {{ end }}
                 </div>
 
