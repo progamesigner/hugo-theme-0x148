@@ -4,36 +4,38 @@
     <meta charset="utf-8">
     <title>{{ block "title" . }}{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} &middot; {{ .Site.Title }}{{ end }}{{ end }}</title>
 
-    {{ partial "layouts/meta.html" . }}
-    {{ partial "layouts/opengraph.html" . }}
-    {{ partial "layouts/links.html" . }}
-    {{ partial "layouts/fonts.html" . }}
-    {{ partial "layouts/html-styles.html" . }}
-    {{ partial "layouts/schema.html" . }}
-    {{ partial "layouts/html-modules.html" . }}
+    {{ block "meta" . }}{{ partial "layouts/meta.html" . }}{{ end }}
+    {{ block "opengraph" . }}{{ partial "layouts/opengraph.html" . }}{{ end }}
+    {{ block "links" . }}{{ partial "layouts/links.html" . }}{{ end }}
+    {{ block "fonts" . }}{{ partial "layouts/fonts.html" . }}{{ end }}
+    {{ block "styles" . }}{{ partial "layouts/html-styles.html" . }}{{ end }}
+    {{ block "schema" . }}{{ partial "layouts/schema.html" . }}{{ end }}
+    {{ block "modules" . }}{{ partial "layouts/html-modules.html" . }}{{ end }}
 </head>
 
 <body class="has-navbar-fixed-top">
-    {{ partial "layouts/html-prologue.html" . }}
+    {{ block "prologue" . }}{{ partial "layouts/html-prologue.html" . }}{{ end }}
 
     {{ block "header" . }}{{ partial "layouts/html-header.html" . }}{{ end }}
 
-    <main class="main" role="main">
-        <div class="container">
-            {{ block "main" . }}{{ end }}
-        </div>
-    </main>
+    {{ block "body" . }}
+        <main class="main" role="main">
+            <div class="container">
+                {{ block "main" . }}{{ end }}
+            </div>
+        </main>
 
-    <div class="back-to-top">
-        <span class="icon icon-top">
-            {{ slice . "icon-back-to-top" | partial "functions/get-icon.svg" }}
-        </span>
-    </div>
+        <div class="back-to-top">
+            <span class="icon icon-top">
+                {{ slice . "icon-back-to-top" | partial "functions/get-icon.svg" }}
+            </span>
+        </div>
+    {{ end }}
 
     {{ block "footer" . }}{{ partial "layouts/html-footer.html" . }}{{ end }}
 
-    {{ partial "layouts/html-scripts.html" . }}
+    {{ block "scripts" . }}{{ partial "layouts/html-scripts.html" . }}{{ end }}
 
-    {{ partial "layouts/html-epilogue.html" . }}
+    {{ block "epilogue" . }}{{ partial "layouts/html-epilogue.html" . }}{{ end }}
 </body>
 </html>

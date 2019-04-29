@@ -4,29 +4,31 @@
     <meta charset="utf-8">
     <title>{{ block "title" . }}{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} &middot; {{ .Site.Title }}{{ end }}{{ end }}</title>
 
-    {{ partial "layouts/meta.html" . }}
-    {{ partial "layouts/amp-scripts.html" . }}
-    {{ partial "layouts/amp-styles.html" . }}
-    {{ partial "layouts/fonts.html" . }}
-    {{ partial "layouts/amp-boilerplate.html" . }}
-    {{ partial "layouts/opengraph.html" . }}
-    {{ partial "layouts/links.html" . }}
-    {{ partial "layouts/schema.html" . }}
+    {{ block "meta" . }}{{ partial "layouts/meta.html" . }}{{ end }}
+    {{ block "scripts" . }}{{ partial "layouts/amp-scripts.html" . }}{{ end }}
+    {{ block "styles" . }}{{ partial "layouts/amp-styles.html" . }}{{ end }}
+    {{ block "fonts" . }}{{ partial "layouts/fonts.html" . }}{{ end }}
+    {{ block "boilerplate" . }}{{ partial "layouts/amp-boilerplate.html" . }}{{ end }}
+    {{ block "opengraph" . }}{{ partial "layouts/opengraph.html" . }}{{ end }}
+    {{ block "links" . }}{{ partial "layouts/links.html" . }}{{ end }}
+    {{ block "schema" . }}{{ partial "layouts/schema.html" . }}{{ end }}
 </head>
 
 <body class="has-navbar-fixed-top">
-    {{ partial "layouts/amp-prologue.html" . }}
+    {{ block "prologue" . }}{{ partial "layouts/amp-prologue.html" . }}{{ end }}
 
     {{ block "header" . }}{{ partial "layouts/amp-header.html" . }}{{ end }}
 
-    <main class="main" role="main">
-        <div class="container">
-            {{ block "main" . }}{{ end }}
-        </div>
-    </main>
+    {{ block "body" . }}
+        <main class="main" role="main">
+            <div class="container">
+                {{ block "main" . }}{{ end }}
+            </div>
+        </main>
+    {{ end }}
 
     {{ block "footer" . }}{{ partial "layouts/amp-footer.html" . }}{{ end }}
 
-    {{ partial "layouts/amp-epilogue.html" . }}
+    {{ block "epilogue" . }}{{ partial "layouts/amp-epilogue.html" . }}{{ end }}
 </body>
 </html>

@@ -12,5 +12,3 @@
 {{ range $modules }}
     <script custom-element="{{ . }}" src="{{ . | index $mappings }}" async></script>
 {{ end }}
-
-{{ block "scripts" . }}{{ end }}
