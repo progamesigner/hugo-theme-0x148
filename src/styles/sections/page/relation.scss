@@ -1,4 +1,4 @@
-$page-relation-margin: 0 0.5rem !default;
+$page-relation-item-gap: 0.25rem !default;
 
 .page-relation {
     @include block;
@@ -8,8 +8,8 @@ $page-relation-margin: 0 0.5rem !default;
     justify-content: flex-start;
 
     .page {
-        flex-basis: calc(100% / 3);
-        margin: $page-relation-margin;
+        flex-basis: calc(100% / 3 - #{2 * $page-relation-item-gap});
+        margin: 0 auto;
         position: relative;
 
         &:first-child {
