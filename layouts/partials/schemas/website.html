@@ -2,7 +2,7 @@
 
 {{- "http://schema.org" | $schema.SetInMap "schema" "@context" -}}
 {{- "Website" | $schema.SetInMap "schema" "@type" -}}
-{{- ".Site.Title" | $schema.SetInMap "schema" "name" -}}
+{{- .Site.Title | $schema.SetInMap "schema" "name" -}}
 {{- .Site.BaseURL | $schema.SetInMap "schema" "url" -}}
 
 {{- range $key, $value := "schema-website" | index .Site.Data | default dict -}}
