@@ -8,27 +8,41 @@ $page-card-no-hero-padding: 0.5rem !default;
         flex-direction: column;
 
         &.has-hero {
+            &:hover,
+            &.is-hovered {
+                .hero-item {
+                    padding-top: $page-card-hero-hover-height;
+                }
+
+                .page-body {
+                    opacity: 1;
+                    padding-bottom: #{$page-card-hero-height - $page-card-hero-hover-height};
+                }
+            }
+
             .page-body {
                 height: 0;
                 opacity: 0;
+            }
+
+            .page-foot {
+                &::before {
+                    background-image: linear-gradient(0deg, $page-background-color 0%, transparent 100%);
+                    content: '';
+                    display: block;
+                    height: $page-padding;
+                    left: 0;
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    transform: translateY(-100%);
+                }
             }
         }
 
         &:not(.has-hero) {
             .page-hero {
                 padding: $page-card-no-hero-padding;
-            }
-        }
-
-        &:hover,
-        &.is-hovered {
-            .hero-item {
-                padding-top: $page-card-hero-hover-height;
-            }
-
-            .page-body {
-                opacity: 1;
-                padding-bottom: #{$page-card-hero-height - $page-card-hero-hover-height};
             }
         }
 
@@ -39,18 +53,6 @@ $page-card-no-hero-padding: 0.5rem !default;
 
         .page-foot {
             margin-top: auto;
-
-            &::before {
-                background-image: linear-gradient(0deg, $page-background-color 0%, transparent 100%);
-                content: '';
-                display: block;
-                height: $page-padding;
-                left: 0;
-                position: absolute;
-                right: 0;
-                top: 0;
-                transform: translateY(-100%);
-            }
         }
 
         .page-category {
@@ -64,6 +66,9 @@ $page-card-no-hero-padding: 0.5rem !default;
         }
 
         .hero-item {
+            padding-top: $page-card-hero-height;
+            transition: padding-top $speed $easing;
+
             .image {
                 height: 100%;
             }
@@ -72,11 +77,6 @@ $page-card-no-hero-padding: 0.5rem !default;
                 height: 100%;
                 max-width: unset;
             }
-        }
-
-        .hero-item {
-            padding-top: $page-card-hero-height;
-            transition: padding-top $speed $easing;
         }
 
         .hero-caption {
