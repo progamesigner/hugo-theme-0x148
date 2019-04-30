@@ -1,5 +1,5 @@
 {{ if .Param "comments" }}
     <div class="page-comment">
-        {{ partial "components/wrappers/amp-comment.html" . }}
+        {{ slice . | partial "components/renderers/comment.html" }}
     </div>
 {{ end }}

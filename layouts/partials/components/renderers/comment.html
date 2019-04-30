@@ -1,0 +1,11 @@
+{{- $context := 0 | index . -}}
+
+{{ with $context }}
+    {{- $format := slice . | partial "functions/get-page-format.txt" -}}
+
+    {{ if "AMP" | eq $format}}
+        {{ partial "components/wrappers/amp-comment.html" . }}
+    {{ else }}
+        {{ partial "components/wrappers/html-comment.html" . }}
+    {{ end }}
+{{ end }}
