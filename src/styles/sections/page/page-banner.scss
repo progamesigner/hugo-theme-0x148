@@ -3,6 +3,7 @@ $page-banner-link-background-color: $primary !default;
 $page-banner-link-dimension: 4rem !default;
 $page-banner-link-hover-offset: 0.25rem !default;
 $page-banner-link-right: 1.5rem !default;
+$page-banner-no-hero-head-padding-right: 7rem !default;
 $page-banner-no-hero-link-top: 3.5rem !default;
 $page-banner-no-hero-padding: 0.5rem !default;
 
@@ -11,6 +12,10 @@ $page-banner-no-hero-padding: 0.5rem !default;
         &:not(.has-hero) {
             .page-hero {
                 padding: $page-banner-no-hero-padding;
+            }
+
+            .page-head {
+                padding-right: $page-banner-no-hero-head-padding-right;
             }
 
             .button {
