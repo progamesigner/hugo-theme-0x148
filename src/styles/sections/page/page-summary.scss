@@ -2,6 +2,21 @@
     &.is-summary {
         @include block-hover-shadow;
 
+        .hero-image {
+            img {
+                transform: scale(1.15);
+                transition: transform $speed $easing;
+            }
+        }
+
+        &:hover {
+            .hero-image {
+                img {
+                    transform: scale(1.0);
+                }
+            }
+        }
+
         .button {
             &.is-permalink {
                 margin-left: auto;

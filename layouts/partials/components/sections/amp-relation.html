@@ -8,10 +8,17 @@
             {{- $name := . | urlize -}}
 
             {{ with $name | $taxonomy.Get }}
-                <article class="page is-series">
-                    <div class="page-hero">
-                        {{ partial "components/wrappers/amp-hero.html" .Page }}
-                    </div>
+                {{- $properties := slice .Page "is-series" "1by1" | partial "functions/get-page-properties.dict" -}}
+
+                {{- $classes := "classes" | index $properties -}}
+                {{- $hero := "hero" | index $properties -}}
+
+                <article class="page {{ delimit $classes " " }}">
+                    {{ if "item" | index $hero }}
+                        <div class="page-hero">
+                            {{ slice .Page $hero | partial "components/renderers/hero.html" }}
+                        </div>
+                    {{ end }}
 
                     <div class="page-head">
                         {{ with .Page }}
@@ -39,9 +46,16 @@
         {{ end }}
 
         {{ range . | .Site.RegularPages.Related | first ($count | cond ($count | ge 0) 0) }}
-            <article class="page is-card">
+            {{- $properties := slice . "is-card" "21by9" | partial "functions/get-page-properties.dict" -}}
+
+            {{- $classes := "classes" | index $properties -}}
+            {{- $hero := "hero" | index $properties -}}
+
+            <article class="page {{ delimit $classes " " }}">
                 <div class="page-hero">
-                    {{ partial "components/wrappers/amp-hero.html" . }}
+                    {{ if "item" | index $hero }}
+                        {{ slice . $hero | partial "components/renderers/hero.html" }}
+                    {{ end }}
 
                     <div class="page-category">
                         {{ partial "components/elements/category.html" . }}
@@ -57,7 +71,7 @@
 
                 <div class="page-body">
                     <div class="page-content content">
-                        {{ .Summary }}
+                        {{ .Summary | truncate 320 }}
                     </div>
                 </div>
 
@@ -81,9 +95,16 @@
         {{ end }}
     {{ else }}
         {{ range . | .Site.RegularPages.Related | first 3 }}
-            <article class="page is-banner">
+            {{- $properties := slice . "is-banner" "21by9" | partial "functions/get-page-properties.dict" -}}
+
+            {{- $classes := "classes" | index $properties -}}
+            {{- $hero := "hero" | index $properties -}}
+
+            <article class="page {{ delimit $classes " " }}">
                 <div class="page-hero">
-                    {{ partial "components/wrappers/amp-hero.html" . }}
+                    {{ if "item" | index $hero }}
+                        {{ slice . $hero | partial "components/renderers/hero.html" }}
+                    {{ end }}
 
                     <div class="page-category">
                         {{ partial "components/elements/category.html" . }}
@@ -101,6 +122,16 @@
                     </h3>
                     <h2 class="title">{{ .Title }}</h2>
                 </div>
+
+                {{ if "item" | index $hero | not }}
+                    <div class="page-body">
+                        <div class="page-content content">
+                            {{ .Summary | truncate 180 }}
+                        </div>
+                    </div>
+
+                    <div class="page-foot"></div>
+                {{ end }}
             </article>
         {{ end }}
     {{ end }}

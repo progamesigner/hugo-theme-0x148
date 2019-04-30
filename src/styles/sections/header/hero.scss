@@ -1,0 +1,42 @@
+$header-hero-box-shadow: inset 0 0.5rem 1rem 1rem $body-background-color, inset 0 -5rem 12rem rgba($primary, 0.25) !default;
+$header-hero-caption-padding: 2.5rem 2rem !default;
+$header-hero-height: 320px !default;
+$header-hero-offset: 1.5rem !default;
+$header-hero-width: 1920px !default;
+
+.header-hero {
+    .hero {
+        left: 50%;
+        margin-bottom: #{-1 * $header-hero-offset};
+        margin-top: #{-1 * $header-hero-offset};
+        position: relative;
+        transform: translateX(-50%);
+        transition: margin-top $speed $easing;
+        width: $header-hero-width;
+
+        @include touch {
+            margin-top: #{-2 * $header-hero-offset};
+        }
+    }
+
+    .hero-item {
+        &::after {
+            @include overlay;
+
+            box-shadow: $header-hero-box-shadow;
+            content: '';
+            pointer-events: none;
+        }
+    }
+
+    .hero-caption {
+        height: 100%;
+        left: 50%;
+        max-height: $header-hero-height;
+        max-width: $header-hero-width;
+        padding: $header-hero-caption-padding;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 100vw;
+    }
+}

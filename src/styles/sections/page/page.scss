@@ -20,21 +20,6 @@ $page-padding: 1.5rem !default;
     }
 }
 
-.page-hero {
-    overflow: hidden;
-    position: relative;
-
-    &::before {
-        content: '';
-        display: block;
-        padding-top: 0;
-    }
-
-    .hero {
-        @include overlay;
-    }
-}
-
 .page-head,
 .page-body,
 .page-foot {

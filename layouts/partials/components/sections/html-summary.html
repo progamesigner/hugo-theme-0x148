@@ -1,7 +1,14 @@
-<article class="page is-summary">
-    <div class="page-hero">
-        {{ partial "components/wrappers/html-hero.html" . }}
-    </div>
+{{- $properties := slice . "is-summary" | partial "functions/get-page-properties.dict" -}}
+
+{{- $classes := "classes" | index $properties -}}
+{{- $hero := "hero" | index $properties -}}
+
+<article class="page {{ delimit $classes " " }}">
+    {{ if "item" | index $hero }}
+        <div class="page-hero">
+            {{ slice . $hero | partial "components/renderers/hero.html" }}
+        </div>
+    {{ end }}
 
     <div class="page-head">
         <div class="page-date">

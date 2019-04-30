@@ -1,0 +1,19 @@
+{{- $context := 0 | index . -}}
+
+{{- $formats := slice -}}
+{{- $alternativeFormats := slice -}}
+
+{{- with $context -}}
+    {{- range .OutputFormats -}}
+        {{- $formats = .Name | lower | slice | append $formats -}}
+    {{- end -}}
+
+    {{- range .AlternativeOutputFormats -}}
+        {{- $alternativeFormats = .Name | lower | slice | append $alternativeFormats -}}
+    {{- end -}}
+{{- end -}}
+
+{{- $differences := $formats | complement $alternativeFormats -}}
+{{- $current := 0 | index $differences | upper -}}
+
+{{- return $current -}}

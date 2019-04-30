@@ -1,15 +1,22 @@
-$page-banner-hero-height: 100% * 9 / 21 !default;
+$page-banner-category-padding: 0.5rem !default;
 $page-banner-link-background-color: $primary !default;
 $page-banner-link-dimension: 4rem !default;
 $page-banner-link-hover-offset: 0.25rem !default;
 $page-banner-link-right: 1.5rem !default;
-$page-banner-category-padding: 0.5rem !default;
+$page-banner-no-hero-link-top: 3.5rem !default;
+$page-banner-no-hero-padding: 0.5rem !default;
 
 .page {
     &.is-banner {
-        .page-hero {
-            &::before {
-                padding-top: $page-banner-hero-height;
+        &:not(.has-hero) {
+            .page-hero {
+                padding: $page-banner-no-hero-padding;
+            }
+
+            .button {
+                &.is-permalink {
+                    top: $page-banner-no-hero-link-top;
+                }
             }
         }
 
@@ -21,6 +28,10 @@ $page-banner-category-padding: 0.5rem !default;
             .tags {
                 justify-content: flex-end;
             }
+        }
+
+        .hero-caption {
+            display: none;
         }
 
         .button {
