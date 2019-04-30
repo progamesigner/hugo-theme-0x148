@@ -5,9 +5,14 @@ $header-hero-offset: 1.5rem !default;
 $header-hero-width: 1920px !default;
 
 .header-hero {
+    &.has-hero {
+        &.is-page {
+            margin-bottom: #{-1 * $header-hero-offset};
+        }
+    }
+
     .hero {
         left: 50%;
-        margin-bottom: #{-1 * $header-hero-offset};
         margin-top: #{-1 * $header-hero-offset};
         position: relative;
         transform: translateX(-50%);
