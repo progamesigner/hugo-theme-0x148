@@ -17,7 +17,7 @@
 
         <div class="navbar-menu">
             <div class="navbar-start">
-                {{ .Site.Params.NavbarMenuName | default .Site.Params.SectionPagesMenu | default "main" | dict "context" . "name" | partial "components/renderers/navbar-items.html" }}
+                {{ .Site.Params.NavbarMenuName | default .Site.Params.SectionPagesMenu | default "main" | slice . | partial "components/renderers/navbar-items.html" }}
             </div>
 
             <div class="navbar-end">
@@ -46,7 +46,7 @@
 
                 <div class="navbar-item">
                     <div class="navbar-links">
-                        {{ .Site.Params.NavbarLinkName | default "link" | dict "context" . "name" | partial "components/renderers/linked-icons.html" }}
+                        {{ .Site.Params.NavbarLinkName | default "link" | slice . nil nil nil | partial "components/renderers/linked-icons.html" }}
 
                         {{ with .Site.Home.OutputFormats.Get "RSS" }}
                             {{ with $.OutputFormats.Get "RSS" | default .}}

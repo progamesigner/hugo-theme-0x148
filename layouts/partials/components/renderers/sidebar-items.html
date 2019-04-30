@@ -1,5 +1,5 @@
-{{- $name := .name -}}
-{{- $context := .context -}}
+{{- $context := 0 | index . -}}
+{{- $name := 1 | index . -}}
 
 {{ with $context }}
     {{ with $name | index .Site.Menus }}

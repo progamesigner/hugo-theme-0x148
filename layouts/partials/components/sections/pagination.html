@@ -6,7 +6,7 @@
                     <span class="icon">
                         {{ slice . "icon-pagination-previous" | partial "functions/get-icon.svg" }}
                     </span>
-                    <p class="subtitle">{{ partial "components/renderers/date.html" .Date }}</p>
+                    <p class="subtitle">{{ slice .Date | partial "components/renderers/date.html" }}</p>
                     <p class="title">{{ .Title }}</p>
                 </a>
             {{ end }}
@@ -16,7 +16,7 @@
                     <span class="icon">
                         {{ slice . "icon-pagination-next" | partial "functions/get-icon.svg" }}
                     </span>
-                    <p class="subtitle">{{ partial "components/renderers/date.html" .Date }}</p>
+                    <p class="subtitle">{{ slice .Date | partial "components/renderers/date.html" }}</p>
                     <p class="title">{{ .Title }}</p>
                 </a>
             {{ end }}

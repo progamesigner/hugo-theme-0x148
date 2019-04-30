@@ -1,1 +1,1 @@
-{{ dict "context" . "name" "tags" | partial "components/renderers/taxonomy.html" }}
+{{ "tags" | slice . | partial "components/renderers/taxonomy.html" }}

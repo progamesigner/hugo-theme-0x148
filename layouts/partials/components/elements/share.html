@@ -5,5 +5,5 @@
         </span>
     </div>
 
-    {{ .Site.Params.ShareMenuName | default "share" | dict "context" . "wrapper" "page-share-item" "extra" "is-hovered" "disabled" "DisabledShareServices" "name" | partial "components/renderers/linked-icons.html" }}
+    {{ .Site.Params.ShareMenuName | default "share" | slice . "DisabledShareServices" "page-share-item" "is-hovered" | partial "components/renderers/linked-icons.html" }}
 </div>

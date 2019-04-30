@@ -30,7 +30,7 @@
                                         <span class="hero-caption-item is-credit">{{ . }}</span>
                                     {{ end }}
                                     {{ with .date }}
-                                        <span class="hero-caption-item is-date">{{ partial "components/renderers/date.html" . }}</span>
+                                        <span class="hero-caption-item is-date">{{ slice . | partial "components/renderers/date.html" }}</span>
                                     {{ end }}
                                     {{ with .caption }}
                                         <span class="hero-caption-item is-caption">{{ . }}</span>
@@ -70,7 +70,7 @@
                                         <span class="hero-caption-item is-credit">{{ . }}</span>
                                     {{ end }}
                                     {{ with .date }}
-                                        <span class="hero-caption-item is-date">{{ partial "components/renderers/date.html" . }}</span>
+                                        <span class="hero-caption-item is-date">{{ slice . | partial "components/renderers/date.html" }}</span>
                                     {{ end }}
                                 </figcaption>
                             </figure>
@@ -100,7 +100,7 @@
                                         <span class="hero-caption-item is-credit">{{ . }}</span>
                                     {{ end }}
                                     {{ with .date }}
-                                        <span class="hero-caption-item is-date">{{ partial "components/renderers/date.html" . }}</span>
+                                        <span class="hero-caption-item is-date">{{ slice . partial "components/renderers/date.html" }}</span>
                                     {{ end }}
                                 </figcaption>
                             </figure>

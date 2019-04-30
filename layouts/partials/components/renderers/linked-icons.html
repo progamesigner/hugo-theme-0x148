@@ -1,7 +1,8 @@
-{{- $name := .name -}}
-{{- $context := .context -}}
-{{- $disabledItemKey := .disabled -}}
-{{- $extraClass := .extra | default false -}}
+{{- $context := 0 | index . -}}
+{{- $disabledItemKey := 1 | index . -}}
+{{- $wrapperClass := 2 | index . -}}
+{{- $extraClass := 3 | index . -}}
+{{- $name := 4 | index . -}}
 
 {{ with $context }}
     {{- $disabledItems := $disabledItemKey | lower | .Param | default slice -}}
@@ -23,22 +24,43 @@
                 {{- $link = $link | replaceRE "(?i){description}" $description -}}
                 {{- $link = $link | replaceRE "(?i){icon}" $icon -}}
 
-                <a
-                    {{ if $extraClass }}
-                        class="icon icon-{{ $icon }} {{ $extraClass }}"
-                    {{ else }}
-                        class="icon icon-{{ $icon }}"
-                    {{ end }}
-                    href="{{ $link }}"
-                    title="{{ .Title }}"
-                    {{ if "http" | hasPrefix $link }}
-                        rel="external noopener"
-                    {{ else }}
-                        rel="noopener"
-                    {{ end }}
-                >
-                    {{ slice $context $icon | partial "functions/get-icon.svg" }}
-                </a>
+                {{ if $wrapperClass }}
+                    <div class="{{ $wrapperClass }}">
+                        <a
+                            {{ if $extraClass }}
+                                class="icon icon-{{ $icon }} {{ $extraClass }}"
+                            {{ else }}
+                                class="icon icon-{{ $icon }}"
+                            {{ end }}
+                            href="{{ $link }}"
+                            title="{{ .Title }}"
+                            {{ if "http" | hasPrefix $link }}
+                                rel="external noopener"
+                            {{ else }}
+                                rel="noopener"
+                            {{ end }}
+                        >
+                            {{ slice $context $icon | partial "functions/get-icon.svg" }}
+                        </a>
+                    </div>
+                {{ else }}
+                    <a
+                        {{ if $extraClass }}
+                            class="icon icon-{{ $icon }} {{ $extraClass }}"
+                        {{ else }}
+                            class="icon icon-{{ $icon }}"
+                        {{ end }}
+                        href="{{ $link }}"
+                        title="{{ .Title }}"
+                        {{ if "http" | hasPrefix $link }}
+                            rel="external noopener"
+                        {{ else }}
+                            rel="noopener"
+                        {{ end }}
+                    >
+                        {{ slice $context $icon | partial "functions/get-icon.svg" }}
+                    </a>
+                {{ end }}
             {{ end }}
         {{ end }}
     {{ end }}

@@ -64,7 +64,7 @@
 
                 <div class="page-head">
                     <h3 class="subtitle">
-                        {{ partial "components/renderers/date.html" .Date }}
+                        {{ slice .Date | partial "components/renderers/date.html" }}
                     </h3>
                     <h2 class="title">{{ .Title }}</h2>
                 </div>
@@ -118,7 +118,7 @@
                         </span>
                     </a>
                     <h3 class="subtitle">
-                        {{ partial "components/renderers/date.html" .Date }}
+                        {{ slice .Date | partial "components/renderers/date.html" }}
                     </h3>
                     <h2 class="title">{{ .Title }}</h2>
                 </div>

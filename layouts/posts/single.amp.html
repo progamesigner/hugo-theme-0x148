@@ -66,7 +66,7 @@
                             <span class="icon">
                                 {{ slice . "icon-lastmod" | partial "functions/get-icon.svg" }}
                             </span>
-                            {{ partial "components/renderers/date.html" .Lastmod }}
+                            {{ slice .Lastmod | partial "components/renderers/date.html" }}
                         </div>
                     {{ end }}
 

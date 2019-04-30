@@ -14,20 +14,20 @@
 
     <p class="sidebar-label">{{ i18n "sidebar_label_navigation" }}</p>
     <nav class="sidebar-menu">
-        {{ .Site.Params.NavbarMenuName | default .Site.Params.SectionPagesMenu | default "main" | dict "context" . "name" | partial "components/renderers/sidebar-items.html" }}
+        {{ .Site.Params.NavbarMenuName | default .Site.Params.SectionPagesMenu | default "main" | slice . | partial "components/renderers/sidebar-items.html" }}
     </nav>
 
     {{ if .IsTranslated }}
         <p class="sidebar-label">{{ i18n "sidebar_label_language" }}</p>
         <nav class="sidebar-menu">
-            {{ dict "context" . | partial "components/renderers/sidebar-language-items.html" }}
+            {{ slice . | partial "components/renderers/sidebar-language-items.html" }}
         </nav>
     {{ end }}
 
     <nav class="sidebar-menu is-pulled-bottom">
         <div class="sidebar-item">
             <div class="sidebar-links">
-                {{ .Site.Params.NavbarLinkName | default "link" | dict "context" . "name" | partial "components/renderers/linked-icons.html" }}
+                {{ .Site.Params.NavbarLinkName | default "link" | slice . nil nil nil | partial "components/renderers/linked-icons.html" }}
 
                 {{ with .Site.Home.OutputFormats.Get "RSS" }}
                     {{ with $.OutputFormats.Get "RSS" | default .}}
