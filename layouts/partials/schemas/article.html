@@ -1,5 +1,7 @@
 {{- $schema := newScratch -}}
 
+{{- $schemas := "schemas" | index .Site.Data | default dict -}}
+
 {{- $keywords := slice -}}
 {{- range $plural, $terms := .Site.Taxonomies -}}
     {{- range $term, $val := $terms -}}
@@ -42,7 +44,7 @@
     {{- end -}}
 {{- end -}}
 
-{{- range $key, $value := "schema-publisher" | index .Site.Data | default dict -}}
+{{- range $key, $value := "publisher" | index $schemas | default dict -}}
     {{- if and $key $value -}}
         {{- "Organization" | $schema.SetInMap "publisher" "@type" -}}
         {{- $value | $schema.SetInMap "publisher" $key -}}
