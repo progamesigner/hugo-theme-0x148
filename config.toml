@@ -5,7 +5,8 @@
     math = false
     share = false
 
-    ampModules = ["amp-analytics", "amp-sidebar", "amp-form","amp-iframe"]
+    ampComponents = ["amp-analytics", "amp-sidebar", "amp-form","amp-iframe"]
+    ampModules = ["google-analytics"]
     htmlModules = ["google-analytics", "disqus", "mathjax"]
     navbarLinkName = "link"
     navbarMenuName = "main"

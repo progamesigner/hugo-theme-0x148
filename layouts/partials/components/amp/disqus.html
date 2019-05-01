@@ -1,6 +1,6 @@
-{{- slice . "amp-iframe" | partial "functions/is-amp-module-loaded.error" -}}
+{{- slice . "amp-iframe" | partial "functions/is-amp-component-loaded.error" -}}
 
-{{- $disqus := resources.Get "disqus.html" | minify | fingerprint "sha512" -}}
+{{- $disqus := resources.Get "iframes/disqus.html" | minify | fingerprint "sha512" -}}
 
 {{ if not .Site.Config.Privacy.Disqus.Disable | and .Site.Config.Services.Disqus.Shortname }}
     <amp-iframe

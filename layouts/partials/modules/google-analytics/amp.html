@@ -1,6 +1,6 @@
-{{- slice . "amp-analytics" | partial "functions/is-amp-module-loaded.error" -}}
+{{- slice . "amp-analytics" | partial "functions/is-amp-component-loaded.error" -}}
 
-{{- $triggers := "amp-analytics-triggers" | index .Site.Data | default dict -}}
+{{- $triggers := slice . "amp-analytics-triggers" | partial "functions/get-merged-configs.dict" -}}
 
 {{ if not .Site.Config.Privacy.GoogleAnalytics.Disable | and .Site.Config.Services.GoogleAnalytics.ID }}
     <amp-analytics type="gtag" data-credentials="include">

@@ -1,6 +1,0 @@
-{{- $context := 0 | index . -}}
-{{- $module := 1 | index . -}}
-
-{{- if slice $context $module | partial "functions/is-amp-module-loaded.boolean" | not -}}
-    {{- errorf "AMP custom component '%s' should be included in 'AMPCompoents'" $module -}}
-{{- end -}}

@@ -1,5 +1,5 @@
-{{- $mappings := "amp-modules" | index .Site.Data | default dict -}}
-{{- $modules := slice . "AMPModules" | partial "functions/get-merged-params.slice" -}}
+{{- $mappings := "amp-components" | index .Site.Data | default dict -}}
+{{- $components := slice . "AMPComponents" | partial "functions/get-merged-params.slice" -}}
 
 <link rel="preload" as="script" href="{{ "amp-core" | index $mappings }}">
 <link rel="preload" as="script" href="{{ "amp-experiment" | index $mappings }}">
@@ -9,6 +9,6 @@
 
 <script src="{{ "amp-core" | index $mappings }}" async></script>
 
-{{ range $modules }}
+{{ range $components }}
     <script custom-element="{{ . }}" src="{{ . | index $mappings }}" async></script>
 {{ end }}
