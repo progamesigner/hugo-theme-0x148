@@ -1,10 +1,7 @@
-{{- $context := 0 | index . -}}
 {{- $name := 1 | index . -}}
 
-{{- $url := "https://raw.githubusercontent.com/iconify-design/collections-json/master/json/%s.json" -}}
-
 {{- $key := $name | replaceRE "(?i).*:(.*)" "$1" -}}
-{{- $data := $name | replaceRE "(?i)(.*):.*" "$1" | printf $url | getJSON -}}
+{{- $data := $name | replaceRE "(?i)(.*):.*" "$1" | slice | partial "functions/format-iconify-url.txt" | getJSON -}}
 
 {{- $alias := $key | index $data.aliases | default dict -}}
 {{- $icon := $alias.parent | default $key | index $data.icons -}}
