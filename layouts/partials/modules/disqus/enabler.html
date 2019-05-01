@@ -1,0 +1,1 @@
+{{- return not .Site.Config.Privacy.Disqus.Disable | and .Site.Config.Services.Disqus.Shortname | and ("comments" | .Param) | and .IsPage -}}

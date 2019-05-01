@@ -1,14 +1,7 @@
-{{- $modules := slice . "HTMLModules" | partial "functions/get-merged-params.slice" -}}
 {{- $script := slice . "script.js" "main.js" "extension.js" | partial "functions/get-assets.asset" | minify | fingerprint "sha512" -}}
 
 <script src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}" crossorigin="anonymous"></script>
 
-{{ range $modules }}
-    {{- $scripts := . | printf "modules/%s/scripts.html" -}}
-
-    {{ if printf "partials/%s" $scripts | templates.Exists }}
-        {{ partial $scripts $ }}
-    {{ end }}
-{{ end }}
+{{ slice . "HTMLModules" "scripts" | partial "components/renderers/modules" }}
 
 {{ partial "templates/html-scripts.html" . }}

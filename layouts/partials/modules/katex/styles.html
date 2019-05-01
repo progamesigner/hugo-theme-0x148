@@ -1,7 +1,5 @@
 {{- $katex := slice . "module-katex" | partial "functions/get-merged-configs.dict" -}}
 
-{{ if "math" | .Param }}
-    {{ range $katex.styles }}
-        {{ slice . | partial "components/renderers/style" }}
-    {{ end }}
+{{ range $katex.styles }}
+    {{ slice . | partial "components/renderers/style" }}
 {{ end }}

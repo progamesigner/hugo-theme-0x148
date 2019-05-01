@@ -1,11 +1,3 @@
-{{- $modules := slice . "AMPModules" | partial "functions/get-merged-params.slice" -}}
-
-{{ range $modules }}
-    {{- $amp := . | printf "modules/%s/amp.html" -}}
-
-    {{ if printf "partials/%s" $amp | templates.Exists }}
-        {{ partial $amp $ }}
-    {{ end }}
-{{ end }}
+{{ slice . "AMPModules" "amp" | partial "components/renderers/modules" }}
 
 {{ partial "templates/amp-prologue.html" . }}

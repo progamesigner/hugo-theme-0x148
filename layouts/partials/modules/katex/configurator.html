@@ -1,6 +1,6 @@
 {{- $katex := slice . "module-katex" | partial "functions/get-merged-configs.dict" -}}
 
-{{ if "math" | .Param | and $katex.options }}
+{{ if $katex.options }}
     <script>
         function katexRender(element, expression, displayMode = true) {
             katex.render(

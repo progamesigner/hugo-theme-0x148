@@ -1,14 +1,3 @@
-{{- $modules := slice . "HTMLModules" | partial "functions/get-merged-params.slice" -}}
-
-{{ range $modules }}
-    {{- $module := . | printf "modules/%s.html" -}}
-    {{- $configurator := . | printf "modules/%s/configurator.html" -}}
-
-    {{ if printf "partials/%s" $configurator | templates.Exists }}
-        {{ partial $configurator $ }}
-    {{ else if printf "partials/%s" $module | templates.Exists }}
-        {{ partial $module $ }}
-    {{ end }}
-{{ end }}
+{{ slice . "HTMLModules" "configurator" true | partial "components/renderers/modules" }}
 
 {{ partial "templates/html-modules.html" . }}

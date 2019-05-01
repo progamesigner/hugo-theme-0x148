@@ -1,7 +1,5 @@
 {{- $katexCopyTex := slice . "module-katex-copy-tex" | partial "functions/get-merged-configs.dict" -}}
 
-{{ if "math" | .Param }}
-    {{ range $katexCopyTex.scripts }}
-        {{ slice . | partial "components/renderers/script" }}
-    {{ end }}
+{{ range $katexCopyTex.scripts }}
+    {{ slice . | partial "components/renderers/script" }}
 {{ end }}

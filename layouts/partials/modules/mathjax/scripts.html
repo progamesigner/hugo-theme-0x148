@@ -1,7 +1,5 @@
 {{- $mathjax := slice . "module-mathjax" | partial "functions/get-merged-configs.dict" -}}
 
-{{ if "math" | .Param }}
-    {{ range $mathjax.scripts }}
-        {{ slice . | partial "components/renderers/script" }}
-    {{ end }}
+{{ range $mathjax.scripts }}
+    {{ slice . | partial "components/renderers/script" }}
 {{ end }}

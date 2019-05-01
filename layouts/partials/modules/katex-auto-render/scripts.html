@@ -1,7 +1,5 @@
 {{- $katexAutoRender := slice . "module-katex-auto-render" | partial "functions/get-merged-configs.dict" -}}
 
-{{ if "math" | .Param }}
-    {{ range $katexAutoRender.scripts }}
-        {{ slice . | partial "components/renderers/script" }}
-    {{ end }}
+{{ range $katexAutoRender.scripts }}
+    {{ slice . | partial "components/renderers/script" }}
 {{ end }}

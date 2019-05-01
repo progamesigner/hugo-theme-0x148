@@ -1,14 +1,7 @@
-{{- $modules := slice . "HTMLModules" | partial "functions/get-merged-params.slice" -}}
 {{- $style := slice . "style.css" "main.css" "extra.css" "main-extension.css" | partial "functions/get-assets.asset" | minify | fingerprint "sha512" -}}
 
 <link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}" crossorigin="anonymous">
 
-{{ range $modules }}
-    {{- $styles := . | printf "modules/%s/styles.html" -}}
-
-    {{ if printf "partials/%s" $styles | templates.Exists }}
-        {{ partial $styles $ }}
-    {{ end }}
-{{ end }}
+{{ slice . "HTMLModules" "styles" | partial "components/renderers/modules" }}
 
 {{ partial "templates/html-styles.html" . }}

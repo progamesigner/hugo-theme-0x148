@@ -1,0 +1,20 @@
+{{- $context := 0 | index . -}}
+{{- $name := 1 | index . -}}
+{{- $hook := 2 | index . -}}
+{{- $fallback := 3 | index . | default false -}}
+
+{{ with $context }}
+    {{ range slice . $name | partial "functions/get-merged-params.slice" }}
+        {{- $file := . | printf "modules/%[2]s/%[1]s.html" $hook -}}
+        {{- $module := . | printf "modules/%s.html" -}}
+        {{- $enabler := . | printf "modules/%s/enabler.html" -}}
+
+        {{ if printf "partials/%s" $file | templates.Exists }}
+            {{ if $context | partial $enabler }}
+                {{ $context | partial $file }}
+            {{ end }}
+        {{ else if printf "partials/%s" $module | templates.Exists | and $fallback }}
+            {{ $context | partial $module }}
+        {{ end }}
+    {{ end }}
+{{ end }}

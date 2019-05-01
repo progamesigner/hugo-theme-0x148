@@ -1,11 +1,3 @@
-{{- $modules := slice . "HTMLModules" | partial "functions/get-merged-params.slice" -}}
-
-{{ range $modules }}
-    {{- $epilogue := . | printf "modules/%s/epilogue.html" -}}
-
-    {{ if printf "partials/%s" $epilogue | templates.Exists }}
-        {{ partial $epilogue $ }}
-    {{ end }}
-{{ end }}
+{{ slice . "HTMLModules" "epilogue" | partial "components/renderers/modules" }}
 
 {{ partial "templates/html-epilogue.html" . }}

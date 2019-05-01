@@ -1,5 +1,1 @@
-{{ if not .Site.Config.Privacy.Disqus.Disable | and .Site.Config.Services.Disqus.Shortname }}
-    {{ if .Param "comments" | and .IsPage }}
-        <script src="https://{{ .Site.Config.Services.Disqus.Shortname }}.disqus.com/embed.js" async></script>
-    {{ end }}
-{{ end }}
+<script src="https://{{ .Site.Config.Services.Disqus.Shortname }}.disqus.com/embed.js" async></script>
