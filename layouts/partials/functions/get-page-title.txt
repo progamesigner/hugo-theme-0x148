@@ -1,0 +1,18 @@
+{{- $context := 0 | index . -}}
+{{- $separator := 1 | index . | default "&middot;" -}}
+
+{{- $title := "" -}}
+
+{{- with $context -}}
+    {{- if .IsHome -}}
+        {{- $title = .Site.Title -}}
+    {{- else if "404" | eq .Kind -}}
+        {{- $title = i18n "404_notfound_title" | printf "%[3]s %[2]s %[1]s" .Site.Title $separator -}}
+    {{- else if "taxonomy" | eq .Kind -}}
+        {{- $title = i18n .Data.Singular 1 | default .Data.Singular | title | printf "%[4]s - %[3]s %[2]s %[1]s" .Site.Title $separator .Title -}}
+    {{- else -}}
+        {{- $title = printf "%[3]s %[2]s %[1]s" .Site.Title $separator .Title -}}
+    {{- end -}}
+{{- end -}}
+
+{{- return $title -}}

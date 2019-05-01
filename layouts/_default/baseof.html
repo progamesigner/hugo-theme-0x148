@@ -2,7 +2,7 @@
 <html lang="{{ .Site.LanguageCode | default "en" }}">
 <head>
     <meta charset="utf-8">
-    <title>{{ block "title" . }}{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} &middot; {{ .Site.Title }}{{ end }}{{ end }}</title>
+    <title>{{ block "title" . }}{{ slice . | partial "functions/get-page-title.txt" | safeHTML }}{{ end }}</title>
 
     {{ block "meta" . }}{{ partial "layouts/meta.html" . }}{{ end }}
     {{ block "opengraph" . }}{{ partial "layouts/opengraph.html" . }}{{ end }}
