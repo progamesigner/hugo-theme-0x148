@@ -2,8 +2,13 @@
 
 {{ range $modules }}
     {{- $module := . | printf "modules/%s.html" -}}
+    {{- $configurator := . | printf "modules/%s/configurator.html" -}}
 
-    {{ partial $module $ }}
+    {{ if printf "partials/%s" $configurator | templates.Exists }}
+        {{ partial $configurator $ }}
+    {{ else if printf "partials/%s" $module | templates.Exists }}
+        {{ partial $module $ }}
+    {{ end }}
 {{ end }}
 
 {{ partial "templates/html-modules.html" . }}
