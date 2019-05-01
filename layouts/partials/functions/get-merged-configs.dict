@@ -1,0 +1,22 @@
+{{- $context := 0 | index . -}}
+{{- $configKey := 1 | index . -}}
+{{- $defaultConfigKey := 2 | index . -}}
+
+{{- $defaultKey := $configKey | printf "%s.default" -}}
+
+{{- $data := newScratch -}}
+
+{{- $data.Set "configs" dict -}}
+{{- with $context -}}
+    {{- $configs := "configs" | index .Site.Data -}}
+
+    {{- range $key, $value := $defaultConfigKey | default $defaultKey | index $configs -}}
+        {{- $value | $data.SetInMap "configs" $key -}}
+    {{- end -}}
+
+    {{- range $key, $value := $configKey | index $configs -}}
+        {{- $value | $data.SetInMap "configs" $key -}}
+    {{- end -}}
+{{- end -}}
+
+{{- return $data.Get "configs" -}}

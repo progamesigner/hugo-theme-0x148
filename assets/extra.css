@@ -1,4 +1,10 @@
-{{ range $name, $color := .Site.Params.Colors }}
+{{- $colors := slice . "colors" | partial "functions/get-merged-configs.dict" -}}
+
+:root {
+    --primary-color: {{ "theme" | index $colors | default .Site.Params.ThemeColor | default "#000000" }};
+}
+
+{{ range $name, $color := $colors }}
     .icon-{{ $name }} svg path {
         fill: #000000;
     }

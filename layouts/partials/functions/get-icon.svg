@@ -1,7 +1,7 @@
 {{- $context := 0 | index . -}}
 {{- $name := 1 | index . -}}
 
-{{- $icons := $context.Param "icons" | default dict -}}
+{{- $icons := slice $context "icons" | partial "functions/get-merged-configs.dict" -}}
 {{- $key := $name | index $icons | default $name -}}
 
 {{- $svg := false -}}
