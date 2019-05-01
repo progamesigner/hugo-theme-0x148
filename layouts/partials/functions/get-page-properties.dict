@@ -21,7 +21,34 @@
     {{- "license" | index $hero | $properties.SetInMap "hero" "license" -}}
     {{- "title" | index $hero | $properties.SetInMap "hero" "title" -}}
 
-    {{- if "1by1" | eq $size -}}
+    {{- if $resource -}}
+        {{- $resource | $properties.SetInMap "hero" "item" -}}
+        {{- "hero" | $properties.SetInMap "hero" "type" -}}
+        {{- "has-hero" | $properties.Add "classes" -}}
+    {{- else if $video -}}
+        {{- $video | $properties.SetInMap "hero" "item" -}}
+        {{- "video" | $properties.SetInMap "hero" "type" -}}
+        {{- "has-hero" | $properties.Add "classes" -}}
+    {{- else if .IsHome | and .Site.Params.DefaultHeroImage -}}
+        {{- .Site.Params.DefaultHeroImage | $properties.SetInMap "hero" "item" -}}
+        {{- "asset" | $properties.SetInMap "hero" "type" -}}
+        {{- "has-hero" | $properties.Add "classes" -}}
+    {{- else -}}
+        {{- false | $properties.SetInMap "hero" "item" -}}
+        {{- "none" | $properties.SetInMap "hero" "type" -}}
+    {{- end -}}
+
+    {{- if "cover" | eq $size -}}
+        {{- if "cover" | index $hero -}}
+            {{- 1080 | $properties.SetInMap "hero" "height" -}}
+            {{- 1920 | $properties.SetInMap "hero" "width" -}}
+            {{- "has-hero-cover" | $properties.Add "classes" -}}
+        {{- else -}}
+            {{- 320 | $properties.SetInMap "hero" "height" -}}
+            {{- 1920 | $properties.SetInMap "hero" "width" -}}
+        {{- end -}}
+        {{- "is-6by1" | $properties.SetInMap "hero" "size" -}}
+    {{- else if "1by1" | eq $size -}}
         {{- 540 | $properties.SetInMap "hero" "height" -}}
         {{- 540 | $properties.SetInMap "hero" "width" -}}
         {{- "is-1by1" | $properties.SetInMap "hero" "size" -}}
@@ -51,23 +78,6 @@
             {{- 1920 | $properties.SetInMap "hero" "width" -}}
             {{- "is-6by1" | $properties.SetInMap "hero" "size" -}}
         {{ end }}
-    {{- end -}}
-
-    {{- if $resource -}}
-        {{- $resource | $properties.SetInMap "hero" "item" -}}
-        {{- "hero" | $properties.SetInMap "hero" "type" -}}
-        {{- "has-hero" | $properties.Add "classes" -}}
-    {{- else if $video -}}
-        {{- $video | $properties.SetInMap "hero" "item" -}}
-        {{- "video" | $properties.SetInMap "hero" "type" -}}
-        {{- "has-hero" | $properties.Add "classes" -}}
-    {{- else if .IsHome | and .Site.Params.DefaultHeroImage -}}
-        {{- .Site.Params.DefaultHeroImage | $properties.SetInMap "hero" "item" -}}
-        {{- "asset" | $properties.SetInMap "hero" "type" -}}
-        {{- "has-hero" | $properties.Add "classes" -}}
-    {{- else -}}
-        {{- false | $properties.SetInMap "hero" "item" -}}
-        {{- "none" | $properties.SetInMap "hero" "type" -}}
     {{- end -}}
 {{- end -}}
 

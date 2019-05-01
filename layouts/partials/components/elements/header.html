@@ -1,4 +1,4 @@
-{{- $properties := slice . (cond .IsHome "is-home" "is-page") "6by1" | partial "functions/get-page-properties.dict" -}}
+{{- $properties := slice . (cond .IsHome "is-home" "is-page") (cond .IsHome "6by1" "cover") | partial "functions/get-page-properties.dict" -}}
 
 {{- $classes := "classes" | index $properties -}}
 {{- $hero := "hero" | index $properties -}}
