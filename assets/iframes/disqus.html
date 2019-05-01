@@ -27,5 +27,5 @@
 </script>
 
 {{ if not .Site.Config.Privacy.Disqus.Disable | and .Site.Config.Services.Disqus.Shortname }}
-    <script src="//{{ .Site.Config.Services.Disqus.Shortname }}.disqus.com/embed.js" async></script>
+    <script src="https://{{ .Site.Config.Services.Disqus.Shortname }}.disqus.com/embed.js" async></script>
 {{ end }}

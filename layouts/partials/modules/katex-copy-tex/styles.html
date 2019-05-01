@@ -1,3 +1,7 @@
+{{- $katexCopyTex := slice . "module-katex-copy-tex" | partial "functions/get-merged-configs.dict" -}}
+
 {{ if "math" | .Param }}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/copy-tex.min.css" integrity="sha256-v5/0E3/sOPYlVBnhQtCIPJxSCQiF10b4Du4SsnPZs+A=" crossorigin="anonymous">
+    {{ range $katexCopyTex.styles }}
+        {{ slice . | partial "components/renderers/style" }}
+    {{ end }}
 {{ end }}

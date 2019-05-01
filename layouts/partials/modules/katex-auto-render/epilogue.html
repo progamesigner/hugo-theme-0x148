@@ -1,7 +1,9 @@
+{{- $katexAutoRender := slice . "module-katex-auto-render" | partial "functions/get-merged-configs.dict" -}}
+
 {{ if "math" | .Param }}
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            renderMathInElement(document.body)
-        })
+            renderMathInElement(document.body, {{ $katexAutoRender.options | jsonify | safeJS }});
+        });
     </script>
 {{ end }}

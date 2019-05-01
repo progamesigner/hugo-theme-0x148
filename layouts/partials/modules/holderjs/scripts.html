@@ -1,1 +1,5 @@
-<script src="https://cdn.jsdelivr.net/npm/holderjs@2.9.6/holder.min.js" integrity="sha256-yF/YjmNnXHBdym5nuQyBNU62sCUN9Hx5awMkApzhZR0=" crossorigin="anonymous"></script>
+{{- $holderjs := slice . "module-holderjs" | partial "functions/get-merged-configs.dict" -}}
+
+{{ range $holderjs.scripts }}
+    {{ slice . | partial "components/renderers/script" }}
+{{ end }}

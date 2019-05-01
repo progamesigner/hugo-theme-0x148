@@ -14,7 +14,7 @@
                         }
                     }
                 },
-                "triggers" : {{ $triggers }}
+                "triggers" : {{ $triggers | jsonify | safeJS }}
             }
         </script>
     </amp-analytics>
