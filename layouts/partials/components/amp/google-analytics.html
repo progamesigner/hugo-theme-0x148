@@ -1,4 +1,4 @@
-{{- slice . "amp-analytics" | partial "functions/check-amp-module.error" -}}
+{{- slice . "amp-analytics" | partial "functions/is-amp-module-loaded.error" -}}
 
 {{- $triggers := "amp-analytics-triggers" | index .Site.Data | default dict -}}
 

@@ -1,4 +1,4 @@
-{{- slice . "amp-sidebar" | partial "functions/check-amp-module.error" -}}
+{{- slice . "amp-sidebar" | partial "functions/is-amp-module-loaded.error" -}}
 
 {{- $enabled := .Params.EnabledSocials -}}
 {{- $disabled := .Params.DisabledSocials -}}
