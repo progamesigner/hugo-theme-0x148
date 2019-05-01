@@ -3,7 +3,7 @@
 {{- "http://schema.org" | $schema.SetInMap "schema" "@context" -}}
 {{- "Course" | $schema.SetInMap "schema" "@type" -}}
 {{- .Title | $schema.SetInMap "schema" "name" -}}
-{{- slice . | partial "functions/get-meta-description.txt" | $schema.SetInMap "schema" "description" -}}
+{{- slice . | partial "functions/get-page-description.txt" | $schema.SetInMap "schema" "description" -}}
 
 {{- range $key, $value := .Params.CourseProvider -}}
     {{- "Organization" | $schema.SetInMap "provider" "@type" -}}
