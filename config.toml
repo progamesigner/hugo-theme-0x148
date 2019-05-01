@@ -1,9 +1,36 @@
 [params]
+    advertisement = false
+    author = false
     comments = false
     math = false
+    share = false
 
     ampModules = ["amp-analytics", "amp-sidebar", "amp-form","amp-iframe"]
     htmlModules = ["google-analytics", "disqus", "mathjax"]
     navbarLinkName = "link"
     navbarMenuName = "main"
     shareMenuName = "share"
+
+[[menus.link]]
+    title = "0x148 Theme"
+    name = "theme"
+    url = "https://0x148.com"
+    weight = 0
+
+[[menus.share]]
+    title = "Share with Facebook"
+    name = "facebook"
+    url = "https://www.facebook.com/sharer.php?u={url}"
+    weight = 10
+
+[[menus.share]]
+    title = "Share with Twitter"
+    name = "twitter"
+    url = "https://twitter.com/intent/tweet?url={url}&text={title}"
+    weight = 20
+
+[[menus.share]]
+    title = "Share with Email"
+    name = "email"
+    url = "mailto:?subject={title}&body={url}"
+    weight = 30
