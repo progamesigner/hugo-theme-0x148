@@ -30,7 +30,10 @@
                                         <span class="hero-caption-item is-credit">{{ . }}</span>
                                     {{ end }}
                                     {{ with .date }}
-                                        <span class="hero-caption-item is-date">{{ slice . | partial "components/renderers/date.html" }}</span>
+                                        <span class="hero-caption-item is-date">{{ . | time | slice | partial "components/renderers/date.html" }}</span>
+                                    {{ end }}
+                                    {{ with .license }}
+                                        <span class="hero-caption-item is-license">{{ . }}</span>
                                     {{ end }}
                                     {{ with .caption }}
                                         <span class="hero-caption-item is-caption">{{ . }}</span>
@@ -63,14 +66,17 @@
                                     {{ with .title }}
                                         <span class="hero-caption-item is-title">{{ . }}</span>
                                     {{ end }}
-                                    {{ with .caption }}
-                                        <span class="hero-caption-item is-caption">{{ . }}</span>
-                                    {{ end }}
                                     {{ with .credit }}
                                         <span class="hero-caption-item is-credit">{{ . }}</span>
                                     {{ end }}
                                     {{ with .date }}
-                                        <span class="hero-caption-item is-date">{{ slice . | partial "components/renderers/date.html" }}</span>
+                                        <span class="hero-caption-item is-date">{{ . | time | slice | partial "components/renderers/date.html" }}</span>
+                                    {{ end }}
+                                    {{ with .license }}
+                                        <span class="hero-caption-item is-license">{{ . }}</span>
+                                    {{ end }}
+                                    {{ with .caption }}
+                                        <span class="hero-caption-item is-caption">{{ . }}</span>
                                     {{ end }}
                                 </figcaption>
                             </figure>
@@ -93,14 +99,17 @@
                                 {{ end }}
                                 <figcaption class="hero-caption">
                                     <span class="hero-caption-item is-title">{{ $title }}</span>
-                                    {{ with .caption }}
-                                        <span class="hero-caption-item is-caption">{{ . }}</span>
-                                    {{ end }}
                                     {{ with .credit }}
                                         <span class="hero-caption-item is-credit">{{ . }}</span>
                                     {{ end }}
                                     {{ with .date }}
-                                        <span class="hero-caption-item is-date">{{ slice . partial "components/renderers/date.html" }}</span>
+                                        <span class="hero-caption-item is-date">{{ . | time | slice | partial "components/renderers/date.html" }}</span>
+                                    {{ end }}
+                                    {{ with .license }}
+                                        <span class="hero-caption-item is-license">{{ . }}</span>
+                                    {{ end }}
+                                    {{ with .caption }}
+                                        <span class="hero-caption-item is-caption">{{ . }}</span>
                                     {{ end }}
                                 </figcaption>
                             </figure>

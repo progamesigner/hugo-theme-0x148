@@ -1,4 +1,5 @@
 $header-hero-box-shadow: inset 0 0.5rem 1rem 1rem $body-background-color, inset 0 -5rem 12rem rgba($primary, 0.25) !default;
+$header-hero-caption-item-license-top: 2.5rem !default;
 $header-hero-caption-padding: 2.5rem 2rem !default;
 $header-hero-height: 320px !default;
 $header-hero-offset: 1.5rem !default;
@@ -61,5 +62,11 @@ $header-hero-width: 1920px !default;
         top: 50%;
         transform: translate(-50%, -50%);
         width: 100vw;
+    }
+
+    .hero-caption-item {
+        &.is-license {
+            top: $header-hero-caption-item-license-top;
+        }
     }
 }

@@ -2,6 +2,8 @@ $hero-caption-item-background-color: $black !default;
 $hero-caption-item-caption-background-color: rgba($black, 0.75) !default;
 $hero-caption-item-caption-size: $size-6 !default;
 $hero-caption-item-color: $white !default;
+$hero-caption-item-license-size: $size-7 !default;
+$hero-caption-item-license-top: 0.5rem !default;
 $hero-caption-item-padding: 0.25rem 1rem !default;
 $hero-caption-item-size: $size-5 !default;
 $hero-caption-item-title-margin: 0 0 0.75rem 0 !default;
@@ -94,6 +96,13 @@ $hero-caption-padding: 0.5rem 1rem !default;
         font-size: $hero-caption-item-title-size;
         margin: $hero-caption-item-title-margin;
         padding: $hero-caption-item-title-padding;
+    }
+
+    &.is-license {
+        top: $hero-caption-item-license-top;
+        font-size: $hero-caption-item-license-size;
+        position: absolute;
+        right: 0;
     }
 
     &.is-caption {
