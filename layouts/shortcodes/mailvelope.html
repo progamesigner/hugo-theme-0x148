@@ -1,13 +1,13 @@
-{{ if .Get "id" }}
+{{- if .Get "id" -}}
     {{- .Get "id" | slice "keyId" | partial "functions/get-from-mailvelope.asc" -}}
-{{ else if .Get "fingerprint" }}
+{{- else if .Get "fingerprint" -}}
     {{- .Get "fingerprint" | slice "fingerprint" | partial "functions/get-from-mailvelope.asc" -}}
-{{ else if .Get "email" }}
+{{- else if .Get "email" -}}
     {{- .Get "email" | slice "email" | partial "functions/get-from-mailvelope.asc" -}}
-{{ else if .Site.Params.PGPKeyId }}
+{{- else if .Site.Params.PGPKeyId -}}
     {{- slice "keyId" .Site.Params.PGPKeyId | partial "functions/get-from-mailvelope.asc" -}}
-{{ else if .Site.Params.PGPFingerPrint }}
+{{- else if .Site.Params.PGPFingerPrint -}}
     {{- slice "fingerprint" .Site.Params.PGPFingerPrint | partial "functions/get-from-mailvelope.asc" -}}
-{{ else }}
+{{- else -}}
     {{- slice "email" .Site.Params.PGPEmail | partial "functions/get-from-mailvelope.asc" -}}
-{{ end }}
+{{- end -}}

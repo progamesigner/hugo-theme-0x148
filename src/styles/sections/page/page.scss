@@ -17,10 +17,6 @@ $page-padding: 1.5rem !default;
             margin-top: #{-1 * $page-padding};
         }
     }
-
-    .expandable-summary {
-        @include page-fullwidth-block;
-    }
 }
 
 .page-head,

@@ -9,17 +9,20 @@
             <div class="hero {{ .size }}">
                 <div class="hero-item">
                     {{ if "hero" | eq .type }}
+                        {{- $height := .height | default .item.Height -}}
                         {{- $title := .title | default .item.Title | default .item.Name -}}
-                        {{- $resource := printf "%dx%d center" .width .height | .item.Fill -}}
+                        {{- $width := .width | default .item.Width -}}
+
+                        {{- $resource := printf "%dx%d center" $width $height | .item.Fill -}}
 
                         <div class="hero-image">
-                            <figure class="image">
+                            <figure class="image {{ .size }}">
                                 {{ if "AMP" | eq $format}}
                                     <amp-img
                                         src="{{ $resource.RelPermalink }}"
                                         alt="{{ $title }}"
-                                        width="{{ .width }}"
-                                        height="{{ .height }}"
+                                        width="{{ $width }}"
+                                        height="{{ $height }}"
                                     ></amp-img>
                                 {{ else }}
                                     <img src="{{ $resource.RelPermalink }}" alt="{{ $title }}">
@@ -43,20 +46,20 @@
                         </div>
                     {{ else if "video" | eq .type }}
                         <div class="hero-video">
-                            <figure class="video">
+                            <figure class="video {{ .size }}">
                                 {{ if "AMP" | eq $format}}
                                     <amp-iframe
                                         src="{{ .item | absURL }}"
                                         frameborder="0"
-                                        width="{{ .width }}"
-                                        height="{{ .height }}"
+                                        width="{{ .width | default 1920 }}"
+                                        height="{{ .height | default 320 }}"
                                         layout="responsive"
                                     ></amp-iframe>
                                 {{ else }}
                                     <iframe
                                         src="{{ .item | absURL }}"
-                                        width="{{ .width }}"
-                                        height="{{ .height }}"
+                                        width="{{ .width | default 1920 }}"
+                                        height="{{ .height | default 320 }}"
                                         frameborder="0"
                                         allow="autoplay; encrypted-media"
                                         allowfullscreen
@@ -86,13 +89,13 @@
                         {{- $resource := .item | resources.Get | fingerprint "sha512" -}}
 
                         <div class="hero-asset">
-                            <figure class="image">
+                            <figure class="image {{ .size }}">
                                 {{ if "AMP" | eq $format}}
                                     <amp-img
                                         src="{{ $resource.RelPermalink }}"
                                         alt="{{ $title }}"
-                                        width="{{ .width }}"
-                                        height="{{ .height }}"
+                                        width="{{ .width | default 1920 }}"
+                                        height="{{ .height | default 320 }}"
                                     ></amp-img>
                                 {{ else }}
                                     <img src="{{ $resource.RelPermalink }}" alt="{{ $title }}">

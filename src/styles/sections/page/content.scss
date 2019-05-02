@@ -39,4 +39,21 @@ $page-blockquote-quotation-vertical-offset: 0.125rem !default;
             transform: translateY(-50%);
         }
     }
+
+    .expandable-summary {
+        @include page-fullwidth-block;
+    }
+
+    .hero {
+        @include block;
+        @include page-fullwidth-block;
+
+        figure {
+            margin: 0;
+        }
+
+        figcaption {
+            font-style: normal;
+        }
+    }
 }

@@ -15,11 +15,11 @@
 
     {{- $classes | $properties.Add "classes" -}}
 
-    {{- "caption" | index $hero | $properties.SetInMap "hero" "caption" -}}
-    {{- "credit" | index $hero | $properties.SetInMap "hero" "credit" -}}
-    {{- "date" | index $hero | $properties.SetInMap "hero" "date" -}}
-    {{- "license" | index $hero | $properties.SetInMap "hero" "license" -}}
     {{- "title" | index $hero | $properties.SetInMap "hero" "title" -}}
+    {{- "caption" | index $hero | $properties.SetInMap "hero" "caption" -}}
+    {{- "date" | index $hero | $properties.SetInMap "hero" "date" -}}
+    {{- "credit" | index $hero | $properties.SetInMap "hero" "credit" -}}
+    {{- "license" | index $hero | $properties.SetInMap "hero" "license" -}}
 
     {{- if $resource -}}
         {{- $resource | $properties.SetInMap "hero" "item" -}}

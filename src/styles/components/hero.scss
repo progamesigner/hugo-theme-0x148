@@ -92,6 +92,7 @@ $hero-caption-padding: 0.5rem 1rem !default;
     font-weight: $hero-caption-item-weight;
     margin-top: 0;
     padding: $hero-caption-item-padding;
+    transition: transform $speed $easing;
 
     &.is-title {
         font-size: $hero-caption-item-title-size;
@@ -104,6 +105,7 @@ $hero-caption-padding: 0.5rem 1rem !default;
         position: absolute;
         right: $hero-caption-item-license-right;
         top: 0;
+        transform: translateY(0);
     }
 
     &.is-caption {
@@ -114,17 +116,16 @@ $hero-caption-padding: 0.5rem 1rem !default;
         position: absolute;
         right: 0;
         text-align: center;
+        transform: translateY(0);
     }
 
     @include desktop {
         &.is-license {
             transform: translateY(-100%);
-            transition: transform $speed $easing;
         }
 
         &.is-caption {
             transform: translateY(100%);
-            transition: transform $speed $easing;
         }
     }
 }
