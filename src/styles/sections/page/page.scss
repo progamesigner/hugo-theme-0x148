@@ -12,11 +12,8 @@ $page-padding: 1.5rem !default;
 
     background-color: $page-background-color;
 
-    .expandable {
+    .expandable-summary {
         @include page-fullwidth-block;
-
-        padding-left: $page-padding;
-        padding-right: $page-padding;
     }
 }
 
