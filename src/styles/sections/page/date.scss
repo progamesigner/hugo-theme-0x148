@@ -8,19 +8,27 @@ $page-date-size-large: $size-3 !default;
 $page-date-size-small: $size-6 !default;
 
 .page-date {
+    @include mobile {
+        @include block;
+        @include page-fullwidth-block;
+    }
+
     time {
         background-color: $page-date-background-color;
         border-bottom: $page-date-border-width solid $page-date-border-color;
-        border-left: $page-date-border-width solid $page-date-border-color;
         display: grid;
         grid-template-areas: 'date month' 'date year';
         grid-template-columns: auto auto;
         grid-template-rows: auto auto;
         padding: $page-date-padding;
-        position: absolute;
-        right: 0;
         text-align: center;
-        top: 0;
+
+        @include tablet {
+            border-left: $page-date-border-width solid $page-date-border-color;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
     }
 
     .date,

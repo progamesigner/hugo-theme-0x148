@@ -1,25 +1,52 @@
+$page-summary-hero-minimum-height: 20rem !default;
+
 .page {
     &.is-summary {
         @include block-hover-shadow;
 
+        .hero {
+            background-color: $green;
+
+            &.is-3by1 {
+                .hero-item {
+                    min-height: #{1.5 * $page-summary-hero-minimum-height};
+                }
+            }
+        }
+
+        .hero-item {
+            min-height: $page-summary-hero-minimum-height;
+        }
+
         .hero-image {
             img {
-                transform: scale(1.15);
+                left: 50%;
+                max-width: unset;
+                position: relative;
+                transform: translateX(-50%) scale(1.15);
                 transition: transform $speed $easing;
+                width: auto;
+            }
+
+            .image {
+                height: 100%;
+                padding-top: 0;
             }
         }
 
         &:hover {
             .hero-image {
                 img {
-                    transform: scale(1.0);
+                    transform: translateX(-50%);
                 }
             }
         }
 
-        .button {
-            &.is-permalink {
-                margin-left: auto;
+        @include desktop {
+            .button {
+                &.is-permalink {
+                    margin-left: auto;
+                }
             }
         }
     }
