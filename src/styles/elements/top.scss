@@ -1,3 +1,5 @@
+$top-icon-dimension: 2rem !default;
+
 .back-to-top {
     bottom: 1.5em;
     opacity: 0;
@@ -15,5 +17,10 @@
         cursor: pointer;
         opacity: 1;
         pointer-events: auto;
+    }
+
+    .icon {
+        height: $top-icon-dimension;
+        width: $top-icon-dimension;
     }
 }

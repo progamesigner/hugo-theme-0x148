@@ -16,20 +16,10 @@
     word-wrap: break-word;
 }
 
-@if $amp {
-    .is-family-serif {
-        font-family: $family-serif;
-    }
+.is-family-serif {
+    font-family: $family-serif !important;
+}
 
-    .is-family-brand {
-        font-family: $family-brand;
-    }
-} @else {
-    .is-family-serif {
-        font-family: $family-serif !important;
-    }
-
-    .is-family-brand {
-        font-family: $family-brand !important;
-    }
+.is-family-brand {
+    font-family: $family-brand !important;
 }

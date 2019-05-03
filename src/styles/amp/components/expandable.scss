@@ -1,0 +1,26 @@
+$expandable-color: $link !default;
+$expandable-background-color: $background !default;
+$expandable-hover-color: $link-hover !default;
+$expandable-hover-background-color: scale-color($background, $lightness: -5%) !default;
+$expandable-padding: 0.5rem 2rem !default;
+$expandable-height: 2.5rem !default;
+
+.expandable {
+    @include block;
+
+    display: block;
+}
+
+.expandable-summary {
+    align-items: flex-start;
+    background-color: $expandable-background-color;
+    color: $expandable-color;
+    display: flex;
+    justify-content: center;
+    line-height: $expandable-height;
+    list-style: none;
+
+    &::-webkit-details-marker {
+        display: none;
+    }
+}

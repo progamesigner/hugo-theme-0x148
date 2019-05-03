@@ -11,6 +11,7 @@
         grid-template-areas: 'icon subtitle' 'icon title';
         grid-template-columns: $page-pagination-item-icon-dimension 1fr;
         grid-template-rows: auto auto;
+        white-space: normal;
 
         @include tablet {
             flex-basis: calc(50% - #{$page-pagination-item-gap * 2});
@@ -51,8 +52,6 @@
 
         .title {
             grid-area: title;
-            overflow: hidden;
-            text-overflow: ellipsis;
         }
 
         .subtitle {

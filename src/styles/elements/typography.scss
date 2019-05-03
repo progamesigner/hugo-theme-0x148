@@ -26,7 +26,6 @@ u {
     text-decoration-skip: edges;
 }
 
-
 abbr {
     &[title] {
         border-bottom: $typography-border-width dotted;
@@ -53,31 +52,29 @@ mark {
     padding: $typography-highlight-padding;
 }
 
-@if not $amp {
-    body,
-    button,
-    input,
-    select,
-    textarea {
-        &:lang(ja) {
-            font-family: $family-cjk-ja-sans-serif, $family-sans-serif;
-        }
+body,
+button,
+input,
+select,
+textarea {
+    &:lang(ja) {
+        font-family: $family-cjk-ja-sans-serif, $family-sans-serif;
+    }
 
-        &:lang(ko) {
-            font-family: $family-cjk-ko-sans-serif, $family-sans-serif;
-        }
+    &:lang(ko) {
+        font-family: $family-cjk-ko-sans-serif, $family-sans-serif;
+    }
 
-        &:lang(zh) {
-            font-family: $family-cjk-zh-sans-serif, $family-sans-serif;
-        }
+    &:lang(zh) {
+        font-family: $family-cjk-zh-sans-serif, $family-sans-serif;
+    }
 
-        &:lang(zh-Hans) {
-            font-family: $family-cjk-sc-sans-serif, $family-sans-serif;
-        }
+    &:lang(zh-Hans) {
+        font-family: $family-cjk-sc-sans-serif, $family-sans-serif;
+    }
 
-        &:lang(zh-Hant) {
-            font-family: $family-cjk-tc-sans-serif, $family-sans-serif;
-        }
+    &:lang(zh-Hant) {
+        font-family: $family-cjk-tc-sans-serif, $family-sans-serif;
     }
 }
 

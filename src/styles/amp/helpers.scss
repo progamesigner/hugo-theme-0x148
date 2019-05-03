@@ -21,16 +21,6 @@ $alignments: ('centered': 'center', 'justified': 'justify', 'left': 'left', 'rig
     }
 }
 
-@each $name, $shade in $shades {
-    .has-background-#{$name} {
-        background-color: $shade;
-    }
-
-    .has-text-#{$name} {
-        color: $shade;
-    }
-}
-
 @each $alignment, $text-align in $alignments {
     .has-text-#{$alignment} {
         text-align: #{$text-align};
@@ -75,46 +65,10 @@ $alignments: ('centered': 'center', 'justified': 'justify', 'left': 'left', 'rig
     font-style: italic;
 }
 
-.is-family-primary {
-    font-family: $family-primary;
+.is-circle {
+    border-radius: 50%;
 }
 
-.is-family-secondary {
-    font-family: $family-secondary;
-}
-
-.is-family-sans-serif {
-    font-family: $family-sans-serif;
-}
-
-.is-family-monospace {
-    font-family: $family-monospace;
-}
-
-.is-family-code {
-    font-family: $family-code;
-}
-
-.is-overlay {
-    @include overlay;
-}
-
-.is-marginless {
-    margin: 0;
-}
-
-.is-paddingless {
-    padding: 0;
-}
-
-.is-radiusless {
-    border-radius: 0
-}
-
-.is-shadowless {
-    box-shadow: none;
-}
-
-.is-unselectable {
-    @include unselectable;
+.is-rounded {
+    border-radius: $radius;
 }

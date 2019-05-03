@@ -1,6 +1,3 @@
-$icon-search-dimension: 1rem !default;
-$icon-top-dimension: 2rem !default;
-
 @import '~bulma/sass/elements/icon';
 
 .icon {
@@ -9,14 +6,4 @@ $icon-top-dimension: 2rem !default;
             transition: fill $speed $easing;
         }
     }
-}
-
-.icon-search {
-    height: $icon-search-dimension;
-    width: $icon-search-dimension;
-}
-
-.icon-top {
-    height: $icon-top-dimension;
-    width: $icon-top-dimension;
 }

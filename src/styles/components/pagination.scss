@@ -13,18 +13,6 @@ $pagination-item-subtitle-color: $grey-dark !default;
     background-color: $pagination-background-color;
 }
 
-.pagination-previous,
-.pagination-next,
-.pagination-link {
-    &[data-disabled] {
-        background-color: $pagination-disabled-background-color;
-        border-color: $pagination-disabled-border-color;
-        box-shadow: none;
-        color: $pagination-disabled-color;
-        opacity: 0.5;
-    }
-}
-
 .pagination-item {
     background-color: transparent;
     border: none;
@@ -48,8 +36,7 @@ $pagination-item-subtitle-color: $grey-dark !default;
         }
     }
 
-    &[disabled],
-    &[data-disabled] {
+    &[disabled] {
         .title,
         .subtitle {
             color: $pagination-disabled-color;
