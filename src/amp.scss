@@ -18,13 +18,13 @@ $amp: true;
 // =============================================================================
 // * Elements
 // =============================================================================
-@import 'styles/amp/elements/burger';
+@import 'styles/amp/burger';
+@import 'styles/amp/container';
 @import 'styles/amp/elements/button';
-@import 'styles/amp/elements/container';
 @import 'styles/amp/elements/form';
-@import 'styles/amp/elements/image';
-@import 'styles/amp/elements/section';
+@import 'styles/amp/image';
 @import 'styles/amp/elements/typography';
+@import 'styles/amp/section';
 @import 'styles/elements/advertisement';
 @import 'styles/elements/code';
 @import 'styles/elements/content';
@@ -38,9 +38,9 @@ $amp: true;
 // =============================================================================
 @import 'styles/amp/components/expandable';
 @import 'styles/amp/components/hero';
-@import 'styles/amp/components/navbar';
 @import 'styles/amp/components/pagination';
-@import 'styles/amp/components/sidebar';
+@import 'styles/amp/navbar';
+@import 'styles/amp/sidebar';
 @import 'styles/components/breadcrumb';
 @import 'styles/components/message';
 
