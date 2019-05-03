@@ -1,4 +1,4 @@
-<form action="https://www.google.com/search" method="GET" target="_blank">
+<form class="search" action="https://www.google.com/search" method="GET" target="_blank">
     <div class="field has-addons">
         <input type="hidden" name="sitesearch" value="{{ .Site.BaseURL }}">
         <p class="control">
@@ -6,7 +6,7 @@
         </p>
         <p class="control">
             <button class="button" type="submit">
-                <span class="icon icon-search">
+                <span class="icon">
                     {{ slice . "icon-search" | partial "functions/get-icon.svg" }}
                 </span>
             </button>
