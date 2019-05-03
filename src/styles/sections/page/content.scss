@@ -1,9 +1,3 @@
-$page-blockquote-border-color: $primary !default;
-$page-blockquote-border-width: 0.00625rem !default;
-$page-blockquote-quotation-dimension: 3rem !default;
-$page-blockquote-quotation-horizontal-offset: 0.5rem !default;
-$page-blockquote-quotation-vertical-offset: 0.125rem !default;
-
 .page-content {
     blockquote {
         @include page-fullwidth-block;
@@ -55,5 +49,9 @@ $page-blockquote-quotation-vertical-offset: 0.125rem !default;
         figcaption {
             font-style: normal;
         }
+    }
+
+    .highlight {
+        @include page-fullwidth-block;
     }
 }

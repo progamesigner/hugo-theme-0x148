@@ -1,12 +1,3 @@
-$page-byline-background-color: $background !default;
-$page-byline-border-color: $primary !default;
-$page-byline-border-width: 0.00625rem !default;
-$page-byline-item-margin: 0.5rem !default;
-$page-byline-left-width: 6rem !default;
-$page-byline-margin: 1rem !default;
-$page-byline-padding: 1.5rem 3rem !default;
-$page-byline-right-width: 2rem !default;
-
 .page-byline {
     @include block;
     @include page-fullwidth-block;

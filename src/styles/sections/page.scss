@@ -1,0 +1,88 @@
+$page-background-color: $white !default;
+$page-padding: 1.5rem !default;
+
+$page-blockquote-border-color: $primary !default;
+$page-blockquote-border-width: 0.00625rem !default;
+$page-blockquote-quotation-dimension: 3rem !default;
+$page-blockquote-quotation-horizontal-offset: 0.5rem !default;
+$page-blockquote-quotation-vertical-offset: 0.125rem !default;
+
+$page-byline-background-color: $background !default;
+$page-byline-border-color: $primary !default;
+$page-byline-border-width: 0.00625rem !default;
+$page-byline-item-margin: 0.5rem !default;
+$page-byline-left-width: 6rem !default;
+$page-byline-margin: 1rem !default;
+$page-byline-padding: 1.5rem 3rem !default;
+$page-byline-right-width: 2rem !default;
+
+$page-comment-background-color: $white !default;
+$page-comment-padding: 1.5rem !default;
+
+$page-date-background-color: $white !default;
+$page-date-border-color: $grey-lighter !default;
+$page-date-border-width: 1px !default;
+$page-date-digit-padding-horizontal: 0.375rem !default;
+$page-date-digit-padding-vertical: 0.125rem !default;
+$page-date-family: $family-sans-serif !default;
+$page-date-padding: 1.5rem !default;
+
+$page-meta-icon-margin: 0.5rem !default;
+$page-meta-item-margin: 1.5rem !default;
+$page-meta-item-touch-margin: 0.5rem !default;
+
+$page-pagination-item-background-color: $white !default;
+$page-pagination-item-gap: 0.25rem !default;
+$page-pagination-item-icon-color: $text !default;
+$page-pagination-item-icon-dimension: 4rem !default;
+$page-pagination-item-icon-hover-color: $link-hover !default;
+$page-pagination-item-icon-hover-offset: 0.5rem !default;
+
+$page-relation-item-gap: 0.25rem !default;
+
+$page-share-background-color: $white !default;
+$page-share-border-color: $grey-lighter !default;
+$page-share-border-width: 1px !default;
+$page-share-brand-background-color: $primary !default;
+$page-share-brand-color: $white !default;
+$page-share-item-fixed-dimension: 2.5rem !default;
+$page-share-item-fixed-padding: 0.25rem !default;
+
+$page-banner-category-padding: 0.5rem !default;
+$page-banner-link-background-color: $primary !default;
+$page-banner-link-dimension: 4rem !default;
+$page-banner-link-hover-offset: 0.25rem !default;
+$page-banner-link-right: 1.5rem !default;
+$page-banner-no-hero-head-padding-right: 7rem !default;
+$page-banner-no-hero-link-top: 3.5rem !default;
+$page-banner-no-hero-padding: 0.5rem !default;
+
+$page-card-foot-height: 1.5rem !default;
+$page-card-hero-height: 100% * 15 / 21 !default;
+$page-card-hero-hover-height: 100% * 9 / 21 !default;
+$page-card-no-hero-padding: 0.5rem !default;
+
+$page-series-hero-z: 0 !default;
+$page-series-link-border: 0.0125rem dotted rgba($white, 0.75) !default;
+$page-series-link-color: $white !default;
+$page-series-link-margin: 0 auto 0.5rem !default;
+$page-series-link-padding: 1.5rem 2rem !default;
+$page-series-no-hero-background-image: radial-gradient(ellipse at bottom, #094C72 0%, $primary 25%, #01293F 100%) !default;
+$page-series-overlay-backdrop-filter: blur(0.25rem) !default;
+$page-series-overlay-background-color: rgba($black, 0.125) !default;
+$page-series-overlay-background-image: linear-gradient(0deg, rgba($black, 0.25) 0%, rgba($primary, 0.25) 100%) !default;
+$page-series-overlay-hover-background-color: rgba($black, 0.25) !default;
+$page-series-overlay-z: 5 !default;
+$page-series-padding: 0.5rem 1.5rem !default;
+$page-series-radius: $radius-large !default;
+$page-series-subtitle-color: $white-ter !default;
+$page-series-text-shadow: 0 0.125rem 0.5rem $black !default;
+$page-series-title-color: $white-bis !default;
+$page-series-z: 10 !default;
+
+$page-summary-hero-minimum-height: 20rem !default;
+
+@mixin page-fullwidth-block {
+    margin-left: #{-1 * $page-padding};
+    margin-right: #{-1 * $page-padding};
+}
