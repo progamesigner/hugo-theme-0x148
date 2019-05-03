@@ -26,12 +26,6 @@
             </div>
 
             <div class="page-body">
-                {{ if "share" | .Param }}
-                    <div class="page-share is-fixed-left">
-                        {{ partial "components/elements/share.html" . }}
-                    </div>
-                {{ end }}
-
                 {{ if "toc" | .Param }}
                     <div class="page-menu is-fixed-right">
                         {{ partial "components/wrappers/amp-menu.html" . }}
