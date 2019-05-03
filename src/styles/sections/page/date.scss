@@ -1,7 +1,22 @@
+$page-date-background-color: $white !default;
+$page-date-border-color: $grey-lighter !default;
+$page-date-border-width: 1px !default;
+$page-date-digit-padding-horizontal: 0.375rem !default;
+$page-date-digit-padding-vertical: 0.125rem !default;
+$page-date-family: $family-sans-serif !default;
+$page-date-padding: 1.5rem !default;
+
 .page-date {
-    @include mobile {
+    @if $amp {
         @include block;
         @include page-fullwidth-block;
+    }
+
+    @if not $amp {
+        @include mobile {
+            @include block;
+            @include page-fullwidth-block;
+        }
     }
 
     font-family: $page-date-family;
@@ -16,11 +31,15 @@
         padding: $page-date-padding;
         text-align: center;
 
-        @include tablet {
-            border-left: $page-date-border-width solid $page-date-border-color;
-            position: absolute;
-            right: 0;
-            top: 0;
+        @if not $amp {
+            @include tablet {
+                time {
+                    border-left: $page-date-border-width solid $page-date-border-color;
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                }
+            }
         }
     }
 

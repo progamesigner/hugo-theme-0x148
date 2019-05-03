@@ -1,41 +1,51 @@
+$page-share-background-color: $white !default;
+$page-share-border-color: $grey-lighter !default;
+$page-share-border-width: 1px !default;
+$page-share-brand-background-color: $primary !default;
+$page-share-brand-color: $white !default;
+$page-share-item-fixed-dimension: 2.5rem !default;
+$page-share-item-fixed-padding: 0.25rem !default;
+
 .page-share {
     @include block;
 
-    &.is-fixed-left {
-        bottom: 0;
-        left: 0;
-        position: absolute;
-        top: 0;
-        transform: translateX(-100%);
-
-        .page-share-items {
-            border: $page-share-border-width solid $page-share-border-color;
-            border-right: 0;
+    @if not $amp {
+        &.is-fixed-left {
             bottom: 0;
-            flex-direction: column;
-            position: sticky;
-            top: 5rem;
-        }
+            left: 0;
+            position: absolute;
+            top: 0;
+            transform: translateX(-100%);
 
-        .page-share-item {
-            padding: $page-share-item-fixed-padding;
+            .page-share-items {
+                border: $page-share-border-width solid $page-share-border-color;
+                border-right: 0;
+                bottom: 0;
+                flex-direction: column;
+                position: sticky;
+                top: 5rem;
+            }
 
-            &:first-child {
-                display: block;
-                padding: 0;
+            .page-share-item {
+                padding: $page-share-item-fixed-padding;
+
+                &:first-child {
+                    display: block;
+                    padding: 0;
+                }
+            }
+
+            .icon {
+                height: $page-share-item-fixed-dimension;
+                width: $page-share-item-fixed-dimension;
             }
         }
 
-        .icon {
-            height: $page-share-item-fixed-dimension;
-            width: $page-share-item-fixed-dimension;
-        }
-    }
-
-    &.is-collapsed {
-        .page-share-item {
-            &:first-child {
-                padding-top: #{$page-share-item-fixed-dimension + 2 * $page-share-item-fixed-padding};
+        &.is-collapsed {
+            .page-share-item {
+                &:first-child {
+                    padding-top: #{$page-share-item-fixed-dimension + 2 * $page-share-item-fixed-padding};
+                }
             }
         }
     }
@@ -57,26 +67,31 @@
         display: none;
         overflow: hidden;
         position: relative;
-        transition: padding-top $speed $easing;
         width: 100%;
+
+        @if not $amp {
+            transition: padding-top $speed $easing;
+        }
     }
 }
 
 .page-share-brand {
-    @include unselectable;
+    @if not $amp {
+        @include unselectable;
 
-    align-items: center;
-    background-color: $page-share-brand-background-color;
-    bottom: 0;
-    color: $page-share-brand-color;
-    display: flex;
-    font-family: $family-brand;
-    font-size: $size-large;
-    height: #{$page-share-item-fixed-dimension + 2 * $page-share-item-fixed-padding};
-    justify-content: center;
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: #{$page-share-item-fixed-dimension + 2 * $page-share-item-fixed-padding};
+        align-items: center;
+        background-color: $page-share-brand-background-color;
+        bottom: 0;
+        color: $page-share-brand-color;
+        display: flex;
+        font-family: $family-brand;
+        font-size: $size-large;
+        height: #{$page-share-item-fixed-dimension + 2 * $page-share-item-fixed-padding};
+        justify-content: center;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: #{$page-share-item-fixed-dimension + 2 * $page-share-item-fixed-padding};
+    }
 }
