@@ -1,3 +1,7 @@
+$page-meta-icon-margin: 0.5rem !default;
+$page-meta-item-margin: 1.5rem !default;
+$page-meta-item-touch-margin: 0.5rem !default;
+
 .page-meta {
     @include block;
 
@@ -5,32 +9,42 @@
     flex-direction: column;
     flex-wrap: wrap;
 
-    @include desktop {
-        align-items: center;
-        flex-direction: row;
+    @if not $amp {
+        @include desktop {
+            align-items: center;
+            flex-direction: row;
+        }
     }
 }
 
 .page-meta-item {
     display: flex;
 
-    @include touch {
+    @if $amp {
         &:not(:last-child) {
             margin-bottom: $page-meta-item-touch-margin;
         }
     }
 
-    @include desktop {
-        &:last-child {
-            margin-left: auto;
+    @if not $amp {
+        @include touch {
+            &:not(:last-child) {
+                margin-bottom: $page-meta-item-touch-margin;
+            }
         }
 
-        &:not(:last-child) {
-            margin-right: $page-meta-item-margin;
-        }
+        @include desktop {
+            &:last-child {
+                margin-left: auto;
+            }
 
-        & > .icon {
-            margin-right: $page-meta-icon-margin;
+            &:not(:last-child) {
+                margin-right: $page-meta-item-margin;
+            }
+
+            & > .icon {
+                margin-right: $page-meta-icon-margin;
+            }
         }
     }
 }

@@ -1,24 +1,37 @@
+$page-card-foot-height: 1.5rem !default;
+$page-card-hero-height: 100% * 15 / 21 !default;
+$page-card-hero-hover-height: 100% * 9 / 21 !default;
+$page-card-no-hero-padding: 0.5rem !default;
+
 .page {
     &.is-card {
         display: flex;
         flex-direction: column;
 
         &.has-hero {
-            &:hover,
-            &.is-hovered {
-                .hero-item {
-                    padding-top: $page-card-hero-hover-height;
-                }
-
+            @if $amp {
                 .page-body {
-                    opacity: 1;
                     padding-bottom: #{$page-card-hero-height - $page-card-hero-hover-height};
                 }
             }
 
-            .page-body {
-                height: 0;
-                opacity: 0;
+            @if not $amp {
+                &:hover,
+                &.is-hovered {
+                    .hero-item {
+                        padding-top: $page-card-hero-hover-height;
+                    }
+
+                    .page-body {
+                        opacity: 1;
+                        padding-bottom: #{$page-card-hero-height - $page-card-hero-hover-height};
+                    }
+                }
+
+                .page-body {
+                    height: 0;
+                    opacity: 0;
+                }
             }
 
             .page-foot {
@@ -44,34 +57,42 @@
 
         .page-body {
             overflow: hidden;
-            transition: opacity $speed $easing, padding-bottom $speed $easing;
+
+            @if not $amp {
+                transition: opacity $speed $easing, padding-bottom $speed $easing;
+            }
         }
 
         .page-foot {
             margin-top: auto;
         }
 
-        .page-category {
-            @include overlay;
-
-            padding: $page-banner-category-padding;
-
-            .tags {
-                justify-content: flex-end;
-            }
-        }
-
         .hero-item {
-            padding-top: $page-card-hero-height;
-            transition: padding-top $speed $easing;
+            @if $amp {
+                padding-top: $page-card-hero-hover-height;
+            }
+
+            @if not $amp {
+                padding-top: $page-card-hero-height;
+                transition: padding-top $speed $easing;
+            }
 
             .image {
                 height: 100%;
             }
 
-            img {
-                height: 100%;
-                max-width: unset;
+            @if $amp {
+                amp-img {
+                    height: 100%;
+                    max-width: unset;
+                }
+            }
+
+            @if not $amp {
+                img {
+                    height: 100%;
+                    max-width: unset;
+                }
             }
         }
 
@@ -79,9 +100,13 @@
             display: none;
         }
 
-        .button {
-            &.is-permalink {
-                margin-left: auto;
+        @if not $amp {
+            @include desktop {
+                .button {
+                    &.is-permalink {
+                        margin-left: auto;
+                    }
+                }
             }
         }
     }

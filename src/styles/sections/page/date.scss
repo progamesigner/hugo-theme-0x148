@@ -33,12 +33,10 @@ $page-date-padding: 1.5rem !default;
 
         @if not $amp {
             @include tablet {
-                time {
-                    border-left: $page-date-border-width solid $page-date-border-color;
-                    position: absolute;
-                    right: 0;
-                    top: 0;
-                }
+                border-left: $page-date-border-width solid $page-date-border-color;
+                position: absolute;
+                right: 0;
+                top: 0;
             }
         }
     }

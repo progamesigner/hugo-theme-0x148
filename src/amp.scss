@@ -47,10 +47,28 @@ $amp: true;
 // =============================================================================
 // * Sections
 // =============================================================================
-@import 'styles/amp/sections/footer';
-@import 'styles/amp/sections/header';
-@import 'styles/amp/sections/page';
+@import 'styles/sections/footer/footer';
+
+@import 'styles/sections/header/hero';
+@import 'styles/sections/header/navbar';
+
+@import 'styles/sections/page/page';
+@import 'styles/sections/page/advertisement';
+@import 'styles/sections/page/byline';
+@import 'styles/sections/page/category';
+@import 'styles/sections/page/comment';
+@import 'styles/sections/page/content';
 @import 'styles/sections/page/date';
+@import 'styles/sections/page/image';
+@import 'styles/sections/page/message';
+@import 'styles/sections/page/meta';
+@import 'styles/sections/page/page-banner';
+@import 'styles/sections/page/page-card';
+@import 'styles/sections/page/page-series';
+@import 'styles/sections/page/page-summary';
+@import 'styles/sections/page/pagination';
+@import 'styles/sections/page/relation';
+@import 'styles/sections/page/series';
 @import 'styles/sections/page/share';
 
 // =============================================================================

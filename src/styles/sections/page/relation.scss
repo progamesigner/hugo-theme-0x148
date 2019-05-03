@@ -1,3 +1,5 @@
+$page-relation-item-gap: 0.25rem !default;
+
 .page-relation {
     @include block;
 
@@ -8,25 +10,34 @@
 
     .page {
         flex-basis: 100%;
-        margin: 0 auto;
         position: relative;
 
-        @include touch {
+        @if $amp {
             &:not(:last-child) {
                 margin-bottom: $page-relation-item-gap;
             }
         }
 
-        @include desktop {
-            flex-basis: calc(100% / 3 - #{2 * $page-relation-item-gap});
-        }
+        @if not $amp {
+            margin: 0 auto;
 
-        &:first-child {
-            margin-left: 0;
-        }
+            @include touch {
+                &:not(:last-child) {
+                    margin-bottom: $page-relation-item-gap;
+                }
+            }
 
-        &:last-child {
-            margin-right: 0;
+            @include desktop {
+                flex-basis: calc(100% / 3 - #{2 * $page-relation-item-gap});
+            }
+
+            &:first-child {
+                margin-left: 0;
+            }
+
+            &:last-child {
+                margin-right: 0;
+            }
         }
     }
 }

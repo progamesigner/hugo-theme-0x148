@@ -1,3 +1,12 @@
+$page-banner-category-padding: 0.5rem !default;
+$page-banner-link-background-color: $primary !default;
+$page-banner-link-dimension: 4rem !default;
+$page-banner-link-hover-offset: 0.25rem !default;
+$page-banner-link-right: 1.5rem !default;
+$page-banner-no-hero-head-padding-right: 7rem !default;
+$page-banner-no-hero-link-top: 3.5rem !default;
+$page-banner-no-hero-padding: 0.5rem !default;
+
 .page {
     &.is-banner {
         &:not(.has-hero) {
@@ -50,18 +59,22 @@
                     height: $page-banner-link-dimension;
                     width: $page-banner-link-dimension;
 
-                    svg {
-                        transition: transform $speed $easing;
+                    @if not $amp {
+                        svg {
+                            transition: transform $speed $easing;
+                        }
                     }
 
                     path {
                         fill: findColorInvert($page-banner-link-background-color);
                     }
 
-                    &:hover,
-                    &.is-hovered {
-                        svg {
-                            transform: translateX($page-banner-link-hover-offset);
+                    @if not $amp {
+                        &:hover,
+                        &.is-hovered {
+                            svg {
+                                transform: translateX($page-banner-link-hover-offset);
+                            }
                         }
                     }
                 }

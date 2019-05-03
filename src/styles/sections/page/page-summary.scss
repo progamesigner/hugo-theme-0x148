@@ -1,6 +1,18 @@
+$page-summary-hero-minimum-height: 20rem !default;
+
 .page {
     &.is-summary {
         @include block-hover-shadow;
+
+        @if not $amp {
+            &:hover {
+                .hero-image {
+                    img {
+                        transform: translateX(-50%);
+                    }
+                }
+            }
+        }
 
         .hero {
             background-color: $green;
@@ -21,9 +33,13 @@
                 left: 50%;
                 max-width: unset;
                 position: relative;
-                transform: translateX(-50%) scale(1.15);
-                transition: transform $speed $easing;
+                transform: translateX(-50%);
                 width: auto;
+
+                @if not $amp {
+                    transform: translateX(-50%) scale(1.15);
+                    transition: transform $speed $easing;
+                }
             }
 
             .image {
@@ -32,18 +48,12 @@
             }
         }
 
-        &:hover {
-            .hero-image {
-                img {
-                    transform: translateX(-50%);
-                }
-            }
-        }
-
-        @include desktop {
-            .button {
-                &.is-permalink {
-                    margin-left: auto;
+        @if not $amp {
+            @include desktop {
+                .button {
+                    &.is-permalink {
+                        margin-left: auto;
+                    }
                 }
             }
         }

@@ -43,11 +43,12 @@
             {{- 1080 | $properties.SetInMap "hero" "height" -}}
             {{- 1920 | $properties.SetInMap "hero" "width" -}}
             {{- "has-hero-cover" | $properties.Add "classes" -}}
+            {{- "is-21by9" | $properties.SetInMap "hero" "size" -}}
         {{- else -}}
             {{- 320 | $properties.SetInMap "hero" "height" -}}
             {{- 1920 | $properties.SetInMap "hero" "width" -}}
+            {{- "is-6by1" | $properties.SetInMap "hero" "size" -}}
         {{- end -}}
-        {{- "is-6by1" | $properties.SetInMap "hero" "size" -}}
     {{- else if "1by1" | eq $size -}}
         {{- 540 | $properties.SetInMap "hero" "height" -}}
         {{- 540 | $properties.SetInMap "hero" "width" -}}
