@@ -1,12 +1,12 @@
-{{ if $.Paginator.TotalPages | gt 1 }}
+{{ if .Paginator.TotalPages | lt 1 }}
     <nav class="pagination is-right" role="navigation" aria-label="pagination">
-        {{ if $.Paginator.HasPrev }}
+        {{ if .Paginator.HasPrev }}
             <a class="pagination-previous" href="{{ .Paginator.Prev.URL }}" aria-label="Previous">Previous</a>
         {{ else }}
             <a class="pagination-previous" aria-label="Previous" data-disabled>Previous</a>
         {{ end }}
 
-        {{ if $.Paginator.HasNext }}
+        {{ if .Paginator.HasNext }}
             <a class="pagination-next" href="{{ .Paginator.Next.URL }}" aria-label="Next">Next</a>
         {{ else }}
             <a class="pagination-next" aria-label="Next" data-disabled>Next</a>
