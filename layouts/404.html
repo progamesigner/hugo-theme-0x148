@@ -1,33 +1,29 @@
 {{ define "main" }}
 	<section class="section">
 		<article class="page is-notfound">
+			<div class="page-head">
+				<span data-emoji></span>
+			</div>
 			<div class="page-body">
 				<div class="notfound-content content">
-					<div class="section is-family-monospace has-text-centered">
-						<h1 class="title">{{ i18n "404_notfound_title" }}</h1>
-						<h2 class="subtitle"><span data-emoji></span>&nbsp;<span data-emoji></span>&nbsp;<span data-emoji></span></h2>
-						{{ with .Site.Home.OutputFormats.Get "HTML" }}
-							<a class="button is-primary" href="{{ .Permalink }}" title="{{ $.Site.Title }}">{{ i18n "404_notfound_link" }}</a>
-						{{ end }}
-					</div>
+					<h2 class="subtitle">404</h2>
+					<h1 class="title">
+						<span class="icon">
+							{{ slice . "notfound" | partial "functions/get-icon.svg" }}
+						</span>
+						{{ i18n "404_notfound_title" }}
+						<span class="icon">
+							{{ slice . "notfound" | partial "functions/get-icon.svg" }}
+						</span>
+					</h1>
+					<p>{{ i18n "404_notfound_text" }}</p>
 				</div>
+			</div>
+			<div class="page-foot">
+				{{ with .Site.Home.OutputFormats.Get "HTML" }}
+					<a class="button is-primary" href="{{ .Permalink }}" title="{{ $.Site.Title }}">{{ i18n "404_notfound_link" }}</a>
+				{{ end }}
 			</div>
 		</article>
 	</section>
-{{ end }}
-
-{{ define "scripts" }}
-	<script>
-		(function() {
-			var emojis = [
-				'\\(o_o)/', '(o^^)o', '(˚Δ˚)b', '(^-^*)', '(≥o≤)', '(^_^)b', '(·_·)', '(=\'X\'=)',
-				'(>_<)', '(;-;)', '\\(^Д^)/'
-			];
-
-			document.querySelectorAll('[data-emoji]').forEach(function (container) {
-				var emoji = emojis[Math.floor(Math.random() * emojis.length)];
-				container.appendChild(document.createTextNode(emoji));
-			});
-		})();
-	</script>
 {{ end }}
