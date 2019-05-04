@@ -133,7 +133,7 @@
 {{- end -}}
 
 {{- with "classes" | index $arguments -}}
-    {{- . | $properties.Add "classes" -}}
+    {{- . | slice | $properties.Add "classes" -}}
 {{- end -}}
 
 {{- template "extract_canonical_properties" $parameters -}}
