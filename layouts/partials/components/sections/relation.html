@@ -8,7 +8,7 @@
             {{- $name := . | urlize -}}
 
             {{ with $name | $taxonomy.Get }}
-                {{- $properties := slice .Page "is-series" "1by1" | partial "functions/get-page-properties.dict" -}}
+                {{- $properties := dict "classes" "is-series" "size" "1by1" | slice .Page | partial "functions/get-page-properties.dict" -}}
 
                 {{- $classes := "classes" | index $properties -}}
                 {{- $hero := "hero" | index $properties -}}
@@ -46,7 +46,7 @@
         {{ end }}
 
         {{ range . | .Site.RegularPages.Related | first ($count | cond ($count | ge 0) 0) }}
-            {{- $properties := slice . "is-card" "21by9" | partial "functions/get-page-properties.dict" -}}
+            {{- $properties := dict "classes" "is-card" "size" "21by9" | slice . | partial "functions/get-page-properties.dict" -}}
 
             {{- $classes := "classes" | index $properties -}}
             {{- $hero := "hero" | index $properties -}}
@@ -95,7 +95,7 @@
         {{ end }}
     {{ else }}
         {{ range . | .Site.RegularPages.Related | first 3 }}
-            {{- $properties := slice . "is-banner" "21by9" | partial "functions/get-page-properties.dict" -}}
+            {{- $properties := dict "classes" "is-banner" "size" "21by9" | slice . | partial "functions/get-page-properties.dict" -}}
 
             {{- $classes := "classes" | index $properties -}}
             {{- $hero := "hero" | index $properties -}}

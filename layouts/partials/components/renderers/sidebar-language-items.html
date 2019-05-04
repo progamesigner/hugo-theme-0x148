@@ -4,7 +4,7 @@
     {{- $current := .Language.Lang -}}
 
     {{ range .AllTranslations.ByWeight }}
-        {{ if $current | eq .Language.Lang }}
+        {{ if .Language.Lang | eq $current }}
             <a class="sidebar-item is-active" href="{{ .RelPermalink }}" title="{{ .Title }}">
                 {{ .Language.Lang }}
             </a>

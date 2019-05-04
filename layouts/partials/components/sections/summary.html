@@ -1,4 +1,4 @@
-{{- $properties := slice . "is-summary" | partial "functions/get-page-properties.dict" -}}
+{{- $properties := dict "classes" "is-summary" | slice . | partial "functions/get-page-properties.dict" -}}
 
 {{- $classes := "classes" | index $properties -}}
 {{- $hero := "hero" | index $properties -}}

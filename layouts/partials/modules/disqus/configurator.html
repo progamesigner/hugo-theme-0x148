@@ -1,15 +1,17 @@
+{{- $properties := slice . | partial "functions/get-page-properties.dict" -}}
+
 <script>
     window.disqus_config = function () {
-        {{ with .Params.disqus_identifier }}
-            this.page.identifier = '{{ . }}'
+        {{ with "disqus_identifier" | .Param | default $properties.canonical.identifier }}
+            this.page.identifier = '{{ . }}';
         {{ end }}
 
-        {{with .Params.disqus_title }}
-            this.page.title = '{{ . }}'
+        {{ with "disqus_title" | .Param | default $properties.canonical.title }}
+            this.page.title = '{{ . }}';
         {{ end }}
 
-        {{with .Params.disqus_url }}
-            this.page.url = '{{ . | html  }}'
+        {{ with "disqus_url" | .Param | default $properties.canonical.url }}
+            this.page.url = '{{ . | safeHTML  }}';
         {{ end }}
-    }
+    };
 </script>

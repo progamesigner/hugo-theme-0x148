@@ -1,4 +1,4 @@
-{{ if .Param "comments" }}
+{{ if "comments" | .Param }}
     <div class="page-comment">
         {{ slice . | partial "components/renderers/comment.html" }}
     </div>

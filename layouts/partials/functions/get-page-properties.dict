@@ -1,85 +1,143 @@
 {{- $context := 0 | index . -}}
-{{- $classes := 1 | index . | slice -}}
-{{- $size := 2 | index . | default false -}}
+{{- $arguments := 1 | index . | default dict -}}
 
 {{- $properties := newScratch -}}
 
-{{- with $context -}}
-    {{- $hero := "hero" | .Param | default dict -}}
-    {{- $images := "images" | .Param | default slice -}}
-    {{- $resources := .Resources.ByType "image" -}}
-    {{- $videos := "videos" | .Param | default slice -}}
+{{- $parameters := slice $context $arguments $properties -}}
 
-    {{- $resource := default ($resources.GetMatch "*cover*") ($resources.GetMatch "*feature*") -}}
-    {{- $video := 0 | index $videos -}}
+{{- define "extract_canonical_properties" -}}
+    {{- $context := 0 | index . -}}
+    {{- $arguments := 1 | index . -}}
+    {{- $properties := 2 | index . -}}
 
-    {{- $classes | $properties.Add "classes" -}}
+    {{- with $context -}}
+        {{- $identifier := false -}}
+        {{- $title := false -}}
+        {{- $url := false -}}
 
-    {{- "title" | index $hero | $properties.SetInMap "hero" "title" -}}
-    {{- "caption" | index $hero | $properties.SetInMap "hero" "caption" -}}
-    {{- "date" | index $hero | $properties.SetInMap "hero" "date" -}}
-    {{- "credit" | index $hero | $properties.SetInMap "hero" "credit" -}}
-    {{- "license" | index $hero | $properties.SetInMap "hero" "license" -}}
-
-    {{- if $resource -}}
-        {{- $resource | $properties.SetInMap "hero" "item" -}}
-        {{- "hero" | $properties.SetInMap "hero" "type" -}}
-        {{- "has-hero" | $properties.Add "classes" -}}
-    {{- else if $video -}}
-        {{- $video | $properties.SetInMap "hero" "item" -}}
-        {{- "video" | $properties.SetInMap "hero" "type" -}}
-        {{- "has-hero" | $properties.Add "classes" -}}
-    {{- else if .IsHome | and .Site.Params.DefaultHeroImage -}}
-        {{- .Site.Params.DefaultHeroImage | $properties.SetInMap "hero" "item" -}}
-        {{- "asset" | $properties.SetInMap "hero" "type" -}}
-        {{- "has-hero" | $properties.Add "classes" -}}
-    {{- else -}}
-        {{- false | $properties.SetInMap "hero" "item" -}}
-        {{- "none" | $properties.SetInMap "hero" "type" -}}
-    {{- end -}}
-
-    {{- if "cover" | eq $size -}}
-        {{- if "cover" | index $hero -}}
-            {{- 1080 | $properties.SetInMap "hero" "height" -}}
-            {{- 1920 | $properties.SetInMap "hero" "width" -}}
-            {{- "has-hero-cover" | $properties.Add "classes" -}}
-            {{- "is-21by9" | $properties.SetInMap "hero" "size" -}}
-        {{- else -}}
-            {{- 320 | $properties.SetInMap "hero" "height" -}}
-            {{- 1920 | $properties.SetInMap "hero" "width" -}}
-            {{- "is-6by1" | $properties.SetInMap "hero" "size" -}}
+        {{- range .AllTranslations -}}
+            {{- if .Language.Lang | eq .Sites.First.Home.Language.Lang -}}
+                {{- $identifier = "slug" | .Param | default .Title | urlize -}}
+                {{- $title = .Title | default .Site.Title -}}
+                {{- with .OutputFormats.Get "HTML" -}}
+                    {{- $url = .Permalink -}}
+                {{- end -}}
+            {{- end -}}
         {{- end -}}
-    {{- else if "1by1" | eq $size -}}
-        {{- 540 | $properties.SetInMap "hero" "height" -}}
-        {{- 540 | $properties.SetInMap "hero" "width" -}}
-        {{- "is-1by1" | $properties.SetInMap "hero" "size" -}}
-    {{- else if "16by9" | eq $size -}}
-        {{- 720 | $properties.SetInMap "hero" "height" -}}
-        {{- 1280 | $properties.SetInMap "hero" "width" -}}
-        {{- "is-16by9" | $properties.SetInMap "hero" "size" -}}
-    {{- else if "21by9" | eq $size -}}
-        {{- 540 | $properties.SetInMap "hero" "height" -}}
-        {{- 1260 | $properties.SetInMap "hero" "width" -}}
-        {{- "is-21by9" | $properties.SetInMap "hero" "size" -}}
-    {{- else if "3by1" | eq $size -}}
-        {{- 640 | $properties.SetInMap "hero" "height" -}}
-        {{- 1920 | $properties.SetInMap "hero" "width" -}}
-        {{- "is-3by1" | $properties.SetInMap "hero" "size" -}}
-    {{- else if "6by1" | eq $size -}}
-        {{- 320 | $properties.SetInMap "hero" "height" -}}
-        {{- 1920 | $properties.SetInMap "hero" "width" -}}
-        {{- "is-6by1" | $properties.SetInMap "hero" "size" -}}
-    {{- else -}}
-        {{- if "cover" | index $hero -}}
-            {{- 640 | $properties.SetInMap "hero" "height" -}}
-            {{- 1920 | $properties.SetInMap "hero" "width" -}}
-            {{- "is-3by1" | $properties.SetInMap "hero" "size" -}}
-        {{ else }}
-            {{- 320 | $properties.SetInMap "hero" "height" -}}
-            {{- 1920 | $properties.SetInMap "hero" "width" -}}
-            {{- "is-6by1" | $properties.SetInMap "hero" "size" -}}
-        {{ end }}
+
+        {{- $title | $properties.SetInMap "canonical" "title" -}}
+        {{- $identifier | $properties.SetInMap "canonical" "identifier" -}}
+        {{- $url | $properties.SetInMap "canonical" "url" -}}
+        {{- delimit (slice $title $identifier $url) "|" | base64Encode | $properties.SetInMap "canonical" "hash" -}}
     {{- end -}}
 {{- end -}}
 
-{{- return dict "classes" ("classes" | $properties.Get) "hero" ("hero" | $properties.Get) -}}
+{{- define "extract_hero_properties" -}}
+    {{- $context := 0 | index . -}}
+    {{- $arguments := 1 | index . -}}
+    {{- $properties := 2 | index . -}}
+
+    {{- $size := "size" | index $arguments | default false -}}
+
+    {{- with $context -}}
+        {{- $hero := "hero" | .Param | default dict -}}
+        {{- $images := "images" | .Param | default slice -}}
+        {{- $resources := .Resources.ByType "image" -}}
+        {{- $videos := "videos" | .Param | default slice -}}
+
+        {{- $resource := default ($resources.GetMatch "*cover*") ($resources.GetMatch "*feature*") -}}
+        {{- $video := 0 | index $videos -}}
+
+        {{- "title" | index $hero | $properties.SetInMap "hero" "title" -}}
+        {{- "caption" | index $hero | $properties.SetInMap "hero" "caption" -}}
+        {{- "date" | index $hero | $properties.SetInMap "hero" "date" -}}
+        {{- "credit" | index $hero | $properties.SetInMap "hero" "credit" -}}
+        {{- "license" | index $hero | $properties.SetInMap "hero" "license" -}}
+
+        {{- if $resource -}}
+            {{- $resource | $properties.SetInMap "hero" "item" -}}
+            {{- "hero" | $properties.SetInMap "hero" "type" -}}
+            {{- "has-hero" | $properties.Add "classes" -}}
+        {{- else if $video -}}
+            {{- $video | $properties.SetInMap "hero" "item" -}}
+            {{- "video" | $properties.SetInMap "hero" "type" -}}
+            {{- "has-hero" | $properties.Add "classes" -}}
+        {{- else if .IsHome | and .Site.Params.DefaultHeroImage -}}
+            {{- .Site.Params.DefaultHeroImage | $properties.SetInMap "hero" "item" -}}
+            {{- "asset" | $properties.SetInMap "hero" "type" -}}
+            {{- "has-hero" | $properties.Add "classes" -}}
+        {{- else -}}
+            {{- false | $properties.SetInMap "hero" "item" -}}
+            {{- "none" | $properties.SetInMap "hero" "type" -}}
+        {{- end -}}
+
+        {{- if "cover" | eq $size -}}
+            {{- if "cover" | index $hero -}}
+                {{- 1080 | $properties.SetInMap "hero" "height" -}}
+                {{- 1920 | $properties.SetInMap "hero" "width" -}}
+                {{- "has-hero-cover" | $properties.Add "classes" -}}
+                {{- "is-21by9" | $properties.SetInMap "hero" "size" -}}
+            {{- else -}}
+                {{- 320 | $properties.SetInMap "hero" "height" -}}
+                {{- 1920 | $properties.SetInMap "hero" "width" -}}
+                {{- "is-6by1" | $properties.SetInMap "hero" "size" -}}
+            {{- end -}}
+        {{- else if "1by1" | eq $size -}}
+            {{- 540 | $properties.SetInMap "hero" "height" -}}
+            {{- 540 | $properties.SetInMap "hero" "width" -}}
+            {{- "is-1by1" | $properties.SetInMap "hero" "size" -}}
+        {{- else if "16by9" | eq $size -}}
+            {{- 720 | $properties.SetInMap "hero" "height" -}}
+            {{- 1280 | $properties.SetInMap "hero" "width" -}}
+            {{- "is-16by9" | $properties.SetInMap "hero" "size" -}}
+        {{- else if "21by9" | eq $size -}}
+            {{- 540 | $properties.SetInMap "hero" "height" -}}
+            {{- 1260 | $properties.SetInMap "hero" "width" -}}
+            {{- "is-21by9" | $properties.SetInMap "hero" "size" -}}
+        {{- else if "3by1" | eq $size -}}
+            {{- 640 | $properties.SetInMap "hero" "height" -}}
+            {{- 1920 | $properties.SetInMap "hero" "width" -}}
+            {{- "is-3by1" | $properties.SetInMap "hero" "size" -}}
+        {{- else if "6by1" | eq $size -}}
+            {{- 320 | $properties.SetInMap "hero" "height" -}}
+            {{- 1920 | $properties.SetInMap "hero" "width" -}}
+            {{- "is-6by1" | $properties.SetInMap "hero" "size" -}}
+        {{- else -}}
+            {{- if "cover" | index $hero -}}
+                {{- 640 | $properties.SetInMap "hero" "height" -}}
+                {{- 1920 | $properties.SetInMap "hero" "width" -}}
+                {{- "is-3by1" | $properties.SetInMap "hero" "size" -}}
+            {{ else }}
+                {{- 320 | $properties.SetInMap "hero" "height" -}}
+                {{- 1920 | $properties.SetInMap "hero" "width" -}}
+                {{- "is-6by1" | $properties.SetInMap "hero" "size" -}}
+            {{ end }}
+        {{- end -}}
+    {{- end -}}
+{{- end -}}
+
+{{- define "extract_page_properties" -}}
+    {{- $context := 0 | index . -}}
+    {{- $arguments := 1 | index . -}}
+    {{- $properties := 2 | index . -}}
+
+    {{- with $context -}}
+        {{- $title := .Title | default .Site.Title -}}
+        {{- $description := .Description | default .Summary | plainify -}}
+        {{- $permalink := .Permalink -}}
+
+        {{- $title | $properties.SetInMap "page" "title" -}}
+        {{- $description | $properties.SetInMap "page" "description" -}}
+        {{- $permalink | $properties.SetInMap "page" "permalink" -}}
+    {{- end -}}
+{{- end -}}
+
+{{- with "classes" | index $arguments -}}
+    {{- . | $properties.Add "classes" -}}
+{{- end -}}
+
+{{- template "extract_canonical_properties" $parameters -}}
+{{- template "extract_hero_properties" $parameters -}}
+{{- template "extract_page_properties" $parameters -}}
+
+{{- return dict "classes" ("classes" | $properties.Get) "canonical" ("canonical" | $properties.Get) "page" ("page" | $properties.Get) "hero" ("hero" | $properties.Get) -}}

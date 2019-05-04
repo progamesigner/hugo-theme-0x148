@@ -5,15 +5,14 @@
 
 {{- with $context -}}
     {{- range .OutputFormats -}}
-        {{- $formats = .Name | lower | slice | append $formats -}}
+        {{- $formats = .Name | upper | slice | append $formats -}}
     {{- end -}}
 
     {{- range .AlternativeOutputFormats -}}
-        {{- $alternativeFormats = .Name | lower | slice | append $alternativeFormats -}}
+        {{- $alternativeFormats = .Name | upper | slice | append $alternativeFormats -}}
     {{- end -}}
 {{- end -}}
 
 {{- $differences := $formats | complement $alternativeFormats -}}
-{{- $current := 0 | index $differences | upper -}}
 
-{{- return $current -}}
+{{- return index $differences 0 -}}
