@@ -8,16 +8,21 @@ $page-pagination-item-icon-hover-offset: 0.5rem !default;
 .page-pagination {
     @include block;
 
+    .pagination {
+        align-items: stretch;
+    }
+
     .pagination-item {
         @include block-shadow;
 
+        align-items: start;
         background-color: $page-pagination-item-background-color;
         border-radius: 0;
         display: grid;
         flex-basis: 100%;
         grid-template-areas: 'icon subtitle' 'icon title';
         grid-template-columns: $page-pagination-item-icon-dimension 1fr;
-        grid-template-rows: auto auto;
+        grid-template-rows: max-content auto;
         white-space: normal;
 
         @if not $amp {
@@ -49,6 +54,7 @@ $page-pagination-item-icon-hover-offset: 0.5rem !default;
         }
 
         .icon {
+            align-self: center;
             grid-area: icon;
             height: $page-pagination-item-icon-dimension;
             width: $page-pagination-item-icon-dimension;
