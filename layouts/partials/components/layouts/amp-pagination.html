@@ -1,5 +1,5 @@
 {{ if .Paginator.TotalPages | lt 1 }}
-    <nav class="pagination is-right" role="navigation" aria-label="pagination">
+    <nav class="pagination" role="navigation" aria-label="pagination">
         {{ if .Paginator.HasPrev }}
             <a class="pagination-previous" href="{{ .Paginator.Prev.URL }}" aria-label="Previous">Previous</a>
         {{ else }}
