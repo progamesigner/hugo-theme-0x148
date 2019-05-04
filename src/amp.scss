@@ -19,11 +19,10 @@ $amp: true;
 // * Elements
 // =============================================================================
 @import 'styles/amp/burger';
+@import 'styles/amp/button';
 @import 'styles/amp/container';
-@import 'styles/amp/elements/button';
-@import 'styles/amp/elements/form';
+@import 'styles/amp/form';
 @import 'styles/amp/image';
-@import 'styles/amp/elements/typography';
 @import 'styles/amp/section';
 @import 'styles/elements/advertisement';
 @import 'styles/elements/code';
@@ -32,16 +31,17 @@ $amp: true;
 @import 'styles/elements/table';
 @import 'styles/elements/tag';
 @import 'styles/elements/title';
+@import 'styles/elements/typography';
 
 // =============================================================================
 // * Components
 // =============================================================================
-@import 'styles/amp/components/expandable';
-@import 'styles/amp/components/hero';
-@import 'styles/amp/components/pagination';
 @import 'styles/amp/navbar';
+@import 'styles/amp/pagination';
 @import 'styles/amp/sidebar';
 @import 'styles/components/breadcrumb';
+@import 'styles/components/expandable';
+@import 'styles/components/hero';
 @import 'styles/components/message';
 
 // =============================================================================

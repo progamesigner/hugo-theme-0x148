@@ -10,21 +10,23 @@ $expandable-height: 2.5rem !default;
 
     display: block;
 
-    &:hover {
-        .expandable-summary {
-            color: $expandable-hover-color;
-            background-color: $expandable-hover-background-color;
-        }
-    }
-
-    &[open] {
-        .expandable-summary {
-            opacity: 0;
-            pointer-events: none;
+    @if not $amp {
+        &:hover {
+            .expandable-summary {
+                color: $expandable-hover-color;
+                background-color: $expandable-hover-background-color;
+            }
         }
 
-        .expandable-content {
-            margin-top: #{-1 * $expandable-height};
+        &[open] {
+            .expandable-summary {
+                opacity: 0;
+                pointer-events: none;
+            }
+
+            .expandable-content {
+                margin-top: #{-1 * $expandable-height};
+            }
         }
     }
 }
@@ -38,7 +40,10 @@ $expandable-height: 2.5rem !default;
     justify-content: center;
     line-height: $expandable-height;
     list-style: none;
-    transition: background-color $speed $easing, color $speed $easing, opacity $speed $easing;
+
+    @if not $amp {
+        transition: background-color $speed $easing, color $speed $easing, opacity $speed $easing;
+    }
 
     &::-webkit-details-marker {
         display: none;
@@ -46,6 +51,8 @@ $expandable-height: 2.5rem !default;
 }
 
 .expandable-content {
-    margin-top: 0;
-    transition: margin-top $speed $easing;
+    @if not $amp {
+        margin-top: 0;
+        transition: margin-top $speed $easing;
+    }
 }

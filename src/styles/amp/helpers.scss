@@ -13,7 +13,6 @@ $alignments: ('centered': 'center', 'justified': 'justify', 'left': 'left', 'rig
 
     a {
         &.has-text-#{$name} {
-            &:hover,
             &:focus {
                 color: darken($color, 10%);
             }

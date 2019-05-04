@@ -8,30 +8,12 @@ $block-hover-shadow: 0 2px 35px rgba($black, 0.1), 0 0 0 1px rgba($black, 0.1) !
 }
 
 @mixin block-hover-shadow {
-    transition: box-shadow $speed $easing;
+    @if not $amp {
+        transition: box-shadow $speed $easing;
 
-    &:hover,
-    &.is-hovered {
-        box-shadow: $block-hover-shadow;
-    }
-}
-
-@mixin svg-icon($hover, $dimension, $color: $black) {
-    height: $dimension;
-    width: $dimension;
-
-    svg {
-        path {
-            fill: $color;
-        }
-    }
-
-    &:hover,
-    &.is-hovered {
-        svg {
-            path {
-                fill: $hover;
-            }
+        &:hover,
+        &.is-hovered {
+            box-shadow: $block-hover-shadow;
         }
     }
 }

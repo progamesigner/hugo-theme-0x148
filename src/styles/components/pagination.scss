@@ -14,18 +14,15 @@ $pagination-item-subtitle-color: $grey-dark !default;
 }
 
 .pagination-item {
-    background-color: transparent;
     border: none;
     display: block;
     height: auto;
 
     &.pagination-previous {
-        margin-right: auto;
         text-align: left;
     }
 
     &.pagination-next {
-        margin-left: auto;
         text-align: right;
     }
 
@@ -33,14 +30,6 @@ $pagination-item-subtitle-color: $grey-dark !default;
         .title,
         .subtitle {
             color: $pagination-hover-color;
-        }
-    }
-
-    &[disabled] {
-        .title,
-        .subtitle {
-            color: $pagination-disabled-color;
-            opacity: 0.5;
         }
     }
 

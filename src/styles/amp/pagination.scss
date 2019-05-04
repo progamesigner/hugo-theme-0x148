@@ -1,7 +1,6 @@
 $pagination-color: $grey-darker !default;
 $pagination-border-color: $grey-lighter !default;
 $pagination-margin: -0.25rem !default;
-$pagination-min-width: $control-height !default;
 $pagination-focus-border-color: $link-focus-border !default;
 $pagination-disabled-color: $grey !default;
 $pagination-disabled-background-color: $grey-lighter !default;
@@ -9,23 +8,15 @@ $pagination-disabled-border-color: $grey-lighter !default;
 $pagination-shadow-inset: inset 0 1px 2px rgba($black, 0.2) !default;
 
 $pagination-background-color: $white !default;
-
 $pagination-item-title-color: $grey-darker !default;
-
 $pagination-item-subtitle-color: $grey-dark !default;
 
 .pagination {
-    font-size: $size-normal;
-    margin: $pagination-margin;
-    flex-wrap: wrap;
-}
-
-.pagination,
-.pagination-list {
-    align-items: center;
     display: flex;
+    flex-wrap: wrap;
+    font-size: $size-normal;
     justify-content: center;
-    text-align: center;
+    margin: $pagination-margin;
 }
 
 .pagination-previous,
@@ -33,21 +24,16 @@ $pagination-item-subtitle-color: $grey-dark !default;
     @extend %control;
     @extend %unselectable;
 
-    font-size: 1em;
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-    justify-content: center;
-    margin: 0.25rem;
-    text-align: center;
-}
-
-.pagination-previous,
-.pagination-next {
-    flex-grow: 1;
-    flex-shrink: 1;
+    background-color: $pagination-background-color;
     border-color: $pagination-border-color;
     color: $pagination-color;
-    min-width: $pagination-min-width;
+    flex-grow: 1;
+    flex-shrink: 1;
+    justify-content: center;
+    margin: 0.25rem;
+    padding-right: 0.5em;
+    padding-right: 0.75em;
+    white-space: nowrap;
 
     &:focus {
         border-color: $pagination-focus-border-color;
@@ -66,36 +52,17 @@ $pagination-item-subtitle-color: $grey-dark !default;
     }
 }
 
-.pagination-previous,
-.pagination-next {
-    background-color: $pagination-background-color;
-    padding-left: 0.75em;
-    padding-right: 0.75em;
-    white-space: nowrap;
-}
-
 .pagination-item {
-    background-color: transparent;
     border: none;
     display: block;
     height: auto;
 
     &.pagination-previous {
-        margin-right: auto;
         text-align: left;
     }
 
     &.pagination-next {
-        margin-left: auto;
         text-align: right;
-    }
-
-    &[data-disabled] {
-        .title,
-        .subtitle {
-            color: $pagination-disabled-color;
-            opacity: 0.5;
-        }
     }
 
     .title {
