@@ -13,6 +13,12 @@
 [byline_license]
     other = "License"
 
+[user_consent_accept]
+    other = "I accept"
+
+[user_consent_text]
+    other = "This site uses cookies and other tracking technologies to improve your browsing experience, to show you personalized content and targeted ads, to analyze traffic, and to understand where visitors are coming from. By browsing this site, you consent to the use of cookies and other tracking technologies."
+
 [date_format]
     other = "Jan 02, 2006"
 

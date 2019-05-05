@@ -1,3 +1,14 @@
+{{- $features := slice . "features" | partial "functions/get-merged-configs.dict" -}}
+
+{{- $consentNotificationId := "user-consent-notification" | index $features -}}
+
 {{ slice . "HTMLModules" "prologue" | partial "components/renderers/modules" }}
+
+{{ if $consentNotificationId }}
+    <div id="{{ $consentNotificationId }}" class="notification is-fixed-bottom" disabled>
+        {{ i18n "user_consent_text" }}
+        <a class="button is-primary" data-consent-notification-id="{{ $consentNotificationId }}">{{ i18n "user_consent_accept" }}</a>
+    </div>
+{{ end }}
 
 {{ partial "templates/html-prologue.html" . }}

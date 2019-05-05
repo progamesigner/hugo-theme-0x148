@@ -1,3 +1,13 @@
+{{- $features := slice . "features" | partial "functions/get-merged-configs.dict" -}}
+
+{{- $consentNotificationId := "user-consent-notification" | index $features -}}
+
 {{ slice . "HTMLModules" "configurator" true | partial "components/renderers/modules" }}
+
+{{ if $consentNotificationId }}
+    <script>
+        window.ampConsentReconcile = {{ "amp-consent-reconcile" | index $features | default false | jsonify | safeJS }};
+    </script>
+{{ end }}
 
 {{ partial "templates/html-modules.html" . }}

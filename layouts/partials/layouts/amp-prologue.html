@@ -1,3 +1,30 @@
+{{- $features := slice . "features" | partial "functions/get-merged-configs.dict" -}}
+
+{{- $consentNotificationId := "user-consent-notification" | index $features -}}
+
 {{ slice . "AMPModules" "amp" | partial "components/renderers/modules" }}
+
+{{ if $consentNotificationId }}
+    {{- slice . "amp-consent" | partial "functions/is-amp-component-loaded.error" -}}
+
+    {{- $apiShowConsent := resources.Get "apis/amp-show-consent.json" | minify | fingerprint "sha512" -}}
+
+    <amp-consent id="{{ $consentNotificationId }}" layout="nodisplay">
+        <script type="application/json">
+        {
+            "consents": {
+                "{{ $consentNotificationId }}": {
+                    "checkConsentHref": "{{ $apiShowConsent.Permalink }}",
+                    "promptUI": "{{ $consentNotificationId }}-ui"
+                }
+            }
+        }
+        </script>
+        <div id="{{ $consentNotificationId }}-ui" class="notification">
+            {{ i18n "user_consent_text" }}
+            <a class="button is-primary" on="tap:{{ $consentNotificationId }}.accept">{{ i18n "user_consent_accept" }}</a>
+        </div>
+    </amp-consent>
+{{ end }}
 
 {{ partial "templates/amp-prologue.html" . }}

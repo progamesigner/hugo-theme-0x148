@@ -1,10 +1,19 @@
+{{- $features := slice . "features" | partial "functions/get-merged-configs.dict" -}}
+
+{{- $consentNotificationId := "user-consent-notification" | index $features -}}
+
 {{ if not .Site.Config.Privacy.Disqus.Disable | and .Site.Config.Services.Disqus.Shortname }}
     <div id="disqus_thread">
         <noscript>
             <p class="has-text-centered has-text-danger">Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">Disqus</a> comments.</p>
         </noscript>
-        <div class="dsq-brlink has-text-centered">
+        <p class="dsq-brlink has-text-centered">
             Comments powered by <a href="https://disqus.com">Disqus</a>.
-        </div>
+        </p>
+        {{ if $consentNotificationId }}
+            <p class="has-text-centered">
+                You have to accept cookie policy to use comment.
+            </p>
+        {{ end }}
     </div>
 {{ end }}

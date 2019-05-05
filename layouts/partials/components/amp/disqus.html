@@ -1,7 +1,11 @@
 {{- slice . "amp-iframe" | partial "functions/is-amp-component-loaded.error" -}}
 
 {{- $disqus := resources.Get "iframes/disqus.html" | resources.ExecuteAsTemplate "iframes/disqus.html" . | minify | fingerprint "sha512" -}}
+
+{{- $features := slice . "features" | partial "functions/get-merged-configs.dict" -}}
 {{- $properties := slice . | partial "functions/get-page-properties.dict" -}}
+
+{{- $consentNotificationId := "user-consent-notification" | index $features -}}
 
 {{ if not .Site.Config.Privacy.Disqus.Disable | and .Site.Config.Services.Disqus.Shortname }}
     <amp-iframe
@@ -11,9 +15,22 @@
         sandbox="allow-scripts allow-same-origin allow-modals allow-popups allow-forms"
         resizable
         src="{{ $disqus.Permalink | slice . | partial "functions/format-iframe-url.txt" }}#{{ $properties.canonical.hash }}"
+        {{ with $consentNotificationId }}data-block-on-consent{{ end }}
     >
-        <div class="has-text-centered" overflow placeholder>
-            Comments powered by <a href="https://disqus.com">Disqus</a>.
+        <div overflow>
+            <p class="has-text-centered">
+                Comments powered by <a href="https://disqus.com">Disqus</a>.
+            </p>
+        </div>
+        <div placeholder>
+            <p class="has-text-centered">
+                Comments powered by <a href="https://disqus.com">Disqus</a>.
+            </p>
+            {{ if $consentNotificationId }}
+                <p class="has-text-centered">
+                    You have to accept cookie policy to use comment.
+                </p>
+            {{ end }}
         </div>
     </amp-iframe>
 {{ end }}

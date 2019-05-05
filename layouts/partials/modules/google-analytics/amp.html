@@ -1,8 +1,15 @@
 {{- slice . "amp-analytics" | partial "functions/is-amp-component-loaded.error" -}}
 
-{{- $triggers := slice . "amp-analytics-triggers" | partial "functions/get-merged-configs.dict" -}}
+{{- $features := slice . "features" | partial "functions/get-merged-configs.dict" -}}
 
-<amp-analytics type="gtag" data-credentials="include">
+{{- $configurations := slice . "google-analytics" | partial "functions/get-merged-configs.dict" -}}
+
+{{- $consentNotificationId := "user-consent-notification" | index $features -}}
+
+<amp-analytics
+    type="gtag"
+    {{ with $consentNotificationId }}data-block-on-consent{{ end }}
+>
     <script type="application/json">
         {
             "vars": {
@@ -13,7 +20,7 @@
                     }
                 }
             },
-            "triggers" : {{ $triggers | jsonify | safeJS }}
+            "triggers" : {{ "amp-analytics-triggers" | index $configurations | jsonify | safeJS }}
         }
     </script>
 </amp-analytics>

@@ -13,6 +13,12 @@
 [byline_license]
     other = "授權"
 
+[user_consent_accept]
+    other = "我同意"
+
+[user_consent_text]
+    other = "這個網站使用 Cookie 與其他追蹤技術來改進瀏覽體驗、展示個人化的內容與廣告、分析網站流量與訪客的來源。繼續瀏覽這個網站表示了解並同意使用 Cookie 與其他追蹤技術。"
+
 [date_format]
     other = "2006年1月2日"
 

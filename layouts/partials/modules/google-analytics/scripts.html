@@ -1,1 +1,8 @@
-<script src="https://www.googletagmanager.com/gtag/js?id={{ .Site.Config.Services.GoogleAnalytics.ID }}" async></script>
+<script>
+    document.addEventListener('0x148.consent.accept', function () {
+        var script = document.createElement('script');
+        script.async = true;
+        script.src= 'https://www.googletagmanager.com/gtag/js?id={{ .Site.Config.Services.GoogleAnalytics.ID }}';
+        document.head.appendChild(script);
+    });
+</script>
