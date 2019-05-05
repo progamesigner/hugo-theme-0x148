@@ -21,6 +21,12 @@ $button-padding-vertical: calc(0.375em - #{$button-border-width}) !default;
     text-align: center;
     white-space: nowrap;
 
+    &.is-primary {
+        background-color: $primary;
+        border-color: transparent;
+        color: $primary-invert;
+    }
+
     &.is-permalink {
         border-radius: 0;
         font-weight: $weight-bold;
