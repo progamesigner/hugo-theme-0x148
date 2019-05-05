@@ -10,7 +10,7 @@ $page-share-item-fixed-padding: 0.25rem !default;
     @include block;
 
     @if not $amp {
-        &.is-fixed-left {
+        &.is-sticky-left {
             bottom: 0;
             left: 0;
             position: absolute;
