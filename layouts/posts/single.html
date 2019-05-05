@@ -20,7 +20,7 @@
 
                 {{ if "advertisement" | .Param }}
                     <div class="page-advertisement">
-                        {{ partial "components/wrappers/html-advertisement.html" . }}
+                        {{ slice . |partial "components/renderers/advertisement.html" }}
                     </div>
                 {{ end }}
             </div>
@@ -34,7 +34,7 @@
 
                 {{ if "toc" | .Param }}
                     <div class="page-menu is-sticky-right">
-                        {{ partial "components/wrappers/html-menu.html" . }}
+                        {{ slice . |partial "components/renderers/menu.html" }}
                     </div>
                 {{ end }}
 
@@ -52,13 +52,13 @@
             <div class="page-foot">
                 {{ if "advertisement" | .Param }}
                     <div class="page-advertisement">
-                        {{ partial "components/wrappers/html-advertisement.html" . }}
+                        {{ slice . |partial "components/renderers/advertisement.html" }}
                     </div>
                 {{ end }}
 
                 {{ if "author" | .Param }}
                     <div class="page-byline">
-                        {{ partial "components/wrappers/html-byline.html" . }}
+                        {{ slice . | partial "components/renderers/byline.html" }}
                     </div>
                 {{ end }}
 

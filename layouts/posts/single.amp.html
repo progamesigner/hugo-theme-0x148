@@ -20,7 +20,7 @@
 
                 {{ if "advertisement" | .Param }}
                     <div class="page-advertisement">
-                        {{ partial "components/wrappers/amp-advertisement.html" . }}
+                        {{ slice . | partial "components/renderers/advertisement.html" }}
                     </div>
                 {{ end }}
             </div>
@@ -28,7 +28,7 @@
             <div class="page-body">
                 {{ if "toc" | .Param }}
                     <div class="page-menu is-sticky-right">
-                        {{ partial "components/wrappers/amp-menu.html" . }}
+                        {{ slice . | partial "components/renderers/menu.html" }}
                     </div>
                 {{ end }}
 
@@ -45,12 +45,12 @@
 
             <div class="page-foot">
                 <div class="page-advertisement">
-                    {{ partial "components/wrappers/amp-advertisement.html" . }}
+                    {{ slice . | partial "components/renderers/advertisement.html" }}
                 </div>
 
                 {{ if "author" | .Param }}
                     <div class="page-byline">
-                        {{ partial "components/wrappers/amp-byline.html" . }}
+                        {{ slice . | partial "components/renderers/byline.html" }}
                     </div>
                 {{ end }}
 

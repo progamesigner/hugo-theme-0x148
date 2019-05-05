@@ -8,7 +8,7 @@
 
                 {{ if "advertisement" | .Param }}
                     <div class="page-advertisement">
-                        {{ partial "components/wrappers/html-advertisement.html" . }}
+                        {{ slice . | partial "components/renderers/advertisement.html" }}
                     </div>
                 {{ end }}
             </div>
@@ -22,7 +22,7 @@
             <div class="page-foot">
                 {{ if "advertisement" | .Param }}
                     <div class="page-advertisement">
-                        {{ partial "components/wrappers/html-advertisement.html" . }}
+                        {{ slice . | partial "components/renderers/advertisement.html" }}
                     </div>
                 {{ end }}
             </div>
