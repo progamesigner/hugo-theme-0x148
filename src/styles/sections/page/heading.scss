@@ -1,0 +1,48 @@
+$page-heading-link-margin: 0 0.5rem !default;
+
+$page-heading-icon-dimension: 1.5rem !default;
+
+h1, h2 {
+    &.page-heading {
+        &::before {
+            background-image: svg-load('images/format-section.svg', fill=$text);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: $page-heading-icon-dimension $page-heading-icon-dimension;
+            content: '';
+            display: block;
+            height: $page-heading-icon-dimension;
+            left: 0;
+            position: absolute;
+            top: 50%;
+            transform: translate(-100%, -50%);
+            width: $page-heading-icon-dimension;
+        }
+    }
+}
+
+.page-heading {
+    position: relative;
+
+    &:hover {
+        .page-heading-link {
+            opacity: 1;
+        }
+    }
+}
+
+.page-heading-link {
+    background-image: svg-load('images/link.svg', fill=$text);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: $page-heading-icon-dimension $page-heading-icon-dimension;
+    display: inline-block;
+    height: $page-heading-icon-dimension;
+    margin: $page-heading-link-margin;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: opacity $speed $easing;
+    width: $page-heading-icon-dimension;
+}

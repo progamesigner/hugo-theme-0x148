@@ -2,6 +2,7 @@ import burger from './scripts/burger'
 import collapse from './scripts/collapse'
 import consent from './scripts/consent'
 import emoji from './scripts/emoji'
+import heading from './scripts/heading'
 import highlight from './scripts/highlight'
 import open from './scripts/open'
 import progress from './scripts/progress'
@@ -10,6 +11,10 @@ import top from './scripts/top'
 const getElementTop = elements => Math.min(...Array.prototype.slice.call(elements).map(element => element.getBoundingClientRect()).map(rect => rect.top))
 
 const bootstrap = () => {
+    document.querySelectorAll('.page-content').forEach(container => {
+        container.querySelectorAll('h1, h2, h3, h4').forEach(heading)
+    })
+
     document.querySelectorAll('.navbar-burger').forEach(burger)
     document.querySelectorAll('.navbar.is-fixed-top').forEach(item => collapse(item, 60))
     document.querySelectorAll('.page-share.is-sticky-left').forEach(item => collapse(item, getElementTop(document.querySelectorAll('.page-body')) - 60))
