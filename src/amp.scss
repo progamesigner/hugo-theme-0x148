@@ -12,6 +12,7 @@ $amp: true;
 @import '~bulma/sass/utilities/controls';
 @import '~bulma/sass/base/minireset';
 @import '~bulma/sass/base/generic';
+@import 'styles/amp/base';
 @import 'styles/amp/columns';
 @import 'styles/amp/tiles';
 
@@ -28,6 +29,7 @@ $amp: true;
 @import 'styles/elements/code';
 @import 'styles/elements/content';
 @import 'styles/elements/icon';
+@import 'styles/elements/notification';
 @import 'styles/elements/table';
 @import 'styles/elements/tag';
 @import 'styles/elements/title';
