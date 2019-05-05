@@ -10,6 +10,12 @@
             </div>
         {{ end }}
 
+        {{ if "advertisement" | .Param }}
+            <div class="list-advertisement">
+                {{ slice . | partial "components/renderers/advertisement.html" }}
+            </div>
+        {{ end }}
+
         {{ range .Paginator.Pages }}
             {{ partial "components/sections/summary.html" . }}
         {{ end }}

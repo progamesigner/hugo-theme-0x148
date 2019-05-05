@@ -10,6 +10,12 @@
     {{ end }}
 
     <section class="section">
+        {{ if "advertisement" | .Param }}
+            <div class="home-advertisement">
+                {{ slice . | partial "components/renderers/advertisement.html" }}
+            </div>
+        {{ end }}
+
         {{ range $paginator.Pages }}
             {{ partial "components/sections/summary.html" . }}
         {{ end }}
