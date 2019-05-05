@@ -1,5 +1,5 @@
-{{- $katexCopyTex := slice . "module-katex-copy-tex" | partial "functions/get-merged-configs.dict" -}}
+{{- $configurations := slice . "module-katex-copy-tex" | partial "functions/get-merged-configs.dict" -}}
 
-{{ range $katexCopyTex.styles }}
+{{ range "styles" | index $configurations }}
     {{ slice . | partial "components/renderers/style" }}
 {{ end }}

@@ -1,5 +1,5 @@
-{{- $katex := slice . "module-katex" | partial "functions/get-merged-configs.dict" -}}
+{{- $configurations := slice . "module-katex" | partial "functions/get-merged-configs.dict" -}}
 
-{{ range $katex.styles }}
+{{ range "styles" | index $configurations }}
     {{ slice . | partial "components/renderers/style" }}
 {{ end }}

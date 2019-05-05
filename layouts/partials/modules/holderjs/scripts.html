@@ -1,5 +1,5 @@
-{{- $holderjs := slice . "module-holderjs" | partial "functions/get-merged-configs.dict" -}}
+{{- $configurations := slice . "module-holderjs" | partial "functions/get-merged-configs.dict" -}}
 
-{{ range $holderjs.scripts }}
+{{ range "scripts" | index $configurations }}
     {{ slice . | partial "components/renderers/script" }}
 {{ end }}
