@@ -3,8 +3,32 @@ $page-blockquote-border-width: 0.00625rem !default;
 $page-blockquote-quotation-dimension: 3rem !default;
 $page-blockquote-quotation-horizontal-offset: 0.5rem !default;
 $page-blockquote-quotation-vertical-offset: 0.125rem !default;
+$page-external-icon-dimension: 1rem !default;
+$page-external-icon-margin: 0 0.25rem !default;
 
 .page-content {
+    a {
+        &[href^="http"],
+        &[rel~="external"] {
+            position: relative;
+
+            &::after {
+                background-image: svg-load('images/open-in-new.svg', fill=$link);
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: $page-external-icon-dimension $page-external-icon-dimension;
+                content: '';
+                display: inline-block;
+                height: $page-external-icon-dimension;
+                margin: $page-external-icon-margin;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: $page-external-icon-dimension;
+            }
+        }
+    }
+
     blockquote {
         @include page-fullwidth-block;
 
