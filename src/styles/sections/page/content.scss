@@ -5,12 +5,18 @@ $page-blockquote-quotation-horizontal-offset: 0.5rem !default;
 $page-blockquote-quotation-vertical-offset: 0.125rem !default;
 $page-external-icon-dimension: 1rem !default;
 $page-external-icon-margin: 0 0.25rem !default;
+$page-external-margin: 0 1.25rem 0 0 !default;
 
 .page-content {
     a {
-        &[href^="http"],
         &[rel~="external"] {
+            margin: $page-external-margin;
             position: relative;
+
+            &:hover {
+                color: $link;
+                text-decoration: underline;
+            }
 
             &::after {
                 background-image: svg-load('images/open-in-new.svg', fill=$link);
