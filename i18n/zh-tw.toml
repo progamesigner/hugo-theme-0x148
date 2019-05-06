@@ -56,3 +56,6 @@
 
 [sidebar_label_navigation]
     other = "網站導航"
+
+[table_of_contents]
+    other = "頁面目錄"

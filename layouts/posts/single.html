@@ -20,7 +20,7 @@
 
                 {{ if "advertisement" | .Param }}
                     <div class="page-advertisement">
-                        {{ slice . |partial "components/renderers/advertisement.html" }}
+                        {{ slice . | partial "components/renderers/advertisement.html" }}
                     </div>
                 {{ end }}
             </div>
@@ -33,8 +33,12 @@
                 {{ end }}
 
                 {{ if "toc" | .Param }}
+                    <div class="page-menu is-fixed-left">
+                        {{ slice . | partial "components/renderers/menu.html" }}
+                    </div>
+
                     <div class="page-menu is-sticky-right">
-                        {{ slice . |partial "components/renderers/menu.html" }}
+                        {{ slice . | partial "components/renderers/menu.html" }}
                     </div>
                 {{ end }}
 
@@ -52,7 +56,7 @@
             <div class="page-foot">
                 {{ if "advertisement" | .Param }}
                     <div class="page-advertisement">
-                        {{ slice . |partial "components/renderers/advertisement.html" }}
+                        {{ slice . | partial "components/renderers/advertisement.html" }}
                     </div>
                 {{ end }}
 

@@ -57,3 +57,6 @@
 
 [sidebar_label_navigation]
     other = "Navigation"
+
+[table_of_contents]
+    other = "Table of Contents"

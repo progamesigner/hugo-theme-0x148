@@ -27,7 +27,7 @@
 
             <div class="page-body">
                 {{ if "toc" | .Param }}
-                    <div class="page-menu is-sticky-right">
+                    <div class="page-menu">
                         {{ slice . | partial "components/renderers/menu.html" }}
                     </div>
                 {{ end }}

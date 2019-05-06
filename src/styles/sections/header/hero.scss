@@ -4,7 +4,7 @@ $header-hero-caption-item-license-top: 1.5rem !default;
 $header-hero-caption-padding: 2.5rem 2rem !default;
 $header-hero-height: 320px !default;
 $header-hero-offset: 1.5rem !default;
-$header-hero-width: 1920px !default;
+$header-hero-width: $ultrahd !default;
 
 .header-hero {
     @if not $amp {

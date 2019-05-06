@@ -1,0 +1,62 @@
+{{- $headings := findRE "<h[2-4].*?>.+?</h[2-4]>" .Content -}}
+
+{{ if len $headings | le 1 }}
+    <aside class="menu">
+        <h2 class="menu-label">{{ i18n "table_of_contents" }}</h2>
+        <div class="menu-list">
+            <ul>
+                {{ range $index, $heading := $headings }}
+                    {{- $currentHeadingLevel := index (findRE "[2-4]" $heading 1) 0 | seq | len -}}
+
+                    {{- $title := $heading | plainify -}}
+
+                    {{ if $headings | len | ge 1 }}
+                        <li><a href="#{{ $title | anchorize }}">{{ $title }}</a></li>
+                    {{ else }}
+                        {{ if $index | gt 1 }}
+                            <li><a href="#{{ $title | anchorize }}">{{ $title }}</a>
+                        {{ else }}
+                            {{- $previousHeading := 1 | sub $index | index $headings -}}
+                            {{- $previousHeadingLevel := index (findRE "[2-4]" $previousHeading 1) 0 | seq | len -}}
+
+                            {{ if $currentHeadingLevel | eq $previousHeadingLevel }}
+                                </li><li><a href="#{{ $title | anchorize }}">{{ $title }}</a>
+                            {{ else if $currentHeadingLevel | lt $previousHeadingLevel }}
+                                {{ range $previousHeadingLevel | sub $currentHeadingLevel | seq }}
+                                    <li><ul>
+                                {{ end }}
+
+                                <li><a href="#{{ $title | anchorize }}">{{ $title }}</a>
+                            {{ else if $currentHeadingLevel | gt $previousHeadingLevel }}
+                                </li>
+
+                                {{ range $currentHeadingLevel | sub $previousHeadingLevel | seq }}
+                                    </ul></li>
+                                {{ end }}
+
+                                <li><a href="#{{ $title | anchorize }}">{{ $title }}</a>
+                            {{ end }}
+                        {{ end }}
+                    {{ end }}
+
+                    {{ if $headings | len | sub 1 | mul -1 | eq $index }}
+                        {{- $firstHeading := index $headings 0 -}}
+                        {{- $firstHeadingLevel := index (findRE "[2-4]" $firstHeading 1) 0 | seq | len -}}
+
+                        </li>
+
+                        {{ range $currentHeadingLevel | sub $firstHeadingLevel | seq }}
+                            </ul></li>
+                        {{ end }}
+                    {{ end }}
+                {{ end }}
+
+                {{ if "comments" | .Param }}
+                    <li>
+                        <a href="#comments">Comments</a>
+                    </li>
+                {{ end }}
+            </ul>
+        </div>
+    </aside>
+{{ end }}

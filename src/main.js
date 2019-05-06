@@ -17,6 +17,8 @@ const bootstrap = () => {
 
     document.querySelectorAll('.navbar-burger').forEach(burger)
     document.querySelectorAll('.navbar.is-fixed-top').forEach(item => collapse(item, 60))
+    document.querySelectorAll('.page-menu.is-fixed-right').forEach(item => collapse(item, getElementTop(document.querySelectorAll('.page-body')) - 60))
+    document.querySelectorAll('.page-menu.is-sticky-right').forEach(item => collapse(item, getElementTop(document.querySelectorAll('.page-body')) - 60))
     document.querySelectorAll('.page-share.is-sticky-left').forEach(item => collapse(item, getElementTop(document.querySelectorAll('.page-body')) - 60))
     document.querySelectorAll('body').forEach(consent)
     document.querySelectorAll('body').forEach(emoji)
