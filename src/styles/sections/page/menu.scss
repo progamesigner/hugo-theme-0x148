@@ -2,84 +2,119 @@ $page-menu-background-color: $white !default;
 $page-menu-border-color: $grey-lighter !default;
 $page-menu-border-radius: $radius-large !default;
 $page-menu-border-width: 1px !default;
+$page-menu-item-active-background-color: $white-ter !default;
+$page-menu-item-active-border: 0.25rem solid $primary !default;
 $page-menu-item-gap: 0.25rem !default;
 $page-menu-item-hash-color: $primary !default;
-$page-menu-item-margin: 0 1rem !default;
+$page-menu-item-leveling-margin: 0.75rem !default;
+$page-menu-item-padding: 0 1rem !default;
 $page-menu-item-size: $size-normal !default;
 $page-menu-line-color: rgba($primary, 0.75) !default;
 $page-menu-line-height: 0.125rem !default;
+$page-menu-line-hover-color: $primary !default;
 $page-menu-line-width: 100rem !default;
 $page-menu-padding: 1rem 1.5rem !default;
+$page-menu-sticky-item-padding: 0.125rem 0.75rem !default;
 $page-menu-sticky-maximum-height: calc(100vh - 7rem) !default;
 $page-menu-sticky-maximum-width: calc(50vw - #{($fullhd - $gap) / 2}) !default;
 $page-menu-sticky-minimum-width: calc(#{$ultrahd - 2 * $gap - $fullhd}) !default;
-$page-menu-sticky-padding: 1rem 0.5rem !default;
-$page-menu-title-margin: 0 1rem 0.5rem !default;
+$page-menu-sticky-padding: 1rem 0 !default;
+$page-menu-title-padding: 0 1rem 0.5rem !default;
 $page-menu-title-size: $size-normal !default;
+$page-menu-z: 20 !default;
 
 .page-menu {
     @include block;
 
     @if not $amp {
         &.is-fixed-left {
-            align-items: center;
-            bottom: 0;
-            display: flex;
-            left: 0;
-            padding-top: 4rem;
-            position: fixed;
-            top: 0;
+            display: none;
+        }
 
-            .menu {
-                background-color: transparent;
-                border-radius: 0;
-                box-shadow: none;
-                font-size: $size-small;
-                padding: 0;
-            }
+        @include from($desktop) {
+            &.is-fixed-left {
+                align-items: center;
+                bottom: 0;
+                display: flex;
+                left: 0;
+                padding-top: 4rem;
+                position: fixed;
+                top: 0;
+                z-index: $page-menu-z;
 
-            .menu-label {
-                display: none;
-            }
+                &.is-collapsed {
+                    .menu {
+                        opacity: 1;
+                        pointer-events: all;
+                    }
+                }
 
-            .menu-list {
-                opacity: 0.75;
-                transition: opacity $speed $easing;
+                .menu {
+                    background-color: transparent;
+                    border-radius: 0;
+                    box-shadow: none;
+                    font-size: $size-small;
+                    opacity: 0;
+                    padding: 0;
+                    pointer-events: none;
+                    transform: translateX(0);
+                    transition: opacity $speed $easing, transform $speed $easing;
 
-                &:hover {
-                    opacity: 1;
+                    &:hover {
+                        transform: translateX(0.75rem);
+                    }
+                }
 
-                    a {
-                        color: $link;
+                .menu-label {
+                    display: none;
+                }
 
-                        &:hover {
-                            color: $link-hover;
+                .menu-list {
+                    opacity: 0.75;
+                    transition: opacity $speed $easing;
+
+                    &:hover {
+                        opacity: 1;
+
+                        a {
+                            color: $link;
+
+                            &:hover {
+                                color: $link-hover;
+                            }
                         }
                     }
-                }
 
-                li {
-                    margin-left: 0;
-                    padding-left: 2rem;
-                }
+                    li {
+                        margin-left: 0;
+                        padding-left: 1rem;
 
-                a {
-                    display: block;
-                    color: transparent;
-                    transform: translateX(-1rem);
-                    transition: color $speed $easing, transform $speed $easing;
+                        &.is-active {
+                            a {
+                                font-weight: $weight-bold;
+                                transform: translateX(0.25rem);
 
-                    &.is-active,
-                    &:hover {
-                        transform: translateX(-0.125rem);
+                                &::before {
+                                    background-color: $page-menu-line-hover-color;
+                                }
+                            }
+                        }
                     }
 
-                    &::before {
-                        background: $page-menu-line-color;
-                        border-radius: 0 $radius $radius 0;
-                        content: '';
-                        height: $page-menu-line-height;
-                        width: $page-menu-line-width;
+                    a {
+                        display: block;
+                        color: transparent;
+                        transform: translateX(0);
+                        transition: color $speed $easing, transform $speed $easing;
+
+                        &::before {
+                            background-color: $page-menu-line-color;
+                            border-radius: 0 $radius $radius 0;
+                            content: '';
+                            height: $page-menu-line-height;
+                            transition: background-color $speed $easing;
+                            width: $page-menu-line-width;
+                        }
                     }
                 }
             }
@@ -92,11 +127,12 @@ $page-menu-title-size: $size-normal !default;
                 right: 0;
                 top: 0;
                 transform: translateX(100%);
+                z-index: $page-menu-z;
 
                 .menu {
-                    border-left: 0;
                     border-radius: 0;
                     border: $page-menu-border-width solid $page-menu-border-color;
+                    border-left: 0;
                     bottom: 0;
                     box-shadow: none;
                     display: flex;
@@ -112,6 +148,43 @@ $page-menu-title-size: $size-normal !default;
 
                 .menu-list {
                     overflow-y: auto;
+
+                    li {
+                        padding: $page-menu-sticky-item-padding;
+                        position: relative;
+
+                        &.is-active {
+                            &::before {
+                                @include overlay;
+
+                                background-color: $page-menu-item-active-background-color;
+                                border-left: $page-menu-item-active-border;
+                                content: '';
+                            }
+                        }
+
+                        li {
+                            &::before {
+                                margin-left: #{-1 * $page-menu-item-leveling-margin};
+                                margin-right: #{-1 * $page-menu-item-leveling-margin};
+                            }
+
+                            li {
+                                &::before {
+                                    margin-left: #{-2 * $page-menu-item-leveling-margin};
+                                    margin-right: #{-2 * $page-menu-item-leveling-margin};
+                                }
+                            }
+                        }
+                    }
+
+                    a {
+                        display: block;
+
+                        &::before {
+                            display: none;
+                        }
+                    }
                 }
             }
         }
@@ -129,12 +202,12 @@ $page-menu-title-size: $size-normal !default;
     .menu-label {
         font-size: $page-menu-title-size;
         font-weight: $weight-bold;
-        margin: $page-menu-title-margin;
+        padding: $page-menu-title-padding;
     }
 
     .menu-list {
         li {
-            margin: $page-menu-item-margin;
+            padding: $page-menu-item-padding;
 
             + li {
                 margin-top: $page-menu-item-gap;

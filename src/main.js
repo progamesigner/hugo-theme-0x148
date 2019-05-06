@@ -1,3 +1,4 @@
+import menu from './scripts/menu'
 import burger from './scripts/burger'
 import collapse from './scripts/collapse'
 import consent from './scripts/consent'
@@ -12,12 +13,14 @@ const getElementTop = elements => Math.min(...Array.prototype.slice.call(element
 
 const bootstrap = () => {
     document.querySelectorAll('.page-content').forEach(container => {
-        container.querySelectorAll('h1, h2, h3, h4').forEach(heading)
+        const headings = container.querySelectorAll('h1, h2, h3, h4, #comments')
+        headings.forEach(heading)
+        document.querySelectorAll('.page-menu').forEach(item => menu(item, headings))
     })
 
     document.querySelectorAll('.navbar-burger').forEach(burger)
     document.querySelectorAll('.navbar.is-fixed-top').forEach(item => collapse(item, 60))
-    document.querySelectorAll('.page-menu.is-fixed-right').forEach(item => collapse(item, getElementTop(document.querySelectorAll('.page-body')) - 60))
+    document.querySelectorAll('.page-menu.is-fixed-left').forEach(item => collapse(item, getElementTop(document.querySelectorAll('.page-body')) - 60))
     document.querySelectorAll('.page-menu.is-sticky-right').forEach(item => collapse(item, getElementTop(document.querySelectorAll('.page-body')) - 60))
     document.querySelectorAll('.page-share.is-sticky-left').forEach(item => collapse(item, getElementTop(document.querySelectorAll('.page-body')) - 60))
     document.querySelectorAll('body').forEach(consent)
