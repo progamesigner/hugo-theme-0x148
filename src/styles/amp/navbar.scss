@@ -2,7 +2,7 @@ $navbar-background-color: $white !default;
 $navbar-height: 3.25rem !default;
 
 $navbar-z: 30 !default;
-$navbar-fixed-z: 30 !default;
+$navbar-fixed-z: 2147483647 !default;
 
 $navbar-item-color: $grey-dark !default;
 
@@ -51,5 +51,27 @@ body {
 
     .navbar-item {
         font-family: $family-brand;
+    }
+}
+
+amp-sidebar {
+    &[open] {
+        ~ .header {
+            .amp-burger {
+                span {
+                    &:nth-child(1) {
+                        transform: translateY(5px) rotate(45deg);
+                    }
+
+                    &:nth-child(2) {
+                        opacity: 0;
+                    }
+
+                    &:nth-child(3) {
+                        transform: translateY(-5px) rotate(-45deg);
+                    }
+                }
+            }
+        }
     }
 }

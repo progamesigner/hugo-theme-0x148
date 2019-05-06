@@ -28,20 +28,4 @@ $amp-burger-height: 3.25rem !default;
             top: calc(50% + 4px);
         }
     }
-
-    &.is-active {
-        span {
-            &:nth-child(1) {
-                transform: translateY(5px) rotate(45deg);
-            }
-
-            &:nth-child(2) {
-                opacity: 0;
-            }
-
-            &:nth-child(3) {
-                transform: translateY(-5px) rotate(-45deg);
-            }
-        }
-    }
 }
