@@ -25,7 +25,7 @@ export default (menu, headings, offset = 0) => {
 
         headings.forEach(heading => {
             const item = menu.querySelector(`a[href="#${heading.id}"]`)
-            if (!marked && isInView(heading, y, offset)) {
+            if (item && !marked && isInView(heading, y, offset)) {
                 item.parentNode.classList.add('is-active')
                 marked = true
             } else {

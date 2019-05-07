@@ -8,25 +8,26 @@
                 {{ range $index, $heading := $headings }}
                     {{- $currentHeadingLevel := index (findRE "[2-4]" $heading 1) 0 | seq | len -}}
 
+                    {{- $href := $heading | replaceRE "<h[2-4].*?id=\"(.+?)\".*?>.+?</h[2-4]>" "$1" -}}
                     {{- $title := $heading | plainify -}}
 
                     {{ if $headings | len | ge 1 }}
-                        <li><a href="#{{ $title | anchorize }}">{{ $title }}</a></li>
+                        <li><a href="#{{ $href }}">{{ $title }}</a></li>
                     {{ else }}
                         {{ if $index | gt 1 }}
-                            <li><a href="#{{ $title | anchorize }}">{{ $title }}</a>
+                            <li><a href="#{{ $href }}">{{ $title }}</a>
                         {{ else }}
                             {{- $previousHeading := 1 | sub $index | index $headings -}}
                             {{- $previousHeadingLevel := index (findRE "[2-4]" $previousHeading 1) 0 | seq | len -}}
 
                             {{ if $currentHeadingLevel | eq $previousHeadingLevel }}
-                                </li><li><a href="#{{ $title | anchorize }}">{{ $title }}</a>
+                                </li><li><a href="#{{ $href }}">{{ $title }}</a>
                             {{ else if $currentHeadingLevel | lt $previousHeadingLevel }}
                                 {{ range $previousHeadingLevel | sub $currentHeadingLevel | seq }}
                                     <li><ul>
                                 {{ end }}
 
-                                <li><a href="#{{ $title | anchorize }}">{{ $title }}</a>
+                                <li><a href="#{{ $href }}">{{ $title }}</a>
                             {{ else if $currentHeadingLevel | gt $previousHeadingLevel }}
                                 </li>
 
@@ -34,7 +35,7 @@
                                     </ul></li>
                                 {{ end }}
 
-                                <li><a href="#{{ $title | anchorize }}">{{ $title }}</a>
+                                <li><a href="#{{ $href }}">{{ $title }}</a>
                             {{ end }}
                         {{ end }}
                     {{ end }}
