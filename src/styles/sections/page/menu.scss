@@ -2,6 +2,8 @@ $page-menu-background-color: $white !default;
 $page-menu-border-color: $grey-lighter !default;
 $page-menu-border-radius: $radius-large !default;
 $page-menu-border-width: 1px !default;
+$page-menu-fixed-maximum-width: calc(50vw - #{($fullhd - $gap) / 2} + 1.25rem) !default;
+$page-menu-fixed-padding: 1rem 0 !default;
 $page-menu-item-active-background-color: $white-ter !default;
 $page-menu-item-active-border: 0.25rem solid $primary !default;
 $page-menu-item-gap: 0.25rem !default;
@@ -37,7 +39,9 @@ $page-menu-z: 20 !default;
                 bottom: 0;
                 display: flex;
                 left: 0;
+                max-width: $page-menu-fixed-maximum-width;
                 padding-top: 4rem;
+                pointer-events: none;
                 position: fixed;
                 top: 0;
                 z-index: $page-menu-z;
@@ -45,6 +49,9 @@ $page-menu-z: 20 !default;
                 &.is-collapsed {
                     .menu {
                         opacity: 1;
+                    }
+
+                    .menu-list {
                         pointer-events: all;
                     }
                 }
@@ -55,12 +62,12 @@ $page-menu-z: 20 !default;
                     box-shadow: none;
                     font-size: $size-small;
                     opacity: 0;
-                    padding: 0;
-                    pointer-events: none;
+                    padding: $page-menu-fixed-padding;
                     transform: translateX(0);
-                    transition: opacity $speed $easing, transform $speed $easing;
+                    transition: background-color $speed $easing, opacity $speed $easing, transform $speed $easing;
 
                     &:hover {
+                        background-color: $background;
                         transform: translateX(0.75rem);
                     }
                 }
@@ -98,6 +105,10 @@ $page-menu-z: 20 !default;
                                     background-color: $page-menu-line-hover-color;
                                 }
                             }
+                        }
+
+                        li {
+                            display: none;
                         }
                     }
 

@@ -5,6 +5,7 @@ $page-share-brand-background-color: $primary !default;
 $page-share-brand-color: $white !default;
 $page-share-item-fixed-dimension: 2.5rem !default;
 $page-share-item-fixed-padding: 0.25rem !default;
+$page-share-z: 10 !default;
 
 .page-share {
     @include block;
@@ -16,6 +17,7 @@ $page-share-item-fixed-padding: 0.25rem !default;
             position: absolute;
             top: 0;
             transform: translateX(-100%);
+            z-index: $page-share-z;
 
             .page-share-items {
                 border: $page-share-border-width solid $page-share-border-color;
