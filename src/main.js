@@ -1,4 +1,4 @@
-import { getElementTop } from './scripts/scroll'
+import { scrollY, getElementTop } from './scripts/scroll'
 
 import burger from './scripts/burger'
 import collapse from './scripts/collapse'
@@ -18,6 +18,10 @@ const anchorForId = id => {
 }
 
 const bootstrap = () => {
+    if (!!window.location.hash) {
+        scrollY(getElementTop(document.querySelectorAll(window.location.hash)), document.createEvent('MouseEvent'))
+    }
+
     document.querySelectorAll('.page-content').forEach(container => {
         const headings = container.querySelectorAll('h1[id], h2[id], h3[id], h4[id], #comments')
 
