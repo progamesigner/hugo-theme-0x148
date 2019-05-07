@@ -1,13 +1,14 @@
 $top-icon-dimension: 2rem !default;
+$top-z: 30 !default;
 
 .back-to-top {
-    bottom: 1.5em;
+    bottom: 1rem;
     opacity: 0;
     pointer-events: none;
     position: fixed;
-    right: 1.5em;
+    right: 1rem;
     transition: opacity $speed $easing, transform $speed $easing;
-    z-index: 10;
+    z-index: $top-z;
 
     &:hover {
         transform: translateY(-5px);
