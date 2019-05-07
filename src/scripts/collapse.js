@@ -1,7 +1,7 @@
-import { bind } from './scrollspy'
+import { spy } from './scroll'
 
 export default (element, threshold = 0) => {
-    bind((_, y) => {
+    spy((_, y) => {
         if (y > threshold) {
             element.classList.add('is-collapsed')
         } else {
