@@ -1,16 +1,22 @@
 {{- $taxonomy := "AuthorTaxonomyName" | lower | index .Site.Params | default "authors" -}}
 
+{{- $format := slice . | partial "functions/get-page-format.txt" -}}
+
 {{ with "author" | .Param | slice . | partial "functions/get-author-data.dict" }}
     <div class="byline">
         {{ if .avatar }}
             <div class="byline-left">
-                <figure class="image is-square">
-                    <amp-img
-                        src="{{ .avatar | absURL }}"
-                        alt="{{ .name }}"
-                        width="96"
-                        height="96"
-                    ></amp-img>
+                <figure class="avatar" data-initial="{{ .name | title | replaceRE "[[:space:]a-z0-9]" "" }}">
+                    {{ if "AMP" | eq $format}}
+                        <amp-img
+                            src="{{ .avatar | absURL }}"
+                            alt="{{ .name }}"
+                            width="128"
+                            height="128"
+                        ></amp-img>
+                    {{ else }}
+                        <img src="{{ .avatar | absURL }}" alt="{{ .name }}">
+                    {{ end }}
                 </figure>
             </div>
         {{ end }}

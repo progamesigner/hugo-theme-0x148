@@ -1,0 +1,86 @@
+$avatar-background-color: $grey-darker !default;
+$avatar-color: $white-ter !default;
+$avatar-icon-box-shadow: 0 0 0 0.125rem $white !default;
+$avatar-icon-offset: 14.64% !default;
+$avatar-icon-z: 5 !default;
+$avatar-presence-away-color: $orange !default;
+$avatar-presence-busy-color: $red !default;
+$avatar-presence-offline-color: $grey !default;
+$avatar-presence-online-color: $green !default;
+$avatar-size: $size-larger !default;
+
+.avatar {
+    background-color: $avatar-background-color;
+    border-radius: 50%;
+    color: $avatar-color;
+    font-size: $avatar-size;
+    font-weight: $weight-light;
+    position: relative;
+    display: block;
+    padding-top: 100%;
+    box-shadow: $avatar-icon-box-shadow;
+
+    &[data-initial] {
+        &::before {
+            color: currentColor;
+            content: attr(data-initial);
+            left: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    img {
+        &:not(.avatar-icon) {
+            @include overlay;
+
+            border-radius: 50%;
+        }
+    }
+
+    @if $amp {
+        amp-img {
+            &:not(.avatar-icon) {
+                @include overlay;
+
+                border-radius: 50%;
+            }
+        }
+    }
+}
+
+.avatar-icon,
+.avatar-presence {
+    border-radius: 50%;
+    bottom: 14.64%;
+    box-shadow: $avatar-icon-box-shadow;
+    height: 50%;
+    position: absolute;
+    right: 14.64%;
+    transform: translate(50%, 50%);
+    width: 50%;
+    z-index: $avatar-icon-z;
+}
+
+.avatar-presence {
+    height: 25%;
+    width: 25%;
+
+    &,
+    &.is-offline {
+        background-color: $avatar-presence-offline-color;
+    }
+
+    &.is-away {
+        background-color: $avatar-presence-away-color;
+    }
+
+    &.is-busy {
+        background-color: $avatar-presence-busy-color;
+    }
+
+    &.is-online {
+        background-color: $avatar-presence-online-color;
+    }
+}
