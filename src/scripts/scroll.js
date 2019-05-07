@@ -1,5 +1,4 @@
-import debounce from 'lodash/debounce'
-import throttle from 'lodash/throttle'
+import { debounce, throttle } from 'lodash/fp'
 
 let scrollEventHandlers = []
 let scrollEventInstalled = false
@@ -65,9 +64,9 @@ export const spy = handler => {
             scrollEventHandlers.forEach(handler => handler(x, y))
         }
 
-        window.addEventListener('scroll', throttle(onScrollEvent, 10))
-        window.addEventListener('resize', debounce(onScrollEvent, 50, true))
-        window.addEventListener('orientationchange', debounce(onScrollEvent, 50, true))
+        window.addEventListener('scroll', throttle(10)(onScrollEvent))
+        window.addEventListener('resize', debounce(50)(onScrollEvent))
+        window.addEventListener('orientationchange', debounce(50)(onScrollEvent))
 
         scrollEventInstalled = true
     }
