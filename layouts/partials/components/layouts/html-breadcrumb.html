@@ -5,7 +5,7 @@
         {{ range $index, $page := $pages }}
             {{ if len $pages | sub $index | add 1 | eq 0 }}
                 <li class="is-active taxonomy-{{ $.Data.Singular }}">
-                    <a href="#" aria-current="page">{{ $page.Title | default $.Site.Title }}</a>
+                    <a href="#" aria-current="page">{{ $page.Title | default $.Data.Term | default $.Site.Title }}</a>
                 </li>
             {{ else }}
                 <li>
