@@ -1,4 +1,4 @@
-{{- $default := "format_datetime" | i18n | default "2006-01-02T15:04:05-07:00" -}}
+{{- $default := "format_day" | i18n | default "02" -}}
 
 {{- $datetime := 0 | index . -}}
 {{- $format := 1 | index . | default $default -}}

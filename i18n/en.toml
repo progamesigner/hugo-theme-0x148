@@ -13,23 +13,62 @@
 [byline_license]
     other = "License"
 
-[user_consent_accept]
-    other = "I accept"
-
-[user_consent_text]
-    other = "This site uses cookies and other tracking technologies to improve your browsing experience, to show you personalized content and targeted ads, to analyze traffic, and to understand where visitors are coming from. By browsing this site, you consent to the use of cookies and other tracking technologies."
-
-[date_format]
-    other = "Jan 02, 2006"
-
-[datetime_format]
-    other = "2006-01-02T15:04:05-07:00"
-
 [footer_copyright_line]
     other = "&#169; {{ .Year }} <span class=\"has-text-danger\">&hearts;</span> <a href=\"{{ .Url }}\">{{ .Name }}</a>."
 
 [footer_power_line]
     other = "<a href=\"https://bulma.io\" title=\"Made with Bulma\">Bulma</a> &middot; <a href=\"https://gohugo.io\" title=\"Built with Hugo\">Hugo</a> &middot; <a href=\"https://0x148.com\" title=\"Themed by 0x148\">0x148</a>"
+
+[format_date]
+    other = "Jan 02, 2006"
+
+[format_datetime]
+    other = "2006-01-02T15:04:05-07:00"
+
+[format_day]
+    other = "02"
+
+[format_month]
+    other = "01"
+
+[format_month_january]
+    other = "January"
+
+[format_month_february]
+    other = "February"
+
+[format_month_march]
+    other = "March"
+
+[format_month_april]
+    other = "April"
+
+[format_month_may]
+    other = "May"
+
+[format_month_june]
+    other = "June"
+
+[format_month_july]
+    other = "July"
+
+[format_month_august]
+    other = "August"
+
+[format_month_september]
+    other = "September"
+
+[format_month_october]
+    other = "October"
+
+[format_month_november]
+    other = "November"
+
+[format_month_december]
+    other = "December"
+
+[format_year]
+    other = "2006"
 
 [navbar_link_rss]
     other = "RSS Feed"
@@ -60,3 +99,9 @@
 
 [table_of_contents]
     other = "Table of Contents"
+
+[user_consent_accept]
+    other = "I accept"
+
+[user_consent_text]
+    other = "This site uses cookies and other tracking technologies to improve your browsing experience, to show you personalized content and targeted ads, to analyze traffic, and to understand where visitors are coming from. By browsing this site, you consent to the use of cookies and other tracking technologies."

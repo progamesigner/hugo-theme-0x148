@@ -13,23 +13,62 @@
 [byline_license]
     other = "授權"
 
-[user_consent_accept]
-    other = "我同意"
-
-[user_consent_text]
-    other = "這個網站使用 Cookie 與其他追蹤技術來改進瀏覽體驗、展示個人化的內容與廣告、分析網站流量與訪客的來源。繼續瀏覽這個網站表示了解並同意使用 Cookie 與其他追蹤技術。"
-
-[date_format]
-    other = "2006年1月2日"
-
-[datetime_format]
-    other = "2006-01-02T15:04:05-07:00"
-
 [footer_copyright_line]
     other = "&#169; {{ .Year }} <span class=\"has-text-danger\">&hearts;</span> <a href=\"{{ .Url }}\">{{ .Name }}</a>"
 
 [footer_power_line]
     other = "<a href=\"https://bulma.io\" title=\"使用 Bulma 製作\">Bulma</a> &middot; <a href=\"https://gohugo.io\" title=\"使用 Hugo 建置\">Hugo</a> &middot; <a href=\"https://0x148.com\" title=\"0x148主題\">0x148</a>"
+
+[format_date]
+    other = "2006年1月2日"
+
+[format_datetime]
+    other = "2006-01-02T15:04:05-07:00"
+
+[format_day]
+    other = "02日"
+
+[format_month]
+    other = "01月"
+
+[format_month_january]
+    other = "一月"
+
+[format_month_february]
+    other = "二月"
+
+[format_month_march]
+    other = "三月"
+
+[format_month_april]
+    other = "四月"
+
+[format_month_may]
+    other = "五月"
+
+[format_month_june]
+    other = "六月"
+
+[format_month_july]
+    other = "七月"
+
+[format_month_august]
+    other = "八月"
+
+[format_month_september]
+    other = "九月"
+
+[format_month_october]
+    other = "十月"
+
+[format_month_november]
+    other = "十一月"
+
+[format_month_december]
+    other = "十二月"
+
+[format_year]
+    other = "2006年"
 
 [navbar_link_rss]
     other = "RSS訂閱"
@@ -59,3 +98,9 @@
 
 [table_of_contents]
     other = "頁面目錄"
+
+[user_consent_accept]
+    other = "我同意"
+
+[user_consent_text]
+    other = "這個網站使用 Cookie 與其他追蹤技術來改進瀏覽體驗、展示個人化的內容與廣告、分析網站流量與訪客的來源。繼續瀏覽這個網站表示了解並同意使用 Cookie 與其他追蹤技術。"
