@@ -1,0 +1,66 @@
+
+{{ define "main" }}
+    {{- $pages := .Site.Params.mainSections | where .Site.Pages "Type" "in" -}}
+
+    <section class="section">
+        <article class="page is-archive">
+            <div class="page-head">
+                <h1 class="title">{{ .Title }}</h1>
+
+                {{ partial "components/layouts/amp-breadcrumb.html" . }}
+
+                {{ if "advertisement" | .Param }}
+                    <div class="page-advertisement">
+                        {{ slice . | partial "components/renderers/advertisement.html" }}
+                    </div>
+                {{ end }}
+            </div>
+
+            <div class="page-body">
+                {{ with .Content }}
+                    <div class="page-content content">
+                        {{ . }}
+                    </div>
+                {{ end }}
+
+                <div class="archive-content">
+                    {{ range $pages.GroupByDate "2006" }}
+                        {{- $year := (index .Pages 0).Date -}}
+
+                        <div class="term-box">
+                            <h2 class="term-heading is-year" data-year="{{ slice $year "2006" | partial "functions/format-year.txt" }}">
+                                {{ slice $year | partial "functions/format-year.txt" }}
+                            </h2>
+
+                            {{ range .Pages.GroupByDate "01-January" }}
+                                {{- $month := (index .Pages 0).Date -}}
+
+                                <div class="term-group">
+                                    <h3 class="term-heading is-month" data-month="{{ slice $month "01" | partial "functions/format-month.txt" }}">
+                                        {{ slice $month | partial "functions/format-month-name.txt" }}
+                                    </h3>
+
+                                    <ul class="term-list">
+                                        {{ range .Pages.ByDate }}
+                                            <li class="term-item" data-date="{{ slice .Date "20060102" | partial "functions/format-date.txt"  }}">
+                                                <a class="term-link" href="{{ .RelPermalink }}" title="{{ .Title }}">{{ .Title }}</a>
+                                            </li>
+                                        {{ end }}
+                                    </ul>
+                                </div>
+                            {{ end }}
+                        </div>
+                    {{ end }}
+                </div>
+            </div>
+
+            {{ if "advertisement" | .Param }}
+                <div class="page-foot">
+                    <div class="page-advertisement">
+                            {{ slice . | partial "components/renderers/advertisement.html" }}
+                    </div>
+                </div>
+            {{ end }}
+        </article>
+    </section>
+{{ end }}

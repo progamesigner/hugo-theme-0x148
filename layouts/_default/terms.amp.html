@@ -1,18 +1,16 @@
 {{ define "main" }}
-    <section class="section">
-        <article class="page is-single">
-            <div class="page-head">
-                <div class="page-breadcrumb">
-                    {{ partial "components/layouts/amp-breadcrumb.html" . }}
-                </div>
+    {{- $taxonomy := .Type -}}
 
-                <div class="page-headline">
-                    <h1 class="title">{{ .Title }}</h1>
-                </div>
+    <section class="section">
+        <article class="page is-term">
+            <div class="page-head">
+                <h1 class="title">{{ .Title }}</h1>
+
+                {{ partial "components/layouts/amp-breadcrumb.html" . }}
 
                 {{ if "advertisement" | .Param }}
                     <div class="page-advertisement">
-                        {{ partial "components/wrappers/amp-advertisement.html" . }}
+                        {{ slice . | partial "components/renderers/advertisement.html" }}
                     </div>
                 {{ end }}
             </div>
@@ -24,33 +22,37 @@
                     </div>
                 {{ end }}
 
-                <div class="term-content content">
-                    <ul>
-                        {{- $type := .Type -}}
-
-                        {{ range .Data.Terms.Alphabetical }}
-                            {{- $name := .Name -}}
-                            {{- $count := .Count -}}
-
-                            {{ with $.Site.GetPage (printf "/%s/%s" $type $name) }}
-                                <li>
-                                    ({{ $count }}) <a href="{{ .RelPermalink }}" title="{{ .Title }}">{{ .Title }}</a>
-                                </li>
-                            {{ end }}
-                        {{ end }}
-                    </ul>
+                <div class="term-content">
+                    {{ range .Data.Terms.ByCount }}
+                        <div class="term-box" data-term="{{ .Name | lower }}">
+                            <h2 class="term-heading">
+                                {{ with $.Site.GetPage (printf "/%s/%s" $taxonomy .Name) }}
+                                    <a href="{{ .RelPermalink }}" title="{{ .Title }}">{{ .Title }}</a>
+                                {{ end }}
+                                <span class="term-count">({{ .Count }})</span>
+                            </h2>
+                            <ul class="term-list">
+                                {{ range .Pages.ByDate }}
+                                    <li class="term-item">
+                                        <span class="term-date">
+                                            {{ .Date | slice | partial "components/renderers/date.html" }}
+                                        </span>
+                                        <a class="term-link" href="{{ .RelPermalink }}" title="{{ .Title }}">{{ .Title }}</a>
+                                    </li>
+                                {{ end }}
+                            </ul>
+                        </div>
+                    {{ end }}
                 </div>
             </div>
 
-            <div class="page-foot">
-                {{ if "advertisement" | .Param }}
+            {{ if "advertisement" | .Param }}
+                <div class="page-foot">
                     <div class="page-advertisement">
-                        {{ partial "components/wrappers/amp-advertisement.html" . }}
+                        {{ slice . | partial "components/renderers/advertisement.html" }}
                     </div>
-                {{ end }}
-            </div>
+                </div>
+            {{ end }}
         </article>
-
-        {{ partial "components/layouts/amp-pagination.html" . }}
     </section>
 {{ end }}

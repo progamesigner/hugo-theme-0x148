@@ -1,47 +1,35 @@
 {{ define "main" }}
+    {{- $paginator := .Site.Params.mainSections | where .Pages "Type" "in" | .Paginate -}}
+
     <section class="section">
-        <article class="page is-single">
+        <article class="page is-taxonomy">
             <div class="page-head">
-                <div class="page-breadcrumb">
-                    {{ partial "components/layouts/html-breadcrumb.html" . }}
-                </div>
+                <h1 class="title">{{ .Title }}</h1>
 
-                <div class="page-headline">
-                    <h1 class="title">{{ .Title }}</h1>
-                </div>
-
-                {{ if "advertisement" | .Param }}
-                    <div class="page-advertisement">
-                        {{ partial "components/wrappers/html-advertisement.html" . }}
-                    </div>
-                {{ end }}
+                {{ partial "components/layouts/html-breadcrumb.html" . }}
             </div>
 
-            <div class="page-body">
-                {{ with .Content }}
+            {{ with .Content }}
+                <div class="page-body">
                     <div class="page-content content">
                         {{ . }}
                     </div>
-                {{ end }}
-
-                <div class="taxonomy-content content">
-                    <ul>
-                        {{ range .Pages }}
-                            <li>
-                                <a href="{{ .RelPermalink }}" title="{{ .Title }}">{{ .Title }}</a>
-                            </li>
-                        {{ end }}
-                    </ul>
                 </div>
-            </div>
+            {{ end }}
 
-            <div class="page-foot">
-                {{ if "advertisement" | .Param }}
-                    <div class="page-advertisement">
-                        {{ partial "components/wrappers/html-advertisement.html" . }}
+            {{ if "advertisement" | .Param }}
+                <div class="page-foot">
+                    <div class="list-advertisement">
+                        {{ slice . | partial "components/renderers/advertisement.html" }}
                     </div>
-                {{ end }}
-            </div>
+                </div>
+            {{ end }}
         </article>
+
+        {{ range $paginator.Pages }}
+            {{ partial "components/sections/summary.html" . }}
+        {{ end }}
+
+        {{ partial "components/layouts/html-pagination.html" . }}
     </section>
 {{ end }}
