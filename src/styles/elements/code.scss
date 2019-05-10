@@ -1,35 +1,53 @@
 $code-border-width: 0.5rem !default;
+$code-color: $white !default;
 $code-lang-label-margin: 0 1.5rem !default;
 $code-lang-label-padding: 0.25rem 0.75rem !default;
 $code-line-number-padding: 0.5rem !default;
 
-$code-color-base00: #2b303b !default; // Default Background
-$code-color-base01: #343d46 !default; // Lighter Background (Used for status bars)
-$code-color-base02: #4f5b66 !default; // Selection Background
-$code-color-base03: #65737e !default; // Comments, Invisibles, Line Highlighting
-$code-color-base04: #a7adba !default; // Dark Foreground (Used for status bars)
-$code-color-base05: #c0c5ce !default; // Default Foreground, Caret, Delimiters, Operators
-$code-color-base06: #dfe1e8 !default; // Light Foreground (Not often used)
-$code-color-base07: #eff1f5 !default; // Light Background (Not often used)
-$code-color-base08: #bf616a !default; // Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
-$code-color-base09: #d08770 !default; // Integers, Boolean, Constants, XML Attributes, Markup Link Url
-$code-color-base0a: #ebcb8b !default; // Classes, Markup Bold, Search Text Background
-$code-color-base0b: #a3be8c !default; // Strings, Inherited Class, Markup Code, Diff Inserted
-$code-color-base0c: #96b5b4 !default; // Support, Regular Expressions, Escape Characters, Markup Quotes
-$code-color-base0d: #8fa1b3 !default; // Functions, Methods, Attribute IDs, Headings
-$code-color-base0e: #b48ead !default; // Keywords, Storage, Selector, Markup Italic, Diff Changed
-$code-color-base0f: #ab7967 !default; // Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?>
+$code-color-base00: #2B303B !default; // Default Background
+$code-color-base01: #343D46 !default; // Lighter Background (Used for status bars)
+$code-color-base02: #4F5B66 !default; // Selection Background
+$code-color-base03: #65737E !default; // Comments, Invisibles, Line Highlighting
+$code-color-base04: #A7ADBA !default; // Dark Foreground (Used for status bars)
+$code-color-base05: #C0C5CE !default; // Default Foreground, Caret, Delimiters, Operators
+$code-color-base06: #DFE1E8 !default; // Light Foreground (Not often used)
+$code-color-base07: #EFF1F5 !default; // Light Background (Not often used)
+$code-color-base08: #BF616A !default; // Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
+$code-color-base09: #D08770 !default; // Integers, Boolean, Constants, XML Attributes, Markup Link Url
+$code-color-base0a: #EBCB8B !default; // Classes, Markup Bold, Search Text Background
+$code-color-base0b: #A3BE8C !default; // Strings, Inherited Class, Markup Code, Diff Inserted
+$code-color-base0c: #96B5B4 !default; // Support, Regular Expressions, Escape Characters, Markup Quotes
+$code-color-base0d: #8FA1B3 !default; // Functions, Methods, Attribute IDs, Headings
+$code-color-base0e: #B48EAD !default; // Keywords, Storage, Selector, Markup Italic, Diff Changed
+$code-color-base0f: #AB7967 !default; // Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?>
 
 .highlight {
+    --code00: #{$code-color-base00};
+    --code01: #{$code-color-base01};
+    --code02: #{$code-color-base02};
+    --code03: #{$code-color-base03};
+    --code04: #{$code-color-base04};
+    --code05: #{$code-color-base05};
+    --code06: #{$code-color-base06};
+    --code07: #{$code-color-base07};
+    --code08: #{$code-color-base08};
+    --code09: #{$code-color-base09};
+    --code0a: #{$code-color-base0a};
+    --code0b: #{$code-color-base0b};
+    --code0c: #{$code-color-base0c};
+    --code0d: #{$code-color-base0d};
+    --code0e: #{$code-color-base0e};
+    --code0f: #{$code-color-base0f};
+
     > .chroma {
-        border-top: $code-border-width solid $code-color-base01;
+        border-top: $code-border-width solid var(--code01);
         overflow-x: auto;
 
         table {
             position: relative;
 
             &::after {
-                color: findColorInvert($code-color-base00);
+                color: $code-color;
                 content: 'Code';
                 font-family: $family-monospace;
                 font-size: $size-small;
@@ -60,15 +78,15 @@ $code-color-base0f: #ab7967 !default; // Deprecated, Opening/Closing Embedded La
 }
 
 .chroma { /* Background */
-    color: $code-color-base05;
-    background-color:$code-color-base00;
+    color: var(--code05);
+    background-color:var(--code00);
 
     .err { /* Error */
-        color: $code-color-base08;
+        color: var(--code08);
     }
 
     .hl { /* LineHighlight */
-        background-color: $code-color-base0a;
+        background-color: var(--code0a);
         display: block;
         width: 100%;
     }
@@ -76,7 +94,7 @@ $code-color-base0f: #ab7967 !default; // Deprecated, Opening/Closing Embedded La
     .ln, /* LineNumbers */
     .lnt { /* LineNumbersTable */
         padding: 0 $code-line-number-padding;
-        color: $code-color-base03;
+        color: var(--code03);
     }
 
     .lntable { /* LineTable */
@@ -103,7 +121,7 @@ $code-color-base0f: #ab7967 !default; // Deprecated, Opening/Closing Embedded La
     .kp, /* KeywordPseudo */
     .kr, /* KeywordReserved */
     .kt { /* KeywordType */
-        color: $code-color-base0e;
+        color: var(--code0e);
         font-weight: $weight-bold;
     }
 
@@ -113,23 +131,23 @@ $code-color-base0f: #ab7967 !default; // Deprecated, Opening/Closing Embedded La
     .nn, /* NameNamespace */
     .nt, /* NameTag */
     .nv { /* NameVariable */
-        color: $code-color-base08;
+        color: var(--code08);
     }
 
     .nb { /* NameBuiltin */
-        color: $code-color-base0d;
+        color: var(--code0d);
         font-weight: $weight-bold; //
     }
 
     .no, /* NameConstant */
     .nd, /* NameDecorator */
     .ne { /* NameException */
-        color: $code-color-base09;
+        color: var(--code09);
     }
 
     .l,
     .ld { /* LiteralDate */
-        color: $code-color-base09;
+        color: var(--code09);
         font-weight: $weight-bold;
     }
 
@@ -147,7 +165,7 @@ $code-color-base0f: #ab7967 !default; // Deprecated, Opening/Closing Embedded La
     .sr, /* LiteralStringRegex */
     .s1, /* LiteralStringSingle */
     .ss { /* LiteralStringSymbol */
-        color: $code-color-base0b;
+        color: var(--code0b);
     }
 
     .m, /* LiteralNumber */
@@ -157,12 +175,12 @@ $code-color-base0f: #ab7967 !default; // Deprecated, Opening/Closing Embedded La
     .mi, /* LiteralNumberInteger */
     .il, /* LiteralNumberIntegerLong */
     .mo { /* LiteralNumberOct */
-        color: $code-color-base09;
+        color: var(--code09);
     }
 
     .o,
     .ow { /* OperatorWord */
-        color: $code-color-base0c;
+        color: var(--code0c);
     }
 
     .c, /* Comment */
@@ -170,23 +188,23 @@ $code-color-base0f: #ab7967 !default; // Deprecated, Opening/Closing Embedded La
     .cm, /* CommentMultiline */
     .c1 /* CommentSingle */
     {
-        color: $code-color-base03;
+        color: var(--code03);
     }
 
     .cs { /* CommentSpecial */
-        color: $code-color-base0f;
+        color: var(--code0f);
     }
 
     .cf, /* CommentPreproc */
     .cpf { /* CommentPreprocFile */
-        color: $code-color-base0b;
+        color: var(--code0b);
     }
 
     .gd, /* GenericDeleted */
     .gr, /* GenericError */
     .gt /* GenericTraceback */
     {
-        color: $code-color-base08;
+        color: var(--code08);
     }
 
     .ge { /* GenericEmph */
@@ -196,21 +214,21 @@ $code-color-base0f: #ab7967 !default; // Deprecated, Opening/Closing Embedded La
     .gh, /* GenericHeading */
     .gu /* GenericSubheading */
     {
-        color: $code-color-base06;
+        color: var(--code06);
         font-weight: $weight-bold;
     }
 
     .gi { /* GenericInserted */
-        color: $code-color-base0b;
+        color: var(--code0b);
         font-weight: $weight-bold;
     }
 
     .go { /* GenericOutput */
-        color: $code-color-base0d;
+        color: var(--code0d);
     }
 
     .gp { /* GenericPrompt */
-        color: $code-color-base0d;
+        color: var(--code0d);
         font-weight: $weight-bold;
     }
 
@@ -223,6 +241,6 @@ $code-color-base0f: #ab7967 !default; // Deprecated, Opening/Closing Embedded La
     }
 
     .w { /* TextWhitespace */
-        color: $code-color-base05;
+        color: var(--code05);
     }
 }
