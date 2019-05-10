@@ -3,9 +3,13 @@ $page-byline-border-color: $primary !default;
 $page-byline-border-width: 0.00625rem !default;
 $page-byline-item-margin: 0.5rem !default;
 $page-byline-left-width: 6rem !default;
+$page-byline-location-color: $grey !default;
+$page-byline-location-size: $size-small !default;
 $page-byline-margin: 1rem !default;
 $page-byline-padding: 1.5rem 3rem !default;
 $page-byline-right-width: 2rem !default;
+$page-byline-title-color: $grey !default;
+$page-byline-title-size: $size-normal !default;
 
 .page-byline {
     @include block;
@@ -69,4 +73,16 @@ $page-byline-right-width: 2rem !default;
     &:not(:last-child) {
         margin-right: $page-byline-item-margin;
     }
+}
+
+.byline-location {
+    color: $page-byline-location-color;
+    font-size: $page-byline-location-size;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.byline-title {
+    color: $page-byline-title-color;
+    font-size: $page-byline-title-size;
 }

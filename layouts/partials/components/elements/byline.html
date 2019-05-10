@@ -18,6 +18,9 @@
                         <img src="{{ .avatar | absURL }}" alt="{{ .name }}">
                     {{ end }}
                 </figure>
+                {{ with .location }}
+                    <p class="byline-location">{{ . }}</p>
+                {{ end }}
             </div>
         {{ end }}
         <div class="byline-content">
@@ -36,6 +39,9 @@
                         {{ end }}
                     {{ end }}
                 </p>
+                {{ with .title }}
+                    <p class="byline-title">{{ . }}</p>
+                {{ end }}
                 <p>{{ .biography | default .bio | safeHTML }}</p>
             </div>
 
