@@ -1,6 +1,6 @@
 
 {{ define "main" }}
-    {{- $pages := .Site.Params.mainSections | where .Site.Pages "Type" "in" -}}
+    {{- $pages := .Site.Params.mainSections | where .Site.Pages "Section" "in" -}}
 
     <section class="section">
         <article class="page is-archive">

@@ -1,5 +1,5 @@
 {{ define "main" }}
-    {{- $paginator := .Site.Params.mainSections | where .Pages "Type" "in" | .Paginate -}}
+    {{- $paginator := .Site.Params.mainSections | where .Pages "Section" "in" | .Paginate -}}
 
     <section class="section">
         <article class="page is-taxonomy">
