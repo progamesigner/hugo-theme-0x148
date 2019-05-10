@@ -3,7 +3,7 @@
     author = false
     comments = false
     math = false
-    share = false
+    share = true
 
     ampComponents = [
         "amp-analytics",
