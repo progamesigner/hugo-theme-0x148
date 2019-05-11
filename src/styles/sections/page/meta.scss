@@ -47,4 +47,10 @@ $page-meta-item-touch-margin: 0.5rem !default;
             }
         }
     }
+
+    .tag {
+        &::before {
+            content: '#';
+        }
+    }
 }
