@@ -13,15 +13,15 @@ There are hugo-theme-0x148 configuration files of this site:
 
 `config.toml` file:
 ```toml
-{{< content "config.toml" >}}
+{{< file "config.toml" >}}
 ```
 
 `languages.en-us.toml` file:
 ```toml
-{{< content "config/_default/languages.en-us.toml" >}}
+{{< file "config/_default/languages.en-us.toml" >}}
 ```
 
 `menus.en-us.toml` file:
 ```toml
-{{< content "config/_default/menus.en-us.toml" >}}
+{{< file "config/_default/menus.en-us.toml" >}}
 ```

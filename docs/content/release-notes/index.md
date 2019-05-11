@@ -9,4 +9,4 @@ menu:
         weight: 30
 ---
 
-{{< content "/release-notes/content.md" >}}
+{{< include "/release-notes/content.md" >}}

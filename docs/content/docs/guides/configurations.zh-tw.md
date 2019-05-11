@@ -13,15 +13,15 @@ tags: ["document", "guide", "configuration"]
 
 `config.toml` 檔案：
 ```toml
-{{< content "config.toml" >}}
+{{< file "config.toml" >}}
 ```
 
 `languages.zh-tw.toml` 檔案：
 ```toml
-{{< content "config/_default/languages.zh-tw.toml" >}}
+{{< file "config/_default/languages.zh-tw.toml" >}}
 ```
 
 `menus.zh-tw.toml` 檔案：
 ```toml
-{{< content "config/_default/menus.zh-tw.toml" >}}
+{{< file "config/_default/menus.zh-tw.toml" >}}
 ```
