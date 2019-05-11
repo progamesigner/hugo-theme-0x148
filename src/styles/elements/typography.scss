@@ -53,26 +53,35 @@ mark {
 }
 
 @if not $amp {
-    :lang(ja) {
-        font-family: $family-cjk-ja-sans-serif, $family-sans-serif;
-    }
+    body,
+    button,
+    div
+    input,
+    p,
+    select,
+    span,
+    textarea {
+        &:lang(ja) {
+            font-family: $family-cjk-ja-sans-serif, $family-sans-serif;
+        }
 
-    :lang(ko) {
-        font-family: $family-cjk-ko-sans-serif, $family-sans-serif;
-    }
+        &:lang(ko) {
+            font-family: $family-cjk-ko-sans-serif, $family-sans-serif;
+        }
 
-    :lang(zh) {
-        font-family: $family-cjk-zh-sans-serif, $family-sans-serif;
-    }
+        &:lang(zh) {
+            font-family: $family-cjk-zh-sans-serif, $family-sans-serif;
+        }
 
-    :lang(zh-CN),
-    :lang(zh-Hans) {
-        font-family: $family-cjk-sc-sans-serif, $family-sans-serif;
-    }
+        &:lang(zh-CN),
+        &:lang(zh-Hans) {
+            font-family: $family-cjk-sc-sans-serif, $family-sans-serif;
+        }
 
-    :lang(zh-TW),
-    :lang(zh-Hant) {
-        font-family: $family-cjk-tc-sans-serif, $family-sans-serif;
+        &:lang(zh-TW),
+        &:lang(zh-Hant) {
+            font-family: $family-cjk-tc-sans-serif, $family-sans-serif;
+        }
     }
 }
 
