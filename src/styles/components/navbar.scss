@@ -13,7 +13,7 @@ $navbar-item-border-offset: 0.5rem !default;
 }
 
 .navbar-start {
-    .navbar-item {
+    > .navbar-item {
         &::after {
             content: '';
             bottom: $navbar-item-border-offset;
