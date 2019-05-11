@@ -3,7 +3,7 @@ title = "Hugo 0x148 Theme Example"
 description = "A theme for Hugo with customizations."
 
 relativeURLs = true
-paginate = 5
+paginate = 3
 
 [author]
     name = "Your Name Here"
@@ -13,6 +13,7 @@ paginate = 5
 [params]
     math = true
     share = true
+    toc = true
 
     htmlModules = [
         "katex",
