@@ -52,78 +52,76 @@ mark {
     padding: $typography-highlight-padding;
 }
 
-body,
-button,
-input,
-select,
-textarea {
-    @if not $amp {
-        &:lang(ja) {
-            font-family: $family-cjk-ja-sans-serif, $family-sans-serif;
-        }
+@if not $amp {
+    :lang(ja) {
+        font-family: $family-cjk-ja-sans-serif, $family-sans-serif;
+    }
 
-        &:lang(ko) {
-            font-family: $family-cjk-ko-sans-serif, $family-sans-serif;
-        }
+    :lang(ko) {
+        font-family: $family-cjk-ko-sans-serif, $family-sans-serif;
+    }
 
-        &:lang(zh) {
-            font-family: $family-cjk-zh-sans-serif, $family-sans-serif;
-        }
+    :lang(zh) {
+        font-family: $family-cjk-zh-sans-serif, $family-sans-serif;
+    }
 
-        &:lang(zh-Hans) {
-            font-family: $family-cjk-sc-sans-serif, $family-sans-serif;
-        }
+    :lang(zh-CN),
+    :lang(zh-Hans) {
+        font-family: $family-cjk-sc-sans-serif, $family-sans-serif;
+    }
 
-        &:lang(zh-Hant) {
-            font-family: $family-cjk-tc-sans-serif, $family-sans-serif;
-        }
+    :lang(zh-TW),
+    :lang(zh-Hant) {
+        font-family: $family-cjk-tc-sans-serif, $family-sans-serif;
     }
 }
 
 :lang(de) {
-    & > q {
+    > q {
         quotes: '\201E' '\201C' '\201A' '\2019';
     }
 }
 
 :lang(en) {
-    & > q {
+    > q {
         quotes: '\201C' '\201D' '\2018' '\2019';
     }
 }
 
 :lang(fr) {
-    & > q {
+    > q {
         quotes: '\00AB' '\00BB';
     }
 }
 
 :lang(ja) {
-    & > q {
+    > q {
         quotes: '\300C' '\300D' '\300E' '\300F';
     }
 }
 
 :lang(ko) {
-    & > q {
+    > q {
         quotes: '\201C' '\201D' '\2019' '\201A';
     }
 }
 
-:lang(zh-CN) {
-    & > q {
+:lang(zh-CN),
+:lang(zh-Hans) {
+    > q {
         quotes: '\201C' '\201D' '\2019' '\201A';
     }
 }
 
-:lang(zh-TW) {
-    & > q {
+:lang(zh-TW),
+:lang(zh-Hant) {
+    > q {
         quotes: '\300C' '\300D' '\300E' '\300F';
     }
 }
 
-:lang(zh),
-:lang(ja) {
+:lang(ja),
+:lang(zh) {
     del,
     s {
         & + del,
