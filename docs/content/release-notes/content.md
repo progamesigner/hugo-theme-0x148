@@ -19,6 +19,8 @@
  - Fix hover styles from dropdown item in navbar
  - Fix taxonomy pages are filtered wrongly
  - Fix typogyaphy applies to unnecessary elements
+ - Fix single layout for posts not respect "share" option
+ - Fix meta items in single layout for posts in AMP are not aligned
 
 ## [1.0.0] - 2019-05-10
 
