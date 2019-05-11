@@ -1,0 +1,34 @@
+baseURL = "https://0x148.progamesigenr.com"
+defaultContentLanguage = "en-us"
+hasCJKLanguage = true
+relativeURLs = true
+
+copyright = "Copyright (c) progamesigner."
+enableRobotsTXT = true
+
+pygmentsOptions = "linenos=table"
+pygmentsUseClasses = true
+
+[author]
+    name = "Yang Sheng Han"
+    email = "progamesigner@outlook.com"
+    url = "https://progamesigner.com"
+
+[params]
+    comments = true
+    toc = true
+
+    mainSections = ["posts"]
+
+    htmlModules = [
+        "disqus",
+        "google-analytics",
+        "katex",
+        "katex-auto-render",
+        "katex-copy-tex"
+    ]
+
+[privacy]
+[privacy.googleAnalytics]
+    anonymizeIP = true
+    respectDoNotTrack = true
