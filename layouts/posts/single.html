@@ -85,11 +85,15 @@
                         </div>
                     {{ end }}
 
-                    <div class="page-meta-item">
-                        <div class="page-share">
-                            {{ partial "components/elements/share.html" . }}
+                    <div class="page-meta-item"></div>
+
+                    {{ if "share" | .Param }}
+                        <div class="page-meta-item">
+                            <div class="page-share">
+                                {{ partial "components/elements/share.html" . }}
+                            </div>
                         </div>
-                    </div>
+                    {{ end }}
                 </div>
             </div>
         </article>
