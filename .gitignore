@@ -1,3 +1,5 @@
 .DS_Store
-.vscode
+
+**/public
+**/resources
 node_modules
