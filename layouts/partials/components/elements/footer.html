@@ -1,8 +1,12 @@
-<p class="has-text-centered">
-    {{ with .Site.Author }}
+{{ with .Site.Author }}
+    <p class="has-text-centered">
         {{ now.Format "2006" | dict "Name" .name "Url" .url "Year" | i18n "footer_copyright_line" | safeHTML }}
-    {{ end }}
-</p>
+    </p>
+{{ else }}
+    <p class="has-text-centered">
+        {{ .Site.Copyright | safeHTML }}
+    </p>
+{{ end }}
 <p class="has-text-centered">
     {{ i18n "footer_power_line" | safeHTML }}
 </p>
