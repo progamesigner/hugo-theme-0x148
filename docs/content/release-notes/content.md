@@ -1,6 +1,10 @@
 ## [Unreleased]
 
-...
+### Changed
+ - Move rss.xml layout to "_default" to allow generation on all kinds of pages
+
+### Fixed
+ - Fix invalid RSS XML file generation
 
 ## [1.0.1] - 2019-05-11
 
