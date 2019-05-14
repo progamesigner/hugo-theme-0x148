@@ -31,7 +31,6 @@ $tooltip-z: 20 !default;
         content: attr(data-tooltip);
         display: block;
         font-size: $tooltip-size;
-        max-width: 100%;
         opacity: 0;
         overflow: hidden;
         padding: $tooltip-padding;
