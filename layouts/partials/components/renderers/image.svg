@@ -74,7 +74,7 @@
     {{- end -}}
 {{- end -}}
 
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="{{ $left }} {{ $top }} {{ $width }} {{ $height }}">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="{{- printf "%d %d %.f %.f" $left $top $width $height -}}">
     {{ with $transforms }}
         <g transform="{{ delimit . "," | safeHTMLAttr }}">
             {{ $body | safeHTML }}

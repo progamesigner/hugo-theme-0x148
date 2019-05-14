@@ -11,9 +11,11 @@
         {{ end }}
 
         {{ if "advertisement" | .Param }}
-            <div class="list-advertisement">
-                {{ slice . | partial "components/renderers/advertisement.html" }}
-            </div>
+            {{ with slice . | partial "components/renderers/advertisement.html" }}
+                <div class="list-advertisement">
+                    {{ . }}
+                </div>
+            {{ end }}
         {{ end }}
 
         {{ range .Paginator.Pages }}

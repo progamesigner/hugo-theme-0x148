@@ -19,9 +19,11 @@
                 {{ end }}
 
                 {{ if "advertisement" | .Param }}
-                    <div class="page-advertisement">
-                        {{ slice . | partial "components/renderers/advertisement.html" }}
-                    </div>
+                    {{ with slice . | partial "components/renderers/advertisement.html" }}
+                        <div class="page-advertisement">
+                            {{ . }}
+                        </div>
+                    {{ end }}
                 {{ end }}
             </div>
 
@@ -33,13 +35,15 @@
                 {{ end }}
 
                 {{ if "toc" | .Param }}
-                    <div class="page-menu is-fixed-left">
-                        {{ slice . | partial "components/renderers/menu.html" }}
-                    </div>
+                    {{ with slice . | partial "components/renderers/menu.html" }}
+                        <div class="page-menu is-fixed-left">
+                            {{ . }}
+                        </div>
 
-                    <div class="page-menu is-sticky-right">
-                        {{ slice . | partial "components/renderers/menu.html" }}
-                    </div>
+                        <div class="page-menu is-sticky-right">
+                            {{ . }}
+                        </div>
+                    {{ end }}
                 {{ end }}
 
                 {{ if "series" | .Param }}
@@ -55,15 +59,19 @@
 
             <div class="page-foot">
                 {{ if "advertisement" | .Param }}
-                    <div class="page-advertisement">
-                        {{ slice . | partial "components/renderers/advertisement.html" }}
-                    </div>
+                    {{ with slice . | partial "components/renderers/advertisement.html" }}
+                        <div class="page-advertisement">
+                            {{ . }}
+                        </div>
+                    {{ end }}
                 {{ end }}
 
                 {{ if "author" | .Param }}
-                    <div class="page-byline">
-                        {{ slice . | partial "components/renderers/byline.html" }}
-                    </div>
+                    {{ with slice . | partial "components/renderers/byline.html" }}
+                        <div class="page-byline">
+                            {{ . }}
+                        </div>
+                    {{ end }}
                 {{ end }}
 
                 <div class="page-meta">

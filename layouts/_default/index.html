@@ -11,9 +11,11 @@
 
     <section class="section">
         {{ if "advertisement" | .Param }}
-            <div class="home-advertisement">
-                {{ slice . | partial "components/renderers/advertisement.html" }}
-            </div>
+            {{ with slice . | partial "components/renderers/advertisement.html" }}
+                <div class="home-advertisement">
+                    {{ . }}
+                </div>
+            {{ end }}
         {{ end }}
 
         {{ range $paginator.Pages }}

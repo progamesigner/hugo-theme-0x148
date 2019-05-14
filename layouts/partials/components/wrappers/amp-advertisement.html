@@ -1,5 +1,7 @@
-<div class="advertisement">
-    <div class="advertisement-body">
-        {{ partial "templates/amp-advertisement.html" . }}
+{{ with partial "templates/amp-advertisement.html" . }}
+    <div class="advertisement">
+        <div class="advertisement-body">
+            {{ . }}
+        </div>
     </div>
-</div>
+{{ end }}

@@ -18,11 +18,13 @@
             {{ end }}
 
             {{ if "advertisement" | .Param }}
-                <div class="page-foot">
-                    <div class="list-advertisement">
-                        {{ slice . | partial "components/renderers/advertisement.html" }}
+                {{ with slice . | partial "components/renderers/advertisement.html" }}
+                    <div class="page-foot">
+                        <div class="list-advertisement">
+                            {{ . }}
+                        </div>
                     </div>
-                </div>
+                {{ end }}
             {{ end }}
         </article>
 

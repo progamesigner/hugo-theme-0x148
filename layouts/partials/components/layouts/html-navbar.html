@@ -59,7 +59,7 @@
                     </div>
                 </div>
 
-                {{ partial "components/wrappers/html-search.html" . }}
+                {{ slice . | partial "components/renderers/search.html" }}
             </div>
         </div>
     </div>

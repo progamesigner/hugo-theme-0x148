@@ -1,11 +1,11 @@
 {{- $context := 0 | index . -}}
 
-{{ with $context }}
+{{- with $context -}}
     {{- $format := slice . | partial "functions/get-page-format.txt" -}}
 
-    {{ if "AMP" | eq $format}}
-        {{ partial "components/wrappers/amp-search.html" . }}
-    {{ else }}
-        {{ partial "components/wrappers/html-search.html" . }}
-    {{ end }}
-{{ end }}
+    {{- if "AMP" | eq $format}}
+        {{- partial "components/wrappers/amp-search.html" . -}}
+    {{- else -}}
+        {{- partial "components/wrappers/html-search.html" . -}}
+    {{- end -}}
+{{- end -}}

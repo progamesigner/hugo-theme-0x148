@@ -9,9 +9,11 @@
                 {{ partial "components/layouts/html-breadcrumb.html" . }}
 
                 {{ if "advertisement" | .Param }}
-                    <div class="page-advertisement">
-                        {{ slice . | partial "components/renderers/advertisement.html" }}
-                    </div>
+                    {{ with slice . | partial "components/renderers/advertisement.html" }}
+                        <div class="page-advertisement">
+                            {{ . }}
+                        </div>
+                    {{ end }}
                 {{ end }}
             </div>
 
@@ -47,11 +49,13 @@
             </div>
 
             {{ if "advertisement" | .Param }}
-                <div class="page-foot">
-                    <div class="page-advertisement">
-                        {{ slice . | partial "components/renderers/advertisement.html" }}
+                {{ with slice . | partial "components/renderers/advertisement.html" }}
+                    <div class="page-foot">
+                        <div class="page-advertisement">
+                            {{ . }}
+                        </div>
                     </div>
-                </div>
+                {{ end }}
             {{ end }}
         </article>
     </section>

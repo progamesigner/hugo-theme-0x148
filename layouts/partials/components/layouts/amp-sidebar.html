@@ -10,7 +10,7 @@
         <span aria-hidden="true"></span>
     </div>
 
-    {{ partial "components/wrappers/amp-search.html" . }}
+    {{ slice . | partial "components/renderers/search.html" }}
 
     <p class="sidebar-label">{{ i18n "sidebar_label_navigation" }}</p>
     <nav class="sidebar-menu">

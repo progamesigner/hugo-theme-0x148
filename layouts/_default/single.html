@@ -7,23 +7,29 @@
                 </div>
 
                 {{ if "advertisement" | .Param }}
-                    <div class="page-advertisement">
-                        {{ slice . | partial "components/renderers/advertisement.html" }}
-                    </div>
+                    {{ with slice . | partial "components/renderers/advertisement.html" }}
+                        <div class="page-advertisement">
+                            {{ . }}
+                        </div>
+                    {{ end }}
                 {{ end }}
             </div>
 
-            <div class="page-body">
-                <div class="page-content content">
-                    {{ .Content }}
+            {{ with .Content }}
+                <div class="page-body">
+                    <div class="page-content content">
+                        {{ . }}
+                    </div>
                 </div>
-            </div>
+            {{ end }}
 
             <div class="page-foot">
                 {{ if "advertisement" | .Param }}
-                    <div class="page-advertisement">
-                        {{ slice . | partial "components/renderers/advertisement.html" }}
-                    </div>
+                    {{ with slice . | partial "components/renderers/advertisement.html" }}
+                        <div class="page-advertisement">
+                            {{ . }}
+                        </div>
+                    {{ end }}
                 {{ end }}
             </div>
         </article>

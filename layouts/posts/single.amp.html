@@ -19,17 +19,21 @@
                 {{ end }}
 
                 {{ if "advertisement" | .Param }}
-                    <div class="page-advertisement">
-                        {{ slice . | partial "components/renderers/advertisement.html" }}
-                    </div>
+                    {{ with slice . | partial "components/renderers/advertisement.html" }}
+                        <div class="page-advertisement">
+                            {{ . }}
+                        </div>
+                    {{ end }}
                 {{ end }}
             </div>
 
             <div class="page-body">
                 {{ if "toc" | .Param }}
-                    <div class="page-menu">
-                        {{ slice . | partial "components/renderers/menu.html" }}
-                    </div>
+                    {{ with slice . | partial "components/renderers/menu.html" }}
+                        <div class="page-menu">
+                            {{ . }}
+                        </div>
+                    {{ end }}
                 {{ end }}
 
                 {{ if "series" | .Param }}
@@ -44,14 +48,20 @@
             </div>
 
             <div class="page-foot">
-                <div class="page-advertisement">
-                    {{ slice . | partial "components/renderers/advertisement.html" }}
-                </div>
+                {{ if "advertisement" | .Param }}
+                    {{ with slice . | partial "components/renderers/advertisement.html" }}
+                        <div class="page-advertisement">
+                            {{ . }}
+                        </div>
+                    {{ end }}
+                {{ end }}
 
                 {{ if "author" | .Param }}
-                    <div class="page-byline">
-                        {{ slice . | partial "components/renderers/byline.html" }}
-                    </div>
+                    {{ with slice . | partial "components/renderers/byline.html" }}
+                        <div class="page-byline">
+                            {{ . }}
+                        </div>
+                    {{ end }}
                 {{ end }}
 
                 <div class="page-meta">

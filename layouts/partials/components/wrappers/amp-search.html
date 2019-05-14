@@ -1,5 +1,7 @@
-<nav class="sidebar-menu">
-    <section class="sidebar-item">
-        {{ partial "templates/amp-search.html" . }}
-    </section>
-</nav>
+{{ with partial "templates/amp-search.html" . }}
+    <nav class="sidebar-menu">
+        <section class="sidebar-item">
+            {{ . }}
+        </section>
+    </nav>
+{{ end }}

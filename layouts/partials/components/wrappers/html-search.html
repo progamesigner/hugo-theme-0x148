@@ -1,3 +1,5 @@
-<div class="navbar-item">
-    {{ partial "templates/html-search.html" . }}
-</div>
+{{ with partial "templates/html-search.html" . }}
+    <div class="navbar-item">
+        {{ . }}
+    </div>
+{{ end }}
