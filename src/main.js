@@ -49,6 +49,11 @@ const bootstrap = () => {
         footnote.querySelectorAll('.footnote-return').forEach(element => element.remove())
     })
 
+    document.querySelectorAll('.footnote-return').forEach(link => {
+        let target = document.getElementById(link.getAttribute('href').substr(1))
+        link.addEventListener('click', event => scrollY(getElementTop(new Array(target)), event))
+    })
+
     document.querySelectorAll('.navbar-burger').forEach(item => burger(item, document.querySelectorAll('.navbar-menu')))
     document.querySelectorAll('.navbar.is-fixed-top').forEach(item => collapse(item, 60))
     document.querySelectorAll('.page-menu.is-fixed-left').forEach(item => collapse(item, getElementTop(document.querySelectorAll('.page-body')) - 60))
