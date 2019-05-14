@@ -90,4 +90,12 @@ $page-external-margin: 0 1.25rem 0 0 !default;
     .highlight {
         @include page-fullwidth-block;
     }
+
+    .footnote-ref {
+        &.tooltip {
+            @include tooltip-content {
+                max-width: unset;
+            }
+        }
+    }
 }

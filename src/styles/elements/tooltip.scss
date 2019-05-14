@@ -1,5 +1,5 @@
-$tooltip-background-color: rgba($grey-darker, 0.95) !default;
-$tooltip-color: findColorInvert($grey-darker) !default;
+$tooltip-background-color: rgba($background, 0.95) !default;
+$tooltip-color: $text !default;
 $tooltip-easing: $easing !default;
 $tooltip-offset-begin: 0.5rem !default;
 $tooltip-offset-end: 0.25rem !default;
@@ -9,10 +9,22 @@ $tooltip-size: $size-small !default;
 $tooltip-speed: $speed !default;
 $tooltip-z: 20 !default;
 
+@mixin tooltip-content {
+    .tooltip-content {
+        @content;
+    }
+
+    &[data-tooltip] {
+        &::after {
+            @content;
+        }
+    }
+}
+
 .tooltip {
     position: relative;
 
-    &::after {
+    @include tooltip-content {
         background: $tooltip-background-color;
         border-radius: $tooltip-radius;
         color: $tooltip-color;
@@ -27,7 +39,7 @@ $tooltip-z: 20 !default;
         position: absolute;
         text-overflow: ellipsis;
         transition: opacity $tooltip-speed $tooltip-easing, transform $tooltip-speed $tooltip-easing;
-        white-space: pre;
+        white-space: nowrap;
         z-index: $tooltip-z;
     }
 
@@ -35,7 +47,7 @@ $tooltip-z: 20 !default;
     &.is-focused,
     &:hover,
     &.is-hovered {
-        &::after {
+        @include tooltip-content {
             opacity: 1;
         }
     }
@@ -47,7 +59,7 @@ $tooltip-z: 20 !default;
 
     &,
     &.has-tooltip-top {
-        &::after {
+        @include tooltip-content {
             bottom: 100%;
             left: 50%;
             transform: translate(-50%, $tooltip-offset-begin);
@@ -57,14 +69,14 @@ $tooltip-z: 20 !default;
         &.is-focused,
         &:hover,
         &.is-hovered {
-            &::after {
+            @include tooltip-content {
                 transform: translate(-50%, #{-1 * $tooltip-offset-end});
             }
         }
     }
 
     &.has-tooltip-right {
-        &::after {
+        @include tooltip-content {
             bottom: 50%;
             left: 100%;
             transform: translate(#{-1 * $tooltip-offset-begin}, 50%);
@@ -74,14 +86,14 @@ $tooltip-z: 20 !default;
         &.is-focused,
         &:hover,
         &.is-hovered {
-            &::after {
+            @include tooltip-content {
                 transform: translate($tooltip-offset-end, 50%);
             }
         }
     }
 
     &.has-tooltip-bottom {
-        &::after {
+        @include tooltip-content {
             bottom: auto;
             top: 100%;
             transform: translate(-50%, #{-1 * $tooltip-offset-begin});
@@ -91,14 +103,14 @@ $tooltip-z: 20 !default;
         &.is-focused,
         &:hover,
         &.is-hovered {
-            &::after {
+            @include tooltip-content {
                 transform: translate(-50%, $tooltip-offset-end);
             }
         }
     }
 
     &.has-tooltip-left {
-        &::after {
+        @include tooltip-content {
             bottom: 50%;
             left: auto;
             right: 100%;
@@ -109,7 +121,7 @@ $tooltip-z: 20 !default;
         &.is-focused,
         &:hover,
         &.is-hovered {
-            &::after {
+            @include tooltip-content {
                 transform: translate(#{-1 * $tooltip-offset-end}, 50%);
             }
         }

@@ -19,7 +19,8 @@ const anchorForId = id => {
 
 const bootstrap = () => {
     if (!!window.location.hash) {
-        scrollY(getElementTop(document.querySelectorAll(window.location.hash)), document.createEvent('MouseEvent'))
+        const id = window.location.hash.substr(1)
+        scrollY(getElementTop(new Array(document.getElementById(id))), document.createEvent('MouseEvent'))
     }
 
     document.querySelectorAll('.page-content').forEach(container => {
@@ -31,6 +32,21 @@ const bootstrap = () => {
         })
 
         document.querySelectorAll('.page-menu').forEach(item => menu(item, headings, 60))
+    })
+
+    document.querySelectorAll('.footnote-ref').forEach(footnote => {
+        let link = footnote.querySelector('a[href]')
+        let target = document.getElementById(link.getAttribute('href').substr(1))
+        let content = document.createElement('div')
+
+        content.classList.add('tooltip-content')
+        content.innerHTML = target.innerHTML
+
+        link.addEventListener('click', event => scrollY(getElementTop(new Array(target)), event))
+
+        footnote.classList.add('tooltip')
+        footnote.appendChild(content)
+        footnote.querySelectorAll('.footnote-return').forEach(element => element.remove())
     })
 
     document.querySelectorAll('.navbar-burger').forEach(item => burger(item, document.querySelectorAll('.navbar-menu')))
