@@ -19,7 +19,7 @@ $page-external-margin: 0 1.25rem 0 0 !default;
             }
 
             &::after {
-                background-image: svg-load('images/open-in-new.svg', fill=$link);
+                background-image: svg-load('images/external-link.svg', fill=$link);
                 background-position: center;
                 background-repeat: no-repeat;
                 background-size: $page-external-icon-dimension $page-external-icon-dimension;
@@ -56,17 +56,17 @@ $page-external-margin: 0 1.25rem 0 0 !default;
         }
 
         &::before {
-            background-image: svg-load('images/format-quote-open.svg', fill=$primary), linear-gradient($content-blockquote-background-color, $content-blockquote-background-color calc(50% + #{$page-blockquote-quotation-vertical-offset + $page-blockquote-border-width}), $page-background-color calc(50% + #{$page-blockquote-quotation-vertical-offset + $page-blockquote-border-width}), $page-background-color);
+            background-image: svg-load('images/quote.svg', fill=$primary), linear-gradient($content-blockquote-background-color, $content-blockquote-background-color calc(50% + #{$page-blockquote-quotation-vertical-offset + $page-blockquote-border-width}), $page-background-color calc(50% + #{$page-blockquote-quotation-vertical-offset + $page-blockquote-border-width}), $page-background-color);
             bottom: $page-blockquote-quotation-vertical-offset;
             left: $page-blockquote-quotation-horizontal-offset;
             transform: translateY(50%);
         }
 
         &::after {
-            background-image: svg-load('images/format-quote-close.svg', fill=$primary), linear-gradient($page-background-color, $page-background-color calc(50% - #{$page-blockquote-quotation-vertical-offset + $page-blockquote-border-width}), $content-blockquote-background-color calc(50% - #{$page-blockquote-quotation-vertical-offset + $page-blockquote-border-width}), $content-blockquote-background-color);
+            background-image: svg-load('images/quote.svg', fill=$primary), linear-gradient($content-blockquote-background-color, $content-blockquote-background-color calc(50% + #{$page-blockquote-quotation-vertical-offset + $page-blockquote-border-width}), $page-background-color calc(50% + #{$page-blockquote-quotation-vertical-offset + $page-blockquote-border-width}), $page-background-color);
             right: $page-blockquote-quotation-horizontal-offset;
             top: $page-blockquote-quotation-vertical-offset;
-            transform: translateY(-50%);
+            transform: translateY(-50%) scale(-1, -1);
         }
     }
 
