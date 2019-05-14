@@ -4,13 +4,11 @@ $list-term-box-margin: 1rem !default;
 $list-term-count-size: $size-normal !default;
 $list-term-date-color: $grey !default;
 $list-term-date-margin: 0 0.5rem 0 0 !default;
-$list-term-group-item-margin: 0 1rem !default;
-$list-term-group-margin: 0.5rem 1.5rem !default;
 $list-term-heading-month-size: $size-large !default;
 $list-term-heading-size: $size-large !default;
 $list-term-heading-year-size: $size-larger !default;
 $list-term-item-padding: 0.5rem 0 !default;
-$list-term-list-margin: 0 1rem !default;
+$list-term-list-margin: 0 2rem !default;
 $list-term-list-padding: 0 0 1rem 0 !default;
 
 .page {
@@ -32,21 +30,12 @@ $list-term-list-padding: 0 0 1rem 0 !default;
 }
 
 .archive-content {
+    .term-list {
+        list-style: disc outside;
+    }
+
     .term-item {
-        &::before {
-            background-image: svg-load('images/format-section.svg', fill=$text);
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: 1rem 1rem;
-            content: '';
-            display: block;
-            height: 1rem;
-            width: 1rem;
-            position: absolute;
-            top: 50%;
-            left: 0;
-            transform: translate(-100%, -50%);
-        }
+        display: list-item;
     }
 }
 
@@ -82,14 +71,6 @@ $list-term-list-padding: 0 0 1rem 0 !default;
 .term-count {
     font-size: $list-term-count-size;
     font-weight: $weight-normal;
-}
-
-.term-group {
-    margin: $list-term-group-margin;
-
-    .term-item {
-        margin: $list-term-group-item-margin;
-    }
 }
 
 .term-list {
