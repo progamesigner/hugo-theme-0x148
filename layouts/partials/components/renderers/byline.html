@@ -4,8 +4,8 @@
     {{- $format := slice . | partial "functions/get-page-format.txt" -}}
 
     {{- if "AMP" | eq $format -}}
-        {{- partial "components/wrappers/amp-byline.html" . | strings.TrimLeft "\n" | strings.TrimRight "\n" -}}
+        {{- partial "components/wrappers/amp-byline.html" . | strings.TrimLeft "\n" | strings.TrimRight "\n" | htmlUnescape | safeHTML -}}
     {{- else -}}
-        {{- partial "components/wrappers/html-byline.html" . | strings.TrimLeft "\n" | strings.TrimRight "\n" -}}
+        {{- partial "components/wrappers/html-byline.html" . | strings.TrimLeft "\n" | strings.TrimRight "\n" | htmlUnescape | safeHTML -}}
     {{- end -}}
 {{- end -}}

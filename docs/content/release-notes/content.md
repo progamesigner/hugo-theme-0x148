@@ -1,6 +1,7 @@
 ## [Unreleased]
 
-...
+### Fixed
+ - Fix section rendering
 
 ## [1.1] - 2019-05-17
 
