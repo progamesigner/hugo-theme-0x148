@@ -1,6 +1,6 @@
 ---
 title: 主題發佈 v1.0
-description: 這是 hugo-theme-0x148 第一個發佈版本，一個能夠自訂化的 Hugo 主題。
+description: 這是 hugo-theme-0x148 第一個發佈版本，一個能夠自訂化的 Hugo 主題
 date: 2019-05-10
 
 categories: ["Releases"]

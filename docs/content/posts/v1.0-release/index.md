@@ -1,6 +1,6 @@
 ---
 title: Theme v1.0 Released
-description: The first release of hugo-theme-0x148, a theme for Hugo with customizations.
+description: The first release of hugo-theme-0x148, a theme for Hugo with customizations
 date: 2019-05-10
 
 categories: ["Releases"]
