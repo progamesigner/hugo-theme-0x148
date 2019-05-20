@@ -1,5 +1,8 @@
 ## [Unreleased]
 
+### Added
+ - Add filter to term pages including archive pages
+
 ### Changed
  - Allow hero captions to have HTML
  - Minor design changes to series list
