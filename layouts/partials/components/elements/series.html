@@ -10,7 +10,7 @@
             <div class="message-body">
                 <p class="head">{{ $name | $taxonomy.Count | dict "Title" .Page.Title "Order" $position "Count" | i18n "page_series_message" }}</p>
                 <ol class="list">
-                    {{ range .Pages }}
+                    {{ range sort .Pages "Date" }}
                         <li>
                             {{ if .Permalink | eq $.Permalink }}
                                 <span class="is-active">{{ .Title }}</span>

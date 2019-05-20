@@ -32,7 +32,7 @@
                         </div>
 
                         <div class="page-body">
-                            {{ range .Pages | first 5 }}
+                            {{ range sort .Pages "Date" | first 5 }}
                                 <a href="{{ .RelPermalink }}" title="{{ .Title }}">{{ .Title }}</a>
                             {{ end }}
                         </div>
