@@ -19,10 +19,12 @@ $pagination-item-subtitle-color: $grey-dark !default;
     height: auto;
 
     &.pagination-previous {
+        margin-right: auto;
         text-align: left;
     }
 
     &.pagination-next {
+        margin-left: auto;
         text-align: right;
     }
 
