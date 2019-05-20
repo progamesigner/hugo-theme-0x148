@@ -1,6 +1,8 @@
 ## [Unreleased]
 
-### Fixed
+...
+
+## [1.1.1] - 2019-05-17
  - Fix section rendering
 
 ## [1.1] - 2019-05-17
@@ -47,7 +49,8 @@
 
  - Initial stable release
 
-[Unreleased]: https://github.com/progamesigner/hugo-theme-0x148/compare/v1.1...HEAD
+[Unreleased]: https://github.com/progamesigner/hugo-theme-0x148/compare/v1.1.1...HEAD
+[1.1.1]: https://github.com/progamesigner/hugo-theme-0x148/releases/tag/v1.1.1
 [1.1]: https://github.com/progamesigner/hugo-theme-0x148/releases/tag/v1.1
 [1.0.1]: https://github.com/progamesigner/hugo-theme-0x148/releases/tag/v1.0.1
 [1.0]: https://github.com/progamesigner/hugo-theme-0x148/releases/tag/v1.0
