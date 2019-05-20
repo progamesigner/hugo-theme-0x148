@@ -1,8 +1,17 @@
 ## [Unreleased]
 
-...
+### Changed
+ - Allow hero captions to have HTML
+ - Minor design changes to series list
+
+### Fixed
+ - Fix series post sorting
+ - Fix alignment of pagination
+ - Fix position number of series posts
 
 ## [1.1.1] - 2019-05-17
+
+### Fixed
  - Fix section rendering
 
 ## [1.1] - 2019-05-17
