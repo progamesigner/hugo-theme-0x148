@@ -33,3 +33,8 @@ pygmentsUseClasses = true
 [privacy.googleAnalytics]
     anonymizeIP = true
     respectDoNotTrack = true
+
+[taxonomies]
+    category = "categories"
+    series = "series"
+    tag = "tags"
