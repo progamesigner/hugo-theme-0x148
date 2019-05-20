@@ -2,6 +2,7 @@ baseURL = "https://0x148.progamesigner.com"
 defaultContentLanguage = "en-us"
 hasCJKLanguage = true
 relativeURLs = true
+paginate = 10
 
 copyright = "Copyright (c) progamesigner."
 enableRobotsTXT = true
