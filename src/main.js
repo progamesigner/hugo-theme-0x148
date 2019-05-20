@@ -4,6 +4,7 @@ import burger from './scripts/burger'
 import collapse from './scripts/collapse'
 import consent from './scripts/consent'
 import emoji from './scripts/emoji'
+import filter from './scripts/filter'
 import highlight from './scripts/highlight'
 import menu from './scripts/menu'
 import open from './scripts/open'
@@ -61,6 +62,7 @@ const bootstrap = () => {
     document.querySelectorAll('.page-share.is-sticky-left').forEach(item => collapse(item, getElementTop(document.querySelectorAll('.page-body')) - 60))
     document.querySelectorAll('body').forEach(consent)
     document.querySelectorAll('body').forEach(emoji)
+    document.querySelectorAll('.term-filter-form').forEach(filter)
     document.querySelectorAll('.chroma > table').forEach(highlight)
     document.querySelectorAll(`a[rel~="external"], a[href^="http"]:not([href^="${location.protocol}//${location.host}"])`).forEach(open)
     document.querySelectorAll('.progress').forEach(item => progress(item, 0))

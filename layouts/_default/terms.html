@@ -18,6 +18,10 @@
             </div>
 
             <div class="page-body">
+                <form class="form term-filter-form" action="#">
+                    <input class="input term-filter-input" type="text" name="filter" autofocus>
+                </form>
+
                 {{ with .Content }}
                     <div class="page-content content">
                         {{ . }}
@@ -26,7 +30,7 @@
 
                 <div class="term-content">
                     {{ range .Data.Terms.ByCount }}
-                        <div class="term-box" data-term="{{ .Name | lower }}">
+                        <div class="term-box">
                             <h2 class="term-heading">
                                 {{ with $.Site.GetPage (printf "/%s/%s" $taxonomy .Name) }}
                                     <a href="{{ .RelPermalink }}" title="{{ .Title }}">{{ .Title }}</a>
@@ -35,7 +39,7 @@
                             </h2>
                             <ul class="term-list">
                                 {{ range .Pages.ByDate }}
-                                    <li class="term-item">
+                                    <li class="term-item" data-term="{{ .Name | lower }}">
                                         <span class="term-date">
                                             {{ .Date | slice | partial "components/renderers/date.html" }}
                                         </span>

@@ -26,7 +26,7 @@
 
                 <div class="term-content">
                     {{ range .Data.Terms.ByCount }}
-                        <div class="term-box" data-term="{{ .Name | lower }}">
+                        <div class="term-box">
                             <h2 class="term-heading">
                                 {{ with $.Site.GetPage (printf "/%s/%s" $taxonomy .Name) }}
                                     <a href="{{ .RelPermalink }}" title="{{ .Title }}">{{ .Title }}</a>
