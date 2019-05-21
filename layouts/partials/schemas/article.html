@@ -42,6 +42,12 @@
     {{- else -}}
         {{- . | absURL | $schema.SetInMap "schema" "image" -}}
     {{- end -}}
+{{- else -}}
+    {{- range $key, $value := "publisher" | index $schemas | default dict -}}
+        {{- if "logo" | eq $key -}}
+            {{- $value | $schema.SetInMap "schema" "image" -}}
+        {{- end -}}
+    {{- end -}}
 {{- end -}}
 
 {{- range $key, $value := "publisher" | index $schemas | default dict -}}
