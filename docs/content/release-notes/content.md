@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+...
+
+## [1.2] - 2019-05-21
+
 ### Added
  - Add filter to term pages including archive pages
 
@@ -11,6 +15,7 @@
  - Fix series post sorting
  - Fix alignment of pagination
  - Fix position number of series posts
+ - Fallback image in schema to logo in publisher
 
 ## [1.1.1] - 2019-05-17
 
@@ -61,7 +66,8 @@
 
  - Initial stable release
 
-[Unreleased]: https://github.com/progamesigner/hugo-theme-0x148/compare/v1.1.1...HEAD
+[Unreleased]: https://github.com/progamesigner/hugo-theme-0x148/compare/v1.2...HEAD
+[1.2]: https://github.com/progamesigner/hugo-theme-0x148/releases/tag/v1.2
 [1.1.1]: https://github.com/progamesigner/hugo-theme-0x148/releases/tag/v1.1.1
 [1.1]: https://github.com/progamesigner/hugo-theme-0x148/releases/tag/v1.1
 [1.0.1]: https://github.com/progamesigner/hugo-theme-0x148/releases/tag/v1.0.1
