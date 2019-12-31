@@ -1,7 +1,7 @@
 ---
 title: 主題發佈 v1.1
-description: 更新
-date: 2019-05-10
+description: 更新 footnote 樣式
+date: 2019-05-17
 
 categories: ["Releases"]
 ---
