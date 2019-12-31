@@ -1,5 +1,5 @@
 [build]
-  base = "docs"
+  base = "/"
   command = "npm run deploy:prod"
   publish = "docs/public"
 
