@@ -1,0 +1,7 @@
+[build]
+  base = "docs"
+  command = "npm run deploy:prod"
+  publish = "docs/public"
+
+[build.environment]
+  HUGO_VERSION = "0.62.0"
