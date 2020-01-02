@@ -77,7 +77,8 @@
 
  - Initial stable release
 
-[Unreleased]: https://github.com/progamesigner/hugo-theme-0x148/compare/v1.3...HEAD
+[Unreleased]: https://github.com/progamesigner/hugo-theme-0x148/compare/v1.3.1...HEAD
+[1.3.1]: https://github.com/progamesigner/hugo-theme-0x148/releases/tag/v1.3.1
 [1.3]: https://github.com/progamesigner/hugo-theme-0x148/releases/tag/v1.3
 [1.2]: https://github.com/progamesigner/hugo-theme-0x148/releases/tag/v1.2
 [1.1.1]: https://github.com/progamesigner/hugo-theme-0x148/releases/tag/v1.1.1
