@@ -2,6 +2,11 @@
 
 ...
 
+## [1.3.1] - 2020-01-02
+
+### Fixed
+ - Fix homepage posts in AMP version
+
 ## [1.3] - 2019-12-31
 
 ### Fixed
