@@ -10,12 +10,12 @@
 ### Fixed
 - Fix homepage posts in AMP version
 
-## [1.3] - 2019-12-31
+## [1.3.0] - 2019-12-31
 ### Fixed
 - Fix bugs in newer Hugo (current v0.62.0)
 - Fix iconify URL
 
-## [1.2] - 2019-05-21
+## [1.2.0] - 2019-05-21
 ### Added
 - Add filter to term pages including archive pages
 
@@ -33,7 +33,7 @@
 ### Fixed
 - Fix section rendering
 
-## [1.1] - 2019-05-17
+## [1.1.0] - 2019-05-17
 ### Added
 - Add archetypes (default and posts)
 - Add footer fallback to `.Site.Copyright` if no `.Site.Author`
@@ -68,14 +68,14 @@
 - Fix single layout for posts not respect "share" option
 - Fix meta items in single layout for posts in AMP are not aligned
 
-## [1.0] - 2019-05-10
+## [1.0.0] - 2019-05-10
 - Initial stable release
 
 [Unreleased]: https://github.com/progamesigner/hugo-theme-0x148/compare/v1.3.1...HEAD
 [1.3.1]: https://github.com/progamesigner/hugo-theme-0x148/releases/tag/v1.3.1
-[1.3]: https://github.com/progamesigner/hugo-theme-0x148/releases/tag/v1.3
-[1.2]: https://github.com/progamesigner/hugo-theme-0x148/releases/tag/v1.2
+[1.3.0]: https://github.com/progamesigner/hugo-theme-0x148/releases/tag/v1.3.0
+[1.2.0]: https://github.com/progamesigner/hugo-theme-0x148/releases/tag/v1.2.0
 [1.1.1]: https://github.com/progamesigner/hugo-theme-0x148/releases/tag/v1.1.1
-[1.1]: https://github.com/progamesigner/hugo-theme-0x148/releases/tag/v1.1
+[1.1.0]: https://github.com/progamesigner/hugo-theme-0x148/releases/tag/v1.1.0
 [1.0.1]: https://github.com/progamesigner/hugo-theme-0x148/releases/tag/v1.0.1
-[1.0]: https://github.com/progamesigner/hugo-theme-0x148/releases/tag/v1.0
+[1.0.0]: https://github.com/progamesigner/hugo-theme-0x148/releases/tag/v1.0.0
