@@ -22,18 +22,18 @@
     "hugo:watch": "hugo serve --buildDrafts --buildFuture --environment development --source docs --themesDir ../.. --theme hugo-theme-0x148"
   },
   "devDependencies": {
-    "@babel/core": "^7.8.6",
+    "@babel/core": "^7.8.7",
     "babel-loader": "^8.0.6",
-    "bulma": "^0.7.5",
-    "clipboard": "^2.0.5",
-    "css-loader": "^2.1.1",
+    "bulma": "^0.8.0",
+    "clipboard": "^2.0.6",
+    "css-loader": "^3.4.2",
     "cssnano": "^4.1.10",
     "lodash": "^4.17.15",
-    "mini-css-extract-plugin": "^0.5.0",
+    "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.13.1",
-    "postcss-inline-svg": "^3.1.1",
+    "postcss-inline-svg": "^4.1.0",
     "postcss-loader": "^3.0.0",
-    "sass-loader": "^7.3.1",
+    "sass-loader": "^8.0.2",
     "webpack": "^4.42.0",
     "webpack-cli": "^3.3.11"
   }
