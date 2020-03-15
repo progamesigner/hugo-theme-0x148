@@ -4,11 +4,11 @@ $amp: true;
 // * Base
 // =============================================================================
 @import '~bulma/sass/utilities/initial-variables';
-@import '~bulma/sass/utilities/functions';
 @import 'styles/functions';
+@import '~bulma/sass/utilities/functions';
 @import 'styles/variables';
-@import 'styles/mixins';
 @import '~bulma/sass/utilities/derived-variables';
+@import 'styles/mixins';
 @import '~bulma/sass/utilities/controls';
 @import '~bulma/sass/base/minireset';
 @import '~bulma/sass/base/generic';
