@@ -1,6 +1,6 @@
 {{- $taxonomy := "AuthorTaxonomyName" | lower | index .Site.Params | default "authors" -}}
 
-{{- $format := slice . | partial "functions/get-page-format.txt" -}}
+{{- $format := slice . | partial "functions/get-page-format.string" -}}
 
 {{ with "author" | .Param | slice . | partial "functions/get-author-data.dict" }}
     <div class="byline">

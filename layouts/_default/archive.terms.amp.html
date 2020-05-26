@@ -31,7 +31,7 @@
 
                         <div class="term-box">
                             <h2 class="term-heading is-year">
-                                {{ slice $year | partial "functions/format-year.txt" }}
+                                {{ slice $year | partial "functions/format-year.string" }}
                             </h2>
 
                             {{ range .Pages.GroupByDate "01-January" }}
@@ -39,7 +39,7 @@
 
                                 <div class="term-group">
                                     <h3 class="term-heading is-month">
-                                        {{ slice $month | partial "functions/format-month.txt" }}
+                                        {{ slice $month | partial "functions/format-month.string" }}
                                     </h3>
 
                                     <ul class="term-list">

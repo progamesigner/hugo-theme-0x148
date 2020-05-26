@@ -1,7 +1,7 @@
 {{- $name := 1 | index . -}}
 
 {{- $key := $name | replaceRE "(?i).*:(.*)" "$1" -}}
-{{- $data := $name | replaceRE "(?i)(.*):.*" "$1" | slice | partial "functions/format-iconify-url.txt" | getJSON -}}
+{{- $data := $name | replaceRE "(?i)(.*):.*" "$1" | slice | partial "functions/format-iconify-url.string" | getJSON -}}
 
 {{- $alias := $key | index $data.aliases | default dict -}}
 {{- $icon := $alias.parent | default $key | index $data.icons -}}

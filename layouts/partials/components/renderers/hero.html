@@ -2,7 +2,7 @@
 {{- $hero := 1 | index . -}}
 
 {{ with $context }}
-    {{- $format := slice . | partial "functions/get-page-format.txt" -}}
+    {{- $format := slice . | partial "functions/get-page-format.string" -}}
 
     {{ with $hero }}
         {{ if .item }}

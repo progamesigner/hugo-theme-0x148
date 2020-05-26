@@ -2,8 +2,8 @@
 
 {{- "http://schema.org" | $schema.SetInMap "schema" "@context" -}}
 {{- "Course" | $schema.SetInMap "schema" "@type" -}}
-{{- slice . | partial "functions/get-page-title.txt" | plainify | $schema.SetInMap "schema" "name" -}}
-{{- slice . | partial "functions/get-page-description.txt" | plainify | $schema.SetInMap "schema" "description" -}}
+{{- slice . | partial "functions/get-page-title.string" | plainify | $schema.SetInMap "schema" "name" -}}
+{{- slice . | partial "functions/get-page-description.string" | plainify | $schema.SetInMap "schema" "description" -}}
 
 {{- range $key, $value := .Params.CourseProvider -}}
     {{- "Organization" | $schema.SetInMap "provider" "@type" -}}

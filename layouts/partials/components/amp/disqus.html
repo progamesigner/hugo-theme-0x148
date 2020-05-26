@@ -14,7 +14,7 @@
         layout="responsive"
         sandbox="allow-scripts allow-same-origin allow-modals allow-popups allow-forms"
         resizable
-        src="{{ $disqus.Permalink | slice . | partial "functions/format-iframe-url.txt" }}#{{ $properties.canonical.hash }}"
+        src="{{ $disqus.Permalink | slice . | partial "functions/format-iframe-url.string" }}#{{ $properties.canonical.hash }}"
         {{ with $consentNotificationId }}data-block-on-consent{{ end }}
     >
         <div overflow>

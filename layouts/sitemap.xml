@@ -11,7 +11,7 @@
             <loc>{{ .Permalink }}</loc>
 
             {{ if not .Lastmod.IsZero }}
-                <lastmod>{{ slice .Lastmod | partial "functions/format-datetime.txt" | safeHTML }}</lastmod>
+                <lastmod>{{ slice .Lastmod | partial "functions/format-datetime.string" | safeHTML }}</lastmod>
             {{ end }}
 
             {{ with .Sitemap.ChangeFreq }}

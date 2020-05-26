@@ -10,7 +10,7 @@
     {{- $base := $context.Site.BaseURL | querify "" | strings.TrimPrefix "=" -}}
     {{- $url := .Permalink | querify "" | strings.TrimPrefix "=" -}}
     {{- $title := .Title | plainify | querify "" | strings.TrimPrefix "=" -}}
-    {{- $description := slice . | partial "functions/get-page-description.txt" | plainify | querify "" | strings.TrimPrefix "=" -}}
+    {{- $description := slice . | partial "functions/get-page-description.string" | plainify | querify "" | strings.TrimPrefix "=" -}}
 
     {{ with $name | index .Site.Menus }}
         {{ range sort . "Weight" }}

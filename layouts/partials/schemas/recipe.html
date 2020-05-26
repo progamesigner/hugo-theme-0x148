@@ -2,15 +2,15 @@
 
 {{- "http://schema.org" | $schema.SetInMap "schema" "@context" -}}
 {{- "Recipe" | $schema.SetInMap "schema" "@type" -}}
-{{- slice . | partial "functions/get-page-title.txt" | plainify | $schema.SetInMap "schema" "name" -}}
-{{- slice . | partial "functions/get-page-description.txt" | plainify | $schema.SetInMap "schema" "description" -}}
+{{- slice . | partial "functions/get-page-title.string" | plainify | $schema.SetInMap "schema" "name" -}}
+{{- slice . | partial "functions/get-page-description.string" | plainify | $schema.SetInMap "schema" "description" -}}
 
 {{- if not .PublishDate.IsZero -}}
-    {{- slice .PublishDate | partial "functions/format-datetime.txt" | $schema.SetInMap "schema" "datePublished" -}}
+    {{- slice .PublishDate | partial "functions/format-datetime.string" | $schema.SetInMap "schema" "datePublished" -}}
 {{- end -}}
 
 {{- if not .Lastmod.IsZero -}}
-    {{- slice .Lastmod | partial "functions/format-datetime.txt" | $schema.SetInMap "schema" "dateModified" -}}
+    {{- slice .Lastmod | partial "functions/format-datetime.string" | $schema.SetInMap "schema" "dateModified" -}}
 {{- end -}}
 
 {{- with "author" | .Param | slice . | partial "functions/get-author-data.dict" -}}
