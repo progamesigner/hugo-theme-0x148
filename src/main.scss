@@ -13,7 +13,9 @@ $amp: false;
 @import '~bulma/sass/utilities/controls';
 @import '~bulma/sass/base/minireset';
 @import '~bulma/sass/base/generic';
-@import '~bulma/sass/base/helpers';
+@import '~bulma/sass/helpers/color';
+@import '~bulma/sass/helpers/typography';
+@import '~bulma/sass/helpers/visibility';
 @import '~bulma/sass/grid/columns';
 @import '~bulma/sass/grid/tiles';
 
