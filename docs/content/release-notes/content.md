@@ -2,6 +2,10 @@
 
 ...
 
+## [1.3.4] - 2020-09-29
+### Fixed
+- Update packages to improve security
+
 ## [1.3.3] - 2020-03-04
 ### Fixed
 - Fix an error in "get-page-breadcrumb.slice"
@@ -80,7 +84,8 @@
 ## [1.0.0] - 2019-05-10
 - Initial stable release
 
-[Unreleased]: https://github.com/progamesigner/hugo-theme-0x148/compare/v1.3.3...HEAD
+[Unreleased]: https://github.com/progamesigner/hugo-theme-0x148/compare/v1.3.4...HEAD
+[1.3.4]: https://github.com/progamesigner/hugo-theme-0x148/releases/tag/v1.3.4
 [1.3.3]: https://github.com/progamesigner/hugo-theme-0x148/releases/tag/v1.3.3
 [1.3.2]: https://github.com/progamesigner/hugo-theme-0x148/releases/tag/v1.3.2
 [1.3.1]: https://github.com/progamesigner/hugo-theme-0x148/releases/tag/v1.3.1
