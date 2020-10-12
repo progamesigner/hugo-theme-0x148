@@ -7,11 +7,20 @@
 [404_notfound_title]
     other = "Page not found"
 
+[archive]
+    other = "Archive"
+
+[author]
+    other = "Author"
+
 [byline_about]
     other = "About {{ .Name }}"
 
 [byline_license]
     other = "License"
+
+[category]
+    other = "Category"
 
 [footer_copyright_line]
     other = "&#169; {{ .Year }} <span class=\"has-text-danger\">&hearts;</span> <a href=\"{{ .Url }}\">{{ .Name }}</a>."
@@ -91,6 +100,9 @@
     one = "This is first post in series \"{{ .Title }}\""
     other = "This is #{{ .Order }} of {{ .Count }} posts in the series \"{{ .Title }}\""
 
+[series]
+    other = "Series"
+
 [sidebar_label_language]
     other = "Language"
 
@@ -99,6 +111,9 @@
 
 [table_of_contents]
     other = "Table of Contents"
+
+[tag]
+    other = "Tag"
 
 [user_consent_accept]
     other = "I accept"

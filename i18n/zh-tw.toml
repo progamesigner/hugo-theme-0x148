@@ -7,11 +7,20 @@
 [404_notfound_title]
     other = "無法找到頁面"
 
+[archive]
+    other = "所有文章"
+
+[author]
+    other = "作者"
+
 [byline_about]
     other = "關於 {{ .Name }}"
 
 [byline_license]
     other = "授權"
+
+[category]
+    other = "分類"
 
 [footer_copyright_line]
     other = "&#169; {{ .Year }} <span class=\"has-text-danger\">&hearts;</span> <a href=\"{{ .Url }}\">{{ .Name }}</a>"
@@ -90,6 +99,9 @@
     one = "這是{{ .Title }}系列的第一篇文章"
     other = "這是{{ .Title }}系列中 {{ .Count }} 篇文章的第 {{ .Order }} 篇"
 
+[series]
+    other = "系列"
+
 [sidebar_label_language]
     other = "語言"
 
@@ -98,6 +110,9 @@
 
 [table_of_contents]
     other = "頁面目錄"
+
+[tag]
+    other = "標籤"
 
 [user_consent_accept]
     other = "我同意"
