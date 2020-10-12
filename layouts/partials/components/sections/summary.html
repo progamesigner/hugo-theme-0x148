@@ -40,7 +40,7 @@
                 <span class="icon">
                     {{ slice . "icon-reading-time" | partial "functions/get-icon.svg" }}
                 </span>
-                <span>{{ .ReadingTime | i18n "page_reading_time" }}</span>
+                <span>{{ .ReadingTime | i18n "page_reading_time" | default "Unknown reading time" }}</span>
             </div>
 
             {{ if slice .Lastmod .Date | partial "functions/is-date-later-than.boolean" }}

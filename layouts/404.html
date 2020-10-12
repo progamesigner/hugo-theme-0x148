@@ -11,17 +11,17 @@
 						<span class="icon">
 							{{ slice . "notfound" | partial "functions/get-icon.svg" }}
 						</span>
-						{{ i18n "404_notfound_title" }}
+						{{ i18n "404_notfound_title" | default "Page not found" }}
 						<span class="icon">
 							{{ slice . "notfound" | partial "functions/get-icon.svg" }}
 						</span>
 					</h1>
-					<p>{{ i18n "404_notfound_text" }}</p>
+					<p>{{ i18n "404_notfound_text" | default "The page you are looking for doesn't exist or has been moved." }}</p>
 				</div>
 			</div>
 			<div class="page-foot">
 				{{ with .Site.Home.OutputFormats.Get "HTML" }}
-					<a class="button is-primary" href="{{ .Permalink }}" title="{{ $.Site.Title }}">{{ i18n "404_notfound_link" }}</a>
+					<a class="button is-primary" href="{{ .Permalink }}" title="{{ $.Site.Title }}">{{ i18n "404_notfound_link" | default "Go Home" }}</a>
 				{{ end }}
 			</div>
 		</article>

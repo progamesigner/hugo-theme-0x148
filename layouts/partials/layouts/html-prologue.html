@@ -6,8 +6,8 @@
 
 {{ if $consentNotificationId }}
     <div id="{{ $consentNotificationId }}" class="notification is-fixed-bottom" disabled>
-        {{ i18n "user_consent_text" }}
-        <a class="button is-primary" data-consent-notification-id="{{ $consentNotificationId }}">{{ i18n "user_consent_accept" }}</a>
+        {{ i18n "user_consent_text" | default "This site uses cookies and other tracking technologies." }}
+        <a class="button is-primary" data-consent-notification-id="{{ $consentNotificationId }}">{{ i18n "user_consent_accept" | default "I accept" }}</a>
     </div>
 {{ end }}
 

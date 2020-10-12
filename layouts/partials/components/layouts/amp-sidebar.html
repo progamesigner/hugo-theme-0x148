@@ -12,13 +12,13 @@
 
     {{ slice . | partial "components/renderers/search.html" }}
 
-    <p class="sidebar-label">{{ i18n "sidebar_label_navigation" }}</p>
+    <p class="sidebar-label">{{ i18n "sidebar_label_navigation" | default "Navigation" }}</p>
     <nav class="sidebar-menu">
         {{ .Site.Params.NavbarMenuName | default .Site.Params.SectionPagesMenu | default "main" | slice . | partial "components/renderers/sidebar-items.html" }}
     </nav>
 
     {{ if .IsTranslated }}
-        <p class="sidebar-label">{{ i18n "sidebar_label_language" }}</p>
+        <p class="sidebar-label">{{ i18n "sidebar_label_language" | default "Language" }}</p>
         <nav class="sidebar-menu">
             {{ slice . | partial "components/renderers/sidebar-language-items.html" }}
         </nav>

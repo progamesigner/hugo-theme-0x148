@@ -21,8 +21,8 @@
         }
         </script>
         <div id="{{ $consentNotificationId }}-ui" class="notification">
-            {{ i18n "user_consent_text" }}
-            <a class="button is-primary" on="tap:{{ $consentNotificationId }}.accept">{{ i18n "user_consent_accept" }}</a>
+            {{ i18n "user_consent_text" | default "This site uses cookies and other tracking technologies." }}
+            <a class="button is-primary" on="tap:{{ $consentNotificationId }}.accept">{{ i18n "user_consent_accept" | default "I accept" }}</a>
         </div>
     </amp-consent>
 {{ end }}

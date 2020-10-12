@@ -2,7 +2,7 @@
 
 {{ if len $headings | le 1 }}
     <aside class="menu">
-        <h2 class="menu-label">{{ i18n "table_of_contents" }}</h2>
+        <h2 class="menu-label">{{ i18n "table_of_contents" | default "Table of Contents" }}</h2>
         <div class="menu-list">
             <ul>
                 {{ range $index, $heading := $headings }}
