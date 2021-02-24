@@ -43,8 +43,8 @@
         {{- . | absURL | $schema.SetInMap "schema" "image" -}}
     {{- end -}}
 {{- else -}}
-    {{- range $key, $value := "publisher" | index $schemas | default dict -}}
-        {{- if "logo" | eq $key -}}
+    {{- range $key, $value := "article" | index $schemas | default dict -}}
+        {{- if "image" | eq $key -}}
             {{- $value | $schema.SetInMap "schema" "image" -}}
         {{- end -}}
     {{- end -}}
