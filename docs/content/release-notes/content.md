@@ -2,6 +2,10 @@
 
 ...
 
+## [1.3.5] - 2021-02-24
+### Changed
+- Use different image in article and publisher as per AMP standard
+
 ## [1.3.4] - 2020-09-29
 ### Fixed
 - Update packages to improve security
