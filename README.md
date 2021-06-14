@@ -42,7 +42,7 @@ git clone https://github.com/0x148/hugo-theme-0x148.git
 
 ## Documentation
 
-Check the [documentation](https://0x148.progamesigner.com) for detailed documentation of hugo-theme-0x148.
+Check the [documentation](https://theme.0x148.com) for detailed documentation of hugo-theme-0x148.
 
 If it's your first time using Hugo, please check [Hugo official documentation](https://gohugo.io/overview/introduction/) also.
 

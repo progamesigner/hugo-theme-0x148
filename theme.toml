@@ -2,7 +2,7 @@ name = "0x148"
 license = "MIT"
 licenselink = "https://github.com/progamesigner/hugo-theme-0x148/blob/master/LICENSE"
 description = "A theme for Hugo with customizations."
-homepage = "https://0x148.progamesigner.com"
+homepage = "https://theme.0x148.com"
 tags = [
     "AMP",
     "blog",
