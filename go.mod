@@ -1,3 +1,3 @@
 module github.com/progamesigner/hugo-theme-0x148
 
-go 1.13
+go 1.17
