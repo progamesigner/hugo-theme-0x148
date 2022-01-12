@@ -2,6 +2,10 @@
 
 ...
 
+## [1.3.6] - 2022-01-12
+### Changed
+- Remove the usage of deprecated "google_news" internal template
+
 ## [1.3.5] - 2021-02-24
 ### Changed
 - Use different image in article and publisher as per AMP standard
