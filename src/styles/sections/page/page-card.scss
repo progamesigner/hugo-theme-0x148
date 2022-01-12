@@ -1,6 +1,6 @@
 $page-card-foot-height: 1.5rem !default;
-$page-card-hero-height: 100% * 15 / 21 !default;
-$page-card-hero-hover-height: 100% * 9 / 21 !default;
+$page-card-hero-height: calc(100% * 15 / 21) !default;
+$page-card-hero-hover-height: calc(100% * 9 / 21) !default;
 $page-card-no-hero-padding: 0.5rem !default;
 
 .page {
