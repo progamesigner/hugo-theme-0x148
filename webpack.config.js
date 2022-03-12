@@ -40,10 +40,6 @@ module.exports = (env, options) => {
                 sourceMap: !isProd,
                 postcssOptions: {
                   plugins: [
-                    require('postcss-inline-svg')({
-                      removeFill: true,
-                      xmlns: false
-                    }),
                     require('cssnano')({
                       preset: [
                         'default',
