@@ -1,9 +1,0 @@
-{{- $format := "20060102" -}}
-
-{{- $time := 0 | index . -}}
-{{- $otherTime := 1 | index . -}}
-
-{{- $date := $format | $time.Format -}}
-{{- $otherDate := $format | $otherTime.Format -}}
-
-{{- return gt $date $otherDate -}}

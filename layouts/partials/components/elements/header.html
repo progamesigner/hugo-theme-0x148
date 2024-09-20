@@ -1,8 +1,0 @@
-{{- $properties := dict "classes" (cond .IsHome "is-home" "is-page") "size" (cond .IsHome "6by1" "cover") | slice . | partial "functions/get-page-properties.dict" -}}
-
-{{- $classes := "classes" | index $properties -}}
-{{- $hero := "hero" | index $properties -}}
-
-<div class="header-hero {{ delimit $classes " " }}">
-    {{ slice . $hero | partial "components/renderers/hero.html" }}
-</div>

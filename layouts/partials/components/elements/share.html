@@ -1,9 +1,0 @@
-<div class="page-share-items">
-    <div class="page-share-item">
-        <span class="page-share-brand">
-            {{ partial "templates/icon.html" . | safeHTML }}
-        </span>
-    </div>
-
-    {{ .Site.Params.ShareMenuName | default "share" | slice . "DisabledShareServices" "page-share-item" "is-hovered" | partial "components/renderers/linked-icons.html" }}
-</div>

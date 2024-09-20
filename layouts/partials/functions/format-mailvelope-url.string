@@ -1,4 +1,0 @@
-{{- $field := 0 | index . -}}
-{{- $value := 1 | index . -}}
-
-{{- return printf "https://keys.mailvelope.com/api/v1/key?%s=%s" $field $value -}}

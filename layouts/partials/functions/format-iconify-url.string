@@ -1,3 +1,0 @@
-{{- $collection := 0 | index . -}}
-
-{{- return printf "https://raw.githubusercontent.com/iconify/collections-json/1.1.102/json/%s.json" $collection -}}

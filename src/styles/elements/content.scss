@@ -1,9 +1,0 @@
-$content-blockquote-padding: 1.5rem 3rem !default;
-$content-family: $family-secondary !default;
-$content-pre-padding: 0.75rem 0.5rem !default;
-
-@import '~bulma/sass/elements/content';
-
-.content {
-    font-family: $content-family;
-}

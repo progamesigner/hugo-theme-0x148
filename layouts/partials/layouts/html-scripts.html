@@ -1,7 +1,0 @@
-{{- $script := slice . "script.js" "main.js" "extension.js" | partial "functions/get-assets.asset" | minify | fingerprint "sha512" -}}
-
-<script src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}" crossorigin="anonymous"></script>
-
-{{ slice . "HTMLModules" "scripts" | partial "components/renderers/modules" }}
-
-{{ partial "templates/html-scripts.html" . }}

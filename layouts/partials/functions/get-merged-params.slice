@@ -1,9 +1,0 @@
-{{- $context := 0 | index . -}}
-{{- $key := 1 | index . -}}
-
-{{- $pageItems := $key | lower | index $context.Params | default slice -}}
-{{- $siteItems := $key | lower | index $context.Site.Params | default slice -}}
-
-{{- $items := $pageItems | union $siteItems -}}
-
-{{- return $items -}}

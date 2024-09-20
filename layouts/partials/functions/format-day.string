@@ -1,6 +1,0 @@
-{{- $default := "format_day" | i18n | default "02" -}}
-
-{{- $datetime := 0 | index . -}}
-{{- $format := 1 | index . | default $default -}}
-
-{{- return $datetime.Format $format -}}

@@ -1,7 +1,0 @@
-{{- $context := 0 | index . -}}
-{{- $name := 1 | index . | string -}}
-{{- $language := 2 | index . | default $context.Language.Lang -}}
-
-{{- $parameters := slice $context $name $language -}}
-
-{{- return partialCached "functions/get-author-item.dict" $parameters $name $language -}}

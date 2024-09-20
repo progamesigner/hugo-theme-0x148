@@ -1,7 +1,0 @@
-{{- $configurations := slice . "module-katex-auto-render" | partial "functions/get-merged-configs.dict" -}}
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        renderMathInElement(document.body, {{ "options" | index $configurations | jsonify | safeJS }});
-    });
-</script>

@@ -1,6 +1,0 @@
-{{- $datetime := 0 | index . -}}
-
-{{- $default := "January" | $datetime.Format -}}
-{{- $key := "January" | $datetime.Format | lower | printf "format_month_%s" | default $default -}}
-
-{{- return i18n $key -}}

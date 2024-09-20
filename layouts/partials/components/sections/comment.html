@@ -1,7 +1,0 @@
-{{ if "comments" | .Param }}
-    {{ with slice . | partial "components/renderers/comment.html" }}
-        <div id="comments" class="page-comment">
-            {{ . }}
-        </div>
-    {{ end }}
-{{ end }}

@@ -1,8 +1,0 @@
-{{- $context := 0 | index . -}}
-{{- $iframe := 1 | index . -}}
-
-{{- $base := "AMPIFrameBase" | lower | index $context.Site.Params | default "/" -}}
-
-{{- $url := $iframe | replaceRE $context.Site.BaseURL $base | absURL -}}
-
-{{- return $url -}}

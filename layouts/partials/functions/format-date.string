@@ -1,6 +1,0 @@
-{{- $default := "format_date" | i18n | default "Jan 02, 2006" -}}
-
-{{- $datetime := 0 | index . -}}
-{{- $format := 1 | index . | default $default -}}
-
-{{- return $datetime.Format $format -}}
