@@ -7,10 +7,10 @@
 {{ with $context }}
     {{- $disabledItems := $disabledItemKey | lower | .Param | default slice -}}
 
-    {{- $base := $context.Site.BaseURL | querify "" | strings.TrimPrefix "=" -}}
-    {{- $url := .Permalink | querify "" | strings.TrimPrefix "=" -}}
-    {{- $title := .Title | plainify | querify "" | strings.TrimPrefix "=" -}}
-    {{- $description := slice . | partial "functions/get-page-description.string" | plainify | querify "" | strings.TrimPrefix "=" -}}
+    {{- $base := $context.Site.BaseURL | urlquery -}}
+    {{- $url := .Permalink | urlquery -}}
+    {{- $title := .Title | plainify | urlquery -}}
+    {{- $description := slice . | partial "functions/get-page-description.string" | plainify | urlquery -}}
 
     {{ with $name | index .Site.Menus }}
         {{ range sort . "Weight" }}

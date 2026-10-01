@@ -1,7 +1,7 @@
 {
     "email": "icon-email",
-    "facebook": "mdi:facebook-box",
+    "facebook": "mdi:facebook",
     "notfound": "icon-notfound",
     "theme": "mdi:code-tags",
-    "twitter": "mdi:twitter-box"
+    "twitter": "mdi:twitter"
 }

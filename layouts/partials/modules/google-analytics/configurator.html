@@ -13,7 +13,5 @@
 	}
 
 	gtag('js', new Date())
-	gtag('config', '{{ .Site.Config.Services.GoogleAnalytics.ID }}', {
-		'anonymize_ip': {{ .Site.Config.Privacy.GoogleAnalytics.AnonymizeIP }}
-	})
+	gtag('config', '{{ .Site.Config.Services.GoogleAnalytics.ID }}')
 </script>

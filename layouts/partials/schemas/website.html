@@ -1,6 +1,6 @@
 {{- $schema := newScratch -}}
 
-{{- $schemas := "schemas" | index .Site.Data | default dict -}}
+{{- $schemas := "schemas" | index hugo.Data | default dict -}}
 
 {{- "http://schema.org" | $schema.SetInMap "schema" "@context" -}}
 {{- "Website" | $schema.SetInMap "schema" "@type" -}}

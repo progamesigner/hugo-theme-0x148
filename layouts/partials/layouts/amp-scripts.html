@@ -1,4 +1,4 @@
-{{- $mappings := "amp-components" | index .Site.Data | default dict -}}
+{{- $mappings := "amp-components" | index hugo.Data | default dict -}}
 {{- $components := slice . "AMPComponents" | partial "functions/get-merged-params.slice" -}}
 
 <link rel="preload" as="script" href="{{ "amp-core" | index $mappings }}">

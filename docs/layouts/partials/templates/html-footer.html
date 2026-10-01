@@ -1,5 +1,5 @@
 <p class="has-text-centered">
-    {{ with .Site.Author }}
+    {{ with .Site.Params.author }}
         &copy; {{ now.Format "2006" }} <span class="has-text-danger">&hearts;</span> <a href="{{ .url }}">{{ .name }}</a>.
     {{ end }}
 </p>

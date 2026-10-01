@@ -16,7 +16,7 @@
         {{- $url := false -}}
 
         {{- range .AllTranslations -}}
-            {{- if .Language.Lang | eq .Sites.First.Home.Language.Lang -}}
+            {{- if .Language.Lang | eq hugo.Sites.Default.Language.Lang -}}
                 {{- $identifier = "slug" | .Param | default .Title | urlize -}}
                 {{- $title = .Title | default .Site.Title -}}
                 {{- with .OutputFormats.Get "HTML" -}}

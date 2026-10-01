@@ -8,7 +8,7 @@
 
 {{- $data.Set "configs" dict -}}
 {{- with $context -}}
-    {{- $configs := "configs" | index .Site.Data -}}
+    {{- $configs := "configs" | index hugo.Data -}}
 
     {{- range $key, $value := $defaultConfigKey | default $defaultKey | index $configs -}}
         {{- $value | $data.SetInMap "configs" $key -}}

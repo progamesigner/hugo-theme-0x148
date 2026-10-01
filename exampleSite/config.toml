@@ -1,16 +1,18 @@
 baseURL = "https://example.com"
 title = "Hugo 0x148 Theme Example"
-description = "A theme for Hugo with customizations."
 
 relativeURLs = true
-paginate = 3
 
-[author]
+[params.author]
     name = "Your Name Here"
     email = "contact@example.com"
     url = "https://example.com"
 
+[pagination]
+    pagerSize = 3
+
 [params]
+    description = "A theme for Hugo with customizations."
     math = true
     share = true
     toc = true

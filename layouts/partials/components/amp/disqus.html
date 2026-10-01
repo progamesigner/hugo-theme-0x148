@@ -1,4 +1,4 @@
-{{- slice . "amp-iframe" | partial "functions/is-amp-component-loaded.error" -}}
+{{- slice . "amp-iframe" | partial "functions/assert-amp-component-loaded.error" -}}
 
 {{- $disqus := resources.Get "iframes/disqus.html" | resources.ExecuteAsTemplate "iframes/disqus.html" . | minify | fingerprint "sha512" -}}
 

@@ -2,7 +2,7 @@
 
 {{- $format := slice . | partial "functions/get-page-format.string" -}}
 
-{{ with "author" | .Param | slice . | partial "functions/get-author-data.dict" }}
+{{ with .Params.author | slice . | partial "functions/get-author-data.dict" }}
     <div class="byline">
         {{ if .avatar }}
             <div class="byline-left">

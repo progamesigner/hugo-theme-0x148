@@ -24,20 +24,20 @@
                 {{ if .IsTranslated }}
                     <div class="navbar-item has-dropdown is-hoverable">
                         <a class="navbar-link" href="{{ .RelPermalink }}" title="{{ .Title }}">
-                            {{ .Language.LanguageName }}
+                            {{ .Language.Label }}
                         </a>
 
                         <div class="navbar-dropdown is-boxed">
-                            {{- $current := .Language.LanguageName -}}
+                            {{- $current := .Language.Label -}}
 
                             {{ range .AllTranslations.ByWeight }}
-                                {{ if .Language.LanguageName | eq $current }}
+                                {{ if .Language.Label | eq $current }}
                                     <a class="navbar-item is-active" href="{{ .RelPermalink }}" title="{{ .Title }}">
-                                        {{ .Language.LanguageName }}
+                                        {{ .Language.Label }}
                                     </a>
                                 {{ else }}
                                     <a class="navbar-item" href="{{ .RelPermalink }}" title="{{ .Title }}">
-                                        {{ .Language.LanguageName }}
+                                        {{ .Language.Label }}
                                     </a>
                                 {{ end }}
                             {{ end }}

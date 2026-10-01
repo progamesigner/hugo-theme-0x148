@@ -2,10 +2,10 @@
 {{- $name := 1 | index . -}}
 {{- $language := 2 | index . | default $context.Language.Lang -}}
 
-{{- $authors := "authors" | index $context.Site.Data | default dict -}}
+{{- $authors := "authors" | index hugo.Data | default dict -}}
 
 {{- $data := newScratch -}}
-{{- $author := $name | index $authors | default $context.Site.Author | default dict -}}
+{{- $author := $name | index $authors | default $context.Site.Params.author | default dict -}}
 
 {{- $author.name | urlize | $data.SetInMap "author" "id" -}}
 

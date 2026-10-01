@@ -2,7 +2,6 @@ baseURL = "https://theme.0x148.com"
 defaultContentLanguage = "en-us"
 hasCJKLanguage = true
 relativeURLs = true
-paginate = 10
 
 copyright = "Copyright (c) progamesigner."
 enableRobotsTXT = true
@@ -10,7 +9,7 @@ enableRobotsTXT = true
 pygmentsOptions = "linenos=table"
 pygmentsUseClasses = true
 
-[author]
+[params.author]
     name = "Yang Sheng Han"
     email = "progamesigner@outlook.com"
     url = "https://progamesigner.com"
@@ -31,8 +30,10 @@ pygmentsUseClasses = true
 
 [privacy]
 [privacy.googleAnalytics]
-    anonymizeIP = true
     respectDoNotTrack = true
+
+[pagination]
+    pagerSize = 10
 
 [taxonomies]
     category = "categories"

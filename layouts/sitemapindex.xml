@@ -6,8 +6,8 @@
 	{{ range . }}
 		<sitemap>
 			<loc>{{ .SitemapAbsURL }}</loc>
-			{{ if not .LastChange.IsZero }}
-				<lastmod>{{ slice .LastChange | partial "functions/format-datetime.string" | safeHTML }}</lastmod>
+			{{ if not .Lastmod.IsZero }}
+				<lastmod>{{ slice .Lastmod | partial "functions/format-datetime.string" | safeHTML }}</lastmod>
 			{{ end }}
 		</sitemap>
 	{{ end }}

@@ -13,7 +13,7 @@
     {{- slice .Lastmod | partial "functions/format-datetime.string" | $schema.SetInMap "schema" "dateModified" -}}
 {{- end -}}
 
-{{- with "author" | .Param | slice . | partial "functions/get-author-data.dict" -}}
+{{- with .Params.author | slice . | partial "functions/get-author-data.dict" -}}
     {{- .name | dict "name" | $schema.SetInMap "schema" "author" -}}
 {{- end -}}
 

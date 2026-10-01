@@ -1,7 +1,17 @@
 {{- $name := 1 | index . -}}
 
 {{- $key := $name | replaceRE "(?i).*:(.*)" "$1" -}}
-{{- $data := $name | replaceRE "(?i)(.*):.*" "$1" | slice | partial "functions/format-iconify-url.string" | getJSON -}}
+{{- $url := $name | replaceRE "(?i)(.*):.*" "$1" | slice | partial "functions/format-iconify-url.string" -}}
+{{- $data := dict -}}
+{{- with try (resources.GetRemote $url) -}}
+    {{- with .Err -}}
+        {{- errorf "Failed to fetch iconify collection from %s: %s" $url . -}}
+    {{- else with .Value -}}
+        {{- $data = . | transform.Unmarshal -}}
+    {{- else -}}
+        {{- errorf "Failed to fetch iconify collection from %s" $url -}}
+    {{- end -}}
+{{- end -}}
 
 {{- $alias := $key | index $data.aliases | default dict -}}
 {{- $icon := $alias.parent | default $key | index $data.icons -}}

@@ -1,4 +1,4 @@
-{{ with .Site.Author }}
+{{ with .Site.Params.author }}
     <p class="has-text-centered">
         {{ now.Format "2006" | dict "Name" .name "Url" .url "Year" | i18n "footer_copyright_line" | safeHTML }}
     </p>

@@ -9,13 +9,13 @@
         <description>Recent content {{ if .Site.Title | ne .Title }}{{ with .Title }}in {{.}} {{ end }}{{ end }}on {{ .Site.Title }}</description>
         <generator>Hugo -- gohugo.io</generator>
 
-        {{ with .Site.LanguageCode }}
+        {{ with .Site.Language.Locale }}
             <language>{{ . }}</language>
         {{ end }}
 
-        {{ with "email" | index .Site.Author }}
-            <managingEditor>{{ . }}{{ with "name" | index $.Site.Author }} ({{ . }}){{ end }}</managingEditor>
-            <webMaster>{{ . }}{{ with "name" | index $.Site.Author }} ({{ . }}){{ end }}</webMaster>
+        {{ with "email" | index (.Site.Params.author | default dict) }}
+            <managingEditor>{{ . }}{{ with "name" | index $.Site.Params.author }} ({{ . }}){{ end }}</managingEditor>
+            <webMaster>{{ . }}{{ with "name" | index $.Site.Params.author }} ({{ . }}){{ end }}</webMaster>
         {{ end }}
 
         {{ with .Site.Copyright }}
@@ -35,8 +35,8 @@
                 <title>{{ .Title }}</title>
                 <link>{{ .Permalink }}</link>
                 <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
-                {{ if "author" | .Param }}
-                    {{ with "author" | .Param | slice . | partial "functions/get-author-data.dict" }}
+                {{ if .Params.author }}
+                    {{ with .Params.author | slice . | partial "functions/get-author-data.dict" }}
                         <author>{{ .email }}{{ with .name }} ({{ . }}){{ end }}</author>
                     {{ end }}
                 {{ end }}
