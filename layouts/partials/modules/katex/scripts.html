@@ -1,0 +1,5 @@
+{{- $configurations := slice . "module-katex" | partial "functions/get-merged-configs.dict" -}}
+
+{{ range "scripts" | index $configurations }}
+    {{ slice . | partial "components/renderers/script" }}
+{{ end }}

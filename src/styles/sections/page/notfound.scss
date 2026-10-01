@@ -1,0 +1,53 @@
+$page-notfound-background-color: $background !default;
+$page-notfound-subtitle-size: 16rem !default;
+$page-notfound-title-size: 4rem !default;
+$page-notfound-color: $text !default;
+$page-notfound-icon-dimension: 4rem !default;
+$page-notfound-emoji-size: 4rem !default;
+$page-notfound-icon-margin: 0 1rem !default;
+
+.page {
+    &.is-notfound {
+        background-color: $page-notfound-background-color;
+        box-shadow: none;
+        color: $page-notfound-color;
+        text-align: center;
+
+        .page-head {
+            align-items: flex-end;
+            display: flex;
+            justify-content: center;
+
+            [data-emoji] {
+                font-size: $page-notfound-emoji-size;
+            }
+        }
+
+        .page-body {
+            .title {
+                align-items: center;
+                display: flex;
+                font-family: $family-code;
+                font-size: $page-notfound-title-size;
+                justify-content: center;
+                text-transform: uppercase;
+            }
+
+            .subtitle {
+                font-family: $family-code;
+                font-size: $page-notfound-subtitle-size;
+            }
+
+            .content {
+                font-family: $family-sans-serif;
+            }
+
+            .icon {
+                fill: $page-notfound-color;
+                height: $page-notfound-icon-dimension;
+                width: $page-notfound-icon-dimension;
+                margin: $page-notfound-icon-margin;
+            }
+        }
+    }
+}

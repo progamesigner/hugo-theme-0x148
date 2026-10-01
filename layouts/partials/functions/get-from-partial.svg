@@ -1,0 +1,10 @@
+{{- $context := 0 | index . -}}
+{{- $name := 1 | index . -}}
+
+{{- $path := $name | printf "images/%s.svg" -}}
+
+{{- $svg := false -}}
+{{- if $path | printf "partials/%s" | templates.Exists -}}
+    {{- $svg = partial $path $context -}}
+{{- end -}}
+{{- return $svg -}}

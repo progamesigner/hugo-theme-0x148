@@ -1,0 +1,8 @@
+{{- $content := 0 | index . -}}
+{{- $type := 1 | index . -}}
+
+<div class="message is-{{ $type }}">
+    <div class="message-body">
+        {{ $content }}
+    </div>
+</div>

@@ -1,0 +1,11 @@
+@import '~bulma/sass/elements/icon';
+
+.icon {
+    @if not $amp {
+        svg {
+            path {
+                transition: fill $speed $easing;
+            }
+        }
+    }
+}
