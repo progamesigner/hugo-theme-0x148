@@ -22,7 +22,7 @@
     "hugo:watch": "hugo serve --buildDrafts --buildFuture --environment development --source docs --themesDir ../.. --theme hugo-theme-0x148"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.5",
+    "@babel/core": "^7.29.7",
     "babel-loader": "^8.2.3",
     "bulma": "^0.9.3",
     "clipboard": "^2.0.10",
