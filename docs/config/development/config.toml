@@ -1,0 +1,8 @@
+[pagination]
+    pagerSize = 3
+
+[services]
+    [services.disqus]
+        shortname = ""
+    [services.googleAnalytics]
+        id = ""

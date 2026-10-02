@@ -1,0 +1,25 @@
+{{- $name := 1 | index . -}}
+
+{{- $key := $name | replaceRE "(?i).*:(.*)" "$1" -}}
+{{- $url := $name | replaceRE "(?i)(.*):.*" "$1" | slice | partial "functions/format-iconify-url.string" -}}
+{{- $data := dict -}}
+{{- with try (resources.GetRemote $url) -}}
+    {{- with .Err -}}
+        {{- errorf "Failed to fetch iconify collection from %s: %s" $url . -}}
+    {{- else with .Value -}}
+        {{- $data = . | transform.Unmarshal -}}
+    {{- else -}}
+        {{- errorf "Failed to fetch iconify collection from %s" $url -}}
+    {{- end -}}
+{{- end -}}
+
+{{- $alias := $key | index $data.aliases | default dict -}}
+{{- $icon := $alias.parent | default $key | index $data.icons -}}
+
+{{- $svg := false -}}
+{{- if $icon -}}
+    {{ $svg = slice $data $icon $alias | partial "components/renderers/image.svg" }}
+{{- else -}}
+    {{- errorf "No iconify icon '%s' with alias '%s' found" $name $key -}}
+{{- end -}}
+{{- return $svg -}}

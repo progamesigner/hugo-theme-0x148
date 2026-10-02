@@ -1,0 +1,19 @@
+{{- $style := 0 | index . -}}
+
+{{ if reflect.IsMap $style }}
+    {{ if $style.integrity | and $style.crossorigin }}
+        {{ if $style.defer }}
+            {{ printf "<link rel=%q href=%q integrity=%q crossorigin=%q defer>" "stylesheet" $style.href $style.integrity $style.crossorigin | safeHTML }}
+        {{ else }}
+            {{ printf "<link rel=%q href=%q integrity=%q crossorigin=%q>" "stylesheet" $style.href $style.integrity $style.crossorigin | safeHTML }}
+        {{ end }}
+    {{ else }}
+        {{ if $style.defer }}
+            {{ printf "<link rel=%q href=%q defer>" "stylesheet" $style.href | safeHTML }}
+        {{ else }}
+            {{ printf "<link rel=%q href=%q>" "stylesheet" $style.href | safeHTML }}
+        {{ end }}
+    {{ end }}
+{{ else }}
+    {{ printf "<link rel=%q href=%q>" "stylesheet" $style.href | safeHTML }}
+{{ end }}

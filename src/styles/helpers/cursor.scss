@@ -1,0 +1,14 @@
+$cursors: (
+    'pointer': 'pointer',
+    'move': 'move',
+    'zoom-in': 'zoom-in',
+    'zoom-out': 'zoom-out',
+    'disallowed': 'not-allowed',
+    'auto': 'auto'
+);
+
+@each $name, $cursor in $cursors {
+    .has-cursor-#{$name} {
+        cursor: #{$cursor};
+    }
+}

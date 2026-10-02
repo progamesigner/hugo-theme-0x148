@@ -1,0 +1,11 @@
+{{ partial "schemas/website.html" . }}
+{{ partial "schemas/organization.html" . }}
+{{ partial "schemas/breadcrumb.html" . }}
+
+{{ if .IsPage }}
+    {{- $schema := "schema" | .Param | default "article" | lower | printf "schemas/%s.html" -}}
+
+    {{ partial $schema . }}
+{{ end }}
+
+{{ partial "templates/schema.html" . }}

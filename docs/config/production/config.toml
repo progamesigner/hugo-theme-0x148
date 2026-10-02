@@ -1,0 +1,7 @@
+enableGitInfo = true
+
+[services]
+    [services.disqus]
+        shortname = "hugo-theme-0x148"
+    [services.googleAnalytics]
+        id = "UA-109064425-3"

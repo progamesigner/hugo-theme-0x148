@@ -1,0 +1,7 @@
+{{- $configurations := slice . "module-mathjax" | partial "functions/get-merged-configs.dict" -}}
+
+<script type='text/x-mathjax-config'>
+    MathJax.Hub.Config(
+        {{ "options" | index $configurations | jsonify | safeJS }}
+    )
+</script>

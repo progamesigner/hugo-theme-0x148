@@ -1,0 +1,17 @@
+{{- $schema := newScratch -}}
+
+{{- $schemas := "schemas" | index hugo.Data | default dict -}}
+
+{{- "http://schema.org" | $schema.SetInMap "schema" "@context" -}}
+{{- "Organization" | $schema.SetInMap "schema" "@type" -}}
+{{- .Site.BaseURL | $schema.SetInMap "schema" "url" -}}
+
+{{- range $key, $value := "organization" | index $schemas | default dict -}}
+    {{- if and $key $value -}}
+        {{- $value | $schema.SetInMap "schema" $key -}}
+    {{- end -}}
+{{- end -}}
+
+<script type="application/ld+json">
+    {{ "schema" | $schema.Get | jsonify | safeJS }}
+</script>

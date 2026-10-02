@@ -1,0 +1,7 @@
+locale = "en-US"
+label = "English"
+title = "Hugo 0x148 Theme"
+weight = 10
+
+[params]
+    description = "A theme for Hugo with customizations."

@@ -1,0 +1,1 @@
+{{- .Get 0 | readFile | strings.TrimLeft "\n\r"  | strings.TrimRight "\n\r" -}}
