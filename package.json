@@ -15,11 +15,13 @@
     "build": "npx webpack-cli --mode development",
     "build:prod": "npx webpack-cli --mode production",
     "build:watch": "npx webpack-cli --mode development --watch",
-    "deploy": "npm run build && npm run hugo",
+    "deploy": "wrangler deploy",
     "deploy:prod": "npm run build:prod && npm run hugo:prod",
-    "hugo": "hugo --buildDrafts --buildFuture --environment development --source docs --themesDir ../.. --theme hugo-theme-0x148",
-    "hugo:prod": "hugo --environment production --enableGitInfo --minify --source docs --themesDir ../.. --theme repo",
-    "hugo:watch": "hugo serve --buildDrafts --buildFuture --environment development --source docs --themesDir ../.. --theme hugo-theme-0x148"
+    "hugo": "hugo --buildDrafts --buildFuture --environment development --source docs --themesDir .. --theme .",
+    "hugo:prod": "hugo --environment production --enableGitInfo --minify --source docs --themesDir .. --theme .",
+    "hugo:watch": "hugo serve --buildDrafts --buildFuture --environment development --source docs --themesDir .. --theme .",
+    "build:dev": "npm run build && npm run hugo",
+    "preview": "wrangler dev --local"
   },
   "devDependencies": {
     "@babel/core": "^7.29.7",
@@ -34,7 +36,8 @@
     "sass": "^1.105.1",
     "sass-loader": "^12.6.0",
     "webpack": "^5.111.1",
-    "webpack-cli": "^4.9.2"
+    "webpack-cli": "^4.9.2",
+    "wrangler": "^4.151.0"
   },
   "overrides": {
     "css-what": "6.0.1"
