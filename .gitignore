@@ -3,3 +3,8 @@
 **/public
 **/resources
 node_modules
+
+# Local Wrangler state and credentials
+.wrangler/
+.dev.vars*
+.env*

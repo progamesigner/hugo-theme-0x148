@@ -1,0 +1,9 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "hugo-theme-0x148",
+  "compatibility_date": "2026-10-16",
+  "assets": {
+    "directory": "./docs/public",
+    "not_found_handling": "404-page"
+  }
+}
