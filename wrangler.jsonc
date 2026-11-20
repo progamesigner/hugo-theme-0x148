@@ -4,6 +4,9 @@
   "compatibility_date": "2026-10-16",
   "workers_dev": false,
   "preview_urls": true,
+  "routes": [
+    { "pattern": "theme.0x148.com", "custom_domain": true, "previews_enabled": false }
+  ],
   "assets": {
     "directory": "./docs/public",
     "not_found_handling": "404-page"
