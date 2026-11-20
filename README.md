@@ -61,7 +61,7 @@ npm run preview       # serve docs/public/ with wrangler dev, no remote calls
 npm run build:dev     # development assets and drafts
 ```
 
-GitHub Actions deploys the site with `.github/workflows/deploy.yaml`, which also pins the Hugo and Node.js versions. A push to `master` deploys to production. A push to any other branch uploads a preview version under an alias named after the branch, and the run summary shows its URL. The workflow needs the repository secrets `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`. The custom domain `theme.0x148.com` is set under the Worker's Settings > Domains & Routes. `wrangler.jsonc` turns off the production `workers.dev` URL and keeps preview URLs on.
+GitHub Actions deploys the site with `.github/workflows/deploy.yaml`, which also pins the Hugo and Node.js versions. A push to `main` deploys to production. A push to any other branch uploads a preview version under an alias named after the branch, and the run summary shows its URL. The workflow needs the repository secrets `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`. The custom domain `theme.0x148.com` is set under the Worker's Settings > Domains & Routes. `wrangler.jsonc` turns off the production `workers.dev` URL and keeps preview URLs on.
 
 ## License
 
