@@ -37,7 +37,7 @@
     "sass-loader": "^12.6.0",
     "webpack": "^5.111.1",
     "webpack-cli": "^4.9.2",
-    "wrangler": "^4.151.0"
+    "wrangler": "^4.165.0"
   },
   "overrides": {
     "css-what": "6.0.1"
